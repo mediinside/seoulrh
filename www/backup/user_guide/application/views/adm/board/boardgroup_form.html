@@ -1,0 +1,82 @@
+<form id='fboardgroup' name='fboardgroup' method='post' action='<?=$path?>/boardgroup/form'>
+<input type='hidden' name='w'     value='<?=$w?>'/>
+<input type='hidden' name='token' value='<?=$token?>'/>
+
+<div id='form_title'>
+	&deg; <b><?=$_TITLE_?></b>
+</div>
+
+<?=validation_errors('<script>alert("','");</script>');?>
+<ul id='form_cont'>
+	<li class="form_li">
+		<div>
+			<h4>게시판 그룹</h4>
+			<dl>
+				<dt>그룹 ID</dt>
+				<dd>
+					<? if ($w): ?>
+						<b><?=$gr_id?></b>
+						<input type='hidden' name='gr_id' value='<?=$gr_id?>'/>
+					<? else: ?>
+						<input type='text' id='gr_id' name='gr_id' class='ed' size='11' maxlength='20' value='<?=$gr_id?>'/>
+						영문자, 숫자, _ 만 가능 (공백없이)
+					<? endif; ?>
+				</dd>
+				<dt>그룹 제목</dt>
+				<dd>
+					<input type='text' id='gr_subject' name='gr_subject' class='ed' size='30' maxlength='20' value='<?=$gr_subject?>'/>
+					<? if ($w) : ?>
+					<input type='button' class='btn' value='게시판생성' onclick="document.location.href='<?=$path?>/board/form';"/>
+					<? endif; ?>
+				</dd>
+				<dt>그룹 관리자</dt>
+				<dd>
+					<input type='text' id='gr_admin' name='gr_admin' class='ed' value='<?=$gr_admin?>' size='30' maxlength='20'/>
+				</dd>
+			</dl>
+		</div>
+	</li>
+</ul>
+
+<p class='center bottom'>
+	<input type='submit' id='btn_submit' class='btn' value='  확  인  '/>&nbsp;
+    <input type='button' class='btn' value='  목  록  ' onclick="document.location.href='<?=$path?>/boardgroup/lists';"/>
+</p>
+
+</form>
+
+<div id='loading'></div>
+
+<script type='text/javascript' src='<?=JS_DIR?>/jvalidate.js'></script>
+<script type='text/javascript' src='<?=JS_DIR?>/jvalid_ext.js'></script>
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#fboardgroup').validate({
+		rules: {
+			gr_id: { required:"input[name='w']:blank", alphanumunder:true, minlength:3 },
+			gr_subject: 'required',
+			gr_admin: { alphanumunder:true, minlength:3 }
+		},
+		messages: {
+			gr_id: { required:'아이디를 입력하십시오.', minlength:"최소 3자 이상 입력하십시오." },
+			gr_subject: '제목을 입력하십시오.',
+			gr_admin: { minlength:'최소 3자 이상 입력하십시오.' }
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+		    f.submit();
+		}
+	});
+});
+//]]>
+</script>

@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<meta name="author" content="myshin">
+<meta name="keywords" content="우편번호, 검색">
+<meta name="description" content="우편번호 검색입니다">
+<title>우편번호 검색</title>
+<script type="text/javascript" src="/share/js/all.js"></script>
+<script type="text/javascript" src="/share/js/sub.js"></script>
+<link rel="stylesheet" type="text/css" href="/share/css/print.css">
+</head>
+<body id="openwin">
+
+
+<noscript><p>일부 기능은 자바스크립트가 지원되어야 사용하실 수 있습니다.</p></noscript>
+<div id="skipnavigation">
+<ul>
+<li><a href="#winclose">창 닫기 바로가기</a></li>
+</ul>
+</div><hr />
+
+<!-- openform -->
+<div class="openform">
+<!-- zipcode -->
+<div class="zipcode">
+
+<form action="?">
+<fieldset><legend>우편번호 검색</legend>
+<p>
+찾고자 하시는 지역의 '동이름'을 입력해 주세요.
+</p>
+<div class="box2">
+<label for="text1">동(읍/면/리)입력 : </label>
+<input type="text" name="text1" id="text1" value="" class="text" style="width: 60px;" />
+<input type="submit" value="검색" class="button" />
+</div>
+</fieldset>
+</form>
+<form action="?">
+<fieldset><legend>우편번호 선택</legend>
+<select size="10" title="우편번호 선택">
+<option value="">== 동 이름을 입력 후 검색하여 주십시오 ================</option>
+</select>
+<!-- infomenu -->
+<div class="infomenu">
+<div class="center">
+<input type="submit" value="확인" class="button" />
+&nbsp;
+<a href="?" onclick="window.close(); return false;" class="button">닫기</a>
+</div>
+</div>
+<!-- //infomenu -->
+</fieldset>
+</form>
+
+</div>
+<!-- //zipcode -->
+</div>
+<!-- //openform -->
+
+<div class="close" id="winclose"><a href="?" onclick="window.close(); return false;"><img src="/img/all/close.gif" width="72" height="26" alt="창 닫기" /></a></div>
+
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<? include DOC_ROOT."/include/header.php"; //헤더?>
+
+<div id="wrapper">
+	<div id="mainContents">
+		
+		<div id="sub_navi">
+			<div class="navi_view">
+				<? include DOC_ROOT."/include/leftmenu".$pageNum.".php"; //좌측메뉴?>
+			</div>
+		</div>
+
+		<div id="container">
+			<p class="sub_visual"><script  type="text/javascript">flashWrite("/flash/sub0<?=$pageNum;?>.swf","775","229","subFlash","#ffffff","transparent");</script></p>
+			<div id="content">
+				<div class="title">
+					<h3><img src="/img/title/0<?=$pageNum;?>_0<?=$subNum;?>.jpg" alt="<?=$subTitle;?>" /></h3>
+					<span>홈 &gt; <?=$mainTitle;?> &gt; <strong><?=$subTitle;?></strong></span>
+				</div>
+				<? $this->load->view($_BODY_); ?>
+			</div>
+		</div>
+
+		<br class="clear" />
+		<br /><br />		
+
+	</div>
+
+	<? include DOC_ROOT."/include/quick.php"; //퀵메뉴?>
+
+	<div class="clear"></div>
+
+	<? include DOC_ROOT."/include/footer.php"; //풋터?>
+	
+</div>

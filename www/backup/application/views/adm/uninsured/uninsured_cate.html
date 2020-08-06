@@ -1,0 +1,104 @@
+<h2>
+	<div style="float: left;">비급여 진료비 분류</div>
+	<div style="text-align: right;">
+		<button type="button" style="cursor: pointer;" onclick="document.location.href='/adm/uninsured/lists';">비급여 진료비</button>
+	</div>
+</h2>
+
+<div id='list_cont'>
+	<table width='100%' cellpadding='0' cellspacing='0' class="con_box2">
+		<colgroup>
+			<col width="80"/>
+			<col/>
+			<col width="80"/>
+			<col width="100"/>
+			<col width="100"/>
+			<col class="control"/>
+		</colgroup>
+		<tr>
+			<th>코드</th>
+			<th>분류명</th>
+			<th>노출</th>
+			<th>순서</th>
+			<th>관리</th>
+			<th class="nobg"><img src="/src/imgs/adm/icon_insert.gif" width="22" height="21" align="middle" title="추가" alt="추가" style="cursor: pointer;" onclick="addItem('')"/></th>
+		</tr>
+		<? foreach ($list as $row): ?>
+		<form name="frmDataMod<?=$row['uic_cd']?>" method="post" action="/adm/uninsured/cate_act">
+			<input type="hidden" name="mode" value="mod" />
+			<input type="hidden" name="uic_cd" value="<?=$row['uic_cd']?>" />
+			<tr>
+				<td><?=$row['uic_cd']?></td>
+				<td style="padding-left: <?=(strlen($row['uic_cd']) == 1 ? '0' : '50')?>px;"><input type="text" name="uic_title" value="<?=$row['uic_title']?>" class="ed" style="width: 99%;"/></td>
+				<td><input type="checkbox" name="uic_use" value="1" <?=($row['uic_use']?' checked':'')?>/></td>
+				<td>
+					<button type="button" style="cursor: pointer;" onclick="submitUp(document.frmDataMod<?=$row['uic_cd']?>);">▲</button>
+					<button type="button" style="cursor: pointer;" onclick="submitDn(document.frmDataMod<?=$row['uic_cd']?>);">▼</button>
+				</td>
+				<td>
+					<img src="/src/imgs/adm/icon_modify.gif" width="22" height="21" align="middle" title="수정" alt="수정" style="cursor: pointer;" onclick="submitMod(document.frmDataMod<?=$row['uic_cd']?>);"/>
+					<img src="/src/imgs/adm/icon_delete.gif" width="22" height="21" align="middle" title="삭제" alt="삭제" style="cursor: pointer;" onclick="submitDel(document.frmDataMod<?=$row['uic_cd']?>);"/>
+				</td>
+				<td><? if (strlen($row['uic_cd']) == 1) {?><img src="/src/imgs/adm/icon_insert.gif" width="22" height="21" align="middle" title="추가" alt="추가" style="cursor: pointer;" onclick="addItem('<?=$row['uic_cd']?>')"/><?} else {?>&nbsp;<?}?></td>
+			</tr>
+		</form>
+		<? endforeach; ?>
+		<? if (!$list): ?>
+		<tr>
+			<td colspan="6" height="50"><p class="none">자료가 없습니다.</p></td>
+		</tr>
+		<? endif; ?>
+		<form name="frmDataAdd" method="post" action="/adm/uninsured/cate_act" onsubmit="return submitAdd(this);">
+			<input type="hidden" name="mode" value="add" />
+			<input type="hidden" name="uic_parent" value="" />
+			<tr>
+				<td>추가</td>
+				<td><input type="text" name="uic_title" class="ed" style="width: 99%;"/></td>
+				<td><input type="checkbox" name="uic_use" value="1" /></td>
+				<td colspan="3"><input type="submit" class="btn" value="추가하기"/></td>
+			</tr>
+		</form>
+	</table>
+</div>
+<script type="text/javascript">
+<!--
+	function addItem(parent_cd) {
+		var f = document.frmDataAdd;
+		f.uic_parent.value = parent_cd;
+		f.uic_title.focus();
+		f.uic_title.select();
+	}
+	function submitAdd(f) {
+		if (f.uic_title.value.trim() == '') {
+			alert('분류명을 입력을 입력하세요.');
+			f.uic_title.focus();
+			f.uic_title.select();
+			return false;
+		}
+		return true;
+	}
+	function submitMod(f) {
+		if (f.uic_title.value.trim() == '') {
+			alert('분류명을 입력을 입력하세요.');
+			f.uic_title.focus();
+			f.uic_title.select();
+			return;
+		}
+		f.mode.value = 'mod';
+		f.submit();
+	}
+	function submitDel(f) {
+		if (!window.confirm('선택한 분류를 삭제하시겠습니까?\n\n삭제 시 하위 분류 및 관련 데이터가 모두 삭제됩니다.')) return;
+		f.mode.value = 'del';
+		f.submit();
+	}
+	function submitUp(f) {
+		f.mode.value = 'mup';
+		f.submit();
+	}
+	function submitDn(f) {
+		f.mode.value = 'mdn';
+		f.submit();
+	}
+//-->
+</script>

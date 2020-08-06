@@ -1,0 +1,98 @@
+<style type="text/css">
+<!--
+.ui-datepicker-calendar { display: none; }
+.ui-datepicker-month { display: none; }
+-->
+</style>
+
+<h2><?=$_TITLE_?></h2>
+
+<form name='fvisit' method='get' action='<?=$path?>/visit/monthly' onsubmit='return fvisit_submit(this)'>
+	<div class="fR mB40">
+		<input type='text' id='s_mm' name='s_mm' class='ed' size='10' maxlength='10' readonly='readonly' onchange="document.fvisit.submit();" value='<?=$s_mm?>'/>
+		<input type='image' src='<?=$IMG_PATH?>/button/btn_search.gif' align='top'/>
+	</div>
+</form>
+
+<div style="width: 100%; height: 500px; text-align: center; border: solid 1px #cccccc; clear: both;">
+	<div id="chart" style="width: 100%; height: 100%;"></div>
+</div>
+
+<?php
+	$result = array();
+	foreach ($list as $key => $row) {
+		$result[] = array($key, $row['count']);
+	}
+	$data = array_values($result);
+?>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type='text/javascript'>
+//<![CDATA[
+var chart_type = 'corechart';
+switch (chart_type) {
+	case 'line'      : google.load('visualization', '1.1', {packages: ['line']});      break;
+	case 'corechart' : google.load('visualization', '1.1', {packages: ['corechart']}); break;
+}
+google.setOnLoadCallback(drawChart);
+function drawChart() {
+	var data = new google.visualization.DataTable();
+	data.addColumn('number', 'date');
+	data.addColumn('number', 'visit');
+
+	data.addRows(<?php echo json_encode($data);?>);
+
+	var chart_el = document.getElementById('chart');
+	var chart, options;
+	switch (chart_type) {
+		case 'line' :
+			chart = new google.charts.Line(chart_el);
+			options = {
+				chart: {
+					//title: 'Box Office Earnings in First Two Weeks of Opening',
+					//subtitle: 'in millions of dollars (USD)'
+				},
+				legend: 'none',
+				series: {
+					// Gives each series an axis name that matches the Y-axis below.
+					0: {axis: 'visit'},
+					hAxis: { maxValue: 7 },
+					vAxis: { maxValue: 13 },
+				},
+				axes: {
+					// Adds labels to each axis; they don't have to match the axis names.
+					y: {
+						visit: {label: 'Visit Count'},
+					}
+				}
+			};
+			break;
+		case 'corechart' :
+			chart = new google.visualization.AreaChart(chart_el);
+			options = {
+				//title: '',
+				legend: {position: 'none'},
+				hAxis: {title: 'Month', gridlines: {count: data.getNumberOfRows()}},
+				vAxis: {title: 'Visit Count', minValue: 0, maxValue: 10, format: '#,###', gridlines: {count: 6}}
+			};
+			break;
+	}
+
+	chart.draw(data, options);
+}
+
+function fvisit_submit(f) {
+    location.href = rt_path + '/' + rt_admin + '/visit/lists/page/1/from/' + f.fr_date.value + '/to/' + f.to_date.value;
+    return false;
+}
+
+$(document).ready(function(){
+	$('#s_mm').timepicker({
+		currentText: '현재',
+		dateFormat: 'yy년',
+		showTimepicker: false,
+		defaultDate: $.datepicker.parseDate("yy년 mm dd", "<?=$s_mm?> 01 01") 
+	});
+});
+//]]>
+</script>

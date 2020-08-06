@@ -1,0 +1,96 @@
+<form id='fmailselect' name='fmailselect' method='post' action='<?=$path?>/mail/select_list'>
+<input type='hidden' name='ma_id' value='<?=$ma_id?>'/>
+<input type='hidden' name='token' value='<?=$token?>'/>
+		
+<div id='form_title'>
+	&deg; 전체회원수 : <?=$total_cnt?>명 / 탈퇴회원수 : <?=$leave_cnt?>명 / <b>정상회원수 : <?=$member_cnt?>명</b>
+</div>
+
+<ul id='form_cont'>
+	<li>
+		<label for='mb_birth_from'>생일</label>
+		<input type='text' id='mb_birth_from' name='mb_birth_from' class='ed' size='4' maxlength='4' value='<?=$mb_birth_from?>'/> 부터 
+		<input type='text' name='mb_birth_to' class='ed' size='4' maxlength='4' value='<?=$mb_birth_to?>'/> 까지 (예 : 4월 4일 인 경우, 0404 와 같이 입력 , 둘다 입력해야함)
+	</li>
+	<li>
+		<label for='mb_email'>이메일</label>
+		<input type='text' id='mb_email' name='mb_email' class='ed' value='<?=$mb_email?>'/>
+	</li>
+	<li>
+		<label for='mb_area'>지역</label>
+		<select id='mb_area' name='mb_area'>
+            <option value=''>전체</option>
+            <option value='서울'>서울</option>
+            <option value='부산'>부산</option>
+            <option value='대구'>대구</option>
+            <option value='인천'>인천</option>
+            <option value='광주'>광주</option>
+            <option value='대전'>대전</option>
+            <option value='울산'>울산</option>
+            <option value='강원'>강원</option>
+            <option value='경기'>경기</option>
+            <option value='경남'>경남</option>
+            <option value='경북'>경북</option>
+            <option value='전남'>전남</option>
+            <option value='전북'>전북</option>
+            <option value='제주'>제주</option>
+            <option value='충남'>충남</option>
+            <option value='충북'>충북</option>
+        </select>
+	</li>
+	<li>
+		<label for='mb_mailling'>메일링</label>
+		<select id='mb_mailling' name='mb_mailling'>
+            <option value='1'>수신동의한 회원만</option>
+            <option value=''>전체</option>
+		</select>
+	</li>
+	<li class='last'>
+		<label for='mb_level_form'>권한</label>
+		<?=$mb_level_from?> 에서 
+		<?=$mb_level_to?> 까지
+	</li>
+</ul>
+
+<p class='center bottom'>
+	<input type='submit' id='btn_submit' class='btn' value='  확  인  '/>&nbsp;
+	<input type='button' class='btn' value='  목  록  ' onclick="document.location.href='<?=$path?>/mail/lists';"/>
+</p>
+
+</form>
+
+<div id='loading'></div>
+
+<script type='text/javascript' src='<?=JS_DIR?>/jvalidate.js'></script>
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	document.fmailselect.mb_area.value = '<?=$mb_area?>';
+	document.fmailselect.mb_mailling.value = '<?=$mb_mailling?>';
+
+	$('#fmailselect').validate({
+		rules: {
+			mb_birth_from: { number:true, minlength:4 },
+			mb_birth_to: { number:true, minlength:4 }
+		},
+		messages: {
+			mb_birth_from: { number:'숫자가 아닙니다.', minlength:'올바른 형식이 아닙니다.' },
+			mb_birth_to: { number:'숫자가 아닙니다.', minlength:'올바른 형식이 아닙니다.' }
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+		    f.submit();
+		}
+	});
+});
+//]]>
+</script>

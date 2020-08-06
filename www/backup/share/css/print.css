@@ -1,0 +1,9 @@
+@charset "utf-8";
+/* all page
+#2010.06.28. CSS2.1 Valid
+*/
+@media print {/* 본문인쇄용 */
+#head, #visual, #sidebar, #body_foot, #foot, #wing, #location, #bodyutil { display: none !important; }
+body, #container, #wrap, #body, #body_head, #body_content { margin: 0 !important; padding: 0 !important; border: 0 !important; background: #fff !important; }
+#body_title { padding: 0 !important; padding: 0 !important; }
+}

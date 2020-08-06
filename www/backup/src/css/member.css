@@ -1,0 +1,100 @@
+.ed { border:1px solid #e1e1e1; padding:2px; }
+
+/* login */
+#login_msg { color:red; text-align:center; margin:5px; }
+#login_header { position:absolute; width:307px; height:69px; top:100px; left:305px;  }
+#login_header p { width:307px; height:25px; }
+#login_header p label { float:left; margin-top:3px; width:75px; }
+#login_header li.infor { float:left; width:233px; }
+#login_header span input { float:left; margin-left:75px; margin-right:3px; }
+#login_header span label { float:left; display:block; }
+#login_header li.bt_login { float:right; }
+#login_footer { position:absolute; left:560px; top:213px; }
+#login_footer li { text-indent:-5000px; height:30px; }
+#login_footer li a { display:block; width:106px; height:18px; }
+
+#auth_wrap {width:720px; margin:0 auto; padding:30px 0px 50px 0px;}
+#auth_wrap ul li {float:left;}
+.ali {margin-top:10px; text-align:right;}
+
+/* forget_idpwd */
+#fidp_title { padding:15px 0; border-bottom:2px solid #ebebeb; } 
+#fidp { padding:30px 30px 10px 30px }
+#fidp p { height:40px; }
+#fidp p label { float:left; width:100px; }
+#fidp p label.answer { width:150px; }
+#fidp p.wrkey { height:60px; }
+#kcaptcha { float:left; padding-right:10px; }
+.fidpw { border-collapse:collapse; border-top:1px solid #959595; border-bottom:1px solid #959595; }
+.fidpw th, .fidpw td { padding-top:8px; padding-bottom:8px; border-bottom:1px solid #e2e2e2; }
+.fidpw th { background:url(/src/imgs/member/arrow.gif) 5px 8px #fafafa no-repeat; border-right:1px solid #e2e2e2; text-align:left; padding-left:20px; font-size:11px; font-weight:bold; color:#7d7d7d;  }
+.fidpw td { padding-left:15px; }
+.fidpw input { background-color:#fafafa; border:1px solid #e1e1e1; padding:2px; }
+
+
+/* confirm */
+#conf_title { padding:15px 0; border-bottom:2px solid #ebebeb; }
+#conf_cont { padding:30px; }
+#conf_cont p { width:250px; height:30px; }
+#conf_cont p label { float:left; width:100px; }
+#conf_cont li.infor { float:left; padding:0 0 10px 40px; }
+#conf_cont li.infor span { float:left; width:100px;  }
+#conf_msg { clear:both; text-align:center; border-top:#e4e4e4 1px dotted; }
+
+/* join_check */
+#joinChk { }
+#joinChk p { height:40px; }
+#joinChk li.infor { margin-bottom:15px; border-bottom:1px solid #eeeeee; }
+#joinChk li.infor p label { float:left; width:100px; }
+#joinChk li.infor p span { color:#66a2c8; }
+#joinChk textarea { width:98%; height:200px; margin:10px 0; padding:15px; border:1px solid #ccc; overflow-x:hidden; }
+
+/* join */
+.join { border-top:2px solid #eb5a05; }
+.join th, .join td { text-align:left; vertical-align:top; padding-top:7px; padding-bottom:7px; border-bottom:1px solid #eee; }
+.join th { background-color:#f8f8f8; border-right:1px solid #eee; }
+.join .left10 { padding-left:10px; }
+.join .left10 .chk_box { float:left; margin-right:3px; }
+.join .left10 label { display:block; float:left; }
+.join #btn_id, #btn_nick, #btn_email { cursor:pointer; }
+.join li { overflow:auto; height:100%; padding:10px 0; border-bottom:1px solid #eeeeee; }
+.join li label { float:left; width:150px; margin-right:25px; border-right:1px solid #eeeeee; }
+.join li label span { color:red; }
+.join li label.error { width:340px; margin:0; border:none; }
+.join li p { margin-left:179px; }
+.join li p p { margin-left:0; }
+.join li p input { margin-top:5px; }
+.join li.last { border:none; }
+.join li .msg_tip { line-height:30px; color:#66a2c8; }
+.join .check { background:url(/src/imgs/member/check.gif) 10px 7px #f8f8f8 no-repeat; padding-left:22px; }
+.join .font11 { font-size:11px; }
+
+#reg_mb_id { ime-mode:disabled; }
+#mb_profile { height:55px; }
+#jmore { cursor:pointer; text-decoration:underline; }
+#joption { display:none; }
+
+/* join_result */
+#joinRes { padding:5px 40px 10px 40px; }
+
+/* modify_password */
+#modifyPwd_title { padding:15px 0; border-bottom:2px solid #ebebeb; } 
+#modifyPwd { padding:20px 30px 10px 30px }
+#modifyPwd li { padding:10px 0; }
+#modifyPwd li label { float:left; width:150px; }
+#modifyPwd li.under { border-top:1px solid #eeeeee; }
+#modifyPwd li.wrkey { height:60px; border-top:1px solid #eeeeee; }
+#modifyPwd li label.error { width:340px; margin:0; border:none; }
+
+/* point */
+#pnt_title { border-bottom:2px solid #ebebeb; }
+#pnt_list { padding:20px; }
+#pnt_list col.po_date { width:70px; }
+#pnt_list col.po_give { width:70px; }
+#pnt_list col.po_use { width:70px; }
+#pnt_list th { height:24px; background-color:#f6f6f6; border-top:2px solid #e1e1e1; }
+#pnt_list tr.po_row { height:24px; text-align:center; }
+#pnt_list tr.po_sum { height:24px; text-align:center; background-color:#f6f6f6; }
+#pnt_list p.po_none { text-align:center; padding:20px 0; }
+#pnt_list p.po_paging { text-align:center; padding:5px 0; }
+#pnt_list p.po_total { text-align:center; padding:20px 0; border-top:#e4e4e4 1px dotted; }

@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=<?=$this->config->item('charset')?>'/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+<title>관리자모드 [<?=$_TITLE_?>]</title>
+
+<link rel='stylesheet' href='<?=CSS_DIR?>/common.css' type='text/css'/>
+<link rel='stylesheet' href='<?=CSS_DIR?>/admin.css' type='text/css'/>
+<link rel="StyleSheet" href="<?=CSS_DIR?>/../js/dtree/dtree.css" type="text/css" />
+<? if(isset($_CSS_) && is_array($_CSS_)) : ?>
+<? foreach ($_CSS_ as $style) : ?>
+<link rel='stylesheet' href='<?=$style?>.css' type='text/css'/>
+<? endforeach; ?>
+<? endif; ?>
+
+<script type='text/javascript'>
+//<![CDATA[
+var rt_path = '<?=RT_PATH?>';
+var rt_charset = '<?=$this->config->item('charset')?>';
+<?=isset($var_board)?$var_board:''?>
+
+<? if (SU_ADMIN) : ?>
+var rt_admin = '<?=ADM_F?>';
+<? endif; ?>
+//]]>
+</script>
+
+<script type='text/javascript' src='<?=JS_DIR?>/jquery-1.8.2.min.js'></script>
+<script type='text/javascript' src='<?=JS_DIR?>/common.js'></script>
+<script type='text/javascript' src='<?=JS_DIR?>/admin.js'></script>
+<script type="text/javascript" src='<?=JS_DIR?>/dtree/dtree.js'></script>
+<? if(isset($_JS_) && is_array($_JS_)) : ?>
+<? foreach ($_JS_ as $script) : ?>
+<script type='text/javascript' src='<?=$script?>.js'></script>
+<? endforeach; ?>
+<? endif; ?>
+
+</head>
+
+<body>
+<a name='rt_head'></a>
+
+<!-- header s -->
+<div id="a_header">
+	<div id="topW">
+		<div id="logo"><a href="<?=$path?>"><span>Whois Holdings - Administrator</span></a></div>
+		<div id="topWm">
+			<ul>
+				<li class="on"><a href="<?=RT_PATH?>/"><span>홈으로</span></a></li>
+				<li><a href="<?=RT_PATH?>/member/login/out"><span>로그아웃</span></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- header e -->
+
+<!-- 왼쪽 s -->
+<div id="a_left">
+	<div class="djree dtreeSub">
+		<div class="topTable"><span><a href="javascript: mmd.openAll();">전체열기</a> | <a href="javascript: mmd.closeAll();">전체닫기</a></span></div>
+		<div class="menuTable">
+		<script type="text/javascript">
+			mmd = new dTree('mmd');
+
+			//Node(id, pid, name, url, title, target, icon, iconOpen, open)
+			mmd.add('0', '-1', '사이트관리메뉴', '<?=$path?>', '', '');
+			<? foreach ($_MENUS_ as $_menu): ?>
+				<? if ($member['mb_level'] >= $_menu['am_level']): ?>
+				mmd.add('<?=$_menu['am_id']?>','<?=$_menu['am_pid']>0?$_menu['am_pid']:0?>','<?=$_menu['am_name']?>','<?=$_menu['am_link']?>', '', '<?=$_menu['am_target']?>', '<?=$_menu['am_icon']?>');
+				<? endif; ?>
+			<? endforeach; ?>
+
+			mmd.config.useCookies = false;
+			document.write(mmd);
+			
+			mmd.openAll();
+		</script>
+		</div>
+	</div>
+</div>
+<!-- 왼쪽 e -->
+
+<!-- 메인 컨텐츠 영역 래퍼 s -->
+<div id="a_container">
+
+	<!-- 중앙 컨텐츠 s -->
+    <div id="content">
+    	<? $this->load->view($_BODY_); ?> 
+    </div>
+    <!-- 중앙 컨텐츠 e -->
+	
+	<div id="footerHeight"><!-- 하단고정영역 --></div>
+</div>
+<!-- 메인 컨텐츠 영역 래퍼 s -->
+
+</body>
+</html>

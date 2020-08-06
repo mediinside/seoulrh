@@ -1,0 +1,241 @@
+<?php
+
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once "../inc/head.php";
+include_once($GP -> CLS."class.slide.php");
+$C_Slide = new Slide();
+
+$dep1 = "4";
+$dep2 = "4-1";
+$dep3 = "4-1-5";
+
+$args = '';
+$args['order']  = " ts_idx asc";
+$args['limit']  = " limit 0,20 ";
+$args["ts_type"] = "E";
+$args["ts_lang"] = "kor";
+$rst = $C_Slide->Main_Slide_Show($args);
+
+?>
+<style>
+	#thumb-slide {
+		position: relative;
+		padding: 0 0 90px;
+	}
+
+	.swiper-container img {
+		width: 100%;
+	}
+
+	.swiper-button-next,
+	.swiper-button-prev {
+		width: 50px;
+		height: 50px;
+		text-indent: -9999px;
+		border-top: 3px solid #fff;
+		border-right: 3px solid #fff;
+		outline: none;
+	}
+
+	.swiper-button-next {
+		right:30px;
+		transform: rotateZ(45deg);
+	}
+
+	.swiper-button-prev {
+		left:30px;
+		transform: rotateZ(-135deg);
+	}
+
+	.swiper-button-next:after,
+	.swiper-button-prev:after {
+		display: none;
+	}
+
+	.swiper-button-next:hover,
+	.swiper-button-prev:hover {
+		border-color: #65bb00;
+	}
+
+	@media screen and (max-width: 1023px) {
+		#thumb-slide {
+			padding: 90px 0 90px;
+		}
+
+		.swiper-container {
+			width: 100%;
+		}
+
+		.swiper-button-next,
+		.swiper-button-prev {
+			width: 50px;
+			height: 50px;
+			border-color: #fff;
+			border-width: 2px;
+		}
+	}
+</style>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/edu-bnnr5.jpg" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="wd-1200">
+					<div id="thumb-slide">
+						<div class="swiper-container gallery-top">
+							<ul class="swiper-wrapper">
+                            <?
+                            for($i=0; $i<count($rst); $i++) {
+                                $ts_img        = $rst[$i]['ts_img'];
+                            ?>
+								<li class="swiper-slide">
+									<img src="<?= $GP -> UP_SLIDE_URL . $ts_img?>" alt="">
+                                </li>
+                                <? } ?>
+							</ul>
+							<!-- Add Arrows -->
+							<div class="swiper-button-next swiper-button-white"></div>
+							<div class="swiper-button-prev swiper-button-white"></div>
+							<!-- Pagination -->
+							<div class="swiper-pagination"></div>
+						</div>
+					</div>
+
+					<h3 class="sub-tit">
+						국제협력사업
+					</h3>
+					<div class="text-box mb30">
+						<p>
+							서울재활병원은 2000년부터 중국, UAE, 짐바브웨, 이집트, 카자흐스탄, 우즈베키스탄, 베트남 등 다양한 국가의 의료기관과 MOU를 체결하여 재활의료 국제협력을 위한 네트워크 구축, 해외
+							의료인과의 학술교류 등 다양한 재활의료 영역 교류를 진행하고 있습니다.
+						</p>
+					</div>
+					<div id="btn-box" class="center half">
+						<a href="/edu/page05-1.html" class="btn bg-green">국제협력사업 안내</a>
+						<a href="/edu/page05-2.html" class="btn">국제협력사업 연혁</a>
+					</div>
+					<h3 class="sub-tit mt60">
+						해외교육사업
+					</h3>
+					<ul class="clinic-list mb30">
+						<li>
+							<label for="">
+								해외재활의료인<br class="mb-hide">
+								교육 세미나
+							</label>
+							<img src="/resource/images/edu05-1.jpg" alt="">
+							<div class="text">
+								다양한 국가의 재활의료인의 교육을 통해 현지 재활의료인들이 서울재활병원의 전문재활
+								시스템을 도입하고 잘 유지하고 자생할 수 있도록 재활교육 세미나를 개최하고 있습니다.
+							</div>
+						</li>
+						<li>
+							<label for="">
+								해외재활의료인<br class="mb-hide">
+								방문초청 연수
+							</label>
+							<img src="/resource/images/edu05-2.jpg" alt="">
+							<div class="text">
+								국내에 일정기간 머무르며 직접 재활의료 현장에 직접 참여하며, 국내 우수재활환경을
+								견학하는 등 재활연수 프로그램을 제공합니다.
+							</div>
+						</li>
+						<li>
+							<label for="">
+								해외재활의료인<br class="mb-hide">
+								교육콘텐츠 제작
+							</label>
+							<img src="/resource/images/edu05-3.jpg" alt="">
+							<div class="text">
+								글로벌 전문 재활인재 육성을 위해 온라인(PC/모바일) 앱을 구축하여 현재 50여개의 중문
+								재활 교육콘텐츠를 제공하고 있으며, 한중영 3개국어의 ‘재활전문가를 위한 의학용어집
+								/회합집’ 교재 등 다양한 교육 콘텐츠 개발을 진행하고 있습니다.
+							</div>
+						</li>
+					</ul>
+
+					<h3 class="sub-tit">
+						해외협력사업
+					</h3>
+					<ul class="clinic-list mb30">
+						<li>
+							<label for="">
+								재활의료시스템<br class="mb-hide">
+								구축지원
+							</label>
+							<img src="/resource/images/edu05-4.jpg" alt="">
+							<div class="text">
+								전문적 인프라가 부족한 재활의료 소외지역에 국내 재활전문 의료 인력을 직접 파견하여
+								재활의료장비 구입 및 재활의료체계 구축을 지원하고 있습니다.
+							</div>
+						</li>
+						<li>
+							<label for="">
+								공동연구 및 학술교류
+							</label>
+							<img src="/resource/images/edu05-5.jpg" alt="">
+							<div class="text">
+								다양한 국가의 병원, 대학, 재활센터들과 함께 전문 인재 양성하고 인적교류, 학술교류,
+								임상연구, 교육협력을 통해 양질의 재활의료 환경을 만들어 나갑니다.
+							</div>
+						</li>
+						<li class="border-t">
+							<label for="">해외사업 문의</label>
+							<div class="text">
+								<div class="gift-wrap">
+									<a href="tel:0260203113" class="gift-box center mb60">
+										<img src="/resource/images/headset.png" alt="">
+										<div class="text color-black" style="margin-right: 0;line-height: 0.7;">
+											<small>문의</small><br>
+											02-6020-<span class="color-green">3113</span>
+										</div>
+									</a>
+									<a href="mailto:seoulrh@hanmail.net" class="gift-box center mb60">
+										<img src="/resource/images/mail2.png" alt="">
+										<div class="text color-black ft-sz26" style="margin-right: 0;line-height: 0.7;">
+											<small>이메일</small><br>
+											seoulrh@hanmail.net
+										</div>
+									</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+	<script>
+		var galleryTop = new Swiper('.gallery-top', {
+			spaceBetween: 10,
+			loop: true,
+			loopedSlides: 4, //looped slides should be the same
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+			autoplay: {
+				delay: 5000,
+				disableOnInteraction: false,
+			},
+		});
+	</script>
+</body>
+
+</html>

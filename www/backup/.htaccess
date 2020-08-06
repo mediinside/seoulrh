@@ -1,0 +1,18 @@
+RewriteEngine on
+RewriteCond %{REQUEST_URI} !^/index\.php
+RewriteCond %{REQUEST_URI} !^/design/
+RewriteCond %{REQUEST_URI} !^/src/
+RewriteCond %{REQUEST_URI} !^/phpMyAdmin/
+RewriteCond %{REQUEST_URI} !^/robots.txt
+
+RewriteCond %{REQUEST_URI} !^/css/
+RewriteCond %{REQUEST_URI} !^/js/
+RewriteCond %{REQUEST_URI} !^/flash/
+RewriteCond %{REQUEST_URI} !^/img/
+RewriteCond %{REQUEST_URI} !^/images/
+RewriteCond %{REQUEST_URI} !^/ebook/
+RewriteCond %{REQUEST_URI} !^/newsletter/
+
+RewriteCond %{REQUEST_URI} !^/data/.*\.(?i)(jpg|jpeg|gif|png|mp4|asf|avi|mpg|mpeg|wmv)
+
+RewriteRule ^(.*)$ /index.php/$1 [L]

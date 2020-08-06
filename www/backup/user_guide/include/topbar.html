@@ -1,0 +1,9 @@
+<a href="<?=RT_PATH?>/main/index">홈</a> -
+
+<? if(IS_MEMBER): ?>
+<a href="<?=RT_PATH?>/member/login/out">로그아웃</a> -
+<? else: ?>
+<a href="<?=RT_PATH?>/member/login">로그인</a> -
+<? endif; ?>
+
+<a href="<?=RT_PATH?>/member/join">회원가입</a>

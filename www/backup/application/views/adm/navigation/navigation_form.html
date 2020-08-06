@@ -1,0 +1,148 @@
+<h2><?=$_TITLE_?></h2>
+
+<form id='fwrite' name='fwrite' method='post' action='<?=$path?>/apply/form_conf'>
+<input type='hidden' name='w'    value='<?=$w?>' />
+<input type='hidden' name='token' value='<?=$token?>' />
+
+<ul id="form_cont">
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 네비게이션 정보</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+			<tr>
+				<th>네비게이션 ID</th>
+				<td>
+					
+					<? if($w) : ?>
+					<span class="b"><?=$row['nv_id']?></span>
+					<input type='hidden' name='nv_id' value='<?=$row['nv_id']?>' />
+					<? else : ?>
+					<input type='text' name='nv_id' class='ed' size='20' maxlength='20' value='<?=$row['nv_id']?>'/>
+					<? endif; ?>
+					
+				</td>
+			</tr>
+			<tr>
+				<th>네비게이션 이름</th>
+				<td>
+					<input type='text' name='nv_name' class='ed' size='20' maxlength='20' value='<?=$row['nv_name']?>'/>
+				</td>
+			</tr>
+			<tr>
+				<th>네비게이션 형식</th>
+				<td>
+					<select name='nv_type'>
+						<option value='width'>가로형</option>
+						<option value='height'>세로형</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>애니메이션 효과</th>
+				<td>
+					<select name='nv_animation'>
+						<option value='drop'>Left Drop</option>
+						<option value='none'>사용안함</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>상단 HTML 코드</th>
+				<td><textarea name="nv_top_code" class="ed w100p" rows="5"></textarea></td>
+			</tr>
+			<tr>
+				<th>하단 HTML 코드</th>
+				<td><textarea name="nv_bottom_code" class="ed w100p" rows="5"></textarea></td>
+			</tr>
+			
+			<? if($w) : ?>
+			<tr>
+				<th>등록일</th>
+				<td><?=$row['nv_regdate']?></td>
+			</tr>
+			<tr>
+				<th>최종수정일</th>
+				<td><?=$row['nv_mdydate']?></td>
+			</tr>
+			<? endif; ?>
+			
+		</table>
+	</li>
+	<li id='list_cont'>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 메뉴 입력</h3>
+		<table id="field_list" width="100%" cellpadding="0" cellspacing="0" class="con_box2">
+			<colgroup>
+	            <col width="120"/>
+	            <col width="*"/>
+	            <col width="250"/>
+	            <col width="250"/>
+	            <col width="50"/>
+			</colgroup>
+			
+			<tr>
+	            <th>ID</th>
+	            <th>이름</th>
+	            <th>기본 이미지</th>
+	            <th>마우스 오버 이미지</th>
+				<th class="nobg"><?=icon("추가", "javascript:add_field(++tcnt);")?></th>
+			</tr>
+			
+		</table>
+	</li>
+</ul>
+
+<p class='center bottom'>
+	<input type='submit' id='btn_submit' class='btn' value='  확  인  ' />&nbsp;
+	<input type='button' class='btn' value='  목  록  ' onclick="document.location.href='<?=$path?>/apply/lists_conf';" />
+</p>
+</form>
+
+<div id='loading'></div>
+
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function() {
+	$('#fwrite').validate({
+		rules: {
+			nv_name: 'required'
+		},
+		messages: {
+			nv_name: '신청서 이름을 입력하세요.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+		    f.submit();
+		}
+	});
+
+	<? foreach($row['code'] AS $key => $val) : ?>
+		add_field(<?=$key?>);
+		$('input[name="nvi_id[]"]').eq(<?=$key?>).val('<?=$val['nvi_id']?>');
+		$('input[name="nvi_name[]"]').eq(<?=$key?>).val('<?=$val['nvi_name']?>');
+		$('input[name="nvi_img[]"]').eq(<?=$key?>).val('<?=$val['nvi_image']?>');
+		$('input[name="nvi_img_ov[]"]').eq(<?=$key?>).val('<?=$val['nvi_img_ov']?>');
+	<? endforeach; ?>
+
+});
+
+var tcnt = <?=(count($row['code'])-1)?>;
+function add_field(cnt){
+	var _html = '<tr>'+
+	    '<td><input type="text" class="ed" name="nvi_id[]" size="15" maxlength="25" value=""/></td>'+
+        '<td><input type="text" class="ed" name="nvi_name[]" size="15" maxlength="25" value=""/></td>'+
+		'<td><input type="file" class="ed" name="nvi_img[]" size="17"/></td>'+
+		'<td><input type="file" class="ed" name="nvi_img_ov[]" size="17"/></td>'+
+		'<td><?=preg_replace('/\'/', '"', icon("삭제","javascript:remove_child($(this).parent());"))?></td>'+
+		'</tr>';
+	$('#field_list').append(_html);
+}
+//]]>
+</script>

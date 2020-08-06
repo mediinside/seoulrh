@@ -1,0 +1,25 @@
+<div data-role="header" data-theme="a">
+	<h1>세미나의 프로그램 운영이 계획대로 이루어졌습니까?</h1>
+</div>
+
+<div id="sub_content">
+	<form name="fresearch" method="post" action="/rsh_seminar/step5" data-transition="slide">
+	<?=$hidden_form?>
+		<div class="ui-field-contain">
+			<fieldset data-role="controlgroup">
+				<input type="radio" name="plan" id="radio-choice-1" value="5" checked="checked">
+				<label for="radio-choice-1">5점</label>
+				<input type="radio" name="plan" id="radio-choice-2" value="4">
+				<label for="radio-choice-2">4점</label>
+				<input type="radio" name="plan" id="radio-choice-3" value="3">
+				<label for="radio-choice-3">3점</label>
+				<input type="radio" name="plan" id="radio-choice-4" value="2">
+				<label for="radio-choice-4">2점</label>
+				<input type="radio" name="plan" id="radio-choice-5" value="1">
+				<label for="radio-choice-5">1점</label>
+			</fieldset>
+		</div>
+		
+		<div class="btn_wrap"><input type="image" src="/img/mobile/common/btn_next.png" class="w100p" /></div>
+	</form>
+</div>

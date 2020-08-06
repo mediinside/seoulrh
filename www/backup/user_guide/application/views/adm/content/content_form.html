@@ -1,0 +1,117 @@
+<form id='fwrite' name='fwrite' method='post' action='<?=$path?>/content/form'>
+<input type='hidden' name='w'    value='<?=$w?>' />
+<input type='hidden' name='token' value='<?=$token?>' />
+<input type='hidden' name='ct_id' value='<?=$row['ct_id']?>' />
+
+<div id='form_title'>
+	&deg; <b><?=$_TITLE_?></b>
+</div>
+
+<ul id="form_cont">
+	<li class="form_li">
+		<div>
+			<h4>페이지 설정</h4>
+			<dl>
+	            <dt class="cb">컨텐츠 URL</dt>
+				<dd>/<input type="text" class="ed" name="ct_url" maxlength="200" size="30" value="<?=$row['ct_url']?>"/>
+					<input type='checkbox' id='cy_hidden' name='ct_hidden' value='1' <?=$row['ct_hidden']?'checked="checked"':''?>/> 숨김
+				</dd>
+	            <dt class="cb">HTML 파일명</dt>
+				<dd><?=HTML_PATH?>/<input type="text" class="ed" maxlength="20" size="12" name="ct_filename" value="<?=$row['ct_filename']?>"/>.html
+				</dd>
+	            <dt class="cb">레이아웃</dt>
+				<dd>
+					<?=$layout_select?>
+				</dd>
+			</dl>
+
+			<h4>컨텐츠 데이터 설정</h4>
+			<dl id="data_list"></dl>
+			<div class="pd10 center"><input type="button" class="btn_simp" value=" + 추가 " onclick="add_data_form();"/></div>
+			
+			<h4>파라메터 설정</h4>
+			<ul id="param_list"></ul>
+			<div class="pd10 center"><input type="button" class="btn_simp" onclick="add_param('','');" value=" + 추가 "/></div>
+			
+			<h4>컨텐츠 내용 설정</h4>
+			<dl id="code_form">
+				<dd class="bd0"><?=$editor?></dd>
+				<dd class="dgray">외부로그인: {{_OUTLOGIN_}}<br/>변수출력: {{데이터이름}} &nbsp; &nbsp; 배열출력: {{데이터이름['키']}} &nbsp; &nbsp; 다차원배열출력: {{데이터이름['키']['키']...}}</dd>
+			</dl>
+		</div>
+	</li>
+</ul>
+
+<p class='center bottom editor' style="margin-top:30px;">
+	<input type='submit' id='btn_submit' class='btn' value='  확  인  ' />&nbsp;
+	<input type='button' class='btn' value='  목  록  ' onclick="document.location.href='<?=$path?>/content/lists';"value="1" />
+</p>
+</form>
+
+<div id='loading'></div>
+
+<script type="text/javascript">
+//<![CDATA[
+var select_cnt = '';
+var cnt = 0;
+var mcnt = 0;
+var banner_option =	'<option value="">선택</option>'+
+					'<? foreach($banners AS $bn){ echo"<option value=\"".$bn['bg_id']."\">".$bn['bg_name']."</option>"; } ?>';
+					
+var beforeUnload = true;
+window.onbeforeunload = function() {
+	if (beforeUnload) return '이 페이지를 벗어나시면 작성 중인 글이 지워집니다.';
+}
+
+$(document).ready(function() {
+	$('#fwrite').validate({
+		rules: {
+			ct_url: { alpha_dash_slash: true },
+			ct_filename: { required: true, alpha_dash: true },
+			ct_layout: { required: true, alpha_dash: true }
+		},
+		messages: {
+			ct_filename: { required: 'HTML 파일명을 입력하세요.' },
+			ct_layout: { required: '레이아웃을 입력하세요.' }
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+			beforeUnload = false;
+            Editor.save();
+		}
+	});
+
+	<? foreach($dbVars AS $key => $data): ?>
+	add_data_form('<?=$data['dbv_id']?>','<?=$data['dbv_var']?>','<?=$data['dbv_type']?>', '<?=$data['dbv_ref_table']?>', '<?=$data['dbv_ref_id']?>', '<?=$data['resource']['type_name']?>', '<?=$data['resource']['subject']?>');
+	<? endforeach; ?>
+});
+
+function add_param(name, value) {
+	var _html =	'<dl><dt style="width:110px;">변수명</dt>'+
+		'<dd class="hor" style="width:150px;"><input type="text" class="ed imeDis" size="20" name="ct_parameter[name][]" value="'+ name +'"/></dd>'+
+		'<dt style="width:110px;">값</dt>'+
+		'<dd><input type="text" class="ed imeDis" size="45" name="ct_parameter[value][]" value="'+ value +'"/> '+
+		'<input type="button" class="btn_simp" onclick="child_del($(this).parent());" value=" - 제거 "/>'+
+		'</dd></dl>';
+	
+	$('#param_list').append(_html);
+}
+
+<? if($row['ct_parameter']): ?>
+<? foreach(param_decode($row['ct_parameter']) AS $name => $value): ?>
+add_param('<?=$name?>', '<?=$value?>');
+<? endforeach; ?>
+<? endif; ?>
+//]]>
+</script>
+
+<?=validation_errors('<script>alert("','");</script>');?>

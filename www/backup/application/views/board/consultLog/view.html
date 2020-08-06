@@ -1,0 +1,82 @@
+<div class='board_wrap'>
+
+<h3><?=$board['bo_title_img']?></h3>
+<?=$board['bo_top_html']?>
+
+<ul id='view_head'>
+	<li>
+		<img src='<?=BO_IMG_PATH?>/ico_date.gif' alt='작성일'/>
+		작성일 : <?=$view['datetime']?> / 조회 : <?=$view['hit']?>
+	</li>
+</ul>
+
+<h1 id='view_title'><?=$view['subject']?></h1>
+
+<div id='view_cont'>
+	<p id='view_name'>&nbsp;글쓴이 : <?=$view['name']?> <?=$ip?></p>
+	<p id='view_name'>&nbsp;전화번호 : <?=$ex_phone?></p>
+	<p id='view_name'>&nbsp;이메일 : <?=$view['wr_email']?></p>
+	
+	<? if($files): ?>
+	<div id="view_file"> 
+	  <? foreach($files as $file) : ?>
+	    <p class="lh20"><a href="<?=$file['href']?>"><img src="<?=IMG_DIR?>/board/ico_file.gif"/> <?=$file['filename']?></a></p>
+	  <? endforeach; ?>
+	</div>
+	<?endif;?>
+	
+	<span id="view_print">
+		<input type="button" class="btn_simp" onclick="resize_font($('#view_content'), 1);" value=" + "/>
+		<input type="button" class="btn_simp" onclick="resize_font($('#view_content'), -1);" value=" - "/>
+		<input type="button" class="btn_simp" onclick="$('#view_cont').printArea();" value="인쇄"/>
+	</span>
+	
+	<span id="view_sns"><?=$btn_sns?></span>
+	
+    <? if($videoSrc): ?>
+    <? $CI =& get_instance(); ?>
+    <? $CI->load->helper('video'); ?>
+	<div id="view_video">
+		<?
+		foreach($videoSrc as $key => $src) {
+			echo video($src,'video', 480, 360, FALSE);
+		}
+		?>
+	</div>
+	<? endif; ?>
+	
+	<div id='view_content'>
+		<?=$view['content']?>
+	</div>
+	
+	<? if($board['bo_use_tag']): ?>
+	<div id='view_tag'>
+		&lt;태그&gt; <?=$view['wr_tag']?>
+	</div>
+	<? endif; ?>
+	
+	<? if($board['bo_use_postlink'] && $postlink): ?>
+	<ul id='view_postlink'>
+		<li><h4>· 관련글</h4></li>
+	<? foreach($postlink as $row) : ?>
+	    <li><img src="<?=IMG_DIR?>/board/ico_total.gif"/> <a href="<?=$row['href']?>"><?=$row['wr_subject']?></a></li>
+	<? endforeach; ?>
+	</ul>
+	<? endif; ?>
+	
+	<?=$view_comment?>
+	
+	<ul class='buttons'>
+		<li class='left'><?=$button['copy']?><?=$button['move']?></li>
+		<li class='right'><?=$button['list']?><?=$button['update']?><?=$button['delete']?><?=$button['reply']?><?=$button['write']?></li>
+	</ul>
+</div>
+
+<ul id="prevnext">
+	<li><? if($wr_prev){ ?>이전글 &nbsp; <a href="<?=$wr_prev['href']?>"><?=$wr_prev['subject']?></a><? } else { ?><span class="gray">이전글이 없습니다.</span><? } ?></li>
+	<li><? if($wr_next){ ?>다음글 &nbsp; <a href="<?=$wr_next['href']?>"><?=$wr_next['subject']?></a><? } else { ?><span class="gray">다음글이 없습니다.</span><? } ?></li>
+</ul>
+
+</div>
+
+<?=$board['bo_bottom_html']?>

@@ -1,0 +1,55 @@
+<form name='fmailselect' method='post' action='<?=$path?>/mail/select_send'>
+<input type='hidden' name='token' value='<?=$token?>'/>
+<input type='hidden' name='ma_id' value='<?=$ma_id?>'/>
+
+<div id='list_head'>
+	&deg; 검색 회원수 : <?=$select_cnt?> 명
+</div>
+
+<div id='list_cont'>
+	<table width='100%' cellpadding='0' cellspacing='1'>
+		<tr>
+			<th>회원아이디</th>
+			<th>이름</th>
+			<? if($use_nick): ?>
+			<th>별명</th>
+			<? endif; ?>
+			<th>생일</th>
+			<th>이메일</th>
+		</tr>
+		
+		<? foreach ($list as $o): ?>
+		<tr class='row list<?=$o->lst?>'>
+			<td>
+				<input type='hidden' name='mb_id[]' value='<?=$o->mb_id?>'/>
+				<?=$o->mb_id?>
+			</td>
+			<td>
+				<input type='hidden' name='mb_name[<?=$o->mb_id?>]' value='<?=$o->mb_name?>'/>
+				<?=$o->mb_name?>
+			</td>
+			<? if($use_nick): ?>
+			<td>
+				<input type='hidden' name='mb_nick[<?=$o->mb_id?>]' value='<?=$o->mb_nick?>'/>
+				<?=$o->mb_nick?>
+			</td>
+			<? endif; ?>
+			<td>
+				<input type='hidden' name='mb_birth[<?=$o->mb_id?>]' value='<?=$o->mb_birth?>'/>
+				<?=$o->mb_birth_year?><?=$o->mb_birth?>
+			</td>
+			<td>
+				<input type='hidden' name='mb_email[<?=$o->mb_id?>]' value='<?=$o->mb_email?>'/>
+				<?=$o->mb_email?>
+			</td>
+		</tr>
+		<? endforeach; ?>
+	</table>
+	
+	<p class='bottom center'>
+		<input type='submit' class='btn' value='  메일 보내기  '/>&nbsp;
+    	<input type='button' class='btn' value='  뒤  로  ' onclick="document.location.href='<?=$path?>/mail/select_form/<?=$ma_id?>';"/>
+	</p>
+</div>
+
+</form>

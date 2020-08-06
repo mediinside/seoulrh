@@ -1,0 +1,55 @@
+.detail-conts.service {width:1040px;margin:0 auto;}
+.detail-conts.service .subttile {padding:3px 0 0}
+.detail-conts.service .compoCheck {padding:20px 0 0}
+
+.detail-conts.service .btn-area {padding:20px 0 0}
+.detail-conts.service .btn-area .btnR {float:right;}
+.detail-conts.service .btn-area .btnR .bt-type2 {width:270px;height:50px;}
+.detail-conts.service .btn-area .btnR .bt-type2 span {line-height:48px;font-size:16px;}
+.detail-conts.service .btn-area .btnR .bt-type2:hover {background:#a4acb8}
+.detail-conts.service .btn-area .btnR .bt-type2:hover span {color:#fff;}
+.detail-conts.service .btn-area .btnR .bt-type2.save:hover {background:#8890a0}
+
+
+.bt-type2.more {width:100% !important;height:50px;line-height:48px;}
+.bt-type2.more:hover {background:#a4acb7;}
+.bt-type2.more:hover span {color:#fff !important;}
+
+.bt-type2 {display:inline-block;border:1px solid #a4acb8;text-align:center;width:160px;height:40px;margin-left:6px}
+.bt-type2:first-child {margin-left:0}
+.bt-type2 span {color:#888f9f;font-size:15px;line-height:38px;font-weight:400;}
+.bt-type2.save {background:#a4acb8}
+.bt-type2.save span {color:#fff}
+.bt-type2:hover {background:#a4acb8}
+.bt-type2:hover span {color:#fff}
+.bt-type2.save:hover {background:#8890a0}
+
+.tbl-type3 {padding:0 0 0}
+.tbl-type3 table {width:100%;table-layout:fixed;border-top:1px solid #ddd;}
+.tbl-type3 table th, .tbl-type3 table td {border-bottom:1px solid #ddd;font-weight:300;color:#111;}
+.tbl-type3 table th {font-size:16px;text-align:left;padding:20px 20px;}
+.tbl-type3 table td {font-size:15px;text-align:left;padding:20px 0 20px 20px;line-height:22px;}
+.tbl-type3.resev table tr:last-child th, .tbl-type3 table tr:last-child td {height:80px;}
+.tbl-type3.resev {width:100%;position:relative;left:0;padding:58px 0 0}
+.tbl-type3.resev .txtR {text-align:right;font-size:15px;font-weight:300;color:#000;padding:0 0 10px}
+.tbl-type3.resev .txtR span {display:inline-block;color:#ae8877}
+.tbl-type3.resev tr th.top {vertical-align:top;padding:35px 20px 20px;}
+.tbl-type3.resev td strong {font-weight:300;}
+
+.i-input {display:block;padding:7px 15px;width:95%;font-size:15px;font-weight:300;line-height:24px;color:#666666;border:1px solid #ddd;outline:0;}
+.input_text {display:block;padding:7px 15px;width:95%;font-size:15px;font-weight:300;line-height:24px;color:#666666;border:1px solid #ddd;outline:0;}
+
+a .new:after {
+	background: #5faf00;
+	border-radius: 9px;
+	color: #fff;
+	content: "new";
+	display: inline-block;
+	font-size: 12px;
+	font-style: normal;
+	height: 19px;
+	line-height: 19px;
+	margin-left: 4px;
+	text-align: center;
+	width: 40px;
+}

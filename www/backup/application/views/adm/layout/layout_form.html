@@ -1,0 +1,162 @@
+<form id='fwrite' name='fwrite' method='post' action='<?=$path?>/layout/form'>
+<input type='hidden' name='w'    value='<?=$w?>' />
+<input type='hidden' name='token' value='<?=$token?>' />
+<input type='hidden' name='ly_id' value='<?=$row['ly_id']?>' />
+<input type='hidden' name='qstr' value='<?=$qstr?>' />
+
+<ul id="form_cont">
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 레이아웃 설정</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+			<tr>
+	            <th>파일명</th>
+				<td><input type="text" class="ed" name="ly_file" value="<?=$row['ly_file']?>"/>.html &nbsp;
+					<input type='checkbox' id='ly_hidden' name='ly_hidden' value='1' <?=$row['ly_hidden']?'checked="checked"':''?>/> 숨김
+				</td>
+			</tr>
+			<tr>
+	            <th>이 름</th>
+				<td><input type="text" class="ed" name="ly_name" value="<?=$row['ly_name']?>"/></td>
+			</tr>
+			<tr>
+	            <th>플랫폼</th>
+				<td>
+					<input type="radio" name="ly_platform" <?=checked('pc', $row['ly_platform'])?> value="pc"/> PC용 &nbsp; &nbsp;
+					<input type="radio" name="ly_platform" <?=checked('mobile', $row['ly_platform'])?> value="mobile"/> Mobile용
+				</td>
+			</tr>
+			<tr>
+	            <th>CSS 파일</th>
+				<td>
+					<span class="lh22 gray">* [<?=USER_CSS_DIR?>] 디렉토리에 CSS 파일을 올려주세요.</span>
+					<ul id="css_list"></ul>
+					<input type="button" class="btn_simp" value=" + 추가 " onclick="add_css();"/>
+				</td>
+			</tr>
+			<tr>
+	            <th>JS 파일</th>
+				<td>
+					<span class="lh22 gray">* [<?=USER_JS_DIR?>] 디렉토리에 JS 파일을 올려주세요.</span>
+					<ul id="js_list"></ul>
+					<input type="button" class="btn_simp" value=" + 추가 " onclick="add_js();"/>
+				</td>
+			</tr>
+		</table>
+	</li>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 레이아웃 데이터 설정</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+			<tr>
+				<td>
+					<ul id="data_list"></ul>
+					<div class="pd10 center"><input type="button" class="btn_simp" value=" + 추가 " onclick="add_data_form();"/></div>
+				</td>
+			</tr>
+		</table>
+	</li>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 파라메터 설정</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+			<tr>
+				<td>
+					<ul id="param_list"></ul>
+					<div class="pd10 center"><input type="button" class="btn_simp" onclick="add_param();" value=" + 추가 "/></div>
+				</td>
+			</tr>
+		</table>
+	</li>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 레이아웃 내용</h3>
+		<table width='100%' cellpadding='0' cellspacing='0'>
+			<tr>
+				<td>
+					<?=$editor?>
+					<p class="dgray">본문출력: {{[_BODY_]}} &nbsp; &nbsp; 외부로그인: {{_OUTLOGIN_}}<br/>변수출력: {{데이터이름}} &nbsp; &nbsp; 배열출력: {{데이터이름['키']}} &nbsp; &nbsp; 다차원배열출력: {{데이터이름['키']['키']...}}</p>
+				</td>
+			</tr>
+		</table>
+	</li>
+</ul>
+
+<p class='center bottom editor' style="margin-top:30px;">
+	<input type='submit' id='btn_submit' class='btn' value='  확  인  ' />&nbsp;
+	<input type='button' class='btn' value='  목  록  ' onclick="document.location.href='<?=$path?>/layout/lists<?=$qstr?>';"value="1" />
+</p>
+</form>
+
+<div id='loading'></div>
+
+<script type="text/javascript">
+//<![CDATA[
+var beforeUnload = true;
+window.onbeforeunload = function() {
+	if (beforeUnload) return '이 페이지를 벗어나시면 작성 중인 글이 지워집니다.';
+}
+
+$(document).ready(function() {
+	$('#fwrite').validate({
+		rules: {
+			ly_file: { required: true, alpha_dash: true },
+			ly_name: 'required'
+		},
+		messages: {
+			ly_file: { required: '레이아웃 파일명을 입력하세요.' },
+			ly_name: '레이아웃 이름을 입력하세요.',
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+			beforeUnload = false;
+            Editor.save();
+		}
+	});
+
+	<? foreach($dbVars AS $key => $data): ?>
+	add_data_form('<?=$data['dbv_id']?>','<?=$data['dbv_var']?>','<?=$data['dbv_type']?>', '<?=$data['dbv_ref_table']?>', '<?=$data['dbv_ref_id']?>', '<?=$data['dbv_ext']?>', '<?=$data['resource']['subject']?>');
+	<? endforeach; ?>
+});
+
+var select_cnt = '';
+var cnt = 0;
+var mcnt = 0;
+var banner_option =	'<option value="">선택</option>'+
+					'<? foreach($banners AS $bn){ echo"<option value=\"".$bn['bg_id']."\">".$bn['bg_name']."</option>"; } ?>';
+var board_option =	'<option value="">선택</option>'+
+					'<? foreach($boards AS $bo){ echo"<option value=\"".$bo['bid']."\">".$bo['bo_subject']."</option>"; } ?>';
+var shop_option =	'<option value="">선택</option>'+
+					'<? foreach($shop_cate AS $ca){ echo"<option value=\"".$ca['ca_id']."\">".$ca['ca_name']."</option>"; } ?>';
+
+<? $ly_css = $row['ly_css'] ? explode('|', $row['ly_css']) : array(); ?>
+<? foreach($ly_css AS $key => $css) : ?>
+	add_css('<?=$css?>');
+<? endforeach; ?>
+
+<? $ly_js = $row['ly_js'] ? explode('|', $row['ly_js']) : array(); ?>
+<? foreach($ly_js AS $key => $js) : ?>
+	add_js('<?=$js?>');
+<? endforeach; ?>
+	
+<? if($row['ly_parameter']): ?>
+<? foreach(param_decode($row['ly_parameter']) AS $name => $value): ?>
+add_param('<?=$name?>', '<?=$value?>');
+<? endforeach; ?>
+<? endif; ?>
+
+function add_css(val) {
+	if(val == undefined) val = '';
+	add_child('#css_list','/adm/ajax/select_cssjs',{path:'<?=USER_CSS_DIR?>',name:'ly_css[]',value:val});
+}
+function add_js(val) {
+	if(val == undefined) val = '';
+	add_child('#js_list','/adm/ajax/select_cssjs',{path:'<?=USER_JS_DIR?>',name:'ly_js[]',value:val});
+}
+//]]>
+</script>

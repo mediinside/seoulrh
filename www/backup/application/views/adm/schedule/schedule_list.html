@@ -1,0 +1,115 @@
+<h2><?=$_TITLE_?></h2>
+
+<form name='fsearch' method='post' action='<?=$path?>/schedule/lists' onsubmit="return doSearch(this, 'schedule/lists');">
+<div id='list_head'>
+	<ul class='lr'>
+		<li class="mT5"><a href='<?=$path?>/schedule/lists'>처음</a> (총 직원 수 : <?=$total_cnt?>)</li>
+		<li class='right'>
+	        <select name='sfl'>
+	            <option value='fields'>전문분야</option>
+            	<option value='grade'>직위</option>
+            	<option value='name'>이름</option>
+	        </select>
+	        <input type='text' name='stx' class='ed' value='<?=$stx?>'/>
+	        <input type='image' src='<?=$IMG_PATH?>/button/btn_search.gif' align='top'/>
+        </li>
+    </ul>
+</div>
+</form>
+
+<form name='flist' method='post' action=''>
+<input type='hidden' name='token' value='<?=$token?>'/>
+
+<div id='list_cont'>
+	<table width="100%" cellpadding="0" cellspacing="0" class="con_box2">
+		<colgroup>
+			<col/>
+			<col width="60"/>
+			<col width="50"/>
+			<col width="80"/>
+			<col width="50"/>
+			<col width="50"/>
+			<col width="50"/>
+			<col width="50"/>
+			<col width="50"/>
+			<col width="50"/>
+			<col width="50"/>
+			<col width="50"/>
+			<col width="50"/>
+			<col width="50"/>
+			<col width="60"/>
+		</colgroup>
+		<tr>
+            <th rowspan="2" class="nobg">사진</th>
+            <th rowspan="2" class="nobg"><a href='<?=$sort_name?>'>이름</a></th>
+            <th rowspan="2" class="nobg"><a href='<?=$sort_grade?>'>직위</a></th>
+			<th rowspan="2" class="nobg">전문분야</th>
+            <th colspan="2">월</th>
+			<th colspan="2">화</th>
+            <th colspan="2">수</th>
+			<th colspan="2">목</th>
+            <th colspan="2" class="nobg">금</th>
+            <th rowspan="2" class="nobg">관리</th>
+        </tr>
+		<tr>
+            <th>오전</th>
+			<th>오후</th>
+            <th>오전</th>
+			<th>오후</th>
+            <th>오전</th>
+			<th>오후</th>
+            <th>오전</th>
+			<th>오후</th>
+            <th>오전</th>
+			<th class="nobg">오후</th>
+        </tr>
+         
+        <? foreach ($list as $row): ?>
+		<tr>
+			<td class='center'><img src='/useful/thumbnail/65x65/ki_schedule/?file=<?=$row['sc_image']?>&ratio=true'/></td>
+			<td><?=$row['sc_name']?></td>
+			<td><?=$row['sc_grade']?></td>
+			<td><?=preg_replace('/\|/','<br/>',$row['sc_fields'])?></td>
+			<td><?=$row['week']['mon']['am']?></td>
+			<td><?=$row['week']['mon']['pm']?></td>
+			<td><?=$row['week']['tue']['am']?></td>
+			<td><?=$row['week']['tue']['pm']?></td>
+			<td><?=$row['week']['wed']['am']?></td>
+			<td><?=$row['week']['wed']['pm']?></td>
+			<td><?=$row['week']['thu']['am']?></td>
+			<td><?=$row['week']['thu']['pm']?></td>
+			<td><?=$row['week']['fri']['am']?></td>
+			<td><?=$row['week']['fri']['pm']?></td>
+			<td><?=$row['s_mod']?> <?=$row['s_del']?></td>
+		</tr>
+		<? endforeach; ?>
+		
+		<? if (!$list): ?>
+		<tr>
+			<td colspan="14" height="50"><p class='none'>자료가 없습니다.</p></td>
+		</tr>
+		<? endif; ?>
+		
+	</table>
+	
+	<ul class='lr bottom'>
+		<li>
+			<input type='button' class='btn' value='새로만들기' onclick="add();"/>
+		</li>
+		<li class='right'><?=$paging?></li>
+	</ul>
+</div>
+
+</form>
+
+<script type='text/javascript'>
+//<![CDATA[
+<? if ($stx): ?>
+document.fsearch.sfl.value = '<?=$sfl?>';
+<? endif; ?>
+
+function add() {
+	layerWin('<?=$path?>/schedule/form', 'write', 500, 380, 'no');
+}
+//]]>
+</script>

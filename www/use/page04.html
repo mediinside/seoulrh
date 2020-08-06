@@ -1,0 +1,292 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once "../inc/head.php";
+
+$dep1 = "2";
+$dep2 = "2-1";
+$dep3 = "2-1-4";
+?>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/use-bnnr4.png" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="wd-1200">
+					<h3 class="sub-tit">낮병동</h3>
+					<div class="text-box">
+						<p>
+							<b>
+								낮병동이란 외래와 입원의 중간 형태로, 하루 중 6시간을 병원에서 집중적인 재활치료를 받고<br>
+								가정으로 돌아가 생활하는 재활치료 프로그램입니다.
+							</b>
+						</p>
+						<p>
+							여러 병원을 돌아다니며 충분한 치료 시간을 갖지 못하는 외래치료의 문제점을 보완하고, 입원치료 시 발생하는 보호자의 시간 활용, 문제, 비용부담을 감소시키고,
+							집중적인 진료·치료·교육 등의 재활서비스를 통해 재활치료 초기에 보호자가 스스로 환자의 재활치료과정을 이해함으로써 장기적인 재활치료의 계획을 세우고 스스로 준 치료자로서의
+							역량을 갖도록 보호자를 교육하는데 중점을 둔 프로그램입니다.
+						</p>
+					</div>
+
+					<ul class="clinic-list mt60">
+						<li>
+							<label for="">낮병동 입원대상</label>
+							<div class="text">
+								<p>재활치료가 필요한 영유아/유소아/소아청소년/성인</p>
+							</div>
+						</li>
+						<li>
+							<label for="">낮병동 입원기간</label>
+							<div class="text">
+								<ul class="img-list mb30">
+									<li>
+										<img src="/resource/images/baby.png" alt="">
+										<p>
+											영유아
+											<small>4개월</small>
+										</p>
+									</li>
+									<li>
+										<img src="/resource/images/tiny.png" alt="">
+										<p>
+											소아
+											<small>6개월</small>
+										</p>
+									</li>
+									<li>
+										<img src="/resource/images/teen.png" alt="">
+										<p>
+											청소년
+											<small>6개월</small>
+										</p>
+									</li>
+									<li>
+										<img src="/resource/images/adult.png" alt="">
+										<p>
+											성인
+											<small>3개월~6개월</small>
+										</p>
+									</li>
+								</ul>
+								<p class="color-green" style="font-weight: 500;">※ 주 5일 6시간 집중적인 치료 제공</p>
+							</div>
+						</li>
+						<li>
+							<label for="">영유아 낮병동</label>
+							<div class="text">
+								<img src="/resource/images/use04-1.png" alt="">
+								<div class="board-list mt30 border-t" style="padding:0;">
+									<table>
+										<colgroup>
+											<col style="width:20%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th class="vt-middle text-center bg-gray">대상</th>
+												<td class="vt-middle">
+													재활이 필요한 24개월 미만의 아동
+												</td>
+											</tr>
+											<tr>
+												<th class="vt-middle text-center bg-gray">치료<br class="mb-show">내용</th>
+												<td class="vt-middle">
+													<ul class="green-middot">
+														<li style="word-break: normal;">
+															물리치료/작업치료/연하장애 재활치료/언어치료/심리적 재활 중재치료 등 맞춤 재활 의료서비스 제공
+															: 치료 여부는 주치의와 개별 면담을 통해 결정하고 진행
+														</li>
+														<li style="word-break: normal;">보호자 교육프로그램 시행 : 각 분야별 재활전문가가 함께 교육</li>
+													</ul>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</li>
+						<li>
+							<label for="">소아청소년 낮병동</label>
+							<div class="text">
+								<img src="/resource/images/use04-2.png" alt="">
+								<div class="board-list mt30 border-t" style="padding:0;">
+									<table>
+										<colgroup>
+											<col style="width:20%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th class="vt-middle text-center bg-gray">대상</th>
+												<td class="vt-middle">
+													<ul class="green-middot">
+														<li style="word-break: normal;">뇌성마비/뇌손상</li>
+														<li style="word-break: normal;">다양한 원인으로 인한 발달지연</li>
+														<li style="word-break: normal;">물리치료/작업치료/언어치료/심리적 재활 중재치료 등 복합적이고 포괄적인 치료가 필요한 경우</li>
+														<li style="word-break: normal;">소아·청소년의 재활치료와 관리에 대해 집중적인 부모교육이 필요한 경우</li>
+													</ul>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</li>
+						<li>
+							<label for="">성인 낮병동</label>
+							<div class="text">
+								<img src="/resource/images/use04-3.png" alt="">
+								<div class="board-list mt30 border-t" style="padding:0;">
+									<table>
+										<colgroup>
+											<col style="width:20%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th class="vt-middle text-center bg-gray">대상</th>
+												<td class="vt-middle">
+													뇌졸중, 척수손상, 뇌손상 등 집중 재활치료가 필요한 성인
+												</td>
+											</tr>
+											<tr>
+												<th class="vt-middle text-center bg-gray">치료<br class="mb-show">내용</th>
+												<td class="vt-middle">
+													<ul class="green-middot">
+														<li style="word-break: normal;">각 영역별 전문적이고 세밀한 초기평가 (각 재활 영역별)</li>
+														<li style="word-break: normal;">
+															입원 시 초기 검사<br>
+															: 혈액검사/소변검사/흉부 및 복부 방사선 검사/체온열 검사/골밀도 검사/심전도 검사/폐 기능 검사/맥박
+															산소계측 검사 등
+														</li>
+														<li style="word-break: normal;">
+															각 환자별 특성에 따라 계획된 맞춤형 집중 재활치료 프로그램 (물리치료/통증치료/로봇보행훈련/작업
+															치료/인지치료/연하재활치료/언어치료/행동치료/호흡재활/근경직 치료 등)
+														</li>
+														<li style="word-break: normal;">그룹 프로그램 : 그룹 체조, 미술치료, 도예</li>
+														<li style="word-break: normal;">사회적응치료</li>
+													</ul>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</li>
+						<li>
+							<label for="">낮병동 안내</label>
+							<div class="text">
+								<ul class="step-list">
+									<li>
+										<img src="/resource/images/step-11.png" alt="">
+										<p>STEP 1</p>
+										<p>
+											환자소견서, CT 또는
+											MRI 필름 지참
+										</p>
+									</li>
+									<li class="arrow">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-02.png" alt="">
+										<p>STEP 2</p>
+										<p>
+											접수
+										</p>
+									</li>
+									<li class="arrow mb-hide">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-06.png" alt="">
+										<p>STEP 3</p>
+										<p>
+											진료
+										</p>
+									</li>
+									<li class="arrow">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-02.png" alt="">
+										<p>STEP 4</p>
+										<p>낮병동 처방</p>
+									</li>
+									<li>
+										<img src="/resource/images/step-09.png" alt="">
+										<p>STEP 5</p>
+										<p>
+											낮병동 대기자
+											명단 등록
+										</p>
+									</li>
+									<li class="arrow">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-07.png" alt="">
+										<p>STEP 6</p>
+										<p>귀가</p>
+									</li>
+									<li class="arrow mb-hide">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-08.png" alt="">
+										<p>STEP 7</p>
+										<p>
+											낮병동 입원일
+											통보
+										</p>
+									</li>
+								</ul>
+
+								<ul class="green-middot">
+									<li>개인사유로 인하여 입원을 하지 못할 경우 다음으로 연기 할 수 있습니다. 단, 입원시기가 다소 지연될 수 있습니다.</li>
+									<li>특정 치료사를 지정하여 입원 신청하는 것은 불가능 합니다.</li>
+									<li>입원연락은 원무팀 낮병동 입원 담당자가 사전에 전화로 통보합니다. 입원 예정일은 대기 인원수에 따라 변동될 수 있습니다.</li>
+								</ul>
+
+								<div class="gift-wrap mt60">
+									<a href="tel:0260203010" class="gift-box center mb60">
+										<img src="/resource/images/headset.png" alt="" width="75">
+										<div class="text" style="line-height: 1;">
+											<small>입원상담</small><br>
+											02-6020-<span class="color-green">3010</span><br>
+											02-6020-<span class="color-green">3011</span>
+										</div>
+									</a>
+									<a href="tel:0260203015" class="gift-box center mb60">
+										<img src="/resource/images/fax.png" alt="" width="75">
+										<div class="text" style="line-height: 0.7;">
+											<small>외래진료 팩스</small><br>
+											02-6020-<span class="color-green">3015</span>
+										</div>
+									</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+</body>
+
+</html>

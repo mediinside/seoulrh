@@ -1,0 +1,160 @@
+<h2>포인트 관리</h2>
+
+<form name='fsearch' method='post' action='<?=$path?>/point/lists' onsubmit="return doSearch(this, 'point/lists');">
+<div id='list_head'>
+	<ul class='lr'>
+		<li class="mB5"><a href='<?=$path?>/point/lists'>처음</a> (건수 : <?=$total_cnt?>) / <?=$total_pnt?></li>
+		<li class='right'>
+	        <select name='sfl'>
+	            <option value='mb_id'>회원아이디</option>
+            	<option value='po_content'>내용</option>
+	        </select>
+	        <input type='text' name='stx' class='ed' value='<?=$stx?>'/>
+	        <input type='image' src='<?=$IMG_PATH?>/button/btn_search.gif' align='top'/>
+        </li>
+    </ul>
+</div>
+</form>
+
+<form name='fpoint' method='post' action=''>
+<input type='hidden' name='token' value='<?=$token?>'/>
+
+<div id='list_cont'>
+	<table width='100%' cellpadding='0' cellspacing='0' class="con_box2">
+		<colgroup>
+			<col class='check'/>
+			<col width='100'/>
+			<col width='80'/>
+			<? if ($use_nick): ?>
+			<col width='90'/>
+			<? endif; ?>
+			<col class='date'/>
+			<col/>
+			<col width='70'/>
+			<col width='80'/>
+		</colgroup>
+		<tr>
+		    <th><input type="checkbox" onclick="allcheck(this);"/></th>
+		    <th><a href='<?=$sort_mb_id?>'>회원아이디</a></th>
+		    <th>이름</th>
+		    <? if ($use_nick): ?>
+		    <th>별명</th>
+		    <? endif; ?>
+		    <th><a href='<?=$sort_po_datetime?>'>일시</a></th>
+		    <th><a href='<?=$sort_po_content?>'>포인트 내용</a></th>
+		    <th><a href='<?=$sort_po_point?>'>포인트</a></th>
+		    <th class="nobg">포인트합</th>
+		</tr>
+		
+		<? foreach($list as $o): ?>
+		<tr class='row list<?=$o->lst?>'>
+			<td><input type='checkbox' name='chk[]' value='<?=$o->po_id?>'/></td>
+			<td>
+				<input type='hidden' name='mb_ids[<?=$o->po_id?>]' value='<?=$o->mb_id?>'/>
+				<a href='<?=$path?>/point/lists/sfl/mb_id/stx/<?=$o->mb_id?>'><?=$o->mb_id?></a>
+			</td>
+			<td><?=$o->mb_name?></td>
+			<? if ($use_nick): ?>
+			<td><?=$o->mb_nick?></td>
+			<? endif; ?>
+			<td><?=$o->po_datetime?></td>
+			<td class='left'>&nbsp;<?=$o->po_content?></td>
+			<td class='right'><?=$o->po_point?>&nbsp;</td>
+			<td class='right'><?=$o->mb_point?>&nbsp;</td>
+		</tr>
+		<? endforeach; ?>
+		
+		<? if (!$list): ?>
+		<tr>
+			<td colspan="9" height="50"><p class='none'>자료가 없습니다.</p></td>
+		</tr>
+		<? endif; ?>
+		
+	</table>
+	
+	<ul class='lr bottom'>
+		<li><input type='button' class='btn' value='선택삭제' onclick="slt_check(this.form, '<?=$path?>/point_delete')"/></li>
+		<li class='right'><?=$paging?></li>
+	</ul>
+</div>
+
+</form>
+
+<br/><br/>
+
+<? if(!$conf) : ?>
+	<p class="red center">* 이 홈페이지는 포인트 기능을 사용하지 않습니다.</p>
+<? else : ?>
+<form id='fpoint_upt' name='fpoint_upt' method='post' action='<?=$path?>/point/lists'>
+<input type='hidden' name='token' value='<?=$token?>'/>
+
+<ul id='form_cont'>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 포인트 입력</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+			<tr>
+				<th>회원아이디</th>
+				<td>
+					<input type='text' id='mb_id' name='mb_id' class='ed' maxlength='20' value='<?=$stx_mb_id?>' />
+				</td>
+			</tr>
+			<tr>
+				<th>포인트</th>
+				<td>
+					<input type='text' id='po_point' name='po_point' class='ed' size='14'/> Point
+				</td>
+			</tr>
+			<tr>
+				<th>포인트내용</th>
+				<td>
+					<input type='text' id='po_content' name='po_content' size='50' class='ed'/>
+				</td>
+			</tr>
+		</table>
+	</li>
+</ul>
+
+<p class='center bottom'>
+	<input type='submit' id='btn_submit' class='btn' value='  확  인  '/>
+</p>
+
+</form>
+<? endif; ?>
+
+<div id='loading'></div>
+
+<script type='text/javascript'>
+//<![CDATA[
+<? if ($stx): ?>
+document.fsearch.sfl.value = '<?=$sfl?>';
+<? endif; ?>
+
+$(document).ready(function() {
+	$('#fpoint_upt').validate({
+		rules: {
+			mb_id: 'required',
+			po_content: 'required',
+			po_point: { 'required':true, 'number':true }
+		},
+		messages: {
+			mb_id: '회원 아이디를 입력하십시오.',
+			po_content: '포인트 내용을 입력하십시오.',
+			po_point: { required:'포인트를 입력하십시오.', 'number':'숫자가 아닙니다.' }
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+		    f.submit();
+		}
+	});
+});
+//]]>
+</script>

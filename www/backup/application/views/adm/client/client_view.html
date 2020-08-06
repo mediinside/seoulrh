@@ -1,0 +1,47 @@
+<div id='loading'></div>
+
+<form id='fclient' name='fclient' method='post' action='<?=$path?>/client/update?refmode=<?=$mode?>'>
+<input type='hidden' name='w' value='<?=$w?>'/>
+<input type='hidden' name='id' value='<?=$row['cl_id']?>'/>
+<input type='hidden' name='token' value='<?=$token?>'/>
+<input type='hidden' name='qstr' value='<?=$qstr?>'/>
+
+<div id='form_title'>
+	&deg; <b><?=$title?></b>
+</div>
+
+<ul id='form_cont'>
+	<?  $i=0; foreach($updateColumn as $key => $val): ?>
+	<li style="<?=++$i%2&&$i<count($updateColumn)?'float:left;width:380px;':''?>">
+		<label class="ftit"><?=$val?></label>
+		<div style="display:inline-block;"><pre><?=$input[$key]?>&nbsp;</pre></div>
+	</li>
+	<? endforeach; ?>
+</ul>
+
+<p class='center bottom' style="clear:both;">
+	<? if(isset($token)): ?><input type='submit' class='btn' value='  확  인  '/>&nbsp;<? endif; ?>
+	<input type='button' class='btn' value='  목  록  ' onclick="document.location.href='<?=$path?>/client/lists<?=$qstr?>?mode=<?=$mode?>';"/>
+</p>
+
+</form>
+
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" type="text/css"/>
+<script type="text/javascript" src=" https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+<script type='text/javascript'>
+$(document).ready(function() {
+	<?=$jsScript?>
+
+	$('#fclient').validate({
+		rules: {
+			cl_name: 'required'
+		},
+		messages: {
+			cl_name: '* 입력오류!'
+		},
+		errorPlacement: function(error, element) {
+			error.appendTo(element.parent()).wrap('<span style="position:absolute;padding:2px;"></span>');
+		}
+	});
+});
+</script>

@@ -1,0 +1,317 @@
+<?
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
+    include_once "../inc/head.php";
+	include_once($GP->CLS."class.list.php");
+	include_once($GP -> CLS."/class.doctor.php");
+	$C_ListClass 	= new ListClass;
+	$C_Doctor 	= new Doctor;
+
+	//error_reporting(E_ALL);
+	//@ini_set("display_errors", 1);
+
+	$args = array();
+	$args['show_row'] = 100;
+    $args['view_type'] = "Y";
+    $args['dr_menu'] = "Z" ;
+
+	$data = "";
+	$data = $C_Doctor->Doctor_List(array_merge($_GET,$_POST,$args));
+
+	$data_list 		= $data['data'];
+	$page_link 		= $data['page_info']['link'];
+	$page_search 	= $data['page_info']['search'];
+	$totalcount 	= $data['page_info']['total'];
+
+	$totalpages 	= $data['page_info']['totalpages'];
+	$nowPage 		= $data['page_info']['page'];
+	$totalcount_l 	= number_format($totalcount,0);
+
+    $data_list_cnt 	= count($data_list);
+
+    $dep1 = "2";
+    $dep2 = "2-1";
+    $dep3 = "2-1-1";
+
+?>
+<style>
+	@media screen and (max-width:1023px){
+		.board-list .category {
+			display: table-cell !important;
+		}
+		.schedule table.fz14 td {
+			font-size: 17px !important;
+			font-weight: 300 !important;
+		}
+	}
+</style>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/use-bnnr1.png" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="board-list wd-1200" style="padding-top:0;padding-bottom:0;">
+					<h3 class="sub-tit">진료시간안내</h3>
+					<table>
+						<caption>진료시간안내</caption>
+						<!-- pc 노출 -->
+						<tbody class="mb-hide" >
+							<tr>
+								<td rowspan="2" class="category bg-gray vt-middle">
+									<img src="/resource/images/time1.png" alt=""><br>
+									진료시간
+								</td>
+								<td class="subject text-center">
+									평일 오전
+								</td>
+								<td class="subject">
+									09:00~12:30
+								</td>
+								<td rowspan="2" class="category bg-gray vt-middle">
+									<img src="/resource/images/time2.png" alt=""><br>
+									접수시간
+								</td>
+								<td class="subject text-center">
+									평일 오전
+								</td>
+								<td class="subject">
+									08:30~11:30
+								</td>
+							</tr>
+							<tr>
+								<td class="subject text-center">
+									평일 오후
+								</td>
+								<td class="subject">
+									14:30~17:30
+								</td>
+								<td class="subject text-center">
+									평일 오후
+								</td>
+								<td class="subject">
+									13:30~16:00
+								</td>
+							</tr>
+						</tbody>
+						<!-- 모바일 노출 -->
+						<tbody class="mb-show" >
+							<tr>
+								<td rowspan="2" class="category bg-gray vt-middle">
+									<img src="/resource/images/time1.png" alt=""><br>
+									진료시간
+								</td>
+								<td class="subject text-center">
+									평일 오전
+								</td>
+								<td class="subject">
+									09:00~12:30
+								</td>
+							</tr>
+							<tr>
+								<td class="subject text-center">
+									평일 오후
+								</td>
+								<td class="subject">
+									14:30~17:30
+								</td>
+							</tr>
+							<tr>
+								<td rowspan="2" class="category bg-gray vt-middle">
+									<img src="/resource/images/time2.png" alt=""><br>
+									접수시간
+								</td>
+								<td class="subject text-center">
+									평일 오전
+								</td>
+								<td class="subject">
+									08:30~11:30
+								</td>
+							</tr>
+							<tr>
+								<td class="subject text-center">
+									평일 오후
+								</td>
+								<td class="subject">
+									13:30~16:00
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<ul class="normal-list">
+						<li class="color-green">※ 토요일, 일요일, 공휴일은 휴진입니다.</li>
+						<li class="color-green">※ 진료상황에 따라 접수가 조기 마감될 수 있습니다.</li>
+					</ul>
+
+					<h3 class="sub-tit mt60">재활의학과 의료진안내</h3>
+					<div class="doctor-intro">
+						<ul class="doctor-list">
+                        <?
+                        $k=0;
+                        for ($i = 0 ; $i < $data_list_cnt ; $i++) {
+                            $dr_idx 			= $data_list[$i]['dr_idx'];
+                            $dr_name			= $data_list[$i]['dr_name'];
+                            $dr_center		= $data_list[$i]['dr_center'];
+                            $dr_clinic			= $data_list[$i]['dr_clinic'];
+                            $dr_thesis		= $data_list[$i]['dr_thesis'];
+                            $dr_face_img		= $data_list[$i]['dr_face_img'];
+                            $dr_choice		= $data_list[$i]['dr_choice'];
+                            $dr_special		= $data_list[$i]['dr_special'];
+                            $dr_regdate	 	= $data_list[$i]['dr_regdate'];
+                            $dr_position		= $data_list[$i]['dr_position'];
+                            $dr_desc 			= $data_list[$i]['dr_desc'];
+                            $dr_history1 		= nl2Br($data_list[$i]['dr_history1']);
+                            $dr_history2 		= nl2Br($data_list[$i]['dr_history2']);
+                            $dr_history3 		= nl2Br($data_list[$i]['dr_history3']);
+                            $dr_history1		= $C_Func->dec_contents_edit($dr_history1);
+                            $moning_arr		= explode('|', $data_list[$i]['dr_m_sd']);
+                            $after_arr		= explode('|', $data_list[$i]['dr_a_sd']);
+
+
+                            $cn_arr = explode(",", $dr_position);
+
+                            $dr_img = '';
+                            if($dr_face_img !=  '') {
+                                $dr_img = "<img class='block' src='" . $GP -> UP_DOCTOR_URL . $dr_face_img . "' alt='" .  $dr_name ."' />";
+                            }else{
+                                $dr_img = "<img class='block' src=\"/images/no_image.jpg\" alt=\"이미지 없음\" />";
+                            }
+                        ?>
+
+							<!-- 김민재 -->
+							<li>
+								<div class="panel">
+									<div class="picture"><?=$dr_img?></div>
+									<div class="info">
+										<div class="header">
+											<h4 class="identity">
+												<strong class="name"><?=$dr_name?></strong>
+												<span class="position">
+                                                <?
+                                                    $str = "";
+                                                    foreach ($cn_arr as $key => $val) {
+                                                        $str .= $GP -> DOCTOR_POSITION[$val] . ",";
+                                                    }
+                                                    echo rtrim($str , ",");
+                                                ?>
+                                                </span>
+											</h4>
+											<div class="normal-list">
+                                             <?=$dr_history1?>
+											</div>
+										</div>
+										<div class="section">
+											<!-- <ul class="dotted-list">
+												<li>접수는 진료시간 30분 전에 마감됩니다. (사정에 따라 조기에 마감 될 수 있습니다.) </li>
+												<li>야간 진료는 예약제로 운영됩니다. 최소 1일전 진료 예약 부탁드립니다. (당일 접수는 불가합니다.)</li>
+											</ul> -->
+											<div class="schedule border-t">
+												<table class="fz14">
+													<thead>
+														<tr>
+															<th scope="col">요일</th>
+															<th scope="col">월</th>
+															<th scope="col">화</th>
+															<th scope="col">수</th>
+															<th scope="col">목</th>
+															<th scope="col">금</th>
+															<th scope="col">토</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<th scope="row">오전</th>
+                                                            <td class="color-green"><?=$GP -> DOCTOR_SCH_SHOW[$moning_arr[0]]?></td>
+                                                            <td class="color-green"><?=$GP -> DOCTOR_SCH_SHOW[$moning_arr[1]]?></td>
+                                                            <td class="color-green"><?=$GP -> DOCTOR_SCH_SHOW[$moning_arr[2]]?></td>
+                                                            <td class="color-green"><?=$GP -> DOCTOR_SCH_SHOW[$moning_arr[3]]?></td>
+                                                            <td class="color-green"><?=$GP -> DOCTOR_SCH_SHOW[$moning_arr[4]]?></td>
+                                                            <td class="color-green"><?=$GP -> DOCTOR_SCH_SHOW[$moning_arr[5]]?></td>
+														</tr>
+														<tr>
+															<th scope="row">오후</th>
+                                                            <td class="color-green"><?=$GP -> DOCTOR_SCH_SHOW[$after_arr[0]]?></td>
+                                                            <td class="color-green"><?=$GP -> DOCTOR_SCH_SHOW[$after_arr[1]]?></td>
+                                                            <td class="color-green"><?=$GP -> DOCTOR_SCH_SHOW[$after_arr[2]]?></td>
+                                                            <td class="color-green"><?=$GP -> DOCTOR_SCH_SHOW[$after_arr[3]]?></td>
+                                                            <td class="color-green"><?=$GP -> DOCTOR_SCH_SHOW[$after_arr[4]]?></td>
+                                                            <td class="color-green"><?=$GP -> DOCTOR_SCH_SHOW[$after_arr[5]]?></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="spec-info">
+									<div class="tab2">
+										<ul class="list">
+											<li class="on"><a href="javascript:void(0)">전문분야</a></li>
+											<li><a href="javascript:void(0)">학술 활동</a></li>
+										</ul>
+									</div>
+									<div class="tab-contents">
+										<div class="panel on">
+											<div class="normal-list">
+                                            <?=$dr_history2?>
+											</div>
+										</div>
+										<div class="panel">
+											<div class="normal-list">
+                                            <?=$dr_history3?>
+											</div>
+										</div>
+									</div>
+								</div>
+                            </li>
+                            <? } ?>
+
+
+						</ul>
+					</div>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+	<script>
+		$(window).on("load resize",function(){
+
+			if($(window).width() < 1024){
+
+				for (var i = 0; i < $(".panel > .picture").length; i++) {
+
+					var $doc_li = $(".doctor-intro .doctor-list > li");
+					var doc_h = $doc_li.eq(i).find(".header").height();
+
+					$doc_li.eq(i).find(".picture").height(doc_h);
+				};
+
+			};
+
+			$(".tab2 .list li").on("click",function(){
+				$(this).addClass('on').siblings().removeClass('on');
+				var idx= $(this).index();
+				console.log(idx);
+				$(this).parents(".tab2").siblings('.tab-contents').find('.panel').eq(idx).addClass('on').siblings().removeClass('on');
+			});
+
+		});
+	</script>
+</body>
+
+</html>

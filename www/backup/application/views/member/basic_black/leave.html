@@ -1,0 +1,64 @@
+<link rel='stylesheet' href='<?=$IMG_PATH?>/style.css' type='text/css'/>
+
+<form id='flogin' name='flogin' method='post' onsubmit='return false;'>
+
+<div id="confirm_box">
+	<ul>
+    	<li><img src="<?=$IMG_PATH?>/txt_id.gif" alt="id" border="0" /> <input type="text" name="mb_id" id="mb_id" class="ed imeDis"/></li>
+        <li>
+        	<img src="<?=$IMG_PATH?>/txt_pw.gif" alt="password" border="0" /> <input type="password" id="mb_password" name="mb_password" onkeypress="check_capslock(event, this);" class="ed">
+        	<div id="show_capslock"></div>
+        </li>
+    </ul>
+    <input type='image' src='<?=$IMG_PATH?>/btn_leave.jpg' id="btn_leave" class="login_btn" alt='회원탈퇴' align='bottom'/>
+</div>
+</form>
+
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#flogin').validate({
+		rules: {
+			mb_id: { required:true, minlength:3, alphanumunder:true },
+			mb_password: 'required'
+		},
+		messages: {
+			mb_id: { required:'아이디를 입력하십시오.', minlength:'최소 3자 이상 입력하십시오.' },
+			mb_password: '비밀번호를 입력하십시오.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		}
+	});
+});
+
+$('#btn_leave').click(function() {
+	$.post(
+		'/member/leave/confirm',
+		{'mb_id':$('#mb_id').val(), 'mb_password':$('#mb_password').val()},
+		function(data) {
+			if(data == '000') {
+				if(confirm('탈퇴하시겠습니까?\n\n삭제된 데이터는 복구할 수 없습니다.')) {
+					$('#flogin').attr('action', '/member/leave/update');
+					$('#flogin').attr('onsubmit', '');
+					$('#flogin').submit();
+				}
+			}
+			else if(data) alert(data);
+		}
+	);
+});
+
+$('#mb_id').focus();
+
+<? if ($msg): ?>
+   alert('<?=$msg?>');
+<? endif; ?>
+
+//]]>
+</script>

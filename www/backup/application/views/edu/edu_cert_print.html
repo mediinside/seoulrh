@@ -1,0 +1,67 @@
+<link rel='stylesheet' href='/css/popup.css' type='text/css'/>
+<link rel='stylesheet' href='/css/all.css' type='text/css'/>
+<link rel='stylesheet' href='/css/sub.css' type='text/css'/>
+
+<!-- 수료증 팝업 -->
+<div id="pop_certi01">
+<link rel='stylesheet' href='/css/popup.css' type='text/css'/>
+
+<!-- close -->
+<div class="top">
+  <div class="close">
+    <a href="javascript:;" onclick="parent.CtrlWinDlg.closeWinDlg();"><img src="/img/sub/pop01_close02.gif" width="19" height="19" border="0" alt="닫기, close" /></a>
+  </div>
+</div>
+<!-- //close -->
+
+<!-- 내용 -->
+<div class="cnt">
+<div class="cnt2">
+
+<p class="t_txt mgt_m10">제 <?=$regCode?> 호</p>
+
+<p class="sbj">수 료 증</p>
+
+<p class="name" style="letter-spacing:11px;">성명:<?=$row['reg_name']?></p>
+
+<p class="term">세미나명 : <?=$row['pd_name']?></p>
+<p class="term1">교육기간 : <?=$row['eduDate']?> <?=$row['eduTime']?></p>
+<!-- <p class="term1">교육시간 : <?=$row['pd_eduTime']?></p> -->
+
+<p class="txt01">위 사람은 서울재활병원이 주최한 <?=$row['pd_name']?>를<br/>수료하였기에 이 증서를 수여합니다.</p>
+
+<p class="day"><?=$now_date?></p>
+
+<div class="f_txt2">
+<span class="fl"><img src="/img/sub/certifi_logo01.jpg" width="153" height="52" alt="서울재활병원"  /></span> <span class="fr mgt_m15">병 원 장 &nbsp; <span class="fs18">이 지 선</span></span>
+</div>
+
+<div class="fr sq_stamp"><img src="/img/sub/stamp_img01.png" width="73" height="74" alt="서울재활병원인" /></div>
+
+
+</div>
+</div>
+<!-- //내용 -->
+
+
+<!-- foot -->
+<div class="bt01">
+	<img id="btn_print" src="/img/board/btn_print01.gif" width="77" height="26" alt="인쇄하기" />&nbsp; &nbsp;
+	<a href="javascript:;" onclick="parent.CtrlWinDlg.closeWinDlg();"><img src="/img/board/btn_cancel.gif" width="77" height="26" alt="취소" /></a>
+</div>
+<!-- //foot -->
+
+
+</div>
+<!-- //수료증 팝업 -->
+
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#btn_print').click(function() {
+		$('#pop_certi01').printArea();
+	}).css('cursor', 'pointer');
+});
+
+//]]>
+</script>

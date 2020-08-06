@@ -1,0 +1,89 @@
+<form id='fwrite' name='fwrite' method='post' enctype='multipart/form-data' action='<?=$path?>/schedule/form_time/<?=$row['sc_id']?>/<?=$week?>/<?=$ampm?>'>
+
+<h2 class="pT10 pL10 bd1"><?=$_TITLE_?></h2>
+
+<ul id="form_cont" class="pT10 pL10">
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 진료일정</h3>
+		<input type="radio" name="task" value="진료" <?=checked('진료', $task['text'])?>/>진료 &nbsp;
+		<input type="radio" name="task" value="외래진료" <?=checked('외래진료', $task['text'])?>/>외래 &nbsp;
+		<input type="radio" name="task" value="휴진" <?=checked('휴진', $task['text'])?>/>휴진 &nbsp;
+		<input type="radio" name="task" value="기타" <?=array_search($task['text'],array('진료','외래진료','휴진',''))===FALSE?'checked="checked"':''?>/>기타
+		<input type="text" name="task_text" value="<?=array_search($task['text'],array('진료','외래진료','휴진',''))===FALSE?$task['text']:''?>"/> &nbsp;
+		<input type="radio" name="task" value="" <?=checked('', $task['text'])?>/>무입력
+	</li>
+	<li class="pT10">
+		글씨색상 :
+		<input type="radio" name="color" value="" <?=checked('', $task['color'])?>/>기본(검정) &nbsp;
+		<input type="radio" name="color" value="red" <?=checked('red', $task['color'])?>/>빨강 &nbsp;
+		<input type="radio" name="color" value="green" <?=checked('green', $task['color'])?>/>초록 &nbsp;
+		<input type="radio" name="color" value="blue" <?=checked('blue', $task['color'])?>/>파랑
+	</li>
+	<li>
+		<h3 class="mB10" style="margin-top:30px;"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 진료시간</h3>
+		<input type="checkbox" name="show_time" value="1" <?=checked('1', $task['show_time'])?>/>시간 보이기 &nbsp;
+		<select name="time[0]">
+			
+			<? for($i = 0; $i <= 23; $i++) : ?>
+			<option value="<?=str_pad($i, 2, "0", STR_PAD_LEFT);?>" <?=checked(str_pad($i, 2, "0", STR_PAD_LEFT), $task['time'][0], 'selected')?>><?=str_pad($i, 2, "0", STR_PAD_LEFT);?></option>
+			<? endfor; ?>
+			
+		</select> :
+		<select name="time[1]">
+			
+			<? for($i = 0; $i <= 55; $i+=5) : ?>
+			<option value="<?=str_pad($i, 2, "0", STR_PAD_LEFT);?>" <?=checked(str_pad($i, 2, "0", STR_PAD_LEFT), $task['time'][1], 'selected')?>><?=str_pad($i, 2, "0", STR_PAD_LEFT);?></option>
+			<? endfor; ?>
+			
+		</select> ~
+		<select name="time[2]">
+			
+			<? for($i = 0; $i <= 23; $i++) : ?>
+			<option value="<?=str_pad($i, 2, "0", STR_PAD_LEFT);?>" <?=checked(str_pad($i, 2, "0", STR_PAD_LEFT), $task['time'][2], 'selected')?>><?=str_pad($i, 2, "0", STR_PAD_LEFT);?></option>
+			<? endfor; ?>
+			
+		</select> :
+		<select name="time[3]">
+			
+			<? for($i = 0; $i <= 55; $i+=5) : ?>
+			<option value="<?=str_pad($i, 2, "0", STR_PAD_LEFT);?>" <?=checked(str_pad($i, 2, "0", STR_PAD_LEFT), $task['time'][3], 'selected')?>><?=str_pad($i, 2, "0", STR_PAD_LEFT);?></option>
+			<? endfor; ?>
+			
+		</select>
+	</li>
+</ul>
+
+<p class='center bottom'>
+	<input type='submit' id='btn_submit' class='btn mT10' value='  확  인  '/>
+</p>
+</form>
+
+<div id='loading'></div>
+
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#fwrite').validate({
+		rules: {
+			task: 'required'
+		},
+		messages: {
+			task: '진료일정을 선택하세요.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+		    f.submit();
+		}
+	});		
+});
+//]]>
+</script>

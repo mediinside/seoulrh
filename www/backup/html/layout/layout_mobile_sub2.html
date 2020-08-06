@@ -1,0 +1,28 @@
+<!-- container -->
+<div id="container"> 
+    
+    <!-- top -->
+    <div id="top">
+        <? include DOC_ROOT ."/include/topbar_mobile.html"; ?>
+    </div>
+    <!-- //top -->  
+    
+    <!-- head -->
+    <div id="head">
+        <? include DOC_ROOT ."/include/navigation_mobile.html"; ?>
+    </div>
+    <!-- //head --> 
+    
+    <!-- body -->
+    <div id="content">
+        <? $this->load->view($_BODY_); ?>
+    </div>
+    <!-- //body --> 
+    
+    <!-- foot -->
+    <div id="foot">
+        <? include DOC_ROOT ."/include/footer_mobile.html"; ?>
+    </div>
+    <!-- //foot --> 
+</div>
+<!-- /container --> 

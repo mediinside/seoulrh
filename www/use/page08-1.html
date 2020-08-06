@@ -1,0 +1,158 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once "../inc/head.php";
+
+$dep1 = "2";
+$dep2 = "2-2";
+$dep3 = "2-2-3";
+?>
+<style>
+	.map-box .root_daum_roughmap {width:100%;}
+</style>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/use-bnnr8.png" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="wd-1200">
+					<div class="page-location">
+						<div id="btn-box" class="center">
+							<a href="/use/page08-1.html" class="btn bg-green">본관/신관</a>
+							<a href="/use/page08-2.html" class="btn">별관</a>
+						</div>
+					</div>
+					<h3 class="sub-tit" style="border:none;">
+						본관/신관
+					</h3>
+
+					<div class="map-box">
+						<!-- * 카카오맵 - 지도퍼가기 -->
+						<!-- 1. 지도 노드 -->
+						<div id="daumRoughmapContainer1594087742597" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+						<!--
+												2. 설치 스크립트
+												* 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
+											-->
+						<script charset="UTF-8" class="daum_roughmap_loader_script"
+							src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+
+						<!-- 3. 실행 스크립트 -->
+						<script charset="UTF-8">
+							new daum.roughmap.Lander({
+								"timestamp": "1594087742597",
+								"key": "2z4fn",
+								"mapHeight": "527"
+							}).render();
+						</script>
+					</div>
+					<!-- //end .map-box -->
+
+					<div class="board-list mt60 border-t" style="padding: 0;">
+						<table>
+							<colgroup>
+								<col style="width: 20%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th class="vt-middle bg-gray text-center">주소</th>
+									<td class="vt-middle">(03428) 서울시 은평구 갈현로 11길 30(구산동 191-1)</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<ul class="clinic-list">
+						<li style="border-top:0;">
+							<label for="">버스 이용 시</label>
+							<div class="text">
+								<ul class="normal-list">
+									<li class="mb5">
+										<span class="btn-xs bg-blue mr15 vt-bottom">간선버스</span>
+										702, 751 (시립서북병원 정류장 하차)
+									</li>
+									<li class="mb5">
+										<span class="btn-xs bg-green mr15 vt-bottom">지선버스</span>
+										7022, 7715 (시립서북병원 정류장 하차)
+									</li>
+									<li>
+										<span class="btn-xs bg-yellow mr15 vt-bottom">마을버스</span>
+										은평 02 (은평천사원 정류장 하차)
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<label for="">지하철 이용 시</label>
+							<div class="text">
+								<ul class="normal-list">
+									<li>
+										<span class="btn-xs bg-brown mr15 vt-bottom">6호선</span>
+										응암역 2번 출구 뒷길 버스 정류장 (파란버스 702, 초록버스 7022 탑승)
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<label for="">자가용 이용 시</label>
+							<div class="text">
+								<b style="color:#333;">네비게이션에 ‘서울재활병원’ 또는 주차장 이용 시 ‘엔젤스헤이븐 주차장’을 검색해주세요.</b>
+								<ul class="green-middot">
+									<li>강북방면에서 방문할 경우 : 내부순환도로(성산방향)</li>
+									<li>잠실방면에서 방문할 경우 : 잠실대교-강변북로(일산방향)</li>
+									<li>강남방면에서 방문할 경우 : 강변북로(일산방향)</li>
+									<li>일산방면에서 방문할 경우 : 자유로(잠실방향)</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<label for="">주차장 이용안내</label>
+							<div class="text">
+								<div class="board-list border-t" style="padding: 0;">
+									<table>
+										<colgroup>
+											<col style="width: 20%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th class="vt-middle bg-gray text-center">외래 <br class="mb-show">환자</th>
+												<td class="vt-middle">2시간 무료주차</td>
+											</tr>
+											<tr>
+												<th class="vt-middle bg-gray text-center">입원 <br class="mb-show">환자</th>
+												<td class="vt-middle">입퇴원 당일 무료 주차권 발급</td>
+											</tr>
+											<tr>
+												<th class="vt-middle bg-gray text-center">낮병동 환자</th>
+												<td class="vt-middle">입원일에서 퇴원일까지 정기주차등록</td>
+											</tr>
+										</tbody>
+									</table>
+									<p class="color-green mt5" style="font-weight: 500;">※ 주차 등록 및 주차권 발급은 1층 원무팀에 신청하시기 바랍니다.</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+</body>
+
+</html>

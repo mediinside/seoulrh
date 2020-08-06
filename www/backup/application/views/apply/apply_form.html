@@ -1,0 +1,84 @@
+<?=$ap['apc_top_html']?>
+
+<form id="fapply" name="fapply" method="post" action="/apply/<?=$ap['apc_id']?>" enctype="multipart/form-data">
+
+	<? foreach($ap['form'] AS $form) : ?>
+	<? if($form['apf_type'] == 'hidden') : ?>
+		<input type="hidden" name="<?=$form['apf_field']?>" value="<?=implode('', $form['options'])?>" />
+	<? endif; ?>
+	<? endforeach; ?>
+	
+	<table id="apply" class="left" width="100%">
+		<col width="150"/>
+		<col width="*" />
+		<col width="150"/>
+		<col width="*" />
+		
+		<?
+		foreach($ap['form'] AS $key => $form) :
+			$next_r = isset($ap['form'][$key + 1]) && $ap['form'][$key + 1]['apf_align_r'] ? TRUE : FALSE;
+		
+			echo !$form['apf_align_r'] ? '<tr>' : '';
+		
+			if($form['apf_type'] != 'hidden') :
+		?>
+			<th><?=$form['apf_name']?> <span class="red"><?=$form['apf_required']?'*':''?></span></th>
+			<td colspan="<?=!$next_r && !$form['apf_align_r']?'3':''?>"><?=getInput($form['apf_type'], $form['apf_field'], '', '', $form['options'])?></td>
+		<?
+			endif;
+		
+			echo !$next_r ? '</tr>' : '';
+		endforeach;
+		?>
+		
+		<tr>
+			<td class="center" colspan="4"><button type="submit">등록</button> <button type="button" onclick="location.href='/';">취소</button></td>
+		</tr>
+	</table>
+</form>
+
+<?=$ap['apc_bottom_html']?>
+
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function() {
+	$('#fapply').validate({
+		rules: {
+			<?
+			$comma = '';
+			foreach($ap['form'] AS $key => $form) {
+				if($form['apf_required']) {
+					echo $comma . $form['apf_field'].":'required'";
+					$comma = ",\n";
+				}
+			}
+			?>
+		},
+		messages: {
+			<?
+			$comma = '';
+			foreach($ap['form'] AS $key => $form) {
+				if($form['apf_required']) {
+					echo $comma . $form['apf_field'].":'[".$form['apf_name']."] 항목이 입력되지 않았습니다.'";
+					$comma = ",\n";
+				}
+			}
+			?>
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+		    f.submit();
+		}
+	});
+});
+//]]>
+</script>

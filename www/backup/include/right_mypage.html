@@ -1,0 +1,18 @@
+<ul>
+	
+<? if(!IS_MEMBER) : ?>
+	<li><a href="/member/login">로그인</a></li>
+	<li><a href="/member/forget_idpwd">id/pw찾기</a></li>
+	<li><a href="/member/join">회원가입</a></li>
+<? else : ?>
+	<li><a href="/member/confirm/qry/member.modify">정보수정</a></li>
+	<li><a href="/member/confirm/qry/member.modify.password">비밀번호 변경</a></li>
+	
+	<? if($this->config->item('cf_use_point')) : ?>
+	<li><a href="/member/point">포인트 조회</a></li>
+	<? endif; ?>
+	
+	<li><a href="/member/leave">회원탈퇴</a></li>
+<? endif; ?>
+	
+</ul>

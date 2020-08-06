@@ -1,0 +1,112 @@
+<h2><?=$_TITLE_?></h2>
+
+<form id='fwrite' name='fwrite' method='post' enctype="multipart/form-data" action='<?=$path?>/staff/form'>
+<input type='hidden' name='w'    value='<?=$w?>' />
+<input type='hidden' name='token' value='<?=$token?>' />
+<input type='hidden' name='st_id' value='<?=$row['st_id']?>' />
+
+<ul id="form_cont">
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 직원 정보</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+			<tr>
+	            <th>이름</th>
+				<td>
+					<input type="text" class="ed" name="st_name" value="<?=$row['st_name']?>"/>
+				</td>
+			</tr>
+			<tr>
+	            <th>유형</th>
+				<td>
+					<select name="st_type">
+				
+					<? foreach($types AS $key => $type) : ?>
+						<option value="<?=$key?>" <?=checked($key,$row['st_type'],'selected')?>/><?=$type?></option>
+					<? endforeach; ?>
+					
+					</select>
+				</td>
+			</tr>
+			<tr>
+	            <th>전화번호</th>
+				<td>
+					<input type="text" class="ed" name="st_phone" value="<?=$row['st_phone']?>"/>
+				</td>
+			</tr>
+			<tr>
+	            <th>휴대전화</th>
+				<td>
+					<input type="text" class="ed" name="st_mobile" value="<?=$row['st_mobile']?>"/>
+				</td>
+			</tr>
+			<tr>
+	            <th>팩스</th>
+				<td>
+					<input type="text" class="ed" name="st_fax" value="<?=$row['st_fax']?>"/>
+				</td>
+			</tr>
+			<tr>
+	            <th>사진</th>
+				<td>
+					<?=$row['st_image']?'<img src="/useful/thumbnail/180x60/ki_staff/?file='.$row['st_image'].'&ratio=true"/> <input type="checkbox" name="delFile" value="1"> 삭제<br/>':''?>
+					<input type='file' id='st_image' name='st_image' class='ed' size='50' value='<?=$row['st_image']?>'/>
+				</td>
+			</tr>
+			<tr>
+	            <th>소개글</th>
+				<td>
+					<textarea class="ed" name="st_intro" cols="70" rows="5"><?=$row['st_intro']?></textarea>
+				</td>
+			</tr>
+			
+            <? if($w) : ?>
+            <tr>
+            	<th>등록일</th>
+                <td><?=$row['st_regdate']?></td>
+            </tr>
+            <tr>
+            	<th>최종수정일</th>
+                <td><?=$row['st_mdydate']?></td>
+            </tr>
+            <? endif; ?>
+            
+		</table>
+	</li>
+</ul>
+
+<p class='center bottom editor' style="margin-top:30px;">
+	<input type='submit' id='btn_submit' class='btn' value='  확  인  ' />&nbsp;
+	<input type='button' class='btn' value='  목  록  ' onclick="document.location.href='<?=$path?>/staff/lists';" />
+</p>
+
+</form>
+
+<div id='loading'></div>
+
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#fwrite').validate({
+		rules: {
+			st_name: 'required'
+		},
+		messages: {
+			st_name: '이름을 입력하세요.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+		    f.submit();
+		}
+	});
+});
+//]]>
+</script>

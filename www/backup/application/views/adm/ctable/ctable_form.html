@@ -1,0 +1,61 @@
+<style>
+.form_li dl { width:100%; overflow:hidden; line-height:100%; }
+.form_li dt { float:left; margin-top:5px; width:95px; margin-right:10px; padding: 5px 0 5px 10px; text-align:right; }
+.form_li dd { line-height:23px; margin-top:5px; padding-bottom:2px; text-align:left; }
+</style>
+
+<form id='fwrite' name='fwrite' method='post' action='<?=$path?>/ctable/form/<?=$cid?>'>
+<input type='hidden' name='id' value='<?=$row['cta_id']?>'/>
+
+<ul id="form_cont">
+	<li class="form_li center">
+		<div>
+			<dl>
+	            <dt>수가명</dt>
+				<dd><input type="text" class="ed" maxlength="50" size="20" name="name" value="<?=$row['cta_name']?>"/></dd>
+	            <dt>수가</dt>
+				<dd><input type="text" class="ed" maxlength="20" size="20" name="price" value="<?=$row['cta_price']?>"/></dd>
+	            <dt>비고</dt>
+				<dd><input type="text" class="ed" maxlength="20" size="20" name="memo" value="<?=$row['cta_memo']?>"/></dd>
+			</dl>
+		</div>
+	</li>
+</ul>
+
+<p class='center'>
+	<input type='submit' id='btn_submit' class='btn' value='  확  인  ' />
+	<input type='button' class='btn' onclick="parent.CtrlWinDlg.closeWinDlg();" value='  취  소  ' />
+</p>
+</form>
+
+<div id='loading'></div>
+
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function() {
+	$('#fwrite').validate({
+		rules: {
+			name: { required: true },
+			price: { required: true }
+		},
+		messages: {
+			name: { required: '수가액을 입력하세요.' },
+			price: { required: '수가를 입력하세요.' }
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+			f.submit();
+		}
+	});
+});
+//]]>
+</script>

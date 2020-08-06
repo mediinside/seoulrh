@@ -1,0 +1,75 @@
+<form name='fsearch' method='post' action='<?=$path?>/gallery/lists' onsubmit="return doSearch(this, 'gallery/lists');">
+
+<div id='list_head'>
+	<ul class='lr'>
+		<li>&deg; <a href='<?=$path?>/mtGallery/lists'>처음</a> (총 <?=$total_cnt?>개)</li>
+		<li class='right'>
+	        <select name='sfl'>
+	            <option value='ga_subject'>제목</option>
+	        </select>
+	        <input type='text' name='stx' class='ed' value='<?=$stx?>'/>
+	        <input type='image' src='<?=$img_path?>/btn_search.gif' align='top'/>
+        </li>
+    </ul>
+</div>
+
+</form>
+
+<form name='fmtGallerylist' method='post' action=''>
+<input type='hidden' name='token' value='<?=$token?>'/>
+
+<div id='list_cont'>
+	<table width='100%' cellpadding='0' cellspacing='1'>
+		<colgroup>
+			<col width="30"/>
+			<col width="150"/>
+			<col/>
+			<col width="80"/>
+			<col width="60"/>
+			<col width="120"/>
+			<col width="80"/>
+		</colgroup>
+		<tr>
+            <th><input type="checkbox" onclick="allcheck(this);"/></th>
+            <th>이미지</th>
+            <th><a href='<?=$sort_ga_subject?>'>제목</a></th>
+			<th><a href='<?=$sort_ga_file?>'>파일수</a></th>
+            <th><a href='<?=$sort_ga_hidden?>'>숨김</a></th>
+            <th><a href='<?=$sort_ga_regdate?>'>등록일</a></th>
+            <th><?=$s_add?></th>
+        </tr>
+        <? foreach ($list as $o): ?>
+		<?
+			$img = '/useful/thumbnail/'.$thumbSize['width'].'x'.$thumbSize['height'].'/gallery/'.$o['ga_id'];
+			$o['thumb'] = '<img src="'.$img.'"/>';
+		?>
+		<tr class='row list<?=$o['lst']?>'>
+			<td><input type='checkbox' name='chk[]' value='<?=$o['ga_id']?>'/></td>
+			<td><?=$o['thumb']?></td>
+			<td><?=$o['ga_subject']?></td>
+			<td><?=$o['uf_count_image']?></td>
+			<td><input type='checkbox' name='ga_show[<?=$o['ga_id']?>]' <?=$o['ga_hidden_chk']?> value='1'/></td>
+			<td><?=$o['ga_regdate']?></td>
+			<td><?=$o['s_mod']?> <?=$o['s_del']?></td>
+		</tr>
+		<? endforeach; ?>
+	</table>
+	<? if (!$list): ?><p class='none'>자료가 없습니다.</p><? endif; ?>
+	<ul class='lr bottom'>
+		<li>
+			<input type='button' class='btn' value='선택수정' onclick="javascript:slt_check(this.form, '<?=$path?>/gallery/update')"/>
+			<input type='button' class='btn' value='선택삭제' onclick="javascript:slt_check(this.form, '<?=$path?>/gallery/delete')"/>
+		</li>
+		<li class='right'><?=$paging?></li>
+	</ul>
+</div>
+
+</form>
+
+<? if ($stx): ?>
+<script type='text/javascript'>
+//<![CDATA[
+document.fsearch.sfl.value = '<?=$sfl?>';
+//]]>
+</script>
+<? endif; ?>

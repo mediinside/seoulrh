@@ -1,0 +1,119 @@
+<form id='fwrite' name='fwrite' method='post' onsubmit="return f_submit();" action='<?=$path?>/client/form'>
+<input type='hidden' name='w'    value='<?=$w?>'/>
+<input type='hidden' name='token' value='<?=$token?>'/>
+<input type='hidden' name='cl_id' value='<?=$row['cl_id']?>'/>
+
+<div id='form_title'>
+	&deg; <b><?=$_TITLE_?></b>
+</div>
+
+<ul id="form_cont">
+	<li class="form_li">
+		<div>
+			<h4>회원정보 입력</h4>
+			<dl>
+				<dt>아이디</dt>
+				<dd>
+					<input type='text' id='cl_mb_id' name='cl_mb_id' class='ed' size='20' maxlength='20' readonly='readonly' value='<?=$row['cl_mb_id']?>'/>
+					<a href="javascript:win_id('fwrite', 'cl_mb_id', 'mb_id');"><img src="/images/myroom/btn_search_post.jpg" width="43" height="20" /></a>
+				</dd>
+				<dt>이름</dt>
+				<dd>
+					<input type='text' id='cl_name' name='cl_name' class='ed' size='20' maxlength='20' value='<?=$row['cl_name']?>'/>
+				</dd>
+			</dl>
+			<h4>주문정보 입력</h4>
+			<dl>
+				<dt>상품명</dt>
+				<dd>
+					<select id='cl_product' name='cl_product'>
+						<option value="">선택</option>
+						<? foreach($product AS $pd) : ?>
+						<option value="<?=$pd?>" <?=$pd==$row['cl_product']?"selected='selected'":''?>><?=$pd?></option>
+						<? endforeach; ?>
+					</select>
+				</dd>
+				<dt>이용기간</dt>
+				<dd>
+					<input type='text' id='cl_use_s' name='cl_use_s' class='ed' size='10' readonly='readonly' value='<?=$row['cl_use_s']?>'/>
+					~
+					<input type='text' id='cl_use_e' name='cl_use_e' class='ed' size='10' readonly='readonly' value='<?=$row['cl_use_e']?>'/>
+				</dd>
+				<dt>비용</dt>
+				<dd>
+					<input type='text' id='cl_price' name='cl_price' class='ed imeDis right' size='10' maxlength='10' onkeypress="return only_number();" value='<?=$row['cl_price']?>'/> 원
+				</dd>
+				<dt>계약일</dt>
+				<dd>
+					<input type='text' id='cl_contract' name='cl_contract' class='ed' size='10' readonly='readonly' value='<?=$row['cl_contract']?>'/>
+				</dd>
+				<dt>메모</dt>
+				<dd>
+					<textarea id="cl_memo" name="cl_memo" cols="70" rows="10"></textarea>
+				</dd>
+				
+				<? if($row['cl_regdate']): ?>
+				<dt>등록일</dt>
+				<dd>
+					<?=$row['cl_regdate']?>
+				</dd>
+				<? endif; ?>
+				<? if($row['cl_mdydate']): ?>
+				<dt>최종수정일</dt>
+				<dd>
+					<?=$row['cl_mdydate']?>
+				</dd>
+				<? endif; ?>
+				
+			</dl>
+		</div>
+	</li>
+</ul>
+<p class='center bottom' style="margin-top:30px;">
+	<input type='submit' id='btn_submit' class='btn' value='  확  인  '/>&nbsp;
+	<input type='button' class='btn' value='  목  록  ' onclick="document.location.href='<?=$path?>/client/lists';"/>
+</p>
+
+</form>
+
+<div id='loading'></div>
+
+<script type='text/javascript'>
+//<![CDATA[
+var beforeUnload = false;
+window.onbeforeunload = function() {
+	if (beforeUnload) return '이 페이지를 벗어나시면 작성 중인 글이 지워집니다.';
+}
+
+$(document).ready(function() {
+	$('#cl_use_s, #cl_use_e, #cl_contract').timepicker({
+		currentText: '오늘',
+		showTimepicker: false
+	});
+	
+	$('#fwrite').validate({
+		rules: {
+			cl_mb_id: 'required',
+			cl_name: 'required'
+		},
+		messages: {
+			cl_mb_id: '아이디가 입력되지 않았습니다.',
+			cl_name: '이름을 입력하세요.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+		    f.submit();
+		}
+	});
+});
+//]]>
+</script>

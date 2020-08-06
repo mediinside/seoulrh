@@ -1,0 +1,75 @@
+<form name='fsearch' method='post' action='<?=$path?>/popup/lists' onsubmit="return doSearch(this, 'popup/lists');">
+
+<div id='list_head'>
+	<ul class='lr'>
+		<li>&deg; <a href='<?=$path?>/popup/lists'>처음</a> (총 <?=$total_cnt?>개)</li>
+		<li class='right'>
+	        <select name='sfl'>
+	            <option value='pu_name'>이름</option>
+	        </select>
+	        <input type='text' name='stx' class='ed' value='<?=$stx?>'/>
+	        <input type='image' src='<?=$img_path?>/btn_search.gif' align='top'/>
+        </li>
+    </ul>
+</div>
+
+</form>
+
+<form name='fpopuplist' method='post' action=''>
+<input type='hidden' name='token' value='<?=$token?>'/>
+
+<div id='list_cont'>
+	<table width='100%' cellpadding='0' cellspacing='1'>
+		<colgroup>
+			<col width="30" class='check'/>
+			<col/>
+			<col class='pu_type'/>
+			<col class='pu_sdate'/>
+			<col class='pu_edate'/>
+			<col class='pu_hidden'/>
+			<col class='pu_date'/>
+			<col class='pu_control'/>
+		</colgroup>
+		<tr>
+            <th><input type="checkbox" onclick="allcheck(this);"/></th>
+            <th><a href='<?=$sort_pu_name?>'>제목</a></th>
+			<th><a href='<?=$sort_pu_type?>'>형식</a></th>
+            <th><a href='<?=$sort_pu_sdate?>'>시작일</a></th>
+            <th><a href='<?=$sort_pu_edate?>'>종료일</a></th>
+            <th><a href='<?=$sort_pu_hidden?>'>숨김</a></th>
+			<th>등록일</th>
+            <th><?=$s_add?></th>
+        </tr>
+         
+        <? foreach ($list as $row): ?>
+		<tr class='row list<?=$row['lst']?>'>
+			<td><input type='checkbox' name='chk[]' value='<?=$row['pu_id']?>'/></td>
+			<td class='left'><input type='text' name='pu_name[<?=$row['pu_id']?>]' class='ed' maxlength='20' size='30' value='<?=$row['pu_name']?>'/></td>
+			<td><?=$row['pu_type_conv']?></td>
+			<td><?=$row['pu_sdate']?></td>
+			<td><?=$row['pu_edate']?></td>
+			<td><input type='checkbox' name='pu_hidden[<?=$row['pu_id']?>]' <?=$row['pu_hidden']?'checked="checked"':''?> value='1'/></td>
+			<td><?=$row['pu_regdate_conv']?></td>
+			<td><?=$row['s_mod']?> <?=$row['s_del']?> <?=$row['s_pre']?></td>
+		</tr>
+		<? endforeach; ?>
+	</table>
+	<? if (!$list): ?><p class='none'>자료가 없습니다.</p><? endif; ?>
+	<ul class='lr bottom'>
+		<li>
+			<input type='button' class='btn' value='선택수정' onclick="javascript:slt_check(this.form, '<?=$path?>/popup/update');"/>
+			<input type='button' class='btn' value='선택삭제' onclick="javascript:slt_check(this.form, '<?=$path?>/popup/delete');"/>
+		</li>
+		<li class='right'><?=$paging?></li>
+	</ul>
+</div>
+
+</form>
+
+<? if ($stx): ?>
+<script type='text/javascript'>
+//<![CDATA[
+document.fsearch.sfl.value = '<?=$sfl?>';
+//]]>
+</script>
+<? endif; ?>

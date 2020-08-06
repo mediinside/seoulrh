@@ -1,0 +1,205 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once "../inc/head.php";
+$dep1 = "7";
+$dep2 = "7-1";
+$dep3 = "7-1-2";
+?>
+<style>
+	.btn-group:not(.m-menu-info) {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 30px 0 0;
+	}
+
+	.btn-group:not(.m-menu-info):after {
+		display: none;
+	}
+
+	.btn-group:not(.m-menu-info) .btn-sm {
+		width: 268px;
+		margin: 0 20px;
+	}
+
+	.btn-group:not(.m-menu-info) .btn-sm img {
+		margin-right: 10px;
+	}
+
+	#btn-box a {
+		width:auto;
+	}
+
+	@media screen and (max-width:1023px) {
+		.m-img {width: 1600px !important;}
+		.over-x {overflow-x: auto;}
+		.btn-group:not(.m-menu-info) {
+			flex-flow: column;
+		}
+
+		.btn-group:not(.m-menu-info) .btn-sm {
+			width: 100%;
+			margin: 0 0 15px;
+		}
+
+		.btn-group:not(.m-menu-info) .btn-sm img {
+			width: 20px !important;
+		}
+
+		img.mt60 {
+			margin-top: 140px !important;
+		}
+
+		table.bordered {
+			min-width: 1200px;
+		}
+
+		table.bordered td>img {
+			height: 40px;
+			margin-top: -8px;
+			margin-right: 10px;
+		}
+	}
+</style>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/center-bnnr2.png" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="wd-1200">
+					<div class="page-location">
+						<div id="btn-box" class="center half">
+							<a href="/center/page02-1.html" class="btn">장애인건강보건관리사업</a>
+							<a href="/center/page02-2.html" class="btn">여성장애인 모성보건사업</a>
+							<a href="/center/page02-3.html" class="btn">보건의료인력 및 <br class="mb-show">장애인·가족
+								교육</a>
+							<a href="/center/page02-4.html" class="btn bg-green">건강검진/진료/재활 등 <br class="mb-show">의료서비스 제공</a>
+						</div>
+					</div>
+					<img class="mt60" src="/resource/images/center02.jpg" alt="" style="max-width:100%;">
+					<h3 class="sub-tit mt60">
+						건강검진/진료/재활 등 의료서비스 제공
+					</h3>
+					<ul class="clinic-list">
+						<li>
+							<label for="">재활의료서비스 지원 및 연계</label>
+							<div class="text">
+								생애주기, 장애유형 및 중증도에 따른 전문 재활의료서비스 지원 및 연계
+							</div>
+						</li>
+						<li>
+							<label for="">
+								장애 소아청소년<br class="mb-hide">
+								재활의료서비스, 조기발견
+							</label>
+							<div class="text">
+								지역 내 소아청소년 대상 장애 조기 진단 및 맞춤 재활치료 서비스 지원 및 연계
+							</div>
+						</li>
+						<li>
+							<label for="">장애인건강주치의 연계</label>
+							<div class="text">
+								<div class="board-list border-t mt30 mb30" style="padding:0;overflow-x: auto;">
+									<table>
+										<tbody>
+											<tr>
+												<th width="150px" class="bg-gray text-center vt-middle">대상</th>
+												<td class="vt-middle">
+													중증장애인으로 지역장애인보건의료센터로 의뢰된 자
+												</td>
+											</tr>
+											<tr>
+												<th class="bg-gray text-center vt-middle">주요내용</th>
+												<td class="vt-middle">
+													- 의뢰체계구축 : 서울특별시 북부지역 장애인건강주치의기관과 협력구축<br>
+													- 연계 : 만성질환, 장애 등 건강문제의 지속적·포괄적 관리를 위한 의료서비스 연계<br>
+													- 지원 : 의료접근 편의제공(수어통역, 이동지원, 의료비 지원 연계 등)
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</li>
+						<li>
+							<label for="">건강검진서비스 연계</label>
+							<div class="text">
+								<div class="board-list border-t mt30 mb30" style="padding:0;overflow-x: auto;">
+									<table>
+										<tbody>
+											<tr>
+												<th width="150px" class="bg-gray text-center vt-middle">대상</th>
+												<td class="vt-middle">
+													중증장애인으로 지역장애인보건의료센터로 의뢰된 자
+												</td>
+											</tr>
+											<tr>
+												<th class="bg-gray text-center vt-middle">주요내용</th>
+												<td class="vt-middle">
+													- 의뢰체계구축 : 검진기관(장애친화 건강검진 기관 포함)과 협력구축<br>
+													- 연계 : 지정된 의료기관의 장애친화 건강검진 연계<br>
+													- 지원 : 의료접근 편의제공(수어통역, 이동지원, 의료비 지원 연계 등)<br>
+													- 사후관리 : 이상소견 시 재검진 및 사후관리 연계 및 지원
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</li>
+						<li>
+							<label for="">구강의료서비스 연계</label>
+							<div class="text">
+								<div class="board-list border-t mt30 mb30 over-x" style="padding:0;">
+									<table>
+										<tbody>
+											<tr>
+												<th width="150px" class="bg-gray text-center vt-middle">대상</th>
+												<td class="vt-middle">
+													중증장애인으로 지역장애인보건의료센터로 의뢰된 자
+												</td>
+											</tr>
+											<tr>
+												<th class="bg-gray text-center vt-middle">주요내용</th>
+												<td class="vt-middle">
+													- 의뢰체계구축 : 북부지역 치과의료기관과 협력체계 구축<br>
+													- 연계 : 협력구축된 치과의료기관에 진료 연계<br>
+													- 지원 : 의료접근 편의제공(수어통역, 이동지원, 의료비 지원 연계 등)
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</li>
+						<li>
+							<label for="">의료서비스 지원 절차</label>
+							<div class="text over-x">
+								<img class="m-img" src="/resource/images/business-map6.png" alt="">
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomInfo.php"; ?>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+</body>
+
+</html>

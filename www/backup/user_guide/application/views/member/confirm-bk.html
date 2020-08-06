@@ -1,0 +1,100 @@
+<table width="100%"  height="100%"border="0" cellspacing="0" cellpadding="0">
+  <form id='flogin' name='flogin' method='post' action='<?=$action?>'>
+  <input type='hidden' name='mb_id' value='<?=$mb_id?>'/>
+  <input type='hidden' name='token' value='<?=$token?>'/>
+  <tr>
+    <td align="center" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="lh0" width="400" height="47"><img src="/images/myroom/title01.jpg" width="400" height="30"></td>
+            <td align="right"><span class="pixel11"><br>
+              HOME &gt; 마이룸 &gt;<strong> 로그인</strong></span></td>
+          </tr>
+        </table>
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td height="1" background="/images/dot02.jpg"></td>
+            </tr>
+            <tr>
+              <td height="40">&nbsp;</td>
+            </tr>
+            <tr>
+              <td height="25">&nbsp;</td>
+            </tr>
+            <tr>
+              <td align="center"><table width="690" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td class="border"><table width="690" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td width="248" height="300" align="left" valign="bottom"><img src="/images/myroom/login_img.jpg" width="215" height="201"></td>
+                      <td align="left" valign="top"><table width="417" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td class="lh0" height="110" valign="bottom"><img src="/images/myroom/login_copy01.jpg" width="417" height="80"></td>
+                        </tr>
+                      
+                        <tr>
+                          <td height="80" align="center" bgcolor="#fafafa" class="border"><table width="309" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                              <td width="77" align="left" style="line-height:100%;"><img src="/images/myroom/login_id.jpg" width="54" height="20"></td>
+                              <td class="lh0"><input class="box_white" type="text" name="mb_id" id="mb_id" value="<?=$mb_id?>" readonly="readonly" hname="아이디" style="width:153px; background:#eee;" tabindex="1"/></td>
+                              <td width="74" rowspan="2" align="right" style="line-height:100%;"><input type="image" src="/images/myroom/login_button.jpg" width="64" height="45"/></td>
+                            </tr>
+                            <tr>
+                              <td align="left"><img src="/images/myroom/login_pass.jpg" width="54" height="20"></td>
+                              <td><input class="box_white" type="password" name="mb_password" id="mb_password" required="required" hname="패스워드" onkeypress="javascript:check_capslock(event, this);" style="width:153px;"/ tabindex="2"></td>
+                            </tr>
+                          </table></td>
+                        </tr>
+                        
+                        <tr>
+                          <td height="20">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td><img src="/images/myroom/login_copy02.jpg" name="login" width="404" height="55" border="0" usemap="#Map" id="login"></td>
+                        </tr>
+                      </table></td>
+                    </tr>
+                  </table></td>
+                </tr>
+              </table></td>
+            </tr>
+            <tr>
+              <td align="center">&nbsp;</td>
+            </tr>
+          </table></td>
+        <td width="30" valign="top">&nbsp;</td>
+      </tr>
+    </table></td>
+  </tr>
+  </form>
+</table>
+
+<map name="Map">
+  <area shape="rect" coords="299,2,410,20" href="#none">
+  <area shape="rect" coords="297,28,404,51" href="#none">
+</map>
+
+<script type='text/javascript' src='<?=JS_DIR?>/capslock.js'></script>
+<script type="text/javascript" src='<?=JS_DIR?>/jvalidate.js'></script>
+<script type="text/javascript" src='<?=JS_DIR?>/jvalid_ext.js'></script>
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#flogin').validate({
+		rules: {
+			mb_id: { required:true, minlength:3, alphanumunder:true },
+			mb_password: 'required'
+		},
+		messages: {
+			mb_id: { required:'아이디를 입력하십시오.', minlength:'최소 3자 이상 입력하십시오.' },
+			mb_password: '비밀번호를 입력하십시오.'
+		},
+		errorPlacement: function(error, element) {
+			error.insertAfter(element.parent()).css('margin', '-5px 0 5px 0');
+		}
+	});
+});
+//]]>
+$('#mb_password').focus();
+</script>

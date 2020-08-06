@@ -1,0 +1,277 @@
+<?php
+// error_reporting(E_ALL);
+// ini_set("display_errors", 1);
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once $GP -> INC_WWW . '/count_inc.php';
+include_once "../inc/head.php";
+
+include_once($GP->CLS."class.list.php");
+include_once($GP -> CLS."/class.seoulrh.php");
+include_once($GP->CLS."class.button.php");
+include_once($GP -> CLS."class.slide.php");
+
+$C_Slide = new Slide();
+$C_ListClass 	= new ListClass;
+$C_seoulrh 		= new seoulrh;
+$C_Button 		= new Button;
+
+$args = array();
+//	$args['show_row'] = 9;
+
+
+$args['s_type'] = "A";
+$args['s_show'] = "Y";
+$data = "";
+$data = $C_seoulrh->seoulrh_List_year(array_merge($_GET,$_POST,$args));
+$data_list 		= $data['data'];
+$data_list_cnt 	= count($data_list);
+
+
+
+$args = '';
+$args['order']  = " ts_idx asc";
+$args['limit']  = " limit 0,20 ";
+$args["ts_type"] = "E";
+$args["ts_lang"] = "kor";
+$rst = $C_Slide->Main_Slide_Show($args);
+
+$dep1 = "4";
+$dep2 = "4-1";
+$dep3 = "4-1-5";
+?>
+<style>
+	#thumb-slide {
+		position: relative;
+		padding: 0 0 90px;
+	}
+
+	.swiper-container img {
+		width: 100%;
+	}
+
+	.swiper-button-next,
+	.swiper-button-prev {
+		width: 50px;
+		height: 50px;
+		text-indent: -9999px;
+		border-top: 3px solid #fff;
+		border-right: 3px solid #fff;
+		outline: none;
+	}
+
+	.swiper-button-next {
+		right: 30px;
+		transform: rotateZ(45deg);
+	}
+
+	.swiper-button-prev {
+		left: 30px;
+		transform: rotateZ(-135deg);
+	}
+
+	.swiper-button-next:after,
+	.swiper-button-prev:after {
+		display: none;
+	}
+
+	.swiper-button-next:hover,
+	.swiper-button-prev:hover {
+		border-color: #65bb00;
+	}
+
+	@media screen and (max-width: 1023px) {
+		#thumb-slide {
+			padding: 90px 0 90px;
+		}
+
+		.swiper-container {
+			width: 100%;
+		}
+
+		.swiper-button-next,
+		.swiper-button-prev {
+			width: 50px;
+			height: 50px;
+			border-color: #fff;
+			border-width: 2px;
+		}
+
+		.tab-box .tab-cont .list table th, .tab-box .tab-cont .list table td {
+			    word-break: inherit;
+		}
+	}
+</style>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/edu-bnnr5.jpg" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="wd-1200">
+					<div id="thumb-slide">
+						<div class="swiper-container gallery-top">
+                             <ul class="swiper-wrapper">
+                            <?
+                            for($i=0; $i<count($rst); $i++) {
+                                $ts_img        = $rst[$i]['ts_img'];
+                            ?>
+								<li class="swiper-slide">
+									<img src="<?= $GP -> UP_SLIDE_URL . $ts_img?>" alt="">
+                                </li>
+                                <? } ?>
+							</ul>
+							<!-- Add Arrows -->
+							<div class="swiper-button-next swiper-button-white"></div>
+							<div class="swiper-button-prev swiper-button-white"></div>
+							<!-- Pagination -->
+							<div class="swiper-pagination"></div>
+						</div>
+					</div>
+
+					<h3 class="sub-tit">
+						국제협력사업
+					</h3>
+					<div class="text-box mb30">
+						<p>
+							서울재활병원은 2000년부터 중국, UAE, 짐바브웨, 이집트, 카자흐스탄, 우즈베키스탄, 베트남 등 다양한 국가의 의료기관과 MOU를 체결하여 재활의료 국제협력을
+							위한 네트워크 구축, 해외
+							의료인과의 학술교류 등 다양한 재활의료 영역 교류를 진행하고 있습니다.
+						</p>
+					</div>
+					<div id="btn-box" class="center half mb60">
+						<a href="/edu/page05-1.html" class="btn">국제협력사업 안내</a>
+						<a href="/edu/page05-2.html" class="btn bg-green">국제협력사업 연혁</a>
+					</div>
+					<h3 class="sub-tit">
+						국제협력사업 연혁
+					</h3>
+					<div id="tab-1" class="tab-box">
+                    <?php
+                        for ($i = 0 ; $i < $data_list_cnt ; $i++) {
+                            $s_idx 		= $data_list[$i]['s_idx'];
+                            $s_year 		= $data_list[$i]['s_year'];
+                    ?>
+						<div class="tab-cont">
+							<p class="on" style="cursor: pointer;">
+								<a href="#none"><?=$s_year?></a>
+							</p>
+							<div class="board-list list bg-c01">
+								<table class="bordered fz10">
+									<caption class="dpn">2018년. 연혁</caption>
+									<thead>
+										<tr class="bg-gray">
+											<!--th class="text-center border-t">사업명</th-->
+											<th style="width:20%" class="text-center border-t">사업개요</th>
+											<th style="width:20%" class="text-center border-t">사업기간</th>
+											<th style="width:20%" class="text-center border-t">사업실적</th>
+											<th style="width:20%" class="text-center border-t">협력 상대국(기관)</th>
+											<th style="width: 100px;" class="text-center border-t">책임자</th>
+										</tr>
+									</thead>
+									<tbody>
+                                    <?php
+
+                                        $args['s_year'] = $s_year ;
+                                        $args['s_type'] = "A" ;
+
+                                        //print_r($args);
+                                        $data_day = "";
+                                        $data_day = $C_seoulrh->seoulrh_List_day(array_merge($_GET,$_POST,$args));
+                                        $data_list_day 		= $data_day['data'];
+                                        $data_list_cnt_day 	= count($data_list_day);
+
+                                        $page_link 		= $data_day['page_info']['link'];
+                                        $page_search 	= $data_day['page_info']['search'];
+                                        $totalcount 	= $data_day['page_info']['total'];
+
+                                        $totalpages 	= $data_day['page_info']['totalpages'];
+                                        $nowPage 		= $data_day['page_info']['page'];
+                                        $totalcount_l 	= number_format($totalcount,0);
+                                        $dummy = 0;
+                                        for ($j = 0 ; $j < $data_list_cnt_day ; $j++) {
+                                            $s_idx 		= $data_list_day[$j]['s_idx'];
+                                            $s_year 		= $data_list_day[$j]['s_year'];
+                                            $s_content1		= nl2Br($data_list_day[$j]['s_content1']);
+                                            $s_content2		= nl2Br($data_list_day[$j]['s_content2']);
+                                            $s_content3		= nl2Br($data_list_day[$j]['s_content3']);
+                                            $s_content4		= nl2Br($data_list_day[$j]['s_content4']);
+                                            $s_content5		= nl2Br($data_list_day[$j]['s_content5']);
+                                            $s_content6		= nl2Br($data_list_day[$j]['s_content6']);
+                                            $dummy += 1;
+                                        ?>
+										<tr>
+											<!--td class="text-center"><?=$s_content1?></td-->
+											<td class="text-center"><?=$s_content2?></td>
+											<td class="text-center"><?=$s_content3?></td>
+											<td class="text-center">
+                                            <?=$s_content4?>
+											</td>
+											<td class="text-center">
+                                            <?=$s_content5?>
+											</td>
+											<td class="text-center"><?=$s_content6?></td>
+                                        </tr>
+                                        <? } ?>
+									</tbody>
+								</table>
+							</div>
+                        </div>
+                        <? } ?>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+	<script>
+		var galleryTop = new Swiper('.gallery-top', {
+			spaceBetween: 10,
+			loop: true,
+			loopedSlides: 4, //looped slides should be the same
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+			autoplay: {
+				delay: 5000,
+				disableOnInteraction: false,
+			},
+		});
+
+		//<![CDATA[
+			$(document).ready(function () {
+				$(".tab-cont > .list").hide();
+				$('.tab-cont > p').click(function () {
+					var obj = $(this).next();
+
+					if (obj.css('display') == 'none') {
+
+						obj.slideDown();
+						$(this).addClass("on").parent().siblings().children('p').removeClass('on').next().hide();
+					}
+					else {
+						obj.slideUp();
+						$(this).removeClass("on");
+					}
+				}).css('cursor', 'pointer');
+
+				$('.tab-cont').eq(0).find('p').trigger('click');
+			});
+		//]]>
+	</script>
+</body>
+
+</html>

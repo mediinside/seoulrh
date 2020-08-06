@@ -1,0 +1,285 @@
+<form id='fmember' name='fmember' method='post' action='<?=$path?>/member/form/mid/<?=$mb_id?>' enctype='multipart/form-data'>
+<input type="hidden" name="idx" value="<?=$mb_no?>"/>
+<input type="hidden" name="qstr" value="<?=$qstr?>"/>
+
+<h2><?=$_TITLE_?></h2>
+
+<ul id="form_cont">
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 고유 정보</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+			<tr>
+				<th>아이디</th>
+				<td>
+				<? if($mb_id): ?>
+					<b><?=$mb_id?></b>
+					<input type='hidden' id='reg_mb_id' name='mb_id' value='<?=$mb_id?>'/>
+				<? else: ?>
+					<input id='reg_mb_id' name='mb_id' class='ed' maxlength='20' size='30' /> <img src='<?=$IMG_PATH?>/button/btn_overlap.gif' id='btn_id' align='top' alt='아이디 중복확인'/> <p id='msg_mb_id'></p>
+					<p class='msgTip'>※ 영문자, 숫자, _ 만 입력 가능. 최소 4자이상 입력하세요.</p>	
+				<? endif; ?>
+				</td>
+			</tr>
+			<tr>
+				<th>비밀번호</th>
+				<td>
+					<input type='password' id='mb_password' name='mb_password' class='ed' size='20' maxlength='20' />
+				</td>
+			</tr>
+			
+			<? if($use_nick) : ?>
+			<tr>
+				<th>별명</th>
+				<td>
+					<input type='hidden' name='mb_nick_default' value='<?=$mb_nick?>'/>
+					<input type='text' id='reg_mb_nick' name='mb_nick' class='ed' size='30' maxlength='20' value='<?=$mb_nick?>' />
+					<img src='<?=$IMG_PATH?>/button/btn_overlap.gif' id='btn_nick' align='top' alt='별명 중복확인'/> <p id='msg_mb_nick'></p>
+					<p class='msgTip'>공백없이 한글,영문,숫자만 입력 가능 (한글2자, 영문4자 이상)</p>
+				</td>
+			</tr>
+			<? endif; ?>
+			
+			<tr>
+				<th>이름(실명)</th>
+				<td>
+					<input type='text' id='mb_name' name='mb_name' class='ed' maxlength='20' value='<?=$mb_name?>' />
+				</td>
+			</tr>
+			<tr>
+				<th>이메일</th>
+				<td>
+					<input type='hidden' name='old_email' value='<?=$mb_email?>'/>
+					<input type='text' id='reg_mb_email' name='mb_email' class='ed' size='30' maxlength='50' value='<?=$mb_email?>' />
+					<img src='<?=$IMG_PATH?>/button/btn_overlap.gif' id='btn_email' align='top' alt='이메일 중복확인'/> <p id='msg_mb_email'></p>
+				</td>
+			</tr>
+			<tr>
+				<th>포인트</th>
+				<td>
+					<a href='<?=$path?>/point/lists/sfl/mb_id/stx/<?=$mb_id?>'><?=$mb_point?></a> Point
+				</td>
+			</tr>
+			<tr>
+				<th>권한</th>
+				<td>
+					<?=$mb_level_select?>
+				</td>
+			</tr>
+		</table>
+	</li>
+	
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 추가 정보</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+			<tr>
+				<th>생년월일</th>
+				<td>
+					<input type='text' id='mb_birth' name='mb_birth' class='ed' size='10' maxlength='10' value='<?=$mb_birth?>' readonly='readonly' />
+				</td>
+			</tr>
+			<tr>
+				<th>성별</th>
+				<td>
+					<select id='mb_sex' name='mb_sex'>
+						<option value=''>선택</option>
+						<option value='M'>남자</option>
+						<option value='F'>여자</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>홈페이지</th>
+				<td>
+					<input type='text' id='mb_homepage' name='mb_homepage' class='ed' size='40' maxlength='40' value='<?=$mb_homepage?>' />
+				</td>
+			</tr>
+			<tr>
+				<th>전화번호</th>
+				<td>
+					<input type='text' id='mb_tel1' name='mb_tel1' class="ed imeDis" maxlength='4' size='4' onkeypress="return only_number();" value="<?=$mb_tel1?>"/>-<input type='text' id='mb_tel2' name='mb_tel2' class="ed imeDis" maxlength='4' size='4' onkeypress="return only_number();" value="<?=$mb_tel2?>"/>-<input type='text' id='mb_tel3' name='mb_tel3' class="ed imeDis" maxlength='4' size='4' onkeypress="return only_number();" value="<?=$mb_tel3?>"/>
+				</td>
+			</tr>
+			<tr>
+				<th>휴대폰번호</th>
+				<td>
+					<input type='text' id='mb_hp1' name='mb_hp1' class="ed imeDis" maxlength='4' size='4' onkeypress="return only_number();" value="<?=$mb_hp1?>"/>-<input type='text' id='mb_hp2' name='mb_hp2' class="ed imeDis" maxlength='4' size='4' onkeypress="return only_number();" value="<?=$mb_hp2?>"/>-<input type='text' id='mb_hp3' name='mb_hp3' class="ed imeDis" maxlength='4' size='4' onkeypress="return only_number();" value="<?=$mb_hp3?>"/>
+				</td>
+			</tr>
+			<tr>
+				<th>주소</th>
+				<td>
+					<table class="multiBox lh22" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td>
+								<input type='text' name='mb_zip1' class='ed' size='4' maxlength='3' readonly='readonly' value='<?=$mb_zip1?>'/> -
+								<input type='text' name='mb_zip2' class='ed' size='4' maxlength='3' readonly='readonly' value='<?=$mb_zip2?>'/>
+								&nbsp;<a href='javascript:;' onclick="javascript:win_zip('fmember', 'mb_zip1', 'mb_zip2', 'mb_addr1', 'mb_addr2');"><img src='<?=$IMG_PATH?>/button/btn_zip.gif' align='top' alt='우편번호 검색'/></a><br/>
+								<input type='text' name='mb_addr1' class='ed' size='50' maxlength='100' readonly='readonly' value='<?=$mb_addr1?>'/><br/>
+								<input type='text' id='mb_addr2' name='mb_addr2' class='ed' size='50' maxlength='100' value='<?=$mb_addr2?>'/>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</li>
+	
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 가입 정보</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+		
+			<? if ($use_icon): ?>
+			<tr>
+				<th>회원아이콘</th>
+				<td>
+					<input type='file' id='mb_icon' name='mb_icon' class='ed' size='30'/>
+					<p>
+						<p class='msgTip'>
+						(<?=$icon_width?> x <?=$icon_height?> 이하 GIF 파일 / <?=$icon_size?>Kbyte 이하)
+						</p>
+						<? if ($icon_file): ?>
+						<br/><img src='<?=$icon_file?>' align='top' alt='회원아이콘'/> <input type='checkbox' name='del_mb_icon' value='1'/>삭제
+						<? endif; ?>
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<th>이미지이름</th>
+				<td>
+					<input type='file' id='mb_named' name='mb_named' class='ed' size='30'/>
+					<p>
+						<p class='msgTip'>
+						(<?=$named_width?> x <?=$named_height?> 이하로 GIF 파일 / <?=$named_size?>Kbyte 이하)
+						</p>
+						<? if ($named_file): ?>
+						<br/><img src='<?=$named_file?>' align='top' alt='이미지이름'/> <input type='checkbox' name='del_mb_named' value='1' />삭제
+						<? endif; ?>
+					</p>
+					</p>
+				</td>
+			</tr>
+			<? endif; ?>
+			
+			<tr>
+				<th>메일수신</th>
+				<td>
+					<input type='checkbox' id='mb_mailling' name='mb_mailling' value='1' <?=$mailling_chk?> /> 정보 메일을 받음
+				</td>
+			</tr>
+			<tr>
+				<th>정보공개</th>
+				<td>
+					<input type='checkbox' id='mb_open' name='mb_open' value='1' <?=$open_chk?>/> 타인에게 자신의 정보를 공개
+				</td>
+			</tr>
+			<tr>
+				<th>홈페이지</th>
+				<td>
+					<input type='text' id='mb_homepage' name='mb_homepage' class='ed' size='40' maxlength='40' value='<?=$mb_homepage?>' />
+				</td>
+			</tr>
+			<tr>
+				<th>자기소개</th>
+				<td>
+					<textarea id='mb_profile' name='mb_profile' class='tx' rows='5' cols='75'><?=$mb_profile?></textarea>
+				</td>
+			</tr>
+			
+			<? if($mb_id): ?>
+			<tr>
+				<th>회원가입일</th>
+				<td>
+					<?=$mb_datetime?>&nbsp;
+				</td>
+			</tr>
+			<tr>
+				<th>최근접속일</th>
+				<td>
+					<?=$mb_today_login?>&nbsp;
+				</td>
+			</tr>
+			<tr>
+				<th>IP주소</th>
+				<td>
+					<?=$mb_ip?>&nbsp;
+				</td>
+			</tr>
+			
+			<? if ($use_email_certify): ?>
+			<tr>
+				<th>인증일시</th>
+				<td>
+					<?=$mb_email_certify?> <?=$passive_certify?>
+				</td>
+			</tr>
+			<? endif; ?>
+			
+			<? if($mb_leave_date) : ?>
+			<tr>
+				<th>탈퇴일자</th>
+				<td>
+					<?=date('Y-m-d H:i:s', $mb_leave_date)?>
+				</td>
+			</tr>
+			<? endif; ?>
+			<? endif; ?>
+			
+		</table>
+	</li>
+</ul>
+
+<p class='center bottom'>
+	<input type='submit' id='btn_submit' class='btn' value='  확  인  '/>&nbsp;
+	<input type='button' class='btn' value='  목  록  ' onclick="document.location.href='<?=$path?>/member/lists<?=$qstr?>';"/>
+</p>
+
+</form>
+
+<div id='loading'></div>
+
+<script type='text/javascript'>
+//<![CDATA[
+document.fmember.mb_level.value = '<?=$mb_level?>';
+document.fmember.mb_sex.value = '<?=$mb_sex?>'; 
+
+$(document).ready(function() {
+	$('#mb_birth,#mb_leave_date').datetimepicker({
+		showTimepicker:false
+	});
+
+	$('#fmember').validate({
+		rules: {
+			mb_id: { required:true, reg_mb_id:true },
+			mb_nick: { required:true, reg_mb_nick:true },
+			mb_name: { required:true, minlength:2, hangul:true },
+			mb_password: { required:"input[name='w']:blank", minlength:3 },
+			mb_level: 'required',
+			mb_icon : { accept:'gif' },
+			mb_named : { accept:'gif' }
+		},
+		messages: {
+			mb_id: '아이디 중복확인 결과가 올바르지 않습니다.',
+			mb_nick: '별명 중복확인 결과가 올바르지 않습니다.',
+			mb_name: { required:'이름을 입력하십시오.', minlength:'최소 2자 이상 입력하십시오.' },
+			mb_password: { required:'비밀번호를 입력하십시오.', minlength:'최소 3자 이상 입력하십시오.' },
+			mb_level: '회원 권한을 선택하여 주십시오.',
+			mb_icon: '이미지 파일이 *.gif 형식이 아닙니다.',
+			mb_named: '이미지 파일이 *.gif 형식이 아닙니다.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+		    f.submit();
+		}
+	});
+});
+//]]>
+</script>

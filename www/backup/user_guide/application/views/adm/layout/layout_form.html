@@ -1,0 +1,92 @@
+<form id='fwrite' name='fwrite' method='post' action='<?=$path?>/layout/form'>
+<input type='hidden' name='w'    value='<?=$w?>' />
+<input type='hidden' name='token' value='<?=$token?>' />
+<input type='hidden' name='ly_id' value='<?=$row['ly_id']?>' />
+
+<div id='form_title'>
+	&deg; <b><?=$_TITLE_?></b>
+</div>
+
+<ul id="form_cont">
+	<li class="form_li">
+		<div>
+			<h4>레이아웃 설정</h4>
+			<dl>
+	            <dt>파일명</dt>
+				<dd><input type="text" class="ed" name="ly_file" value="<?=$row['ly_file']?>"/>.html &nbsp;
+					<input type='checkbox' id='ly_hidden' name='ly_hidden' value='1' <?=$row['ly_hidden']?'checked="checked"':''?>/> 숨김
+				</dd>
+	            <dt>이 름</dt>
+				<dd><input type="text" class="ed" name="ly_name" value="<?=$row['ly_name']?>"/></dd>
+	            <dt>CSS 파일</dt>
+				<dd><input type="text" class="ed" name="ly_css" size="40" value="<?=$row['ly_css']?>"/> 콤마(,)로 구분, 확장자('.css')제외, 파일위치 = <?=CSS_DIR?></dd>
+	            <dt>JS 파일</dt>
+				<dd><input type="text" class="ed" name="ly_js" size="40" value="<?=$row['ly_js']?>"/> 콤마(,)로 구분, 확장자('.js')제외, 파일위치 = <?=JS_DIR?></dd>
+			</dl>
+			<h4>컨텐츠 데이터 설정</h4>
+			<dl id="data_list"></dl>
+			<div class="pd10 center"><input type="button" class="btn_simp" value=" + 추가 " onclick="add_data_form();"/></div>
+			<h4>컨텐츠 내용 설정</h4>
+			<dl id="code_form">
+				<dd class="bd0"><?=$editor?></dd>
+				<dd class="dgray">본문출력: {{[_BODY_]}} &nbsp; &nbsp; 외부로그인: {{_OUTLOGIN_}}<br/>변수출력: {{데이터이름}} &nbsp; &nbsp; 배열출력: {{데이터이름['키']}} &nbsp; &nbsp; 다차원배열출력: {{데이터이름['키']['키']...}}</dd>
+			</dl>
+		</div>
+	</li>
+</ul>
+
+<p class='center bottom editor' style="margin-top:30px;">
+	<input type='submit' id='btn_submit' class='btn' value='  확  인  ' />&nbsp;
+	<input type='button' class='btn' value='  목  록  ' onclick="document.location.href='<?=$path?>/layout/lists';"value="1" />
+</p>
+</form>
+
+<div id='loading'></div>
+
+<script type="text/javascript">
+//<![CDATA[
+var beforeUnload = true;
+window.onbeforeunload = function() {
+	if (beforeUnload) return '이 페이지를 벗어나시면 작성 중인 글이 지워집니다.';
+}
+
+$(document).ready(function() {
+	$('#fwrite').validate({
+		rules: {
+			ly_file: { required: true, alpha_dash: true },
+			ly_name: 'required'
+		},
+		messages: {
+			ly_file: { required: '레이아웃 파일명을 입력하세요.' },
+			ly_name: '레이아웃 이름을 입력하세요.',
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+			beforeUnload = false;
+            Editor.save();
+		}
+	});
+
+	<? foreach($dbVars AS $key => $data): ?>
+	add_data_form('<?=$data['dbv_id']?>','<?=$data['dbv_var']?>','<?=$data['dbv_type']?>', '<?=$data['dbv_ref_table']?>', '<?=$data['dbv_ref_id']?>', '<?=$data['resource']['type_name']?>', '<?=$data['resource']['subject']?>');
+	<? endforeach; ?>
+});
+
+var select_cnt = '';
+var cnt = 0;
+var mcnt = 0;
+var banner_option =	'<option value="">선택</option>'+
+					'<? foreach($banners AS $bn){ echo"<option value=\"".$bn['bg_id']."\">".$bn['bg_name']."</option>"; } ?>';
+//]]>
+</script>
+
+<?=validation_errors('<script>alert("','");</script>');?>

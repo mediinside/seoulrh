@@ -1,0 +1,62 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once "../inc/head.php";
+$dep1 = "7";
+$dep2 = "7-1";
+$dep3 = "7-1-1";
+?>
+<style>
+	/* @media screen and (max-width:1023px){
+		img.mt60 {margin-top: 100px;}
+		.m-img {width: 1600px;}
+	} */
+</style>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/center-bnnr1.png" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="wd-1200">
+					<div class="page-location">
+						<div id="btn-box" class="center half">
+							<a href="/center/page01-1.html" class="btn">설립근거</a>
+							<a href="/center/page01-2.html" class="btn bg-green">사업추진체계</a>
+							<a href="/center/page01-3.html" class="btn">사업소개</a>
+							<a href="/center/page01-4.html" class="btn">조직구성</a>
+						</div>
+					</div>
+					<img class="mt60" src="/resource/images/center01.jpg" alt="" style="max-width:100%;">
+					<h3 class="sub-tit mt60 mb30">
+						사업추진체계
+					</h3>
+					<div>
+						<img class="m-img" src="/resource/images/business-map.png" alt="" style="max-width:100%;">
+					</div>
+
+					<div class="mt60 place">
+						<b><img class="mr5" src="/resource/images/map-icon.png" alt="">서울특별시 북부지역</b> 강북구, 광진구, 노원구, 도봉구, 동대문구, 마포구, 서대문구, 성동구, 성북구, 용산구, 은평구, 종로구, 중구 , 중랑구
+					</div>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomInfo.php"; ?>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once "../inc/head.php";
+$dep1 = "5";
+$dep2 = "5-1";
+$dep3 = "5-1-3";
+?>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/donation-bnnr1.jpg" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="wd-1200">
+					<h3 class="sub-tit">
+						자원봉사안내
+					</h3>
+					<ul class="clinic-list">
+						<li>
+							<label for="">자원봉사자 기준</label>
+							<div class="text">
+								<ul class="green-middot">
+									<li>자발적인 의사를 갖고 적극적인 자세로 봉사활동을 하고자 하는 자</li>
+									<li>주1회 이상, 3개월 이상 정기적이고 지속적으로 활동 유지가 가능한 자</li>
+									<li>본원의 자원봉사 활동 규정을 성실히 준수할 수 있는 자</li>
+									<li>중·고등학생의 경우 방학 중에만 가능하며 20시간 이상 봉사가 가능한 자</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<label for="">자원봉사 신청 절차</label>
+							<div class="text">
+								<ul class="img-list">
+									<li>
+										<img src="/resource/images/self-heal-01.png" alt="">
+										<p>
+											<small>사회복지팀 전화 접수</small>
+										</p>
+									</li>
+									<li>
+										<img src="/resource/images/self-heal-02.png" alt="">
+										<p>
+											<small>활동 분야/시간/시기 조율</small>
+										</p>
+									</li>
+									<li>
+										<img src="/resource/images/self-heal-03.png" alt="">
+										<p>
+											<small>오리엔테이션 참석</small>
+										</p>
+									</li>
+									<li>
+										<img src="/resource/images/self-heal-04.png" alt="">
+										<p>
+											<small>
+												자원봉사활동 시작
+											</small>
+										</p>
+									</li>
+									<li>
+										<img src="/resource/images/self-heal-05.png" alt="">
+										<p>
+											<small>
+												필요 시 활동인증서 발급<br>
+												(VMS 홈페이지를 통해 실적 등록함)
+											</small>
+										</p>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<label for="">활동시간</label>
+							<div class="text">
+								<div class="board-list border-t" style="padding:0;">
+									<table class="text-center">
+										<tr>
+											<th class="bg-gray">평일(09:00~12:00)</th>
+											<td>3시간</td>
+										</tr>
+										<tr>
+											<th class="bg-gray">평일(13:00~17:00)</th>
+											<td>4시간</td>
+										</tr>
+										<tr>
+											<th class="bg-gray">점심시간(12:00~13:00)</th>
+											<td>1시간</td>
+										</tr>
+									</table>
+								</div>
+								<p class="color-green">(※ VMS 활동인증 규정에 따라 1일 최대 4시간 인정)</p>
+							</div>
+						</li>
+						<li class="border-t">
+							<label for="">자원봉사 문의</label>
+							<div class="text">
+								<a href="tel:0260203117" class="gift-box center mb60">
+									<img src="/resource/images/headset.png" alt="">
+									<div class="text" style="line-height: 0.7;">
+										<small>전화번호</small><br>
+										02-6020-<span class="color-green">3117</span>
+									</div>
+								</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+</body>
+
+</html>

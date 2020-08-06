@@ -1,0 +1,48 @@
+<form id='fauth' name='fauth' method='post' action='<?=RT_PATH?>/member/login/guest_in'>
+<input type='hidden' name='url' value='<?=$url?>'/>
+
+<div id='auth_wrap'>
+	<ul>
+		<li>
+			<label for='od_no'>주문번호</label>
+			<input type='text' id='od_no' name='od_no' class='ed imeDis' maxlength='20' size='22' />
+		</li>
+		<li>
+			<label for='od_password'>비밀번호</label>
+			<input type='password' id='od_password' name='od_password' class='ed imeDis' maxlength='20' size='22' onkeypress='javascript:check_capslock(event, this);'/>
+		</li>
+		<li><input type='submit' value="로그인" /></li>
+	</ul>	
+</div>
+</form>
+
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#fauth').validate({
+		rules: {
+			od_no: { required:true, minlength:20, maxlength:20, alphanumunder:true },
+			od_password: 'required'
+		},
+		messages: {
+			od_no: { required:'주문번호를 입력하십시오.', minlength:'주문번호가 올바르지 않습니다.', maxlength:'주문번호가 올바르지 않습니다.' },
+			od_password: '비밀번호를 입력하십시오.'
+		},
+		onfocusout: false,
+		onkeyup: false, 
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+			$('#loading').show();
+		    f.submit();
+		}
+	});
+	
+	<?=$alt_script?>
+});
+//]]>
+</script>

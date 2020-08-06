@@ -1,0 +1,16 @@
+<form name='search' method='post' action='<?=RT_PATH?>/search' onsubmit='return mSearch(this);'>
+	<?=$board_select?>
+	<p><input type='search' id='stx' name='stx' maxlength='20' value='<?=$text_stx?>'/></p>
+	<p id='submit'><input type='submit' value='검색'/></p>
+</form>
+
+<ul id='search_list'>
+	<? foreach ($list as $o): ?>
+	<li>
+		<a href='<?=$o['href']?>' class='subject'>
+		<? if ($o['wr_is_comment']): ?>[덧글]<? endif; ?><?=$o['wr_subject']?></a>
+		<a href='<?=$o['href']?>' target='_blank'>[새창]</a> <?=$o['wr_name']?> <?=$o['wr_datetime']?>
+		<br/><?=$o['wr_content']?>
+	</li>
+	<? endforeach; ?>
+</ul>

@@ -1,0 +1,68 @@
+<ul id='list_head' class='pT10 pL10 pR10'>
+	<li>
+		<?=$board_select?>
+	</li>
+	
+	<li class='right'>
+        <img src='<?=BO_IMG_PATH?>/ico_total.gif' title='총게시물' alt='총게시물'/>
+        <span style='color:#888888;'><b>Total <?=$total_count?></b></span>
+    </li>
+    
+</ul>
+
+<ul id='search_list'>
+	<li>
+		<div id='list_cont'>
+			<table width='100%' cellpadding='0' cellspacing='0'>
+				<colgroup>
+					<col class='board'/>
+					<col class='subject'/>
+					<col class='link'/>
+					<col class='name'/>
+					<col class='date'/>
+					<col class='hit'/>
+				</colgroup>
+				<tr class='title'>
+					<th>게시판</th>
+					<th>제 목</th>
+					<th>원글</th>
+					<th>작성자</th>
+					<th>날짜</th>
+					<th class='brd_right'>조회</th>
+				</tr>
+				
+				<!-- 목록 -->
+				<? foreach ($list AS $o): ?>
+				<tr class='row'>
+					<td rowspan='1' align='center'>
+						<strong><a href='<?=RT_PATH?>/board/<?=$o['bid']?>/lists' target='_blank'><?=$board_names[$o['bid']]?></strong></a>
+					</td>
+				    <td class='subject'>
+				        <?=$o['ico_reply']?>
+						<a href='#none' onclick='sel_postlink("<?=$board_names[$o['bid']]?>","<?=$o['wr_subject']?>","<?=$o['bid']?>","<?=$o['wr_id']?>");'><?=$o['wr_subject']?></a>
+						<? if ($o['comment_cnt']): ?><span class='comt'><?=$o['comment_cnt']?></span><? endif; ?>
+						
+						<?=$o['ico_secret'].' '.$o['ico_image'].' '.$o['ico_movie'].' '.$o['ico_file']?>
+				    </td>
+				    <td class='link'><input type='button' class='btn_simp' onclick='win_open("<?=$o['href']?>","","");' value='보기'></td>
+				    <td class='name'><?=$o['wr_name']?></td>
+				    <td class='date'><?=$o['wr_datetime']?></td>
+				    <td class='hit'><?=$o['wr_hit']?></td>
+				</tr>
+				<? endforeach; ?>
+			</table>
+		</div>
+	</li>
+</ul>
+
+<div id="pagination">
+<?=$paging?>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#board_select').change(function(){
+		location.href = rt_path + '/search/postlink/bid/' + $(this).val();
+	});
+});
+</script>

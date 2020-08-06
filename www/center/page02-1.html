@@ -1,0 +1,241 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once "../inc/head.php";
+$dep1 = "7";
+$dep2 = "7-1";
+$dep3 = "7-1-2";
+?>
+<style>
+	.btn-group:not(.m-menu-info) {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 30px 0 0;
+	}
+
+	.btn-group:not(.m-menu-info):after {
+		display: none;
+	}
+
+	.btn-group:not(.m-menu-info) .btn-sm {
+		width: 268px;
+		margin: 0 20px;
+	}
+
+	.btn-group:not(.m-menu-info) .btn-sm img {
+		margin-right: 10px;
+	}
+
+	#btn-box a {
+		width:auto;
+	}
+
+	@media screen and (max-width:1023px) {
+		.m-img {width: 1600px !important;}
+		.over-x {overflow-x: auto;}
+		.btn-group:not(.m-menu-info) {
+			flex-flow: column;
+		}
+
+		.btn-group:not(.m-menu-info) .btn-sm {
+			width: 100%;
+			margin: 0 0 15px;
+		}
+
+		.btn-group:not(.m-menu-info) .btn-sm img {
+			width: 20px !important;
+		}
+
+		img.mt60 {
+			margin-top: 140px !important;
+		}
+
+		table.bordered td>img {
+			height: 40px;
+			margin-top: -8px;
+			margin-right: 10px;
+		}
+	}
+</style>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/center-bnnr2.png" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="wd-1200">
+					<div class="page-location">
+						<div id="btn-box" class="center half">
+							<a href="/center/page02-1.html" class="btn bg-green">장애인건강보건관리사업</a>
+							<a href="/center/page02-2.html" class="btn">여성장애인 모성보건사업</a>
+							<a href="/center/page02-3.html" class="btn">보건의료인력 및 <br class="mb-show">장애인·가족 교육</a>
+							<a href="/center/page02-4.html" class="btn">건강검진/진료/재활 등 <br class="mb-show">의료서비스 제공</a>
+						</div>
+					</div>
+					<img class="mt60" src="/resource/images/center02.jpg" alt="" style="max-width:100%;">
+					<h3 class="sub-tit mt60">
+						장애인건강보건관리사업
+					</h3>
+					<ul class="clinic-list">
+						<li>
+							<label for="">장애인건강보건사례관리</label>
+							<div class="text">
+								<div class="board-list" style="padding:0;">
+									<table class="bordered">
+										<colgroup>
+											<col style="width:15%;">
+											<col style="width:20%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th class="bg-gray text-center">대상</th>
+												<td colspan="2">보건·의료·복지에 대한 다양하고 복합적 욕구를 가진 장애인 및 예비장애인</td>
+											</tr>
+											<tr>
+												<th class="bg-gray text-center">주요내용</th>
+												<td colspan="2">장애인의 건강관리를 위한 지역사회 공공·민간 자원 통합적 연계 서비스 지원</td>
+											</tr>
+											<tr>
+												<th rowspan="2" class="bg-gray text-center">신청절차</th>
+												<td>당사자 신청방법</td>
+												<td>
+													<img src="/resource/images/tell-call.png" alt="">
+													<span class="color-green">02-6020-3124~5</span>
+												</td>
+											</tr>
+											<tr>
+												<td>기관 신청방법</td>
+												<td>
+													신청 가능 기관 : 장애 관련 보건, 의료, 복지 분야 전문기관<br>
+													- 사례 의뢰방법 : 이메일(seoulnhc@gmail.com) 또는 문서24 통한 의뢰서 발송
+													<div class="btn-group mt5">
+														<a href="/file/지역사회서비스의뢰서.hwp" class="btn-sm bg-green mb15">
+															<img src="/resource/images/down.png" alt="" style="width: 13px;">
+															<span class="mb-hide">지역사회서비스 </span>의뢰서 다운로드
+														</a>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<th rowspan="2" class="bg-gray text-center">문의</th>
+												<td rowspan="2">장애당사자 주소지</td>
+												<td>
+													마포구, 서대문구, 성북구, 용산구, 은평구, 종로구, 중구<br>
+													<span class="color-black">담당자 연락처 </span><span class="color-green">02-6020-3125</span>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													강북구, 광진구, 노원구, 도봉구, 동대문구, 성동구, 중랑구<br>
+													<span class="color-black">담당자 연락처 </span><span class="color-green">02-6020-3124</span>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</li>
+						<li style="border:none;">
+							<label for="">
+								<span class="btn-sm bg-green" style="cursor: default;background-color: #6ec700;">사례관리 지원 절차</span>
+							</label>
+							<div class="text over-x">
+								<img class="m-img" src="/resource/images/business-map2.png" alt="">
+							</div>
+						</li>
+						<li>
+							<label for="">민관협력체계 구축</label>
+							<div class="text">
+								<ul class="green-middot">
+									<li>기존 지역사회 내, 장애인의 건강관리 관련 자원 분석을 통해 실질적으로 장애인의 건강권 증진에 필요한 자원에 대한 집중 개발</li>
+									<li>
+										기존 의료, 복지 분야 자원 분석 및 장애인 건강관리에 필요한 자원에 대한 욕구 파악을 통해 지역사회 자원 개발과 관련 기관과의 협력 구축
+									</li>
+									<li>
+										서울특별시 북부지역 중심의 장애인 관련 보건의료복지기관 협력체계 구축
+									</li>
+								</ul>
+								<img class="mt30 mb-hide" src="/resource/images/business-map4.png" alt="" style="max-width:100.7%;">
+								<img class="mt30 mb-show" src="/resource/images/business-map4-m.png" alt="" style="max-width:100%;">
+							</div>
+						</li>
+						<li>
+							<label for="" style="width: 100%;">보건소 CBR(지역사회중심재활)사업 지원</label>
+						</li>
+						<li style="padding-top: 0;border:0;">
+							<label for="">
+								<span class="btn-sm bg-green" style="cursor: default;background-color: #6ec700;">사례지원</span>
+							</label>
+							<div class="text">
+								초기 평가 및 계획 수립, 자원 연계(서비스 연계) 지원
+								<div class="over-x">
+									<img class="mt30 m-img" src="/resource/images/business-map3.png" alt="">
+								</div>
+							</div>
+						</li>
+						<li style="border:none;">
+							<label for="">
+								<span class="btn-sm bg-green" style="cursor: default;background-color: #6ec700;">CBR사업 운영 지원</span>
+							</label>
+							<div class="text">
+								<ul class="green-middot">
+									<li>대상자 등록관리 지원</li>
+									<li>필수 프로그램 구성 지원</li>
+									<li>지역 보건소와 건강보건기관 협력 구축 지원</li>
+									<li>지역사회재활협의체 운영 지원</li>
+									<li>지역별 보건의료 통계 제공</li>
+									<li>보건복지 지역자원 정보 제공</li>
+									<li>보건소 간담회 정례화 등</li>
+								</ul>
+							</div>
+						</li>
+						<li style="border:none;">
+							<label for="">
+								<span class="btn-sm bg-green" style="cursor: default;background-color: #6ec700;">교육사업 지원</span>
+							</label>
+							<div class="text">
+								장애인 및 가족 교육사업 지원, 교육 강사풀 공유 등
+							</div>
+						</li>
+						<li style="border:none;">
+							<label for="">
+								<span class="btn-sm bg-green" style="cursor: default;background-color: #6ec700;">문의전화</span>
+							</label>
+							<div class="text">
+								<div class="board-list border-t" style="padding:0;">
+									<table class="text-center">
+										<tbody>
+											<tr>
+												<th class="bg-gray">CBR 사업 문의</th>
+												<td class="color-green">02-6020-3127</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomInfo.php"; ?>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+</body>
+
+</html>

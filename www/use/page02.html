@@ -1,0 +1,177 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once "../inc/head.php";
+$dep1 = "2";
+$dep2 = "2-1";
+$dep3 = "2-1-2";
+?>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/use-bnnr2.png" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="wd-1200">
+					<h3 class="sub-tit">외래진료안내</h3>
+					<div class="text-box">
+						<p>
+							<b>
+								외래로 환자가 내원하게 되면 병력조사, 현재의 신경학적 상태 및 기능적 상태 등을 평가하여<br>
+								재활치료의 목표를 세우고 각 환자의 특성에 따라 필요한 치료적 계획을 세우게 됩니다.
+							</b>
+						</p>
+						<p>
+							재활치료란 전인격적인 한 사람을 대상으로 하기에 장애로 인해 영향을 받는 삶의 여러 가지 영역을 세밀한 눈으로 평가하여 각 사람의 필요에 따라 포괄적이면서도 섬세한 개인별 맞춤치료를
+							계획하게 됩니다. 외래를 통한 재활치료 프로그램은 물리치료, 작업치료, 통증치료, 언어치료, 재활심리치료 및 상담, 재활의료사회복지 서비스 등 각 환자에게 필요한 모든 영역의 전문재활치료
+							가 있으며 환자와 가족을 위한 부모교육 등 가족이 재활치료에 적극 동참할 수 있도록 교육프로그램을 제공하고 있습니다. 외래로 치료하는 환자의 경우, 일반적으로 3개월에 한 번씩 외래로
+							내원하여 재평가를 시행하고 치료 경과를 확인하고 향후 치료방향을 재조정하고 상담을 진행합니다.
+						</p>
+					</div>
+
+					<h3 class="sub-tit mt60">외래진료 절차 안내</h3>
+					<ul class="clinic-list">
+						<li>
+							<label for="">초진환자</label>
+							<div class="text">
+								<ul class="green-middot">
+									<li>진료신청서를 작성하여 신분증과 신청서를 접수·수납창구에 제시하여 접수합니다.</li>
+									<li>진료가 끝나면 원무과 수납 후 영수증과 원외처방전을 수령한 후 간호사의 안내에 따라 해당 검사실로 가시면 됩니다.</li>
+								</ul>
+								<ul class="step-list">
+									<li>
+										<img src="/resource/images/step-01.png" alt="">
+										<p>STEP 1</p>
+										<p>
+											진료신청서, 장애복지
+											카드, 건강보험증 지참
+										</p>
+									</li>
+									<li class="arrow">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-02.png" alt="">
+										<p>STEP 2</p>
+										<p>접수</p>
+									</li>
+									<li class="arrow mb-hide">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-03.png" alt="">
+										<p>STEP 3</p>
+										<p>진료</p>
+									</li>
+									<li class="arrow">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-04.png" alt="">
+										<p>STEP 4</p>
+										<p>수납</p>
+									</li>
+									<li>
+										<img src="/resource/images/step-05.png" alt="">
+										<p>STEP 5</p>
+										<p>투약 및 검사</p>
+									</li>
+								</ul>
+								<b class="color-green">※ 장애인의 경우 복지카드를 제시해주세요.</b>
+								<ul class="green-middot">
+									<li>의료급여환자 : 의료급여의뢰서 제시</li>
+									<li>산재보험환자 : 산재요양승인서 제시</li>
+									<li>자동차보험환자 : 진료비 지불 보증서 제시</li>
+									<li>입원상담 : 소견서 제시</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<label for="">재진환자</label>
+							<div class="text">
+								<ul class="green-middot">
+									<li>접수수납처에 진찰권을 제시한 후 해당 진료과에 접수합니다.</li>
+									<li>진료가 끝나면 접수·수납창구에서 수납 후 영수증과 원외처방전을 수령한 후 간호사의 안내에 따라 해당 검사실로 가시면 됩니다.</li>
+								</ul>
+								<ul class="step-list">
+									<li>
+										<img src="/resource/images/step-01.png" alt="">
+										<p>STEP 1</p>
+										<p>
+											진료카드 지참
+										</p>
+									</li>
+									<li class="arrow">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-02.png" alt="">
+										<p>STEP 2</p>
+										<p>접수</p>
+									</li>
+									<li class="arrow mb-hide">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-03.png" alt="">
+										<p>STEP 3</p>
+										<p>진료</p>
+									</li>
+									<li class="arrow">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-04.png" alt="">
+										<p>STEP 4</p>
+										<p>수납</p>
+									</li>
+									<li>
+										<img src="/resource/images/step-05.png" alt="">
+										<p>STEP 5</p>
+										<p>투약 및 검사</p>
+									</li>
+								</ul>
+								<p class="color-green" style="font-weight: 500;">
+									※ 보호자 내원 진료 : 보호자가 내원하여 약 처방 전 진료 시 환자 신분증, 보호자 신분증, 가족관계증명서(또는 주민등록등본), 처방전 대리수령 신청서 지참
+								</p>
+								<a href="/file/처방전_대리수령_신청서_서식.hwp" class="btn bg-green mt30">처방전 대리수령신청서 양식 다운로드</a>
+								<div class="gift-wrap mt60">
+									<a href="tel:0260203100" class="gift-box center mb60">
+										<img src="/resource/images/headset.png" alt="" width="75">
+										<div class="text" style="line-height: 0.7;">
+											<small>외래진료 예약 문의</small><br>
+											02-6020-<span class="color-green">3100</span>
+										</div>
+									</a>
+									<a href="tel:0260203015" class="gift-box center mb60">
+										<img src="/resource/images/fax.png" alt="" width="75">
+										<div class="text" style="line-height: 0.7;">
+											<small>외래진료 팩스</small><br>
+											02-6020-<span class="color-green">3015</span>
+										</div>
+									</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+</body>
+
+</html>

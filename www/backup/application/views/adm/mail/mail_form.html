@@ -1,0 +1,97 @@
+<form id='fwrite' name='fwrite' method='post' action='<?=$path?>/mail/form'>
+<input type='hidden' name='w'     value='<?=$w?>'/>
+<input type='hidden' name='ma_id' value='<?=$row['ma_id']?>'/>
+<input type='hidden' name='token' value='<?=$token?>'/>
+
+<h2><?=$_TITLE_?></h2>
+
+<ul id="form_cont">
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 회원 메일 발송</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+			<tr>
+				<th>스 킨</th>
+				<td>
+					<select name="ma_skin">
+						<option value="">선택</option>
+						
+						<? foreach($skin_list AS $skin): ?>
+						<option value="<?=$skin['ms_id']?>" <?=$skin['ms_id']==$row['ma_skin']?'selected="selected"':'';?>><?=$skin['ms_name']?></option>
+						<? endforeach; ?>
+						
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>메일 제목</th>
+				<td><input type='text' id='ma_subject' name='ma_subject' class='ed' size="97" value='<?=$row['ma_subject']?>'/></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<?=$editor?>
+					<p class="dgray">[이름], [별명], [회원아이디], [이메일], [생일], [사이트명], [사이트주소]<br/>
+			   		위와 같이 HTML 코드에 삽입하면 해당 내용에 맞게 변환하여 메일 발송합니다.</p>
+				</td>
+			</tr>
+			
+			<? if($w) : ?>
+			<tr>
+				<th>등록일</th>
+				<td><?=$row['ma_regdate']?></td>
+			</tr>
+			<tr>
+				<th>최종수정일</th>
+				<td><?=$row['ma_mdydate']?></td>
+			</tr>
+			<? endif; ?>
+			
+		</table>
+	</li>
+</ul>
+
+<p class="center bottom">
+	<input type='submit' id='btn_submit' class='btn' value='  확  인  '/>&nbsp;
+	<input type='button' class='btn' value='  목  록  ' onclick="document.location.href='<?=$path?>/mail/lists';"/>
+</p>
+
+</form>
+
+<div id='loading'></div>
+
+<script type='text/javascript'>
+//<![CDATA[
+var beforeUnload = true;
+window.onbeforeunload = function() {
+	if (beforeUnload) return '이 페이지를 벗어나시면 작성 중인 글이 지워집니다.';
+}
+
+$(document).ready(function() {
+	$('#fwrite').validate({
+		rules: {
+			ma_skin: 'required',
+			ma_subject: 'required',
+			ma_content: 'required'
+		},
+		messages: {
+			ma_skin: '스킨을 선택하십시오.',
+			ma_subject: '제목을 입력하십시오.',
+			ma_content: '내용을 입력하십시오.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+			beforeUnload = false;
+            Editor.save();
+		}
+	});
+});
+//]]>
+</script>

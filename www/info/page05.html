@@ -1,0 +1,91 @@
+<?php
+//error_reporting(E_ALL);
+//ini_set("display_errors", 1);
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once $GP -> INC_WWW . '/count_inc.php';
+include_once "../inc/head.php";
+
+include_once($GP->CLS."class.list.php");
+include_once($GP -> CLS."/class.cooperative.php");
+include_once($GP->CLS."class.button.php");
+
+$C_ListClass 	= new ListClass;
+$C_cooperative 		= new cooperative;
+$C_Button 		= new Button;
+
+$args = array();
+//	$args['show_row'] = 9;
+
+//$args['h_idx'] = $h_idx;
+$args['cate1'] = "B";
+$data = "";
+$data = $C_cooperative->cooperative_List(array_merge($_GET,$_POST,$args));
+$data_list 		= $data['data'];
+$data_list_cnt 	= count($data_list);
+
+$dep1 = "1";
+$dep2 = "1-1";
+$dep3 = "1-1-5";
+
+
+//echo $data_list_cnt;
+?>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/info-bnnr5.jpg" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="wd-1200">
+					<h3 class="sub-tit">
+						협력병원
+					</h3>
+					<ul id="collaboCorp">
+                    <?php
+                        $dummy = 1;
+                        for ($i = 0 ; $i < $data_list_cnt ; $i++) {
+                            $cp_name 		= $data_list[$i]['cp_name'];
+                            $cp_img 			= $data_list[$i]['cp_img'];
+                            $cp_link 			= $data_list[$i]['cp_link'];
+
+
+                            $img_src = "";
+                            if($cp_img != '') {
+                                $img_src = "<img src='" . $GP -> UP_cooperative_URL . $cp_img . "' alt='' />";
+                            }else{
+                                $img_src = "<img src='/images/no_image.jpg' alt='' />";
+                            }
+
+                    ?>
+                        <li>
+							<a href="<?=$cp_link?>" target="_blank">
+								<span class="logo"> <?=$img_src?></span>
+								<span class="name">
+									 <?=$cp_name?>
+								</span>
+							</a>
+						</li>
+                    <? } ?>
+					</ul>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+</body>
+
+</html>

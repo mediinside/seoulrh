@@ -1,0 +1,62 @@
+<div class='wrapper'>
+	<div class='header'>
+		<h1>사진 첨부</h1>
+	</div>
+	<div class='progressWrapper'>
+		<dl class='alert'>
+		    <dt>업로드 진행 상태를 확인하세요.</dt>
+	        <dd>
+	        	<div id='divStatus' style='clear:both;'>0개 업로드 완료</div>
+	            <div id='swfuProgress' style='height:194px;overflow-y:auto;'></div>
+	            <div id='buttonWrap' style='margin-left:0;'>
+	            	<span id='swfuButton'></span>
+	            </div>
+	            <div>
+	            	<input id='btnCancel' type='button' value='업로드 취소' onclick='swfu.cancelQueue();' disabled='disabled'/>
+	            </div>
+	        </dd>
+		</dl>
+	</div>
+	<div class='footer'>
+		<p><a href='#' onclick='closeWindow();' title='닫기' class='close'>닫기</a></p>
+		<ul>
+			<li class='submit'><a href='#' onclick='done();' title='등록' class='btnlink'>등록</a> </li>
+			<li class='cancel'><a href='#' onclick='closeWindow();' title='취소' class='btnlink'>취소</a></li>
+		</ul>
+	</div>
+</div>
+
+<script type='text/javascript' src='<?=EDT_DIR?>/js/popup.js'></script>
+<script type='text/javascript'>
+//<![CDATA[
+var _mockdata = new Array();
+var phpsessid = '<?=$this->session->userdata('session_id')?>';
+var upload_ext = '<?=$upload_ext?>';
+var upload_size = <?=$upload_size?>;
+
+function done() {
+    if (typeof(execAttach) == 'undefined')
+        return;
+	
+    for (var i=0; i<_mockdata.length; i++) {
+        execAttach(_mockdata[i]);
+    }
+	closeWindow();
+}
+
+function initUploader(){
+    var _opener = PopupUtil.getOpener();
+    if (!_opener) {
+        alert('잘못된 경로로 접근하셨습니다.');
+        closeWindow();
+        return;
+    }
+
+	importScript(['swfu/settings']);
+
+    var _attacher = getAttacher('image', _opener);
+    registerAction(_attacher);
+}
+initUploader();
+//]]>
+</script>

@@ -1,0 +1,66 @@
+<link rel='stylesheet' href='<?=$IMG_PATH?>/style.css' type='text/css'/>
+
+<form id='flogin' name='flogin' method='post' action='/member/login/in'>
+<input type='hidden' name='url' value='<?=$url?>'/>
+
+<div id='member_wrap2' style="background:url(<?=$IMG_PATH?>/login_img.gif) left bottom no-repeat;">
+  <div id='btn'><input type='image' src='<?=$IMG_PATH?>/btn_login.gif'/></div>
+  <div id='item'>
+	<ul>
+		<li><img src='<?=$IMG_PATH?>/img_id.gif' alt='아이디' align="absmiddle"/><input type='text' id='mb_id' name='mb_id' class='ed imeDis' maxlength='20' size='18' value='<?=$reId?>' style="width:150px; ime-mode:disabled;"/></li>
+		<li>
+			<img src='<?=$IMG_PATH?>/img_pw.gif' alt='비밀번호' align="absmiddle" style="margin:5px 0px 10px 0px"/><input type='password' id='mb_password' name='mb_password' class='ed' maxlength='20' size='18' style="width:150px;" onkeypress='javascript:check_capslock(event, this);'/>
+        	<div id="show_capslock"></div>
+		</li>
+		<li style="margin-left:57px;"><input type='checkbox' name='reId' value='1' <?=$chk_reId?>/><img src='<?=$IMG_PATH?>/t_idsave.gif' alt='아이디 저장하기' /></li>
+	</ul>
+  </div>  
+</div>
+
+<div id='memberbtn'>
+<a href='<?=RT_PATH?>/member/join' onfocus="this.blur()"><img src="<?=$IMG_PATH?>/btn_join.gif" alt="회원가입" style="margin-right:40px;"></a><a href='<?=RT_PATH?>/member/forget_idpwd' onfocus="this.blur()"><img src="<?=$IMG_PATH?>/btn_find.gif" alt="아이디/비밀번호찾기"></a>
+<br><br><br><br>
+</div>
+
+</form>
+
+<!-- 쇼핑몰 비회원 인증 -->
+<?=$guest_login?>
+
+<div id='loading'></div>
+
+<script type='text/javascript' src='<?=JS_DIR?>/capslock.js'></script>
+<script type="text/javascript" src='<?=JS_DIR?>/jvalidate.js'></script>
+<script type="text/javascript" src='<?=JS_DIR?>/jvalid_ext.js'></script>
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#flogin').validate({
+		rules: {
+			mb_id: { required:true, minlength:4, alphanumunder:true },
+			mb_password: 'required'
+		},
+		messages: {
+			mb_id: { required:'아이디를 입력하십시오.', minlength:'최소 4자 이상 입력하십시오.' },
+			mb_password: '비밀번호를 입력하십시오.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+			$('#loading').show();
+		    f.submit();
+		}
+	});
+
+	$('#mb_id').focus();
+	
+	<?=$alt_script?>
+});
+//]]>
+</script>

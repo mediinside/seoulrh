@@ -1,0 +1,149 @@
+<p height="25"><img src="/images/myroom/search_title01.jpg" width="107" height="16" alt="아이디 찾기" /></p>	
+<form id='fid_forget' name='fidp_forget' method='post' action='<?=RT_PATH?>/member/forget_idpwd/step2'>
+<input type='hidden' name='w' value='idpwd'/>	
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="fidpw">
+		<colgroup>
+			<col width="150" />
+			<col >
+		</colgroup>
+		<tr>
+		  <th>이름</th>
+		  <td><input type='text' id='mb_name' name='mb_name' maxlength='10' class="box" style="width:150px"/></td>
+		</tr>
+		<tr>
+		  <th>이메일</th>
+		  <td><input type='text' id='mb_email' name='mb_email' maxlength='50' class="box" style="width:300px"/></td>
+		</tr>
+	  </table>
+	<p class="right" style="padding-top:10px;"><input type="image" src="/images/btn_ok.jpg"/> <a href="#none" onclick="history.go(-1);"><img src="/images/btn_cancel.jpg" width="61" height="28"></a></p>
+</form>
+
+
+<p height="25"><img src="/images/myroom/search_title02.jpg" width="107" height="16" alt="패스워드찾기" /></p>	
+<form id='fpwd_forget' name='fpwd_forget' method='post' action='<?=RT_PATH?>/member/forget_idpwd/step2'>
+<input type='hidden' name='w' value='idpwd'/>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="fidpw">
+		<colgroup>
+			<col width="150" />
+			<col >
+		</colgroup>
+		<tr>
+		  <th>회원아이디</th>
+		  <td><input type='text' id='mb_id' name='mb_id' maxlength='20' class="box" style="width:150px" value='<?=$mb_id?>'/></td>
+		</tr>
+		<tr>
+		  <th>이름</th>
+		  <td><input type='text' id='mb_name' name='mb_name' maxlength='10' class="box" style="width:150px"/></td>
+		</tr>
+		<tr>
+		  <th>이메일</th>
+		  <td><input type='text' id='mb_email' name='mb_email' maxlength='50' class="box" style="width:300px"/></td>
+		 </tr>
+	</table>
+	<p class="right" style="padding-top:10px;"><input type="image" src="/images/btn_ok.jpg"/> <a href="#none" onclick="history.go(-1);"><img src="/images/btn_cancel.jpg" width="61" height="28"></a></p>
+</form>
+	
+<script type="text/javascript" src="<?=JS_DIR?>/jvalidate.js"></script>
+<script type="text/javascript" src="<?=JS_DIR?>/jvalid_ext.js"></script>
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#fid_forget').validate({
+		rules: {
+			mb_name: { required:true, minlength:2, hangul:true },
+			<? if ($use_jumin): ?>
+			mb_jumin: { required:true, jumin:true }
+			<? else: ?>
+			mb_email: { required:true, email:true }
+			<? endif; ?>
+		},
+		messages: {
+			mb_name: { required:"이름을 입력하십시오.", minlength:"최소 2자 이상 입력하십시오." },
+			<? if ($use_jumin): ?>
+			mb_jumin: { required:"주민등록번호를 입력하십시오." }
+			<? else: ?>
+			mb_email: { required:"이메일을 입력하십시오.", email:"올바른 이메일 형식이 아닙니다." }
+			<? endif; ?>
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+			var formData = $("#fid_forget").serialize();
+			$.ajax({
+				type: "POST",
+				url: "<?=RT_PATH?>/member/forget_idpwd/ajax_check_id",
+				cache: false,
+				data: formData,
+				success: function(jsonData, status) {
+					var data = $.parseJSON(jsonData);
+					switch(data.result) {
+						case "000" :
+							f.submit();
+							break;
+						default :
+							alert(data.msg);
+							return false;
+							break;		
+					}
+				}
+			});
+		}
+	});
+	$('#fpwd_forget').validate({
+		rules: {
+			mb_id : { required: "#mb_id:enabled", alphanumunder:true },
+			mb_name: { required:true, minlength:2, hangul:true },
+			<? if ($use_jumin): ?>
+			mb_jumin: { required:true, jumin:true }
+			<? else: ?>
+			mb_email: { required:true, email:true }
+			<? endif; ?>
+		},
+		messages: {
+			mb_id: { required: "아이디를 입력하십시오." },
+			mb_name: { required:"이름을 입력하십시오.", minlength:"최소 2자 이상 입력하십시오." },
+			<? if ($use_jumin): ?>
+			mb_jumin: { required:"주민등록번호를 입력하십시오." }
+			<? else: ?>
+			mb_email: { required:"이메일을 입력하십시오.", email:"올바른 이메일 형식이 아닙니다." }
+			<? endif; ?>
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+			var formData = $("#fpwd_forget").serialize();
+			$.ajax({
+				type: "POST",
+				url: "<?=RT_PATH?>/member/forget_idpwd/ajax_check_id",
+				cache: false,
+				data: formData,
+				success: function(jsonData, status) {
+					var data = $.parseJSON(jsonData);
+					switch(data.result) {
+						case "000" :
+							f.submit();
+							break;
+						default :
+							alert(data.msg);
+							return false;
+							break;		
+					}
+				}
+			});
+		}
+	});
+});
+//]]>
+</script>

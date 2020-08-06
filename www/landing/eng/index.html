@@ -1,0 +1,575 @@
+<?php
+$_SERVER['DOCUMENT_ROOT']   = "/home1/seoulrh/www" ;
+include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+include_once $GP -> INC_WWW . '/count_inc.php';
+include_once "inc/head.php";
+include_once $GP -> HOME."main_lib/main_proc.php";
+
+//Check Mobile
+$mAgent = array("iPhone","iPod","Android","Blackberry",
+    "Opera Mini", "Windows ce", "Nokia", "sony" );
+$chkMobile = "PC";
+for($i=0; $i<sizeof($mAgent); $i++){
+    if(stripos( $_SERVER['HTTP_USER_AGENT'], $mAgent[$i] )){
+        $chkMobile = "mobile";
+        break;
+    }
+}
+
+$Slide_C = Main_Slide('C',$chkMobile,"eng"); //메인슬라이드
+
+
+
+?>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Seoul Rehabilitation Hospital(SRH)</title>
+	<meta id="viewport" name="viewport" content="width=720px">
+	<link rel="stylesheet" href="/resource/css/common.css">
+	<link rel="stylesheet" href="/resource/css/landing.css">
+	<link rel="stylesheet" href="/resource/css/swiper.min.css">
+	<!-- <script src="/resource/js/jquery-1.12.2.min.js"></script> -->
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script src="/resource/js/swiper.min.js"></script>
+
+</head>
+
+<body>
+	<div id="wrap">
+		<header>
+			<div class="inner">
+				<h1 class="logo">
+					<a href="#none">
+						<img class="none" src="/resource/images/landing-logo.png" alt="Seoul Rehabilitation Hospital">
+						<img class="fix" src="/resource/images/landing-logo-c.png" alt="Seoul Rehabilitation Hospital">
+					</a>
+				</h1>
+				<div class="menu">
+					<div class="header-lang">
+						<a href="#none"></a>
+						<div class="lang-ch">
+							<a href="/index.html">KOR</a>
+							<a href="/landing/chn/index.html">CHN</a>
+						</div>
+					</div>
+					<a href="#none">menu</a>
+				</div>
+			</div>
+		</header>
+		<ul id="nav">
+			<li><a href="#none" onclick="fnMove('mission')">Mission & Vision</a></li>
+			<li><a href="#none" onclick="fnMove('care')">Total Care of SRH</a></li>
+			<li><a href="#none" onclick="fnMove('special')">Diverse specialists of SRH</a></li>
+			<li><a href="#none" onclick="fnMove('clinic')">Specialized Clinic</a></li>
+			<li><a href="#none" onclick="fnMove('personal')">Personalized rehabilitation for all our patients</a></li>
+			<li><a href="#none" onclick="fnMove('global')">Contributes to the advancement of global rehabilitation therapy</a></li>
+			<li><a href="#none" onclick="fnMove('certification')">Principal certification</a></li>
+			<li><a href="#none" onclick="fnMove('how')">How to get here</a></li>
+		</ul>
+		<div id="container">
+			<div id="main-slide">
+				<!-- Swiper -->
+				<div class="swiper-container">
+					<div class="slide-control">
+
+						<!-- Add Pagination -->
+						<div class="now-page"></div>
+						<!-- .swiper-pagination -->
+						<div class="swiper-pagination"></div>
+						<!-- <div id="progress">
+							<span class="progress-bar"></span>
+						</div> -->
+						<div class="all-page"></div>
+						<div class="btn">
+							<a href="#none" class="pause">
+								<img src="/resource/images/pause.png" alt="">
+							</a>
+							<a href="#none" class="play">
+								<img src="/resource/images/play.png" alt="">
+							</a>
+						</div>
+					</div>
+					<ul class="swiper-wrapper">
+                      <?=$Slide_C?>
+
+					</ul>
+					<div class="slide-btn">
+						<!-- Add Arrows -->
+						<div class="swiper-button-next"></div>
+						<div class="swiper-button-prev"></div>
+					</div>
+				</div>
+			</div>
+			<!-- //end #main-slide -->
+
+			<section id="mission">
+				<ul>
+					<li>
+						<h3>Mission</h3>
+						<div class="img">
+							<img class="mb-hide" src="/resource/images/landing-mission.png" alt="">
+							<img class="mb-show" src="/resource/images/landing-mission-m.png" alt="">
+						</div>
+						<p>
+							We Create a Valuable Life Together
+						</p>
+					</li>
+					<li>
+						<h3>Vision</h3>
+						<div class="img">
+							<img class="mb-hide" src="/resource/images/landing-vision.png" alt="">
+							<img class="mb-show" src="/resource/images/landing-vision-m.png" alt="">
+						</div>
+						<p>
+							The world's best rehabilitation hospital<br class="mb-hide">
+							that creates a new paradigm for rehabilitation
+						</p>
+					</li>
+				</ul>
+			</section>
+			<!-- //end #mission -->
+
+			<section id="care">
+				<ul>
+					<li>
+						<img src="/resource/images/landing-care.png" alt="">
+					</li>
+					<li>
+						<h3>Total Care of <span>SRH</span></h3>
+						<p>
+							Patients visiting rehabilitation hospital may have medical problems in motor function, performing activities of daily
+							life, cognition, speech, bowel and bladder habits, swallowing and pain, as well as psychological, sociological,
+							economical and family problems. In Seoul Rehabilitation Hospital, for rehabilitating patients with stroke, spinal cord
+							injury, cerebral palsy, developmental disabilities, musculoskeletal disorders and pain, we are doing our best to promote
+							successful return to their family and social life and to enhance quality of life, offering medical service by diverse
+							specialists such as physiatrist, physical therapist, occupational therapist, psychologist, speech and language
+							therapist, rehabilitation specializing nurse, and social worker with total care of physical, occupational,
+							psychological, sociological, economical and family aspects
+						</p>
+					</li>
+				</ul>
+				<img class="c-01" src="/resource/images/circle01.png" alt="">
+				<img class="c-02" src="/resource/images/circle02.png" alt="">
+			</section>
+			<!-- //end #care -->
+
+			<section id="special">
+				<div class="inner">
+					<div class="tit">
+						<h3>
+							Diverse specialists<br>
+							of <span>SRH</span>
+						</h3>
+						<p>Multidisciplinary approach</p>
+						<img src="/resource/images/circle03.png" alt="">
+					</div>
+					<ul>
+						<li>
+							<div class="img">
+								<img src="/resource/images/landing-icon01.png" alt="">
+							</div>
+							<p>PHYSIATRIST</p>
+						</li>
+						<li>
+							<div class="img">
+								<img src="/resource/images/landing-icon02.png" alt="">
+							</div>
+							<p>
+								PHYSICAL<br>
+								THERAPIST
+							</p>
+						</li>
+						<li>
+							<div class="img">
+								<img src="/resource/images/landing-icon03.png" alt="">
+							</div>
+							<p>PSYCHOTHERAPIST</p>
+						</li>
+						<li>
+							<div class="img">
+								<img src="/resource/images/landing-icon04.png" alt="">
+							</div>
+							<p>
+								SOCIAL<br>
+								WORKER
+							</p>
+						</li>
+						<li>
+							<div class="img">
+								<img src="/resource/images/landing-icon05.png" alt="">
+							</div>
+							<p>NURSE</p>
+						</li>
+						<li>
+							<div class="img">
+								<img src="/resource/images/landing-icon06.png" alt="">
+							</div>
+							<p>
+								OCCUPATIONAL<br>
+								THERAPIST
+							</p>
+						</li>
+						<li>
+							<div class="img">
+								<img src="/resource/images/landing-icon07.png" alt="">
+							</div>
+							<p>
+								SPEECH AND LANGUAGE<br>
+								THERAPIST
+							</p>
+						</li>
+						<li>
+							<div class="img">
+								<img src="/resource/images/landing-icon08.png" alt="">
+							</div>
+							<p>
+								ORTHOTIST
+							</p>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<!-- //end #special -->
+
+			<section id="clinic">
+				<div class="img">
+					<img class="mb-hide" src="/resource/images/landing-clinic.png" alt="">
+					<img class="mb-show" src="/resource/images/landing-clinic-m.png" alt="">
+				</div>
+				<div class="inner">
+					<h3>Specialized Clinic</h3>
+					<ul class="green-middot half">
+						<li>Cerebral palsy</li>
+						<li>Developmental delay</li>
+						<li>Stroke</li>
+						<li>Traumatic Brain injury</li>
+						<li>Spinal Cord Injury</li>
+						<li>Spasticity</li>
+						<li>Dysphagia</li>
+						<li>Feeding disorder</li>
+						<li>Constraint induced movement therapy</li>
+						<li>Sitting and position</li>
+						<li>Torticollis</li>
+						<li>Sports rehabilitation</li>
+						<li>Musculoskeletal pain</li>
+						<li>Scoliosis</li>
+						<li>Lower limb malalignment and foot</li>
+					</ul>
+				</div>
+			</section>
+			<!-- //end #clinic -->
+
+			<section id="personal">
+				<h3>
+					<small>SEOUL REHABILITATION HOSPITAL</small>
+					Personalized <br class="mb-show">rehabilitation for<br>
+					all our patients
+				</h3>
+				<div class="bar"></div>
+				<ul>
+					<li>
+						<img src="/resource/images/landing-personal-01.png" alt="">
+						<div class="text">
+							<h4>
+								Lifestyle<br class="mb-hide">
+								Rehabilitation
+							</h4>
+							<p>
+								Inpatient<br>
+								Day-hospital<br>
+								Outpatient care
+							</p>
+						</div>
+					</li>
+					<li>
+						<img src="/resource/images/landing-personal-02.png" alt="">
+						<div class="text">
+							<h4>
+								Lifestyle<br class="mb-hide">
+								Rehabilitation
+							</h4>
+							<p>Infant to Adult care</p>
+						</div>
+					</li>
+					<li>
+						<img src="/resource/images/landing-personal-03.png" alt="">
+						<div class="text">
+							<h4>
+								Total care<br class="mb-hide">
+								Rehabilitation
+							</h4>
+							<p>
+								Multidisciplinary<br>
+								approach
+							</p>
+						</div>
+					</li>
+				</ul>
+			</section>
+			<!-- //end #personal -->
+
+
+
+			<section id="global">
+				<img class="mb-hide" src="/resource/images/landing-global.png" alt="">
+				<div class="inner">
+					<h3>
+						Contributes to the <br class="mb-show">advancement of<br>
+						<span>global rehabilitation <br class="mb-show">therapy</span>
+					</h3>
+					<div class="bar"></div>
+					<ul>
+						<li>
+							<h4>Domestic Contributions</h4>
+							<ul class="green-middot">
+								<li>
+									Support projects for people with disabilities in com
+									-munity
+								</li>
+								<li>Community support projects</li>
+							</ul>
+						</li>
+						<li>
+							<h4>Overseas Contributions</h4>
+							<p>
+								We are spreading advanced rehabilitation medicine with medical contributions to regions that need touch of love, for
+								example, international rehabilitation medicine cooperation with Kazakhstan and sending rehabilitation staffs to
+								Korea-Vietnam rehabilitation center for children and adolescents with disabilities in Vietnam and carrying out diverse
+								medical volunteer works.
+							</p>
+						</li>
+						<li>
+							<h4>Domestic and overseas education and research</h4>
+							<p>
+								We are holding training courses and seminars in Korea and abroad to foster rehabilitation specialists and making
+								contributions to the advancement of global rehabilitation medicine by sharing Seoul Rehabilitation Hospital’s own
+								specialized rehabilitation system and education contents.
+							</p>
+							<ul class="green-middot">
+								<li>Education to develop rehabilitation professionals</li>
+								<li>Research to increase expertise and competence</li>
+								<li>International cooperation</li>
+							</ul>
+						</li>
+					</ul>
+					<div class="logo-list">
+						<img src="/resource/images/landing-logo-01.png" alt="">
+						<img src="/resource/images/landing-logo-02.png" alt="">
+						<img src="/resource/images/landing-logo-03.png" alt="">
+						<img src="/resource/images/landing-logo-04.png" alt="">
+						<img src="/resource/images/landing-logo-05.png" alt="">
+					</div>
+				</div>
+			</section>
+			<!-- //end #global -->
+
+
+
+			<section id="certification">
+				<h3>Principal certification</h3>
+				<div class="inner">
+					<ul>
+						<li>
+							<p>Korea Academy of Rehabilitation Medicine</p>
+							<span>Certified as ‘Specialized Rehabilitation Hospital’ from Korea Academy of Rehabilitation Medicine (2011)</span>
+						</li>
+						<li>
+							<p>Korea Workers’ Compensation& Welfare Service</p>
+							<span>Certified as ‘Specialized Rehabilitation Hospital’ Korea Workers’ Compensation & Welfare Service ( 2012/2015)</span>
+						</li>
+						<li>
+							<p>Ministry of Health and Welfare</p>
+							<span>Certified as “Specialized Rehabilitation Hospital” from Minister of Health and Welfare (2011/2015/ 2018)</span>
+						</li>
+						<li>
+							<p>Ministry of Health and Welfare</p>
+							<span>‘Medical institution certification’ as Rehabilitation hospital from Ministry of Health and Welfare (2012/2016)</span>
+						</li>
+						<li>
+							<p>Seoul Metropolitan Office of Education</p>
+							<span>Certified as ‘Treatment Support Serving Organization for recipients of Special Education’ from Seoul Metropolitan Office of Education (2012)</span>
+						</li>
+						<li>
+							<p>Ministry of Health and Welfare/Seoul Metropolitan Government</p>
+							<span>
+								Designated as ‘Regional Health & Medical Center for Persons with Disabilities’ from Ministry of Health and Welfare &
+								Seoul Metropolitan Government(2019)
+							</span>
+						</li>
+						<li>
+							<p>Ministry of Health and Welfare</p>
+							<span>Designated as ‘ the first rehabilitation medical institution’ from Minister of Health and Welfare(2020)</span>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<!-- //end #certification -->
+
+			<section id="how">
+				<h3>How to get here</h3>
+				<div class="inner">
+					<p>30, Galhyeon-ro 11-gil, Eunpyeong-gu, Seoul, Republic of Korea</p><br>
+					<iframe
+						src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3160.8731941322085!2d126.9053527!3d37.6051433!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c99cbf213e39d%3A0x8642de972a41761e!2z7ISc7Jq47J6s7Zmc67OR7JuQ!5e0!3m2!1sen!2skr!4v1594948210075!5m2!1sen!2skr"
+						width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+						tabindex="0"></iframe>
+				</div>
+			</section>
+			<!-- //end #how -->
+		</div>
+		<!-- //end #container -->
+		<footer>
+			<div class="inner">
+				<h1>
+					Seoul Rehabilitation Hospital
+				</h1>
+				<div class="info">
+					<span>Representative <b>Lee Ji-sun</b></span> <span>Representative number <b>6020-3000</b></span> <span>Unique
+						number <b>110-82-60714</b></span>
+					<p class="copy">copyright (c) SEOUL REHABILITATION HOSPITAL. all rights reserved.</p>
+				</div>
+			</div>
+			<a href="#none" class="top" onclick="fnMove('wrap')">
+				<img src="/resource/images/landing-top.png" alt="go to top">
+			</a>
+		</footer>
+	</div>
+	<!-- //end #wrap -->
+	<script>
+		function fnMove(seq) {
+			var offset = $("#" + seq).offset();
+			$('html,body').animate({ scrollTop: offset.top }, 400);
+			console.log(offset = $("#" + seq).offset().top);
+		}
+
+		var autoplay = 5000;
+		var swiper = new Swiper('.swiper-container', {
+			pagination: {
+				el: '.swiper-pagination',
+				type: 'progressbar',
+			},
+			loop: true,
+			watchSlidesProgress: true,
+			autoplay: {
+				delay: autoplay,
+				disableOnInteraction: false
+			},
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+		});
+
+		$(window).on("load resize", function (){
+			var window_W = $(window).width();
+
+			if (window_W < 1024) {
+				$("#viewport").attr("content", "width=720");
+			} else if (window_W >= 1024) {
+				$("#viewport").attr("content", "width=1400");
+			} else if (window_W > 1500) {
+				$("#viewport").attr("content", "width=divice-width");
+			};
+		});
+
+		 $(function(){
+
+			$(".pause").click(function () {
+				 swiper.autoplay.stop();
+				 $(this).hide();
+				 $(".play").show();
+			 });
+			 $(".play").click(function () {
+				 swiper.autoplay.start();
+				 $(this).hide();
+				 $(".pause").show();
+			 });
+
+
+
+			// var e = $('#header, #header_sub'),
+			// 	 h = e.outerHeight(),
+			// 	 t = e.offset().top;
+			 $(window).scroll(function () {
+				 var s = $(window).scrollTop();
+				 console.log();
+				 if (s > 100) {
+					$('header').css({
+						 padding: '30px 0',
+						 borderBottom: '1px solid #eee',
+						 'background-color': 'rgba(255,255,255,1)'
+					 });
+
+					 if ($("#nav").hasClass('on') == true) {
+						 $('header .logo').css('opacity', 0);
+						$('header').css({
+							 padding: '30px 0',
+							 borderBottom: 'none',
+							 'background-color': 'rgba(255,255,255,0)'
+						 });
+					 }
+					 $('header .none').hide();
+					 $('header .fix').show();
+					 $('.menu > a').addClass('active');
+					 $(".header-lang > a").addClass('active');
+				 } else if (s < 101) {
+					 $('header').css({
+						 padding: '60px 0',
+						 borderBottom: 'none',
+						 'background-color': 'rgba(255,255,255,0)'
+					 });
+					 $('header .none').show();
+					 $('header .fix').hide();
+					 $('.menu > a').removeClass('active');
+					 $(".header-lang > a").removeClass('active');
+				 }
+
+
+			 })
+
+			$(".menu > a").on('click',function(){
+				$(this).toggleClass('on');
+				$(".header-lang > a").toggleClass('on');
+				if($(this).hasClass('on') == true){
+					$("#nav").addClass('on');
+					$('header').css({
+						borderBottom: 'none',
+						'background-color': 'rgba(255,255,255,0)'
+					});
+					if ($(window).scrollTop() > 100) {
+						$('header .logo').css('opacity', 0);
+					}
+				}else {
+					$("#nav").removeClass('on');
+					$('header .logo').css('opacity', 1);
+					if ($(window).scrollTop() > 100){
+						$('header').css({
+							borderBottom: '1px solid #eee',
+							'background-color': 'rgba(255,255,255,1)'
+						});
+					}
+				}
+			});
+
+			$(".header-lang > a").on('click', function () {
+				 $(this).toggleClass('checked');
+			 });
+
+			var all_page = $(".swiper-slide").length - 2;
+			$(".all-page").text(all_page);
+
+			setInterval(function(){
+				var old_page = 0;
+				var now_page = $(".swiper-slide-active").data('swiper-slide-index');
+				$(".now-page").text(now_page + 1);
+			},100);
+
+		 });
+
+	</script>
+
+</body>
+
+</html>

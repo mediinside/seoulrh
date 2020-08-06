@@ -1,0 +1,48 @@
+/*공통*/
+@charset "utf-8";
+* { margin:0; padding:0; }
+html { overflow-y:scroll; }
+html, body { width:100%; height:100%; text-align:center; }
+body { *word-break:break-all; -ms-word-break:break-all; margin:10px 0px 0px 0px; padding:0; }
+body, input, select, button, textarea { font-size:12px; font-family:"돋움",Dotum,"굴림",Gulim,AppleGothic,Sans-serif; color:#636363; }
+h1, h2, h3, h4, h5, h6 { margin:0; padding:0; }
+table, tr, td { font-size:12px; }
+img, fieldset, iframe { border:0 none; }
+ul, li { list-style:none; margin:0; padding:0; }
+a { color:#636363; text-decoration:none; }
+a:hover { color:#1177dd; text-decoration:underline; }
+textarea { overflow:auto; }
+html:first-child select { height:20px; padding-right:6px; }
+option { padding-right:6px; }
+em,address { font-style:normal; }
+button { cursor:pointer; _cursor /**/:hand; }
+button * { position:relative; }
+button img { left:-3px; *left:auto; }
+behavior: url(ie-css3.htc);
+
+
+/*top*/
+#header {width:100%; height:95px; margin:0 auto; background:url(/html_org/images/common/m_bg.gif) repeat-x;}
+
+/* 상단 카테고리 */
+#navi { width:550px; height:50px; position:relative;}
+#navi img { border:0; float:left;}
+    .navi_main { width:550px; height:25px; }
+    .navi_sub_1 { display:block; position:absolute; padding:7px 0 0 15px; background:url(/html_org/image/common/sub1_bg.gif) no-repeat; width:400px; height:18px; top:20px; left:00px;}
+            .navi_sub_1 a{padding-right:15px;}
+            .navi_sub_2 { display:block; position:absolute; padding:8px 0 0 12px; background:url(/html_org/image/common/sub2_bg.gif) no-repeat; width:122px; height:18px; top:20px; left:135px;}
+            .navi_sub_2 a{padding-right:16px;}
+            .navi_sub_3{ display:block; position:absolute; padding:6px 0 0 10px; background:url(/html_org/image/common/sub3_bg.gif) no-repeat; width:130px; height:18px; top:20px; left:270px;}
+            .navi_sub_3 a{padding-right:17px;}
+            .navi_sub_4{ display:block; position:absolute; padding:7px 0px 0 12px; background:url(/html_org/image/common/sub4_bg.gif) no-repeat; width:100px; height:18px; top:20px; left:383px;}
+            .navi_sub_4 a{padding-right:9px;}
+            .navi_sub_5{ display:block; position:absolute; padding:7px 0px 0 12px; background:url(/html_org/image/common/sub5_bg.gif) no-repeat; width:350px; height:18px; top:20px; left:260px;}
+            .navi_sub_5 a{padding-right:15px;}
+
+
+/*body*/
+#container {width:960px; height:550px; margin:0 auto; }
+#container content {}
+
+/*footer*/
+#footer {width:100%; height:150px; float:left;}

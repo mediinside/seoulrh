@@ -1,0 +1,77 @@
+
+<!-- board -->
+<div class="board">
+
+
+<form action="?" class="comment_write">
+<fieldset><legend>댓글쓰기</legend>
+<label for="comment_user">ㆍ작성자 : </label>
+<input type="text" name="comment_user" id="comment_user" value="" class="text" />
+<label for="comment_pw">ㆍ비밀번호 : </label>
+<input type="text" name="comment_pw" id="comment_pw" value="" class="text" />
+ㆍ평점 : 
+<input type="radio" name="grade" id="grade5" value="5" checked="checked" class="radio" /><label for="grade5">5점</label>
+<input type="radio" name="grade" id="grade4" value="4" class="radio" /><label for="grade4">4점</label>
+<input type="radio" name="grade" id="grade3" value="3" class="radio" /><label for="grade3">3점</label>
+<input type="radio" name="grade" id="grade2" value="2" class="radio" /><label for="grade2">2점</label>
+<input type="radio" name="grade" id="grade1" value="1" class="radio" /><label for="grade1">1점</label>
+<input type="radio" name="grade" id="grade0" value="0" class="radio" /><label for="grade0">0점</label>
+<p>
+<textarea name="content" rows="2" cols="50" title="댓글 입력"></textarea>
+<input type="submit" value="등록" class="button" title="댓글 등록" />
+</p>
+</fieldset>
+</form>
+
+<table border="1" class="comment" summary="댓글">
+<tbody>
+<tr>
+<td class="grade"><img src="/img/board/grade5.gif" width="60" height="11" alt="5점" /></td>
+<th scope="row" class="writing">여러분의 소중한 한마디가 등록되서 여러라인에 걸쳐 나오고 있네요.. 2라인까지만 가능한가요? 아님 256자인가요</th>
+<td class="writer">전우치</td>
+<td class="date">07.06.28</td>
+<td class="del"><a href="#frmComment15" onclick="pswdShow(15); return false;"><img src="/img/board/b_x.gif" width="11" height="11" alt="삭제" /></a></td>
+</tr>
+<tr id="pswd15" class="pwInput">
+<td colspan="5">
+<form name="frmComment15" id="frmComment15" action="frmComment.asp">
+<label for="password15">ㆍ작성시 등록한 비밀번호을 입력하세요 :</label>
+<input type="password" name="password" id="password15" value="" class="text" />
+<input type="submit" value="삭제" class="button" />
+<button class="button" onclick="pswdHide(); return false;">닫기</button>
+</form>
+</td>
+</tr>
+<tr>
+<td class="grade"><img src="/img/board/grade4.gif" width="60" height="11" alt="4점" /></td>
+<th scope="row" class="writing">여러분의 소중한 한마디가 등록되서</th>
+<td class="writer">전우치</td>
+<td class="date">07.06.28</td>
+<td class="del"><a href="#frmComment16" onclick="pswdShow(16); return false;"><img src="/img/board/b_x.gif" width="11" height="11" alt="삭제" /></a></td>
+</tr>
+<tr id="pswd16" class="pwInput">
+<td colspan="5">
+<form name="frmComment16" id="frmComment16" action="frmComment.asp">
+<label for="password16">ㆍ작성시 등록한 비밀번호을 입력하세요 :</label>
+<input type="password" name="password" id="password16" value="" class="text" />
+<input type="submit" value="삭제" class="button" />
+<button class="button" onclick="pswdHide(); return false;">닫기</button>
+</form>
+</td>
+</tr>
+</tbody>
+</table>
+
+<script type="text/javascript">/*<![CDATA[*/
+//삭제 암호 입력 보이기감추기
+function pswdShow(a){pswdHide();objEl=document.getElementById("pswd"+a);objEl.style.display="table-row";}
+function pswdHide(){for(i=1;i<=100;i++){objEl=document.getElementById("pswd"+i);if(objEl){objEl.style.display="none";}}}
+/*]]>*/</script>
+<!--[if IE]>
+<script type="text/javascript">/*<![CDATA[*/
+function pswdShow(a){pswdHide();objEl=document.getElementById("pswd"+a);objEl.style.display="block";}
+/*]]>*/</script>
+<![endif]-->
+
+</div>
+<!-- //board -->

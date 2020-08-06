@@ -1,0 +1,360 @@
+2014-06-27 00:55:49 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('2', '0', 'newspaper', '0', '4', 1, '', '2014-06-27 00:55:49', '2014-06-27 00:55:49')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2014-06-27 00:55:49'
+			
+2014-06-27 00:55:49 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('2', '0', 'homepage', '0', '4', 1, '', '2014-06-27 00:55:49', '2014-06-27 00:55:49')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2014-06-27 00:55:49'
+			
+2014-06-27 00:55:49 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('2', '0', 'recommend', '0', '예', 1, '', '2014-06-27 00:55:49', '2014-06-27 00:55:49')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2014-06-27 00:55:49'
+			
+2014-06-27 00:55:49 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('2', '0', 'route', '0', '4', 1, '', '2014-06-27 00:55:49', '2014-06-27 00:55:49')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2014-06-27 00:55:49'
+			
+2014-06-27 00:55:49 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('2', '0', 'service', '0', '4', 1, '', '2014-06-27 00:55:49', '2014-06-27 00:55:49')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2014-06-27 00:55:49'
+			
+2014-06-27 00:55:49 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('2', '0', 'kind', '0', '4', 1, '', '2014-06-27 00:55:49', '2014-06-27 00:55:49')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2014-06-27 00:55:49'
+			
+2014-06-27 00:55:49 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('2', '0', 'process', '0', '3', 1, '', '2014-06-27 00:55:49', '2014-06-27 00:55:49')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2014-06-27 00:55:49'
+			
+2014-06-27 00:55:49 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('2', '0', 'circum', '0', '3', 1, '', '2014-06-27 00:55:49', '2014-06-27 00:55:49')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2014-06-27 00:55:49'
+			
+2014-06-27 00:51:17 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('2', '0', 'newspaper', '0', '4', 1, '', '2014-06-27 00:51:17', '2014-06-27 00:51:17')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2014-06-27 00:51:17'
+			
+2014-06-27 00:51:17 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('2', '0', 'homepage', '0', '4', 1, '', '2014-06-27 00:51:17', '2014-06-27 00:51:17')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2014-06-27 00:51:17'
+			
+2014-06-27 00:51:17 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('2', '0', 'recommend', '0', '예', 1, '', '2014-06-27 00:51:17', '2014-06-27 00:51:17')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2014-06-27 00:51:17'
+			
+2014-06-27 00:51:17 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('2', '0', 'route', '0', '4', 1, '', '2014-06-27 00:51:17', '2014-06-27 00:51:17')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2014-06-27 00:51:17'
+			
+2014-06-27 00:51:17 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('2', '0', 'service', '0', '4', 1, '', '2014-06-27 00:51:17', '2014-06-27 00:51:17')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2014-06-27 00:51:17'
+			
+2014-06-27 00:51:17 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('2', '0', 'kind', '0', '4', 1, '', '2014-06-27 00:51:17', '2014-06-27 00:51:17')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2014-06-27 00:51:17'
+			
+2014-06-27 00:51:17 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('2', '0', 'process', '0', '3', 1, '', '2014-06-27 00:51:17', '2014-06-27 00:51:17')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2014-06-27 00:51:17'
+			
+2014-06-27 00:51:17 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('2', '0', 'circum', '0', '3', 1, '', '2014-06-27 00:51:17', '2014-06-27 00:51:17')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2014-06-27 00:51:17'
+			
+2014-06-27 00:48:57 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('2', '0', 'newspaper', '0', '4', 1, '', '2014-06-27 00:48:57', '2014-06-27 00:48:57')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2014-06-27 00:48:57'
+			
+2014-06-27 00:48:57 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('2', '0', 'homepage', '0', '4', 1, '', '2014-06-27 00:48:57', '2014-06-27 00:48:57')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2014-06-27 00:48:57'
+			
+2014-06-27 00:48:57 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('2', '0', 'recommend', '0', '예', 1, '', '2014-06-27 00:48:57', '2014-06-27 00:48:57')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2014-06-27 00:48:57'
+			
+2014-06-27 00:48:57 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('2', '0', 'route', '0', '4', 1, '', '2014-06-27 00:48:57', '2014-06-27 00:48:57')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2014-06-27 00:48:57'
+			
+2014-06-27 00:48:57 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('2', '0', 'service', '0', '4', 1, '', '2014-06-27 00:48:57', '2014-06-27 00:48:57')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2014-06-27 00:48:57'
+			
+2014-06-27 00:48:57 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('2', '0', 'kind', '0', '4', 1, '', '2014-06-27 00:48:57', '2014-06-27 00:48:57')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2014-06-27 00:48:57'
+			
+2014-06-27 00:48:57 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('2', '0', 'process', '0', '3', 1, '', '2014-06-27 00:48:57', '2014-06-27 00:48:57')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2014-06-27 00:48:57'
+			
+2014-06-27 00:48:57 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('2', '0', 'circum', '0', '3', 1, '', '2014-06-27 00:48:57', '2014-06-27 00:48:57')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2014-06-27 00:48:57'
+			

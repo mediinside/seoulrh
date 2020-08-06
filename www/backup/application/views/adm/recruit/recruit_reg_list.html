@@ -1,0 +1,90 @@
+<h2>신청자 리스트</h2>
+
+<form name='fsearch' method='post' action='<?=$path?>/recruit/reg_lists<?=$qstr?>' onsubmit="return doSearch(this, 'recruit/reg_lists');">
+
+<div id='list_head'>
+	<ul class='lr'>
+		<li class="mT5"><a href='<?=$path?>/recruit/reg_lists'>처음</a> (총 <?=$total_cnt?>개)</li>
+		<li class='right'>
+	        <select name='sfl'>
+	            <option value='rreg_name'>이름</option>
+	        </select>
+	        <input type='text' name='stx' class='ed' value='<?=$stx?>'/>
+	        <input type='image' src='<?=$IMG_PATH?>/button/btn_search.gif' align='top'/>
+        </li>
+    </ul>
+</div>
+
+</form>
+
+<form name='frecruitlist' method='post' action=''>
+<input type='hidden' name='token' value='<?=$token?>'/>
+
+<div id="list_cont">
+	<table width="100%" cellpadding="0" cellspacing="0" class="con_box2">
+		<colgroup>
+			<col class="check"/>
+			<col width="70"/>
+			<col/>
+			<col width="80"/>
+			<col width="120"/>
+			<col width="150"/>
+			<col class="date"/>
+			<col class="control"/>
+		</colgroup>
+		
+		<!-- 타이틀 -->
+		<tr>
+            <th><input type="checkbox" onclick="allcheck(this);" value="1" /></th>
+			<th>No</th>
+            <th>지원분야</th>
+            <th>이름</th>
+            <th>연락처</th>
+            <th>이메일</th>
+            <th>신청일</th>
+			<th class="nobg">관리</th>
+		</tr>
+		
+		<!-- 리스트 -->
+		<? foreach($list as $key => $val) : ?>
+		<tr class='row list<?=$val['lst']?>'>
+			<td><input type='checkbox' name='chk[]' value='<?=$val['rreg_id']?>' /></td>
+			<td><?=$val['no']?></td>
+			<td class="left"><?=$val['recr_subject']?></td>
+			<td><?=$val['rreg_name']?></td>
+			<td><?=$val['rreg_phone']?></td>
+			<td><?=$val['rreg_email']?></td>
+			<td><?=$val['regdate']?></td>
+			<td><?=$val['s_mod']?> <?=$val['s_del']?> <?=$val['s_view']?></td>
+		</tr>
+		<? endforeach; ?>
+		
+		<? if (!$list): ?>
+		<tr>
+			<td colspan="9" height="50"><p class='none'>자료가 없습니다.</p></td>
+		</tr>
+		<? endif; ?>
+		
+	</table>
+	
+	<ul class='lr bottom'>
+		<li>
+			<input type='button' class='btn' value='선택삭제' onclick="javascript:slt_check(this.form, '<?=$path?>/recruit/reg_delete');"/>
+		</li>
+		<li class='right'><?=$paging?></li>
+	</ul>
+</div>
+
+</form>
+
+<script type='text/javascript'>
+//<![CDATA[
+<? if ($stx): ?>
+document.fsearch.sfl.value = '<?=$sfl?>';
+<? endif; ?>
+
+function self_search(cate) {
+	location.href = rt_path +'/'+ rt_admin +'/recruit/lists/cate/'+ cate;
+}
+//]]>
+</script>

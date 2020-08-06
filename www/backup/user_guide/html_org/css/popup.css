@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+/* 팝업창 스타일 */
+* { margin:0px; padding:0px; }
+body { margin:15px; }
+body, input, select, button { font-size:12px; font-family:"돋움",Dotum,"굴림",Gulim,AppleGothic,Sans-serif; color:#636363; }
+ul { list-style:none; }
+img { border:0; }
+
+h2 { height:25px; }
+h3 { font-size:12px; font-weight:bold; color:#e64700; }
+
+.text_center { text-align:center; }
+
+.org_table { border-collapse:collapse;  }
+.org_table th { border-top:2px solid #e85000; border-bottom:1px solid #ccc; background-color:#eee; padding-top:5px; padding-bottom:5px; }
+.org_table td { border:1px solid #eee; padding:10px; }
+.org_table .cba { text-align:center; background-color:#f8f2ef; color:#974d28; font-weight:bold; }
+
+ .basic_list li { line-height:22px; background:url(/html_org/img/sub/li_dot.gif) left 7px no-repeat; padding-left:15px;} 
+
+ .bt_center { text-align:center; padding:15px; }
+
+
+.info_table { border-collapse:collapse; border-top:2px solid #e85000; }
+.info_table th { border-bottom:1px solid #ccc; background-color:#eee; padding-top:5px; padding-bottom:5px; }
+.info_table td { border:1px solid #ccc; padding:10px; }

@@ -1,0 +1,63 @@
+<style>
+#form_cont { padding:20px 20px 10px 20px; }
+#form_cont h4 { font-size:12px; color:#FFFFFF; padding: 5px 0 5px 5px; border-radius:5px; background:url(/src/imgs/adm/taBk.jpg) repeat-x; }
+.form_li dl { width:100%; overflow:hidden; line-height:100%; }
+.form_li dt { float:left; margin-top:5px; width:100px; margin-right:10px; padding: 5px 0 5px 10px; color:#666666; background:#f0f0f0; }
+.form_li dd { line-height:23px; margin-top:5px; padding-bottom:2px; border-bottom:1px #f0f0f0 solid; }
+</style>
+
+<form id='fwrite' name='fwrite' method='post' action='<?=$path?>/content/copy/<?=$ct['ct_id']?>'>
+<input type='hidden' name='token' value='<?=$token?>' />
+
+<ul id="form_cont">
+	<li class="form_li">
+		<div>
+			<h4>컨텐츠 복사</h4>
+			<dl>
+	            <dt class="cb">복사 대상</dt>
+				<dd><?=$ct['ct_url']?'/'.$ct['ct_url']:''?>/<?=$ct['ct_filename']?>.html</dd>
+	            <dt class="cb">컨텐츠 URL</dt>
+				<dd>/<input type="text" class="ed" name="ct_url" maxlength="200" size="20" value=""/></dd>
+	            <dt class="cb">HTML 파일명</dt>
+				<dd><?=HTML_PATH?>/<input type="text" class="ed" maxlength="20" size="12" name="ct_filename" value=""/>.html</dd>
+			</dl>
+		</div>
+	</li>
+</ul>
+
+<p class='center'>
+	<input type='submit' id='btn_submit' class='btn' value='  저  장  ' />
+</p>
+</form>
+
+<div id='loading'></div>
+
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function() {
+	$('#fwrite').validate({
+		rules: {
+			ct_url: { alpha_dash_slash: true },
+			ct_filename: { required: true, alpha_dash: true }
+		},
+		messages: {
+			ct_url: { alpha_dash_slash: '컨텐츠 URL에 특수문자는 사용할 수 없습니다.' },
+			ct_filename: { required: 'HTML 파일명을 입력하세요.' }
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$(parent.document).find('#loading').show();
+			f.submit();
+		}
+	});
+});
+//]]>
+</script>

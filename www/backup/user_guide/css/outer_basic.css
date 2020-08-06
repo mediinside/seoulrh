@@ -1,0 +1,29 @@
+/* 전체 래퍼 */
+#wrap { width:100%; min-width:1000px; height:100%; overflow:visible; }
+
+/* 탑바 */
+#topwrap { width:100%; text-align:center; }						/* 쿼크모드는 text-align으로 하위 topbar를 정렬함 */
+#topbar { margin:0 auto; padding:20px 0; text-align:left; }		/* 쿼크모드는 margin:0 auto가 적용되지 않음 */
+
+/* 헤더 */
+#headWrap { width: 100%; text-align:center; }
+#header { margin:0 auto; text-align:left; }
+
+/* 컨텐츠 */
+#contWrap  { width: 100%; text-align:center; overflow:hidden; display:fixed; }
+#mainContainer { width:100%; margin:0 auto; }
+#subContainer { margin:0 auto; text-align:center; }
+#content { min-height:300px; _height:300px; }					/* 쿼크모드는 _height 적용. 일반모드는 min-height 적용. */
+
+/* 컨텐츠 좌우 레이아웃 */
+#leftWrap { float:left; }
+#left { width:100%; }
+#rightWrap { float:right; }
+#right { width:100%; }
+
+/* 우측여백 퀵 메뉴 */
+#quick { position:absolute; z-index:100; visibility:hidden; }
+
+/* 푸터 */
+#footWrap { width: 100%; text-align:center; }
+#footer { margin:0 auto; text-align:left; }

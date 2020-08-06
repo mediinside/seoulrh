@@ -1,0 +1,147 @@
+<form id='freg' name='freg' method='post' action='<?=$path?>/edu/reg_form?edu_id=<?=$edu_id?>'>
+<input type='hidden' name='w'    value='<?=$w?>' />
+<input type='hidden' name='reg_id' value='<?=$row['reg_id']?>' />
+
+<h2><?=$_TITLE_?></h2>
+
+<ul id="form_cont">
+	<li>
+        <table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+        	<tr>
+            	<th>국문 이름</th>
+                <td>
+                	<input type='text' id='reg_name' name='reg_name' class='ed' size='35' value='<?=$row['reg_name']?>' />
+				</td>
+            </tr>
+        	<tr>
+            	<th>영문 이름</th>
+                <td>
+                	<input type='text' id='reg_name_en' name='reg_name_en' class='ed' size='35' value='<?=$row['reg_name']?>' />
+				</td>
+            </tr>
+        	<tr>
+            	<th>성 별</th>
+                <td>
+                	<input type="radio" name="reg_sex" value="1" <?=checked('1', $row['reg_sex']);?> /><label for="sex1">  남자</label> &nbsp;&nbsp; 
+					<input type="radio" name="reg_sex" value="2" <?=checked('2', $row['reg_sex']);?> /><label for="sex2">  여자</label>
+				</td>
+            </tr>
+        	<tr>
+            	<th>생 일</th>
+                <td><input type="text" name="reg_birth" id="reg_birth" readonly="readonly" value="<?=$row['reg_birth']?>" /></td>
+            </tr>
+        	<tr>
+            	<th>연락처</th>
+                <td>
+                  <input type="text" name="reg_phone[]" class="text imeDis" maxlength="4" onkeypress="return only_number();" style="width:50px;" value="<?=$row['phone'][0]?>" />
+	              -
+	              <input type="text" name="reg_phone[]" class="text imeDis" maxlength="4" onkeypress="return only_number();" style="width:50px;" value="<?=$row['phone'][1]?>" />
+	              -
+	              <input type="text" name="reg_phone[]" class="text imeDis" maxlength="4" onkeypress="return only_number();" style="width:50px;" value="<?=$row['phone'][2]?>" />
+				</td>
+            </tr>
+        	<tr>
+            	<th>이메일</th>
+                <td><?=email_selector('reg_email', $row['reg_email'])?></td>
+            </tr>
+        	<tr>
+            	<th>신청자</th>
+                <td>
+                	<label for="job1"><input type="radio" name="reg_job" value="학생" <?=checked('학생', $row['reg_job']);?> /> 학생</label> &nbsp;
+					<label for="job2"><input type="radio" name="reg_job" value="치료사" <?=checked('치료사', $row['reg_job']);?> /> 치료사</label> &nbsp;
+					<label for="job3"><input type="radio" name="reg_job" value="의사" <?=checked('의사', $row['reg_job']);?> /> 의사</label> &nbsp;
+					<label for="job4"><input type="radio" name="reg_job" value="기타" <?=checked('기타', $row['reg_job']);?> /> 기타</label><br />
+					학교 <input type="text" name="reg_school" value="<?=$row['reg_school']?>"/>  &nbsp;
+					근무처 <input type="text" name="reg_company" value="<?=$row['reg_company']?>"/><br />
+					<div style="padding-top:3px;">학년 <input type="text" name="reg_grade" value="<?=$row['reg_grade']?>"/></div>
+				</td>
+            </tr>
+        	<tr>
+            	<th>입금액</th>
+                <td><input type="text" name="reg_pay_price" value="<?=$row['reg_pay_price']?>" /></td>
+            </tr>
+        	<tr>
+            	<th>신청경로</th>
+                <td>
+                	<label for="inflow1"><input type="checkbox" name="reg_inflow[]" value="홈페이지 공지" <?=array_search('홈페이지 공지', $row['inflow'])!==FALSE?'checked="checked"':''?>/> 홈페이지 공지</label> &nbsp;
+					<label for="inflow2"><input type="checkbox" name="reg_inflow[]" value="학교방문" <?=array_search('학교방문', $row['inflow'])!==FALSE?'checked="checked"':''?>/> 학교방문</label> &nbsp;
+					<label for="inflow3"><input type="checkbox" name="reg_inflow[]" value="지인소개" <?=array_search('지인소개', $row['inflow'])!==FALSE?'checked="checked"':''?>/> 지인소개</label> &nbsp;
+					<label for="inflow4"><input type="checkbox" name="reg_inflow[]" value="커뮤니티 공지" <?=array_search('커뮤니티 공지', $row['inflow'])!==FALSE?'checked="checked"':''?>/> 커뮤니티 공지</label> &nbsp;
+					<label for="inflow5"><input type="checkbox" name="reg_inflow[]" value="기타" <?=array_search('기타', $row['inflow'])!==FALSE?'checked="checked"':''?>/> 기타</label>
+				</td>
+            </tr>
+        	<tr>
+            	<th>신청동기</th>
+                <td>
+                	<textarea name="reg_message" rows="5" cols="80"><?=get_text($row['reg_message'])?></textarea>
+				</td>
+            </tr>
+            
+            <? if($row['reg_regdate']): ?>
+        	<tr>
+            	<th>등록일</th>
+                <td>
+                	<?=$row['reg_regdate']?>
+				</td>
+            </tr>
+        	<tr>
+            	<th>최종수정일</th>
+                <td>
+                	<?=$row['reg_mdydate']?>
+				</td>
+            </tr>
+            <? endif; ?>
+            
+        </table>
+    </li>
+</ul>
+
+<p class='center bottom editor' style="margin-top:30px;">
+	<input type='submit' id='btn_submit' class='btn' value='  확  인  ' />&nbsp;
+	<input type='button' class='btn' value='  목  록  ' onclick="document.location.href='<?=$path?>/edu/reg_lists/id/<?=$edu_id?>';" />
+</p>
+</form>
+
+<div id='loading'></div>
+
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#reg_birth').datetimepicker({
+		showTimepicker: false
+	});
+	
+	$('#freg').validate({
+		rules: {
+			reg_name: { required:true, maxlength:50 },
+			reg_name_en: { required:true, maxlength:50 },
+			reg_sex: 'required',
+			reg_birth: 'required',
+			'reg_phone[]': 'required'
+		},
+		messages: {
+			reg_name: { required:'국문 이름을 입력하세요.', maxlength:'국문 이름을 50자 이내로 입력하세요.' },
+			reg_name_en: { required:'영문 이름을 입력하세요.', maxlength:'영문 이름을 50자 이내로 입력하세요.' },
+			reg_sex: '성별을 입력하세요.',
+			reg_birth: '생일을 입력하세요.',
+			'reg_phone[]': '연락처를 입력하세요.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+			beforeUnload = false;
+			f.submit();
+		}
+	});
+});
+
+//]]>
+</script>

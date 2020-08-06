@@ -1,0 +1,281 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once "../inc/head.php";
+
+$dep1 = "2";
+$dep2 = "2-2";
+$dep3 = "2-2-1";
+?>
+<style>
+	#thumb-slide {
+		position: relative;
+		padding: 90px 0;
+	}
+
+	.swiper-container1 {
+		overflow: hidden;
+		width: 840px;
+		margin: 0 auto;
+	}
+
+	.swiper-container1 img {
+		width: 100%;
+	}
+
+	.swiper-button-next,
+	.swiper-button-prev {
+		width: 80px;
+		height: 80px;
+		text-indent: -9999px;
+		border-top: 1px solid #777;
+		border-right: 1px solid #777;
+		outline: none;
+	}
+
+	#thumb-slide .swiper-button-next {
+		transform: rotateZ(45deg);
+	}
+
+	#thumb-slide .swiper-button-prev {
+		transform: rotateZ(-135deg);
+	}
+
+	#thumb-slide .swiper-button-next:after,
+	#thumb-slide .swiper-button-prev:after {
+		display: none;
+	}
+
+	#thumb-slide .swiper-button-next:hover,
+	#thumb-slide .swiper-button-prev:hover {
+		border-color: #65bb00;
+	}
+
+	#thumb-slide .swiper-pagination {
+		display: block;
+		position: relative;
+		margin-top: 40px;
+	}
+
+	#thumb-slide .swiper-pagination-bullet {
+		width: 16px;
+		height: 16px;
+		margin: 0 3px;
+	}
+
+	#thumb-slide .swiper-slide p {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		padding: 1em;
+		color: #fff;
+		text-align: center;
+		box-sizing: border-box;
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+
+	@media screen and (max-width: 1023px) {
+		.swiper-container1 {
+			width: 100%;
+		}
+
+		#thumb-slide .swiper-button-next,
+		#thumb-slide .swiper-button-prev {
+			width: 50px;
+			height: 50px;
+			border-color: #fff;
+			border-width: 2px;
+		}
+
+		#thumb-slide .swiper-slide p {
+			font-size: 30px;
+		}
+	}
+</style>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/use-bnnr6.png" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="wd-1200">
+					<div class="page-location">
+						<div id="btn-box" class="center">
+							<a href="/use/page06-1.html" class="btn">본관</a>
+							<a href="/use/page06-2.html" class="btn bg-green">신관</a>
+							<a href="/use/page06-3.html" class="btn">별관</a>
+						</div>
+					</div>
+					<h3 class="sub-tit mt60">
+						신관(성인재활전문 : 입원/외래치료)
+					</h3>
+					<div class="board-list" style="padding:0;">
+						<table class="floor-table">
+							<colgroup>
+								<col style="width:20%">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th class="ft-sz40 text-center">F9</th>
+									<td>당직실</td>
+								</tr>
+								<tr>
+									<th class="ft-sz40 text-center">F8</th>
+									<td>성인입원병동, 옥외정원</td>
+								</tr>
+								<tr>
+									<th class="ft-sz40 text-center">F7</th>
+									<td>물리치료실, 통증물리치료실(입원), 작업치료실, 일상생활치료실, 언어치료실, 심리치료실</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div id="thumb-slide">
+						<div class="swiper-container1 gallery-top">
+							<ul class="swiper-wrapper">
+								<li class="swiper-slide">
+									<img src="/resource/images/floor-01.png" alt="">
+									<p class="caption">1. 본관입구</p>
+								</li>
+								<li class="swiper-slide">
+									<img src="/resource/images/floor-02.png" alt="">
+									<p class="caption">2. 소아낮병동</p>
+								</li>
+								<li class="swiper-slide">
+									<img src="/resource/images/floor-03.png" alt="">
+									<p class="caption">3. 소아입원병동</p>
+								</li>
+								<li class="swiper-slide">
+									<img src="/resource/images/floor-04.png" alt="">
+									<p class="caption">4. 본관5층로비</p>
+								</li>
+								<li class="swiper-slide">
+									<img src="/resource/images/floor-05.png" alt="">
+									<p class="caption">5. 소아물리치료실</p>
+								</li>
+								<li class="swiper-slide">
+									<img src="/resource/images/floor-06.png" alt="">
+									<p class="caption">6. 소아작업치료실</p>
+								</li>
+								<li class="swiper-slide">
+									<img src="/resource/images/floor-07.png" alt="">
+									<p class="caption">7. 소아작업치료실2</p>
+								</li>
+								<li class="swiper-slide">
+									<img src="/resource/images/floor-08.png" alt="">
+									<p class="caption">8. 감각통합치료실</p>
+								</li>
+								<li class="swiper-slide">
+									<img src="/resource/images/floor-09.png" alt="">
+									<p class="caption">9. 성인물리치료실</p>
+								</li>
+								<li class="swiper-slide">
+									<img src="/resource/images/floor-10.png" alt="">
+									<p class="caption">10. 성인작업치료실</p>
+								</li>
+								<li class="swiper-slide">
+									<img src="/resource/images/floor-11.png" alt="">
+									<p class="caption">11. 소아병동-플레이룸</p>
+								</li>
+								<li class="swiper-slide">
+									<img src="/resource/images/floor-12.png" alt="">
+									<p class="caption">12. 별관-청소년-감각통합치료실</p>
+								</li>
+								<li class="swiper-slide">
+									<img src="/resource/images/floor-13.png" alt="">
+									<p class="caption">13. 별관-청소년물리치료실</p>
+								</li>
+								<li class="swiper-slide">
+									<img src="/resource/images/floor-14.png" alt="">
+									<p class="caption">14. 별관-청소년작업치료실</p>
+								</li>
+								<li class="swiper-slide">
+									<img src="/resource/images/floor-15.png" alt="">
+									<p class="caption">15. 별관-스놀즐렌실</p>
+								</li>
+								<li class="swiper-slide">
+									<img src="/resource/images/floor-16.png" alt="">
+									<p class="caption">16. 일상생활동작치료실</p>
+								</li>
+								<li class="swiper-slide">
+									<img src="/resource/images/floor-17.png" alt="">
+									<p class="caption">17. 별관-청소년낮병동</p>
+								</li>
+								<li class="swiper-slide">
+									<img src="/resource/images/floor-18.png" alt="">
+									<p class="caption">18. 성인일상생활동작치료</p>
+								</li>
+								<li class="swiper-slide">
+									<img src="/resource/images/floor-19.png" alt="">
+									<p class="caption">19. 본관-통증치료센터</p>
+								</li>
+								<li class="swiper-slide">
+									<img src="/resource/images/floor-20.png" alt="">
+									<p class="caption">20. 본관-언어치료실</p>
+								</li>
+								<li class="swiper-slide">
+									<img src="/resource/images/floor-21.png" alt="">
+									<p class="caption">21. 본관-스노즐렌실</p>
+								</li>
+								<li class="swiper-slide">
+									<img src="/resource/images/floor-22.png" alt="">
+									<p class="caption">22. 소아병동-간호스테이션</p>
+								</li>
+								<li class="swiper-slide">
+									<img src="/resource/images/floor-23.png" alt="">
+									<p class="caption">23. 소아치료실-대기공간</p>
+								</li>
+								<li class="swiper-slide">
+									<img src="/resource/images/floor-24.png" alt="">
+									<p class="caption">24. 가족치유공간-테라스</p>
+								</li>
+								<li class="swiper-slide">
+									<img src="/resource/images/floor-25.png" alt="">
+									<p class="caption">25. 가족화장실</p>
+								</li>
+								<li class="swiper-slide">
+									<img src="/resource/images/floor-26.png" alt="">
+									<p class="caption">26. 원내-화장실</p>
+								</li>
+							</ul>
+						</div>
+						<!-- Add Arrows -->
+						<div class="swiper-button-next swiper-button-white"></div>
+						<div class="swiper-button-prev swiper-button-white"></div>
+						<!-- Pagination -->
+						<div class="swiper-pagination"></div>
+					</div>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+	<script>
+		var galleryTop = new Swiper('.gallery-top', {
+			spaceBetween: 10,
+			loop: true,
+			loopedSlides: 4, //looped slides should be the same
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			}
+		});
+	</script>
+</body>
+
+</html>

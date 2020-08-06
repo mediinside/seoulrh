@@ -1,0 +1,152 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once "../inc/head.php";
+$dep1 = "3";
+$dep2 = "3-2";
+$dep3 = "3-2-4";
+$dr_menu = "H";
+?>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/service-bnnr8.jpg" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="wd-1200">
+					<h3 class="sub-tit">집중 보행훈련 프로그램</h3>
+					<div class="text-box">
+						<p>
+							보행 장애가 있는 신경계 손상 환자를 위한 서울재활병원의 특화된 치료 프로그램입니다. 최첨단 로봇보행훈련(Lokomat), 부분적 체중지지 장치를 이용한 트레드밀 보행훈련(Manual assisted
+							-BWSTT), 치료사와 함께하는 지상 보행훈련(overground training), 지역사회 보행훈련으로 단계적으로 구성되어 있습니다. 급성기에서 만성기에 이르기까지 환자의 다양한 기능적 상태에 맞는
+							보행훈련 프로그램을 제공합니다.
+						</p>
+					</div>
+					<ul class="clinic-list mt60 mb30">
+						<li>
+							<label for="">
+								로봇보행훈련<br class="mb-hide">
+								<small>(LOKOMAT)</small>
+							</label>
+							<img src="/resource/images/service08-1.jpg" alt="">
+							<div class="text">
+								마비로 자발적인 발걸음이 어렵고, 선 자세의 유지가 어려운 급성기 환자에게 로봇보행
+								시스템을 이용하여 조기에 장시간의 집중적인 보행 훈련을 할 수 있습니다.
+							</div>
+						</li>
+						<li>
+							<label for="">
+								부분적 체중지지 장치를 <br class="mb-hide">
+								이용한 트레드밀 보행훈련 <br class="mb-hide">
+								<small>(BWSTT)</small>
+							</label>
+							<img src="/resource/images/service08-2.jpg" alt="">
+							<div class="text">
+								트레드밀 위에서 치료사의 부분적인 도움으로 능동적인 발걸음 훈련이 가능하고,
+								현수장치에 의지하여 안전하고 반복적으로 강도 높은 보행훈련을 시행할 수 있습니다.
+							</div>
+						</li>
+						<li>
+							<label for="">지상 보행치료</label>
+							<img src="/resource/images/service08-3.jpg" alt="">
+							<div class="text">
+								지상에서 기능적인 보행을 수행하기 위해 전문치료사가 환자의 자세와 보행 양상을 교정
+								하고, 필요에 따라 지팡이, 목발, 보행기 등의 보조도구를 이용하여 다양한 보행과제를 수행
+								하는 기술을 습득합니다.
+							</div>
+						</li>
+						<li>
+							<label for="">지역사회 보행훈련</label>
+							<img src="/resource/images/service08-4.jpg" alt="">
+							<div class="text">
+								환자의 최종적인 재활의 목표는 지역사회 내에서 독립적으로 보행할 수 있는 것입니다.
+								아스팔트, 보도블록, 계단, 경사로 등 퇴원 후 지역사회에서 경험 할 수 있는 다양한 보행환
+								경을 사전에 경험함으로써 가정과 지역사회에서 원활한 이동이 가능하도록 훈련합니다.
+							</div>
+						</li>
+					</ul>
+
+					<p class="btn-sm bg-green mt60" style="cursor: default;background-color: #6ec700;">보행평가 시스템</p>
+					<ul class="clinic-list mb60">
+						<li style="border:none">
+							<label for="">근전도 보행분석 시스템</label>
+							<img src="/resource/images/service08-5.jpg" alt="">
+							<div class="text">
+								보행 장애 환자를 대상으로 보행 중 동적 근전도 정보를 측정하여 보행의 문제점을 객관적
+								으로 검사합니다. 검사로 얻은 정보는 환자의 보행기능 개선을 위한 치료 계획 수립에 이용
+								됩니다.
+							</div>
+						</li>
+						<li>
+							<label for="">동적 족저압 및 체평형 분석</label>
+							<img src="/resource/images/service08-6.jpg" alt="">
+							<div class="text">
+								선 자세에서 신체 중심의 동요나 발바닥에 부하 되는 압력을 검사하고 분석하여 적절한
+								치료방법을 제시합니다.
+							</div>
+						</li>
+						<li>
+							<label for="">보행 관찰 분석 평가</label>
+							<img src="/resource/images/service08-7.jpg" alt="">
+							<div class="text">
+								보행 장애를 가지고 있는 환자의 보행을 동영상으로 촬영하여 보행형태와 문제점을 분석
+								하는 평가 방법입니다. 환자와 보호자는 치료사와 함께 동영상을 보면서 환자의 보행형태에
+								대한 자세한 설명을 들을 수 있습니다.
+							</div>
+						</li>
+					</ul>
+
+					<h3 class="sub-tit">상지재활 훈련 프로그램</h3>
+					<ul class="clinic-list mb30">
+						<li style="border:none">
+							<img src="/resource/images/service08-8.jpg" alt="">
+							<div class="text">
+								어깨 관절을 포함한 상지의 경우 단순한 근력 약화, 경직, 관절구축 등의 합병증도 자주 문제가 되지만 견갑부 운동장애 등
+								적절한 움직임이 문제가 되어 통증 및 그로 인한 일상생활동작 장애가 호발합니다. 이에 특화된 재활 프로그램을 운영합니다.
+							</div>
+						</li>
+					</ul>
+
+					<h3 class="sub-tit">심폐기능증진 훈련 프로그램</h3>
+					<ul class="clinic-list mb30">
+						<li style="border:none">
+							<img src="/resource/images/service08-9.jpg" alt="">
+							<div class="text">
+								장애를 가지고 심폐기능을 건강하게 유지한다는 것은 매우 어렵습니다.
+								결국 심뇌혈관질환, 만성질환, 근감소증에 취약해지기 때문에 적절한 평가 및 훈련 프로그램이 필요합니다.
+							</div>
+						</li>
+					</ul>
+
+					<h3 class="sub-tit">지역사회 일상생활동작훈련 프로그램</h3>
+					<ul class="clinic-list mb30">
+						<li style="border:none">
+							<img src="/resource/images/service08-10.jpg" alt="">
+							<div class="text">
+								퇴원 후 환자의 독립적인 일상생활 수행, 가정, 직장, 지역사회로의 빠른 복귀를 위하여 환자별 목표와 과제에 따라
+								맞춤형 일상 활동작훈련, 사회적응훈련을 시행합니다.
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+            <?php include_once "../inc/doc_list.php"; ?>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<link rel='stylesheet' href='<?=$IMG_PATH?>/style.css' type='text/css'/>
+
+<form id='flogin' name='flogin' method='post' action='/member/login/in'>
+<input type='hidden' name='url' value='<?=$url?>'/>
+<div id="login_box">
+  	<ul>
+    	<li><img src="<?=$IMG_PATH?>/txt_id.gif" alt="id" border="0" /> <input type="text" name="mb_id" id="mb_id" class="ed imeDis"></li>
+        <li>
+        	<img src="<?=$IMG_PATH?>/txt_pw.gif" alt="password" border="0" /> <input type="password" name="mb_password" class="ed" onkeypress="check_capslock(event, this);">
+        	<div id="show_capslock"></div>
+        </li>
+    </ul>
+    <input type="image" src="<?=$IMG_PATH?>/btn_login.gif" class="login_btn" alt="login" />
+    <p class="check"><input type="checkbox" name='reId' value='1' <?=$chk_reId?>> 아이디 저장하기</p>
+    
+    <div class="bt_txt">
+        <div class="left_txt">
+      		<h3>아직 회원이 아니세요?</h3>
+            처음 방문하신 고객님은, 회원가입을 해주세요. <br />
+            회원가입을 하시면 추가정보를 입력할 필요없이<br />
+            간편하고 손쉽게 사이트를 이용하실 수 있습니다.
+            <a href="/member/join" class="btn_join">회원가입</a>
+        </div>
+        <div class="right_txt">
+      		<h3>아이디 또는 비밀번호를 잊으셨나요?</h3>
+            고객님의 아이디 또는 비밀번호가 <br />
+            기억이 나지 않으신다면 아래의 버튼을 이용해서 <br />
+            쉽고 안전하게 찾으실 수 있습니다.
+            <a href="/member/forget_idpwd" class="btn_find">ID/PASSWORD 찾기</a>
+        </div>
+    </div>
+
+</div>
+</form>
+
+<!-- 쇼핑몰 비회원 인증 -->
+<?=$guest_login?>
+
+<div id='loading'></div>
+
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#flogin').validate({
+		rules: {
+			mb_id: { required:true, minlength:4, alphanumunder:true },
+			mb_password: 'required'
+		},
+		messages: {
+			mb_id: { required:'아이디를 입력하십시오.', minlength:'최소 4자 이상 입력하십시오.' },
+			mb_password: '비밀번호를 입력하십시오.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+			$('#loading').show();
+		    f.submit();
+		}
+	});
+
+	$('#mb_id').focus();
+	
+	<?=$alt_script?>
+});
+//]]>
+</script>

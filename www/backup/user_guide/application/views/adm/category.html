@@ -1,0 +1,46 @@
+&deg; <b><?=$name?></b> 분류
+<input type='hidden' id='type' value='<?=$type?>'/>
+
+<br/><br/>
+- 최상위 분류 <input type='text' id='topVal' class='ed' maxlength='20'/> <img id='topSubmit' src='<?=IMG_DIR?>/useful/category/btn_cate.gif' align='top' alt='분류추가'/>
+
+<br/><br/>
+
+- 분류명을 클릭하세요.
+<div id='category'>
+	<?=$code_html?>
+</div>
+
+<p class='bottom center'>
+	<? if ($tid): ?>
+    <input type='button' class='btn' value='  목  록  ' onclick="document.location.href='<?=$path?>/board/form/u/<?=$tid?>';"/>
+	<? endif; ?>
+</p>
+
+<div id='status'>
+- 분류명 : <b><span id='nameVal'></span></b>
+
+<br/><br/>
+
+- 옵션 : 
+<span id='icons'>
+	<img id='add' src='<?=IMG_DIR?>/useful/category/btn_add_o.gif' align='top' width='15' height='15' title='추가' alt='추가'/>
+	<img id='mod' src='<?=IMG_DIR?>/useful/category/btn_init.gif' align='top' width='15' height='15' title='수정' alt='수정'/>
+	<img id='del' src='<?=IMG_DIR?>/useful/category/btn_del.gif' align='top' width='15' height='15' title='삭제' alt='삭제'/>
+</span>
+
+<br/><br/>
+
+<input type='hidden' id='w'/>
+<input type='hidden' id='codeVal'/>
+<input type='text'   id='subVal' class='ed' maxlength='20'/>
+<img src='<?=IMG_DIR?>/useful/category/btn_cate.gif' id='valSubmit' align='top' title='분류추가' alt='분류추가'/>
+
+<br/>
+
+<span id='sClose'>[닫기]</span>
+</div>
+
+<div id='loading'></div>
+
+<script type='text/javascript' src='<?=JS_DIR?>/categoryform.js'></script>

@@ -1,0 +1,468 @@
+body		{
+	margin:0;
+
+}
+td,input,textarea{
+	font-size:12px;
+	font-family:"Dotum", "돋움", "Arial";
+	color:#707070;
+	line-height: 16px;
+}
+.bold_white {
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+
+.style1 {
+	color: #000000;
+	font-weight: bold;
+}
+
+
+img			{	border:none; }
+.bg01 {
+	background-image: url(../images/main/main_bg.jpg);
+	background-repeat: repeat;
+}
+.table { 
+border: 0 none;
+border-collapse: collapse;
+padding: 0;
+margin: 0;
+
+}
+
+A:link    {color:#666666;text-decoration:none; line-height:14px;}
+A:visited {color:#666666;text-decoration:none; line-height:14px;}
+A:active  {color:#ff8400;text-decoration:none; line-height:14px;}
+A:hover  {color:#ff8400;text-decoration:none; line-height:14px;}
+.pixel11 {
+	font-size: 11px;
+}
+
+.pixel11quick {
+	font-size: 11px;
+	line-height: 15px;
+	padding: 9px;
+}
+
+
+.pixel11_orange {
+	font-size: 11px;
+	color: #f26522 !important;
+	font-weight: bold;
+}
+.yellow {
+	color: #f26522;
+}
+.red{
+	color: #ed1c24;
+}
+.red_bold {
+	color: #ed1c24;
+	font-weight: bold;
+}
+
+
+.pixel12height15 {
+	font-size: 12px;
+	line-height: 15px;
+	padding-top: 4px;
+	padding-right: 0px;
+	padding-bottom: 3px;
+	padding-left: 0px;
+}
+.pixel11_table {
+	font-size: 11px;
+	font-weight: bold;
+	color: #7d7d7d;
+}
+.pixe11blue {
+	font-size: 11px;
+	color: #167dd8;
+}
+.year {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 30px;
+	font-weight: bold;
+	line-height: 30px;
+}
+
+
+.pixel11bold_white {
+	font-size: 11px;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+.space20 {
+	height: 20px;
+}
+.space25 {
+	height: 25px;
+	vertical-align: top;
+}
+
+.space30 {
+	height: 30px;
+
+
+}
+.space40 {
+	height: 40px;
+}
+.top5 {
+	padding-top: 5px;
+}
+.top8 {
+
+	padding-top: 8px;
+	vertical-align: top;
+}
+.top3 {
+	padding-top: 3px;
+	vertical-align: top;
+}
+.top2 {
+	padding-top: 2px;
+}
+
+.lineheight18 {
+	line-height: 18px;
+}
+.lineheight20 {
+
+	line-height: 20px;
+}
+
+.left10 {
+	padding-left: 10px;
+}
+.left15 {
+
+	padding-left: 15px;
+}
+.list01 {
+	background-color: #F7F7F4;
+
+}
+
+.left5 {
+	padding-left: 5px;
+
+
+}
+.small-bg {
+	border: 1px solid #e0e0e0;
+}
+.search {
+	border: 2px solid #c7c6c6;
+	height: 20px;
+}
+
+.box {
+	font-family:"Dotum", "돋움", "Arial";
+	border: 1px solid #e1e1e1;
+	height: 20px;
+	background-color: #fafafa;
+}
+.box11pixel {
+	font-family:"Dotum", "돋움", "Arial";
+	font-size: 11px;
+	border: 1px solid #e1e1e1;
+	height: 20px;
+	background-color: #fafafa;
+	color:#898989;
+}
+.box-re1 {
+	font-family:"Dotum", "돋움", "Arial";
+	border: 1px solid #e1e1e1;
+	height: 55px;
+}
+.box-re2 {
+	font-family:"Dotum", "돋움", "Arial";
+	border: 1px solid #7eb9e5;
+	height: 70px;
+}
+
+.box_white {
+	font-family:"Dotum", "돋움", "Arial";
+	font-size: 12px;
+	border: 1px solid #e1e1e1;
+	height: 17px;
+}
+.box_main{
+	font-family:"Dotum", "돋움", "Arial";
+	border: 1px solid #ffffff;
+}
+
+
+
+select.htcType {
+	behavior:url(/selectBox2.htc);
+}
+
+A.afc_update:link    {color:#ffffff;text-decoration:none; line-height:11pt;}
+A.afc_update:visited {color:#ffffff;text-decoration:none; line-height:11pt;}
+A.afc_update:active  {color:#000000;text-decoration:none; line-height:11pt;}
+A.afc_update:hover  {color:#000000;text-decoration:none; line-height:11pt;}
+
+A.member:link    {color:#666666;text-decoration:none; line-height:11pt;font-size: 11px;text-indent: 3pt;letter-spacing: -0.5pt;}
+A.member:visited {color:#666666;text-decoration:none; line-height:11pt;font-size: 11px;text-indent: 3pt;letter-spacing: -0.5pt;}
+A.member:active  {color:#ff8400;text-decoration:none; line-height:11pt;font-size: 11px;text-indent: 3pt;letter-spacing: -0.5pt;}
+A.member:hover  {color:#ff8400;text-decoration:none; line-height:11pt;font-size: 11px;text-indent: 3pt;letter-spacing: -0.5pt;}
+
+A.urlpath:link    {color:#7a7979;text-decoration:none; line-height:14pt;}
+A.urlpath:visited {color:#7a7979;text-decoration:none; line-height:14pt;}
+A.urlpath:active  {color:#7a7979;text-decoration:none; line-height:14pt;}
+A.urlpath:hover  {color:#7a7979;text-decoration:none; line-height:14pt;}
+
+A.selectpath:link    {color:#000000;text-decoration:none; line-height:14pt;}
+A.selectpath:visited {color:#000000;text-decoration:none; line-height:14pt;}
+A.selectpath:active  {color:#000000;text-decoration:none; line-height:14pt;}
+A.selectpath:hover  {color:#000000;text-decoration:none; line-height:14pt;}
+
+.box-1 {
+	font-family:"Dotum", "돋움", "Arial";
+	border: 1px solid #e1e1e1;
+	font-size: 12px;
+	height: 150px;
+	ime-mode:active;
+	background-color: #fafafa;
+}
+.box-11 {
+	font-family:"Dotum", "돋움", "Arial";
+	border: 1px solid #e1e1e1;
+	font-size: 12px;
+	height: 85px;
+	ime-mode:active;
+	background-color: #fafafa;
+}
+.box-2 {
+	font-family:"Dotum", "돋움", "Arial";
+	border: 1px solid #e1e1e1;
+	padding: 10px;
+}
+.left5top10 {
+	padding-left: 5px;
+	padding-top: 5px;
+	vertical-align: top;
+
+
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+.left10top10 {
+
+	padding-left: 10px;
+	padding-top: 10px;
+	vertical-align: top;
+}
+.left10top5 {
+
+
+	padding-left: 10px;
+	padding-top: 5px;
+	vertical-align: top;
+}
+.box-3 {
+
+    font-family:"Dotum", "돋움", "Arial";
+	border: 1px solid #e1e1e1;
+	font-size: 11px;
+	background-color: #FFFFFF;
+	height: 18px;
+}
+.box-4 {
+	font-family:"Dotum", "돋움", "Arial";
+	border: 1px solid #e1e1e1;
+	font-size: 12px;
+	background-color: #FFFFFF;
+	height: 19px;
+	}
+select {
+    font-size:12px;
+	font-family:"Dotum", "돋움", "Arial";
+	color:#666666;
+	margin:0;
+	line-height: 17px;
+}
+.photoname {
+	font-size: 11px;
+	color: #9e9c9c;
+	top: 10px;
+	padding-top: 5px;
+}
+.padding15 {
+	padding: 15px;
+}
+.padding10 {
+	padding: 10px;
+}
+.title1 {
+	line-height: 14px;
+	font-weight: bold;
+	color: #333333;
+}
+.depth_title {
+	font-weight: bold;
+	color: #4048ad;
+}
+
+
+.title {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.photo-1 {
+	padding: 5px;
+	border: 1px solid #e1e1e1;
+	background-color: #333333;
+
+}
+.scroll-1 {
+	scrollbar-3dlight-color:#cecece;
+	scrollbar-arrow-color:#989898;
+	scrollbar-track-color:#f3f3f3;
+	scrollbar-darkshadow-color:#f3f3f3;
+	scrollbar-face-color:#f3f3f3;
+	scrollbar-highlight-color:#f3f3f3;
+	scrollbar-shadow-color:#cecece;
+	border: 1px solid #dadada;
+	padding: 10px;
+
+}
+.mainphoto {
+	font-size: 11px;
+	line-height: 14px;
+	padding-top: 5px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+}
+.reply_bg {
+	background-color: #f7f7f7;
+	padding: 15px;
+	border: 1px solid #e1e1e1;
+}
+.reply_bg01 {
+	background-color: #f7f7f7;
+	padding: 10px;
+	border: 1px solid #e1e1e1;
+}
+.box_search {
+	font-family:"Dotum", "돋움", "Arial";
+    border: none;
+}
+
+.top5bottom5 {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.top10bottom10 {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.border {
+	border: 1px solid #e1e1e1;
+}
+.border1 {
+	border: 1px solid #c1c1c1;
+}
+.border_day {
+	border: 1px solid #959595;
+}
+
+.border_red {
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #c9252b;
+	border-bottom-color: #c9252b;
+	border-left-color: #c9252b;
+	padding-top: 12px;
+	padding-right: 14px;
+	padding-bottom: 12px;
+	padding-left: 14px;
+}
+
+.title_product {
+	font-weight: bold;
+	color: #252525;
+	font-size: 14px;
+	padding-top: 5px;
+	padding-right: 0px;
+	padding-bottom: 5px;
+	padding-left: 0px;
+}
+.border_product {
+	padding: 20px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: none;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #e1e1e1;
+	border-bottom-color: #e1e1e1;
+	border-left-color: #e1e1e1;
+	background-color: #f8f8f8;
+}
+
+.border_product01 {
+	padding: 10px;
+	border: 1px solid #ebd4c1;
+}
+.border_product03 {
+	padding: 10px;
+	border: 1px solid #e1e1e1;
+}
+.border_product04 {
+	padding: 12px;
+	border: 1px solid #e1e1e1;
+	font-size: 11px;
+}
+
+
+.border_product02 {
+	padding: 12px;
+	border: 1px solid #f3e2d4;
+	background-color: #FFF;
+}
+
+
+.border_login {
+	border: 4px solid #9fa3d6;
+}
+
+
+
+.input {
+	font-size: 13px;
+	background-color: ffffff;
+	border: 1px solid #c9c9c9;
+	height: 20px;
+	font-family: "돋움";
+}
+.pixel12_orange {
+	font-size: 12px;
+	color: #f26522;
+	font-weight: bold;
+}
+.photo {
+	border: 1px solid #d9d9d9;
+	background-color: #ededed;
+	padding: 7px;
+	text-align: center;
+}

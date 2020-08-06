@@ -1,0 +1,134 @@
+<link rel="stylesheet" type="text/css" href="/css/board.css" />
+
+<? include DOC_ROOT.'/include/08_inc.php'; ?>
+<br />
+
+<? include DOC_ROOT ."/include/08_02_inc.php"; ?>
+
+<!-- <div class="board">
+  <div class="right fs11 mgt_m_20"><img src="/img/board/ico_est.gif" width="3" height="11" alt="" class="vam" /> 표시는 필수사항 입니다.</div>
+  <div class="title w98" style="height:0px;"></div>
+  
+  <form name="freg" id="freg" action="/recruit/reg/<?=$id?><?=$qstr?>" method="post" enctype="multipart/form-data">
+    <fieldset>
+      <legend class="dpn">쓰기폼</legend>
+      <table border="1" class="write3" summary="멀티게시판 쓰기 폼">
+        <col style="width: 20%;" />
+        <col />
+        <tbody>
+          <tr>
+            <th scope="row" class="item"><label for="name">이름</label></th>
+            <td><input type="text" name="name" id="name" class="text w70" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="item"><label for="tname">연락처</label></th>
+            <td>
+            	<input type="text" name="phone[]" id="phone1" class="text imeDis" maxlength="4" onkeypress="return only_number();" style="width:50px;" />
+	            -
+	            <input type="text" name="phone[]" id="phone2" class="text imeDis" maxlength="4" onkeypress="return only_number();" style="width:50px;" />
+	            -
+	            <input type="text" name="phone[]" id="phone3" class="text imeDis" maxlength="4" onkeypress="return only_number();" style="width:50px;" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" class="item"><label for="email">이메일</label></th>
+            <td><?=email_selector('email')?></td>
+          </tr>
+          <tr>
+            <th scope="row" class="item"><label for="resume">이력서</label></th>
+            <td><input type="file" name="resume" id="resume" class="file w70" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="item"><label for="introduction">자기소개서</label></th>
+            <td><input type="file" name="introduction" id="introduction" class="file w70" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="item"><label for="transcript">성적증명서</label></th>
+            <td><input type="file" name="transcript" id="transcript" class="file w70" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="item"><label for="diploma">졸업증명서</label></th>
+            <td><input type="file" name="diploma" id="diploma" class="file w70" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="item"><label for="registration">주민등록등본</label></th>
+            <td><input type="file" name="registration" id="registration" class="file w70" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="item"><label for="family">가족관계증명서</label></th>
+            <td><input type="file" name="family" id="family" class="file w70" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="item bin"><label for="experience">경력증명서</label></th>
+            <td><input type="file" name="experience" id="experience" class="file w70" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="item bin"><label for="license">면허증(자격증)</label></th>
+            <td id="licenseFiles" style="line-height:30px;">
+            	<input type="file" name="license[]" id="license" class="file w70" /> &nbsp; <em id="addFile" class="tdu">파일추가+</em>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </fieldset>
+    
+    <div class="infomenu2 page">
+      <div class="center">
+        <input type="image" id="btn_submit" src="/img/board/btn_register.gif" width="77" height="26" alt="등록" /> &nbsp; &nbsp;<a href="<?=$back_href?>"><img src="/img/board/btn_cancel.gif" width="77" height="26" alt="취소" /></a>
+      </div>
+    </div>
+    
+  </form> 
+  
+</div> -->
+
+<div id='loading'></div>
+
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#freg').validate({
+		rules: {
+			name: { required:true, maxlength:50 },
+			'phone[]': 'required',
+			email: { required:true, maxlength:50 },
+			resume: 'required',
+			introduction: 'required',
+			transcript: 'required',
+			diploma: 'required',
+			registration: 'required',
+			family: 'required'
+		},
+		messages: {
+			name: { required:'이름을 입력하세요.', maxlength:'이름을 50자 이내로 입력하세요.' },
+			'phone[]': '연락처를 입력하세요.',
+			email: { required:'이메일을 입력하세요.', maxlength:'이메일을 50자 이내로 입력하세요.' },
+			resume: '이력서 파일을 첨부하세요.',
+			introduction: '자기소개서 파일을 첨부하세요.',
+			transcript: '성적증명서 파일을 첨부하세요.',
+			diploma: '졸업증명서 파일을 첨부하세요.',
+			registration: '주민등록등본 파일을 첨부하세요.',
+			family: '가족관계증명서 파일을 첨부하세요.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+			beforeUnload = false;
+			f.submit();
+		}
+	});
+});
+
+$('#addFile').click(function() {
+	$('#licenseFiles').prepend('<p><input type="file" name="license[]" id="license" class="file w70" /> <input type="button" style="margin-top:6px;" class="btn_simp" onclick="remove_child($(this).prev());" value=" - 제거 "/></p>');
+}).css('cursor', 'pointer');
+//]]>
+</script>

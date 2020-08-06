@@ -1,0 +1,99 @@
+<h2><?=$_TITLE_?></h2>
+
+<form id='fapply' name='fapply' method='post' action='<?=$path?>/apply/form/u/<?=$row['ap_id']?>?cid=<?=$cid?>' enctype='multipart/form-data'>
+<input type='hidden' name='w'    value='<?=$w?>' />
+<input type='hidden' name='token' value='<?=$token?>' />
+<input type='hidden' name='ap_id' value='<?=$row['ap_id']?>' />
+
+<ul id="form_cont">
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 신청서 정보</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+		
+			<?
+			$is_colspan = FALSE;
+			foreach($apc['form'] AS $key => $form) :
+				$next_r = isset($apc['form'][$key + 1]) && $apc['form'][$key + 1]['apf_align_r'] ? TRUE : FALSE;
+			
+				echo !$form['apf_align_r'] ? '<tr>' : '';
+				$is_colspan = $form['apf_align_r'] ? TRUE : $is_colspan; 
+			
+				if($form['apf_type'] != 'hidden') :
+			?>
+			
+				<th><?=$form['apf_name']?> <span class="red"><?=$form['apf_required']?'*':''?></span></th>
+				<td colspan="<?=!$next_r && !$form['apf_align_r']?'3':''?>"><?=getInput($form['apf_type'], $form['apf_field'], $row['ap_'. $form['apf_field']], '', $form['options'])?></td>
+			
+			<?
+				endif;
+			
+				echo !$next_r ? '</tr>' : '';
+			endforeach;
+			?>
+			
+			<? if($w) : ?>
+			<tr>
+				<th>등록일</th>
+				<td colspan="<?=$is_colspan?'3':''?>"><?=$row['ap_regdate']?></td>
+			</tr>
+			
+			<tr>
+				<th>최종수정일</th>
+				<td colspan="<?=$is_colspan?'3':''?>"><?=$row['ap_mdydate']?></td>
+			</tr>
+			<? endif; ?>
+		</table>
+	</li>
+</ul>
+
+<p class='center bottom'>
+	<input type='submit' id='btn_submit' class='btn' value='  확  인  ' />&nbsp;
+	<input type='button' class='btn' value='  목  록  ' onclick="document.location.href='<?=$path?>/apply/lists?cid=<?=$cid?>';" />
+</p>
+</form>
+
+<div id='loading'></div>
+
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function() {
+	$('#fapply').validate({
+		rules: {
+			<?
+			$comma = '';
+			foreach($apc['form'] AS $key => $form) {
+				if($form['apf_required']) {
+					echo $comma . $form['apf_field'].":'required'";
+					$comma = ",\n";
+				}
+			}
+			?>
+		},
+		messages: {
+			<?
+			$comma = '';
+			foreach($apc['form'] AS $key => $form) {
+				if($form['apf_required']) {
+					echo $comma . $form['apf_field'].":'[".$form['apf_name']."] 항목이 입력되지 않았습니다.'";
+					$comma = ",\n";
+				}
+			}
+			?>
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+		    f.submit();
+		}
+	});
+});
+//]]>
+</script>

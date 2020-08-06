@@ -1,0 +1,33 @@
+&deg; <b><?=$_TITLE_?></b>
+
+<br/><br/>
+
+<ul id="form_cont">
+	<form name='fmailtest' method='post' action='<?=$path?>/sendmail_test'>
+	<input type='hidden' name='token' value='<?=$token?>'/>
+	<li class="form_li">
+		<div>
+			<h4>테스트 메일 발송</h4>
+			<dl>
+				<dd>
+					고객님들께서 메일이 오지 않는다고 하면 사용하는 메뉴입니다.
+					<br/>입력한 메일주소로 테스트 메일을 발송합니다.
+					<br/><br/>만약 [메일검사] 라는 내용으로 메일이 도착하지 않는다면 보내는 메일서버와 받는 메일 서버 중 문제가 발생했을 가능성이 있습니다.
+					<br/>메일을 보냈는데도 도착하지 않는다면 다른 여러 곳으로 메일을 발송하여 주십시오.
+					<br/><br/>여러 곳으로 메일을 발송하시려면 <b>,</b> 로 메일을 구분하십시오.
+				</dd>
+				<dt>받는 메일주소</dt>
+				<dd>
+					<input type='text' name='mail_addr' class='ed' size='40' value='<?=$mail_addr?>'/>
+					<input type='submit' class='btn' value='  발  송  '/>	
+				</dd>
+				<? if($mail_msg) : ?>
+				<dd style="color:red;">
+					<?=$mail_msg?>
+				</dd>
+				<? endif; ?>
+			</dl>
+		</div>
+	</li>
+	</form>
+</ul>

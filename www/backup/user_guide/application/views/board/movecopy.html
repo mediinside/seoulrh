@@ -1,0 +1,43 @@
+<form name='fboardmvcp' method='post' action='<?=RT_PATH?>/_board/record_movecopy/update' onsubmit='return fboardmvcp_submit(this);'>
+<input type='hidden' name='is_admin' value='<?=IS_ADMIN?>'/>
+<input type='hidden' name='sw'       value='<?=$sw?>'/>
+<input type='hidden' name='bid' value='<?=$bid?>'/>
+<input type='hidden' name='wr_ids'   value='<?=$wr_id?>'/>
+<input type='hidden' name='qstr'     value='<?=$qstr?>'/>
+
+<div id='mc_wrap'>
+	<div id='mc_title'>　<b>&gt;&gt; 게시물<?=$act?></b></div>
+	<div id='mc_header'>
+		※ <?=$act?>할 게시판을 한개 이상 선택하여 주십시오.
+	</div>
+	
+	<ul id='mc_list'>
+		<? foreach ($list as $o): ?>
+		<li>
+        	<input type='<?=$check_type?>' id='<?=$o->bid?>' name='bids[]' value='<?=$o->bid?>'/>
+			<label for='<?=$o->bid?>'><?=$o->gr_subject?> <?=$o->bo_subject?> (<?=$o->bid?>)</label>
+		</li>   
+        <? endforeach; ?>
+	</ul>
+	<p class='mc_btn'>
+		<input id='btn_submit' type='image' src='<?=IMG_DIR?>/board/btn_ok.gif'/>&nbsp;
+		<a href='javascript:window.close();'><img src='<?=IMG_DIR?>/board/btn_close.gif' alt='창닫기'/></a>
+	</p>
+</div>
+
+</form>
+
+<script type='text/javascript'>
+//<![CDATA[
+function fboardmvcp_submit(f) {
+	if ($("input[name='bids[]']:checked", document.fboardmvcp).length < 1) {
+		alert('<?=$act?>할 게시판을 선택해 주십시오.');
+        return false;
+	}
+
+    document.getElementById('btn_submit').disabled = true;
+    
+    return true;
+}
+//]]>
+</script>

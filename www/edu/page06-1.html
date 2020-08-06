@@ -1,0 +1,123 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once "../inc/head.php";
+$dep1 = "4";
+$dep2 = "4-1";
+$dep3 = "4-1-6";
+?>
+<style>
+	@media screen and (max-width:1023px){
+		.tab-box .tab-cont .list table th, .tab-box .tab-cont .list table td {
+			word-break: break-word;
+		}
+		.logo-list > li .img img {
+			transform: scale(1.3);
+		}
+	}
+</style>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/edu-bnnr6.jpg" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="mt60 mb-show"></div>
+				<div class="wd-1200">
+					<h3 class="sub-tit">
+						연구사업
+					</h3>
+					<div class="text-box mb30">
+						<p>
+							서울재활병원에서는 연구센터를 통하여 학문 연구를 장려하고 효율적인 연구활동을 지원합니다.
+						</p>
+					</div>
+					<div id="btn-box" class="center mb60">
+						<a href="/edu/page06-1.html" class="btn bg-green">연구센터</a>
+						<a href="/edu/page06-2.html" class="btn">연구현황</a>
+					</div>
+					<h3 class="sub-tit">
+						연구센터
+					</h3>
+					<ul class="clinic-list mb30">
+						<li>
+							<label for="">
+								IRB(임상시험심사위원회)
+								운영
+							</label>
+							<div class="text">
+								서울재활병원은 원내 실시 되는 임상시험의 윤리적, 과학적 타당성을 심의하여 연구 대상자를 보호하기 위해 IRB를 운영하고 있습니다.
+								<ul class="logo-list">
+									<li>
+										<div class="img">
+											<img src="/resource/images/h-1-logo.png" alt="">
+										</div>
+										<div class="txt">
+											<ul class="normal-list">
+												<li>· 질병관리본부, 인간대상연구 기관생명윤리위원회 등록</li>
+											</ul>
+										</div>
+									</li>
+									<li>
+										<div class="img">
+											<img src="/resource/images/h-2-logo.png" alt="">
+										</div>
+										<div class="txt">
+											<ul class="normal-list">
+												<li>· 식품의약품안전처, 의료기기 임상시험기관 지정</li>
+												<li>· 식품의약품안전처, 의약품등 임상시험실시기관 지정</li>
+											</ul>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<label for="">
+								연구지원 사업
+							</label>
+							<img src="/resource/images/edu06-1.jpg" alt="">
+							<div class="text">
+								연구 윤리 교육 및 연구 관련 통계 교육 등 관련 교육을 지원하며 원내 시행되는 연구의 연구
+								비를 지원하여 연구 활동을 지원합니다.
+							</div>
+						</li>
+						<li>
+							<label for="">
+								기타 활동
+							</label>
+							<img src="/resource/images/edu06-2.jpg" alt="">
+							<div class="text">
+								연구 자문활동, 원내 연구레터 발행 등 연구 관련 활동을 합니다.
+							</div>
+						</li>
+					</ul>
+					<div class="border-t mt30 mb30"></div>
+					<a href="tel:0260203022" class="gift-box center mb60">
+						<img src="/resource/images/headset.png" alt="">
+						<div class="text">
+							<small>연구사업 문의</small><br>
+							02-6020-<span class="color-green">3022</span>
+						</div>
+					</a>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+</body>
+
+</html>

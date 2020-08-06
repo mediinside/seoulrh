@@ -1,0 +1,158 @@
+<form id='fwrite' name='fwrite' method='post' enctype='multipart/form-data' action='<?=$path?>/banner/form_group'>
+<input type='hidden' name='w'    value='<?=$w?>'/>
+<input type='hidden' name='token' value='<?=$token?>'/>
+<input type='hidden' name='bg_id' value='<?=$row['bg_id']?>'/>
+
+<div id='form_title'>
+	&deg; <b><?=$_TITLE_?></b>
+</div>
+
+<ul id="form_cont">
+	<li class="form_li">
+		<div>
+			<h4>정보 입력</h4>
+			<dl>
+				<dt>그룹명</dt>
+				<dd><input type='text' id='bg_name' name='bg_name' class='ed' size='50' maxlength='50' value='<?=$row['bg_name']?>'/></dd>
+				<dt>출력 형식</dt>
+				<dd><select id='bg_type' name='bg_type' onchange='type_sel($(this));'>
+						<option value=''>선택</option>
+						
+						<? foreach($type as $key => $name): ?>
+						<option value='<?=$key?>'><?=$name?></option>
+						<? endforeach; ?>
+						
+					</select>
+					<span id="view_manual"></span>
+				</dd>
+				
+				<dt class="hide val1 val2 val3 val4 val5 val6">가로 크기</dt>
+				<!-- 수평 슬라이드시 입력 불가(출력 갯수에 따라 자동) -->
+				<dd class="hide val1 val2 val3 val5 val6"><input type='text' id='bg_width' name='bg_width' class='ed' size='6' maxlength='10' value='<?=$row['bg_width']?>'/>
+					<select id='bg_width_type' name='bg_width_type'>
+						<option value='px'>px</option>
+						<option value='%'>%</option>
+					</select>
+				</dd>
+				<dd class="hide val4"><span style="color:#aaaaaa;">배너 출력 갯수에 따라 자동 조절됨</span></dd>
+				
+				<dt class="hide val1 val2 val3 val4 val5 val6">세로 크기</dt>
+				<!-- 수직 슬라이드시 입력 불가(출력 갯수에 따라 자동) -->
+				<dd class="hide val1 val2 val3 val4 val6"><input type='text' id='bg_height' name='bg_height' class='ed' size='6' maxlength='10' value='<?=$row['bg_height']?>'/>
+					<select id='bg_height_type' name='bg_height_type'>
+						<option value='px'>px</option>
+						<option value='%'>%</option>
+					</select>
+				</dd>
+				<dd class="hide val5"><span style="color:#aaaaaa;">배너 출력 갯수에 따라 자동 조절됨</span></dd>
+				
+				<dt class="hide val4">각 이미지 가로</dt>
+				<dd class="hide val4"><input type='text' id='bg_imgW' name='bg_imgW' class='ed' size='6' maxlength='10' value='<?=$row['bg_imgW']?>'/></dd>
+				
+				<dt class="hide val5">각 이미지 세로</dt>
+				<dd class="hide val5"><input type='text' id='bg_imgH' name='bg_imgH' class='ed' size='6' maxlength='10' value='<?=$row['bg_imgH']?>'/></dd>
+				
+				<!-- 슬라이 방식에만 적용 -->
+				<dt class="hide val4 val5">배너 출력 갯수</dt>
+				<dd class="hide val4 val5"><input type='text' id='bg_count' name='bg_count' class='ed' size='6' maxlength='10' value='<?=$row['bg_count']?>'/></dd>
+				
+				<dt>&lt;UL&gt; CSS Class</dt>
+				<dd><input type='text' id='bg_ul_css' name='bg_ul_css' class='ed' size='12' maxlength='50' value='<?=$row['bg_ul_css']?>'/></dd>
+				
+				<dt>&lt;LI&gt; CSS Class</dt>
+				<dd><input type='text' id='bg_li_css' name='bg_li_css' class='ed' size='12' maxlength='50' value='<?=$row['bg_li_css']?>'/></dd>
+				
+				<dt class="hide val2 val3 val4 val5 val6">API 옵션</dt>
+				<dd class="hide val2 val3 val4 val5 val6">
+					<input type='text' id='bg_option' name='bg_option' class='ed' size='50' maxlength='255' value='<?=$row['bg_option']?>'/>
+					콤마(,)로 구분 (옵션키:"값", 옵션키:"값", ...)
+				</dd>
+				
+				<? if($row['bg_regdate']): ?>
+				<dt>등록일</dt>
+				<dd>
+					<?=$row['bg_regdate']?>
+				</dd>
+				<? endif; ?>
+				<? if($row['bg_mdydate']): ?>
+				<dt>최종수정일</dt>
+				<dd>
+					<?=$row['bg_mdydate']?>
+				</dd>
+				<? endif; ?>
+				
+			</dl>
+		</div>
+	</li>
+</ul>
+
+<p class='center bottom editor' style="margin-top:30px;">
+	<input type='submit' id='btn_submit' class='btn' value='  확  인  '/>&nbsp;
+	<input type='button' class='btn' value='  목  록  ' onclick="document.location.href='<?=$path?>/banner/group_lists';"/>
+</p>
+</form>
+
+<div id='loading'></div>
+
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#fwrite').validate({
+		rules: {
+			bg_name: 'required',
+			bg_type: 'required',
+			bg_count: { required:true, number:true },
+			bg_width: { required:true, number:true },
+			bg_height: { required:true, number:true }
+		},
+		messages: {
+			bg_name: '그룹명이 입력되지 않았습니다.',
+			bg_type: '출력 형식이 선택되지 않았습니다.',
+			bg_count: { required:'출력 갯수를 입력하십시오.', number:'출력 갯수는 숫자만 입력하십시오.' },
+			bg_width: { required:'가로 크기를 입력하십시오.', number:'가로 크기는 숫자만 입력하십시오.' },
+			bg_height: { required:'세로 크기를 입력하십시오.', number:'세로 크기는 숫자만 입력하십시오.' }
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+		    f.submit();
+		}
+	});		
+});
+
+function type_sel(sel_obj) {
+	$('.hide').hide();
+	$('.val'+sel_obj.val()).show();
+	$('#view_manual').hide();
+
+	if(sel_obj.val() != 1) {
+		$('#view_manual').show();
+	}
+	
+	if(sel_obj.val() == 2 || sel_obj.val() == 3) {
+		$('#view_manual').html('<a href="http://logicbox.net/jquery/simplyscroll" target="_blank">옵션 메뉴얼 보기</a>');	
+	}
+	else if(sel_obj.val() == 4 || sel_obj.val() == 5) {
+		$('#view_manual').html('<a href="http://www.gmarwaha.com/jquery/jcarousellite" target="_blank">옵션 메뉴얼 보기</a>');	
+	}
+	else if(sel_obj.val() == 6) {
+		$('#view_manual').html('<a href="http://thiagosf.net/projects/jquery/skitter" target="_blank">옵션 메뉴얼 보기</a>');	
+	}
+}
+
+$('#bg_type').val('<?=$row['bg_type']?>');
+$('#bg_width_type').val('<?=setValue('px',$row['bg_width_type'])?>');
+$('#bg_height_type').val('<?=setValue('px',$row['bg_height_type'])?>');
+type_sel($('#bg_type'));
+//]]>
+</script>
+
+<?=validation_errors('<script>alert("','");</script>');?>

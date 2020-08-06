@@ -1,0 +1,122 @@
+<form id='fwrite' name='fwrite' method='post' action='<?=$path?>/popup/form'>
+<input type='hidden' name='w'    value='<?=$w?>'/>
+<input type='hidden' name='token' value='<?=$token?>'/>
+<input type='hidden' name='pu_id' value='<?=$row['pu_id']?>'/>
+
+<h2><?=$_TITLE_?></h2>
+
+<ul id="form_cont">
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 정보 입력</h3>
+        <table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+        	<tr>
+            	<th>팝업 제목</th>
+                <td colspan="3">
+                	<input type='text' id='pu_name' name='pu_name' class='ed' size='50' maxlength='20' value='<?=$row['pu_name']?>'/>
+					<input type='checkbox' id='pu_hidden' name='pu_hidden' value='1' <?=checked($row['pu_hidden'],1)?>/> 숨김
+				</td>
+            </tr>
+            <tr>
+            	<th>팝업 형식</th>
+                <td colspan="3"><input type='radio' name='pu_type' value='0'/> 일반팝업
+					<input type='radio' name='pu_type' value='1'/> 고정레이어</td>
+            </tr>
+            <tr>
+            	<th>시작일</th>
+                <td>
+                	<input type='text' id='pu_sdate' name='pu_sdate' class='ed' size='18' maxlength='19' readonly='readonly' value='<?=$row['pu_sdate']?>'/>
+                	<button type="button" class="btn_simp" onclick="$('#pu_sdate').val('');">&nbsp;삭제&nbsp;</button>
+                </td>
+                <th>종료일</th>
+                <td>
+                	<input type='text' id='pu_edate' name='pu_edate' class='ed' size='18' maxlength='19' readonly='readonly' value='<?=$row['pu_edate']?>'/>
+                	<button type="button" class="btn_simp" onclick="$('#pu_edate').val('');">&nbsp;삭제&nbsp;</button>
+                </td>
+            </tr>
+            <tr>
+            	<th>가로 크기</th>
+                <td><input type='text' id='pu_width' name='pu_width' class='ed right' size='5' maxlength='5' value='<?=$row['pu_width']?>'/> px</td>
+                <th>세로 크기</th>
+                <td><input type='text' id='pu_height' name='pu_height' class='ed right' size='5' maxlength='5' value='<?=$row['pu_height']?>'/> px</td>
+            </tr>
+            <tr>
+            	<th>X 위치</th>
+                <td><input type='text' id='pu_x' name='pu_x' class='ed right' size='5' maxlength='5' value='<?=$row['pu_x']?>'/> px</td>
+                <th>Y 위치</th>
+                <td><input type='text' id='pu_y' name='pu_y' class='ed right' size='5' maxlength='5' value='<?=$row['pu_y']?>'/> px</td>
+            </tr>
+            
+            <tr>
+            	<td colspan="4"><?=$editor?></td>
+            </tr>
+            
+            <? if($w) : ?>
+            <tr>
+            	<th>등록일</th>
+                <td colspan="3"><?=$row['pu_regdate']?></td>
+            </tr>
+            <tr>
+                <th>최종수정일</th>
+                <td colspan="3"><?=$row['pu_mdydate']?></td>
+            </tr>
+            <? endif; ?>
+            
+        </table>
+	</li>
+</ul>
+
+<p class='center bottom'>
+	<input type='submit' class='btn' value='  확  인  '/>&nbsp;
+	<input type='button' class='btn' value='  목  록  ' onclick="document.location.href='<?=$path?>/popup/lists';"/>
+</p>
+</form>
+
+<div id='loading'></div>
+
+<script type='text/javascript'>
+//<![CDATA[
+document.fwrite.pu_type[<?=$row['pu_type']?>].checked = true;
+
+var beforeUnload = true;
+window.onbeforeunload = function() {
+	if (beforeUnload) return '이 페이지를 벗어나시면 작성 중인 글이 지워집니다.';
+}
+
+$(document).ready(function() {
+	$('#pu_sdate').datetimepicker();
+	$('#pu_edate').datetimepicker({
+		hour: 23,
+		minute: 59,
+		second: 59
+	});
+	
+	$('#fwrite').validate({
+		rules: {
+			pu_name: 'required',
+			pu_width: { required:true, min:50 },
+			pu_height: { required:true, min:50 }
+		},
+		messages: {
+			pu_name: '팝업 제목을 입력하세요.',
+			pu_width: '50 이상 입력하세요.',
+			pu_height: '50 이상 입력하세요.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+			beforeUnload = false;
+            Editor.save();
+		}
+	});
+});
+
+//]]>
+</script>

@@ -1,0 +1,101 @@
+<?php
+include_once "../inc/head.php";
+?>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/notice-bnnr1.png" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents">
+				<div class="board-list  wd-1200">
+					<h3 class="sub-tit">
+						고객의 소리
+						<span>※ 필수 입력 정보는 빠짐없이 입력해 주세요.</span>
+					</h3>
+					<form action="">
+						<table class="form_table">
+							<colgroup>
+								<col style="width:160px">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row" class="label important">분류</th>
+									<td>
+										<div class="cate_box">
+											<select class="input_text" name="" id="">
+												<option value="">칭찬</option>
+												<option value="">불만</option>
+												<option value="">건의</option>
+											</select>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" class="label important">이름</th>
+									<td>
+										<input type="text" class="input_text" id="" name="">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" class="label important">이메일</th>
+									<td>
+										<div class="email_box">
+											<input type="text" class="input_text" name="" id="">
+											<p class="unit">@</p>
+											<input type="text" class="input_text" name="" id="">
+											<select class="input_text" name="" id="">
+												<option value="">직접 입력</option>
+												<option value="naver.com">naver.com</option>
+												<option value="daum.net">daum.net</option>
+												<option value="nate.com">nate.com</option>
+												<option value="hanmail.net">hanmail.net</option>
+												<option value="hotmail.com">hotmail.com</option>
+												<option value="yahoo.co.kr">yahoo.co.kr</option>
+												<option value="gmail.com">gmail.com</option>
+											</select>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" class="label important vt-top">문의사항</th>
+									<td>
+										<textarea cols="30" rows="20" id="" name=""></textarea>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
+					<div class="btn-box right flex m-top">
+						<label class="check_box">
+							<input type="checkbox" class="check" id="" name="">
+							<a href="#none" target="_blank" class="link">개인정보정책</a>에 동의합니다.
+						</label>
+						<label class="check_box">
+							<input type="checkbox" class="check" id="" name="">
+							<a href="#none" target="_blank" class="link">이용약관</a>에 동의합니다.
+						</label>
+						<a class="btn-green" href="#">등록</a>
+					</div>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+</body>
+
+</html>

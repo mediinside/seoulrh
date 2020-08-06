@@ -1,0 +1,143 @@
+<div id='member_wrap'>
+
+<?=validation_errors();?>
+
+<form id='fjoin_check' name='fjoin_check' action='<?=RT_PATH?>/member/join' method='post'>
+	<div id="joinChk">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">              
+		  <? if ($use_jumin): ?>
+		  <tr>
+			<td>
+				<ul>
+					<li class='infor'>
+						<p>
+							<label for='mb_name'>&deg; <b>이름</b></label>
+							<input id='mb_name' name='mb_name' class='ed' maxlength='10'/>
+						</p>
+						<p>
+							<label for='mb_jumin'>&deg; <b>주민등록번호</b></label>
+							<input id='mb_jumin' name='mb_jumin' class='ed' maxlength='13'/>
+							<span>※ 숫자 13자리 중간에 - 없이 입력하세요.</span>
+						</p>
+					</li>
+				</ul>
+			</td>
+		  </tr>
+		  <tr>
+			<td height="40">&nbsp;</td>
+		  </tr>
+		  <? endif; ?>
+		  
+		  <tr>
+			<td height="25" style="text-align:left;"><img src="<?=IMG_DIR?>/member/join_copy01.jpg" width="272" height="16"></td>
+		  </tr>
+		  <tr>
+			<td height="30"><textarea name="textarea" id="textarea" class="box-2"><?=$stipulation?></textarea></td>
+		  </tr>
+		  <tr>
+			<td height="40" align="right" valign="top"><input type="checkbox" name="agree" id="agree" value="1"> <img src="<?=IMG_DIR?>/member/join_copy03.jpg" width="96" height="13"></td>
+		  </tr>
+		  <tr>
+			<td height="25" style="text-align:left;"><img src="<?=IMG_DIR?>/member/join_copy02.jpg" width="272" height="16"></td>
+		  </tr>
+		  <tr>
+			<td height="30"><textarea name="textarea2" id="textarea2" class="box-2"><?=$privacy?></textarea></td>
+		  </tr>
+		  <tr>
+			<td height="40" align="right" valign="top"><input type="checkbox" name="agree2" id="agree2" value="1"> <img src="<?=IMG_DIR?>/member/join_copy04.jpg" width="132" height="13"></td>
+		  </tr>
+		  <tr>
+			<td height="50" align="right"><input type='image' src='/images/btn_ok.jpg'/> <a href="/"><img src="/images/btn_cancel.jpg" width="61" height="28"></a></td>
+		  </tr>
+		</table></td>
+		<td width="30" valign="top">&nbsp;</td>
+		</tr>
+		</table>
+	</div>
+</form>
+
+</div>
+
+<script type='text/javascript' src='<?=JS_DIR?>/jvalidate.js'></script>
+<script type='text/javascript' src='<?=JS_DIR?>/jvalid_ext.js'></script>
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#fjoin_check').validate({
+		rules: {
+			mb_name: { required:true, minlength:2, hangul:true },
+			mb_jumin: { required:true, jumin:true },
+			agree: 'required',
+			agree2: 'required'
+		},
+		messages: {
+			mb_name: { required:'이름을 입력하십시오.', minlength:'최소 2자 이상 입력하십시오.' },
+			mb_jumin: { required:'주민등록번호를 입력하십시오.' },
+			agree: '회원가입약관의 내용에 동의해야 회원가입 하실 수 있습니다.',
+			agree2: '개인정보취급방침의 내용에 동의해야 회원가입 하실 수 있습니다.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		}
+	});
+});
+
+<? if ($use_jumin): ?>
+function validJumin(fld) {
+   var pattern = /(^[0-9]{13}$)/;
+   if (!pattern.test(fld)) {
+	   return false;
+   }
+   else {
+		var sum_1 = 0;
+		var sum_2 = 0;
+		var at=0;
+		var juminno= fld;
+		sum_1 = (juminno.charAt(0)*2)+
+				(juminno.charAt(1)*3)+
+				(juminno.charAt(2)*4)+
+				(juminno.charAt(3)*5)+
+				(juminno.charAt(4)*6)+
+				(juminno.charAt(5)*7)+
+				(juminno.charAt(6)*8)+
+				(juminno.charAt(7)*9)+
+				(juminno.charAt(8)*2)+
+				(juminno.charAt(9)*3)+
+				(juminno.charAt(10)*4)+
+				(juminno.charAt(11)*5);
+		sum_2=sum_1 % 11;
+
+		if (sum_2 == 0)
+			at = 10;
+		else {
+			if (sum_2 == 1)
+				at = 11;
+			else
+				at = sum_2;
+		}
+		att = 11 - at;
+		// 1800 년대에 태어난 남자, 여자의 구분이 9, 0 이라면 아래의 구문은 오류이다.
+		// 하지만. 100살넘은 분들이 주민등록번호를 과연 입력해볼까?
+		if (juminno.charAt(12) != att ||
+			juminno.substr(2,2) < '01' ||
+			juminno.substr(2,2) > '12' ||
+			juminno.substr(4,2) < '01' ||
+			juminno.substr(4,2) > '31' ||
+			juminno.charAt(6) > 4) {
+		   return false;
+		}
+	}
+	return true;
+}
+
+$.validator.addMethod('jumin', function(value, element) {
+	return this.optional(element) || validJumin(value);
+}, '올바른 주민등록번호가 아닙니다.');
+<? endif; ?>
+//]]>
+</script>

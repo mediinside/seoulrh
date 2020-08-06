@@ -1,0 +1,149 @@
+<form name="fshop" id="fshop" method="post" action="/shop/cart/add">
+<input type="hidden"  id="idx" name="idx" value="<?=$view['pd_id']?>" />
+<input type="hidden" id="price" value="<?=$view['pd_price']?>" />
+<input type="hidden" id="dlvPri" value="<?=$shop_conf['dlv_price']?>" />
+<input type="hidden" id="dlvFre" value="<?=$shop_conf['dlv_free']?>" />
+<input type="hidden" id="dlvFreItem" value="<?=$view['pd_dlvFree']?>" />
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+	<colgroup>
+		<col width="450" />
+		<col width="" />
+	</colgroup>
+	<tr>
+		<td width="450" align="center">
+			<p><img src="/useful/thumbnail/200x275/ki_shop/<?=$view['pd_id']?>?no=<?=$view['dimg'][0]?>" id="bigImg" /></p>
+			<p>
+			
+			<? foreach($view['dimg'] AS $no) : ?>
+            <span class="ib"><a href="javascript:;" onclick="shop_viewImg(<?=$view['pd_id']?>,<?=$no?>,'200x275')"><img src="/useful/thumbnail/65x89/ki_shop/<?=$view['pd_id']?>?no=<?=$no?>" /></a></span>
+			<? endforeach; ?>
+			
+			</p>
+			<img src="/src/imgs/shop/bt_bigview.gif" id="btn_showImg" alt="크게보기" class="big_btn" />
+		</td>
+		<td valign="top">
+			<p class="pr_title"><?=$view['pd_name']?></p>
+			<table width="100%" cellspacing="0" cellpadding="0" class="pr_info">
+				<colgroup>
+					<col width="110" />
+					<col />
+				</colgroup>
+				<? if($view['pd_price_ori']) : ?>
+				<tr>
+					<th>정상가</th>
+					<td><span class="tdLT"><?=number_format($view['pd_price_ori'])?> 원</span></td>
+				</tr>
+				 <? endif; ?>
+				 <tr>
+					<th>판매가</th>
+					<td><?=$view['price']?></td>
+				</tr>
+				 <tr>
+					<th>배송비</th>
+					<td id="dlv_price"><?=number_format($dlv_price)?> 원</td>
+				</tr>
+				<? if($view['pd_options']) : ?>
+				<tr>
+					<th>옵션</th>
+					<td><?=$view['pd_options']?sel_options($view['pd_options'],'옵션',TRUE,'option','','set_option();'):''?>&nbsp;</td>
+				</tr>
+				<? endif; ?>
+				<tr>
+					<th>결제금액</th>
+					<td id="amount"><?=number_format($amount)?> 원</td>
+				</tr>
+				<tr>
+					<th>수량</th>
+					<td>
+					<div id="pr_pic">
+					 <ul>
+					   <li><input type="text" class="ed right vaM imeDis" name="quantity" id="quantity" size="4" onkeypress="return only_number();" onkeyup="set_quantity('',0);" value="1" /></li>
+					   <li><img src="/src/imgs/shop/btn_quantity.gif" class="vaB" usemap="#btn_quantity" /></li>
+					 </ul>
+					</div>
+                            <map name="btn_quantity">
+							    <area shape="rect" coords="1,1,8,7" href="javascript:set_quantity(1,1);" alt="+" />
+							    <area shape="rect" coords="1,10,8,18" href="javascript:set_quantity(-1,1);" alt="-" />
+							</map>
+					</td>
+				</tr>
+			</table>
+			<!-- <p style="padding-top:10px;height:10px;">※ <?=number_format($shop_conf['dlv_free'])?>원 이상시 배송비 무료</p>
+			<p style="height:20px;">※ 대량구매시 할인 가능합니다. 사무실로 문의 주세요 <strong>(T.02-447-2289)</strong></p> -->
+			<div id="pr_btn">
+				<ul>
+					<li><a href="javascript:;" onclick="set_fshop(true, <?=$view['pd_soldout']?>, '품절');"><img src="/src/imgs/shop/bt_pay.gif" alt="결재하기"></a></li>
+					<li><a href="javascript:;" onclick="set_fshop(false, <?=$view['pd_soldout']?>, '품절');"><img src="/src/imgs/shop/bt_cart.gif" alt="장바구니 담기"></a></li>
+				</ul>
+			</div>
+			<br />
+			<? if(isset($md['st_id'])): ?>
+			<table width="100%" cellspacing="0" cellpadding="0" class="pr_info">
+				<colgroup>
+					<col width="110" />
+					<col />
+				</colgroup>
+				 <tr>
+					<th>담당MD</th>
+					<td><?=$md['st_name']?></td>
+				</tr>
+				<tr>
+					<th>연락처</th>
+					<td><?=$md['st_mobile']?> <?=$md['st_mobile']&&$md['st_phone']?'/':''?> <?=$md['st_phone']?></td>
+				</tr>
+				<tr>
+					<th>이메일</th>
+					<td><?=$md['st_email']?></td>
+				</tr>
+				<tr>
+					<td colspan="2"><?=$md['st_introduce']?></td>
+				</tr>
+			</table>
+			<? endif; ?>
+		</td>
+	</tr>
+</table>
+</form>
+<br /><br />
+
+
+
+<div id="info_tit"><img src="/src/imgs/shop/tit_detail.gif" alt="상세정보" /></div>
+<div class="pr_detail_view">
+	<?=$view['pd_content']?>
+</div>
+<p class="pr_bt_right"><a href="<?=$btn_list?>"><img src="/images/btn_list.jpg"/></a></p>
+
+
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function() {
+	$('#fshop').validate({
+		rules: {
+			quantity: 'required',
+			option: 'required'
+		},
+		messages: {
+			quantity: '수량을 입력하십시오.',
+			option: '옵션이 선택되지 않았습니다.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+		    addCart();
+		}
+	});
+	
+	shop_viewImg(<?=$view['pd_id']?>, <?=$view['dimg'][0]?>, '200x275');
+	
+	SHOP_FORM = $('#fshop');
+});
+//]]>
+</script>

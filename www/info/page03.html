@@ -1,0 +1,88 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once "../inc/head.php";
+$dep1 = "1";
+$dep2 = "1-1";
+$dep3 = "1-1-3";
+?>
+<style>
+	.btn-group:not(.m-menu-info) {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 60px 0 0;
+	}
+
+	.btn-group:not(.m-menu-info):after {
+		display: none;
+	}
+
+	.btn-group:not(.m-menu-info) .btn-sm {
+		width: 268px;
+		margin: 0 20px;
+	}
+
+	.btn-group:not(.m-menu-info) .btn-sm img {
+		margin-right: 10px;
+	}
+
+	@media screen and (max-width:1023px) {
+		.btn-group:not(.m-menu-info) {
+			flex-flow: column;
+		}
+
+		.btn-group:not(.m-menu-info) .btn-sm {
+			width: 100%;
+			margin: 0 0 15px;
+		}
+
+		.btn-group:not(.m-menu-info) .btn-sm img {
+			width: 20px !important;
+		}
+
+		img.mt60 {
+			margin-top: 100px;
+		}
+	}
+</style>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/info-bnnr3.jpg" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents mb60">
+					<img class="mb-hide" src="/resource/images/pc_mission_img.png" alt="" style="min-width: 99.8%;">
+					<img class="mb-show" src="/resource/images/m_mission_img.jpg" alt="" style="min-width: 99.8%;">
+					<div class="wd-1200">
+						<div class="btn-group mt60">
+							<a href="/file/logo_시그니처가로조합AI.zip" class="btn-sm bg-green mb15">
+								<img src="/resource/images/down.png" alt="" style="width: 13px;">
+								AI 다운로드
+							</a>
+							<a href="/file/logo_시그니처가로조합PNG.zip" class="btn-sm bg-green mb15">
+								<img src="/resource/images/down.png" alt="" style="width: 13px;">
+								PNG 다운로드
+							</a>
+						</div>
+					</div>
+			</section>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+</body>
+
+</html>

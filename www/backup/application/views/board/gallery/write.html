@@ -1,0 +1,196 @@
+<link rel='stylesheet' href='<?=BO_IMG_PATH?>/style.css' type='text/css'/>
+
+<? include DOC_ROOT.'/include/'. $m1 .'_inc.php'; ?>
+
+<?=$board['bo_top_html']?>
+<h3><?=$board['bo_title_img']?></h3>
+
+<form id='fwrite' name='fwrite' method='post' action='/_board/record_write/update' enctype='multipart/form-data'>
+<?=INPUT_ADMIN?>
+<input type='hidden' name='w'		value='<?=$w?>'/>
+<input type='hidden' name='bid'		value='<?=BO_TABLE?>'/>
+<input type='hidden' name='wr_id'	value='<?=$wr_id?>'/>
+<input type='hidden' name='qstr'	value='<?=$qstr?>'/>
+<?=$option_hidden?>
+
+<div id="board">
+	<table border="0" cellpadding="0" cellspacing="0" class="view write">
+    	<colgroup>
+        	<col width="17%" />
+            <col width="*" />
+        </colgroup>
+        
+        <? if($is_sign) : ?>
+		<tr>
+			<th class="view_top">작성자</th>
+			<td class="view_top"><input type='text' id='wr_name' name='wr_name' class='ed' maxlength='10' size='15' value='<?=$name?>'/></td>
+		</tr>
+		<? endif; ?>
+		
+		<? if($category) : ?>
+		<tr>
+			<th>카테고리</th>
+			<td><?=$category['select']?>
+	        <?=$category['scate']?>
+	        <script type='text/javascript'>
+	        //<![CDATA[
+	        currentCate('ca_code', new Array('<?=$category['code']?>'));
+	        //]]>
+	        </script>
+	        </td>
+		</tr>
+		<? endif; ?>
+		
+		<tr>
+			<th class="<?=!$is_sign?'view_top':''?>">제　목</th>
+			<td class="<?=!$is_sign?'view_top':''?>"><input type='text' id='wr_subject' name='wr_subject' class='ed' value='<?=$subject?>'/></td>
+		</tr>
+		
+        <? if($is_sign) : ?>
+		<tr>
+			<th>이메일</th>
+			<td><input type='text' id='wr_email' name='wr_email' class='ed' maxlength='50' value='<?=$email?>'/></td>
+		</tr>
+		<? endif; ?>
+		
+		<tr>
+			<th>내　용</th>
+			<td class="tPd5">
+				<? if(!$is_editor): ?>
+				<p class='tx_row'>
+					<span onclick="txresize('wr_content', '1', 100);"><img src='<?=BO_IMG_PATH?>/btn_up.gif' alt='줄이기'/></span>
+					<span onclick="txresize('wr_content', '2', 200);"><img src='<?=BO_IMG_PATH?>/btn_init.gif' alt='원래대로'/></span>
+					<span onclick="txresize('wr_content', '3', 100);"><img src='<?=BO_IMG_PATH?>/btn_down.gif' alt='늘리기'/></span>
+				</p>
+		        <textarea id='wr_content' name='wr_content' class='ed' rows='15'><?=$content?></textarea>
+				<? else : ?>
+				<?=$editor?>
+				<? endif; ?>
+			</td>
+		</tr>
+		
+		<? if($option) : ?>
+		<tr>
+			<th>옵　션</th>
+			<td><?=$option?></td>
+		</tr>
+		<? endif; ?>
+		
+        <? if($is_sign) : ?>
+		<tr>
+			<th>비밀번호</th>
+			<td><input type='password' id='wr_password' name='wr_password' class='ed' maxlength='20' size='15'/></td>
+		</tr>
+		<? endif; ?>
+		
+		<? if($board['bo_use_upload']): ?>
+		<tr>
+			<th>파일첨부</th>
+			<td>
+			<? foreach($upfile as $key => $val) : ?>
+				<? if(!$val['uf_editor']): ?>
+					<?=$val['uf_source']?>
+					<input type='checkbox' name='del_chk[]' value='<?=$val['uf_no']?>' /> 삭제
+				<? else :
+						unset($upfile[$key]);
+				   endif; ?>
+			<? endforeach; ?>
+			
+			<? if(count($upfile) < 1) : ?>
+				<input type="file" name='uf_file[0]' id='uf_file[0]' class='ed' size='30' />
+			<? endif; ?>
+			</td>
+		</tr>
+		<? endif; ?>
+		
+		<? if($postlink): ?>
+		<tr>
+			<th>관련글</th>
+		    <td><?=$postlink?></td>
+		</tr>
+		<? endif; ?>
+		
+		<? if($tag): ?>
+		<tr>
+			<th>태　그</th>
+		    <td><?=$tag?></td>
+		</tr>
+		<? endif; ?>
+		
+		<? if($board['bo_use_captcha']): ?>
+		<tr>
+			<th>자동입력방지</th>
+			<td>
+				<p id="write_option">
+					<img src="" id="kcaptcha" width="100" height="50" alt="자동등록방지"/>
+					<input type="text" name="wr_key" class="ed" size="10"/><br/>
+					<span>왼쪽의 글자를 입력하세요.</span>
+				</p>
+			</td>
+		</tr>
+		<? endif; ?>
+		
+    </table>
+    
+    <div id="write_submit">
+		<input type="image" src="<?=BO_IMG_PATH?>/btn_register.gif" alt="글쓰기"/>&nbsp;
+		<a href="/board/<?=BO_TABLE?>/lists<?=$qstr?>"><img src="<?=BO_IMG_PATH?>/btn_cancel.gif" alt="목록"/></a>
+	</div>
+    
+    </form>
+</div>
+
+<?=$board['bo_bottom_html']?>
+
+<div id="loading"></div>
+
+<script type="text/javascript">
+//<![CDATA[
+var beforeUnload = true;
+window.onbeforeunload = function() {
+	if (beforeUnload) return '이 페이지를 벗어나시면 작성 중인 글이 지워집니다.';
+}
+
+$(document).ready(function() {
+	$('#fwrite').validate({
+		rules: {
+			<? if($is_sign): ?>
+			wr_name: { required:true,  minlength:2 },
+			wr_password: { required:function() { return document.fwrite.w.value != 'u'; }, minlength:4 },
+			<? endif; ?>
+			wr_key: { required:true, wrKey:true },
+			ca_code: 'required',
+			wr_subject: 'required'
+		},
+		messages: {
+			<? if($is_sign): ?>
+			wr_name: { required:'이름을 입력하십시오.', minlength:'최소 2자 이상 입력하십시오.' },
+			wr_password: { required:'비밀번호를 입력하십시오.', minlength:'최소 4자 이상 입력하십시오.' },
+			<? endif; ?>
+			wr_key: '자동등록방지용 코드가 맞지 않습니다.',
+			ca_code: '분류를 선택하십시오.',
+			wr_subject: '제목을 입력하십시오.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+			beforeUnload = false;
+
+			<? if($is_editor): ?>
+            	Editor.save();
+            <? else: ?>
+	            $('#write_submit').remove();
+				$('#loading').show();
+			    f.submit();
+            <? endif; ?>
+		}
+	});
+});
+//]]>
+</script>

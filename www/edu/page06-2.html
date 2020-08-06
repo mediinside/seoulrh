@@ -1,0 +1,178 @@
+<?php
+//error_reporting(E_ALL);
+//ini_set("display_errors", 1);
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once $GP -> INC_WWW . '/count_inc.php';
+include_once "../inc/head.php";
+
+include_once($GP->CLS."class.list.php");
+include_once($GP -> CLS."/class.seoulrh.php");
+include_once($GP->CLS."class.button.php");
+
+$C_ListClass 	= new ListClass;
+$C_seoulrh 		= new seoulrh;
+$C_Button 		= new Button;
+
+$args = array();
+//	$args['show_row'] = 9;
+
+
+$args['s_type'] = "B";
+$args['s_show'] = "Y";
+$data = "";
+$data = $C_seoulrh->seoulrh_List_year(array_merge($_GET,$_POST,$args));
+$data_list 		= $data['data'];
+$data_list_cnt 	= count($data_list);
+
+$dep1 = "4";
+$dep2 = "4-1";
+$dep3 = "4-1-6";
+?>
+
+<style>
+	@media screen and (max-width:1023px){
+		.tab-box .tab-cont .list table th, .tab-box .tab-cont .list table td {
+			word-break: break-word;
+		}
+	}
+</style>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/edu-bnnr6.jpg" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="mt60 mb-show"></div>
+				<div class="wd-1200">
+					<h3 class="sub-tit">
+						연구사업
+					</h3>
+					<div class="text-box mb30">
+						<p>
+							서울재활병원에서는 연구센터를 통하여 학문 연구를 장려하고 효율적인 연구활동을 지원합니다.
+						</p>
+					</div>
+					<div id="btn-box" class="center mb60">
+						<a href="/edu/page06-1.html" class="btn">연구센터</a>
+						<a href="/edu/page06-2.html" class="btn bg-green">연구현황</a>
+					</div>
+					<h3 class="sub-tit">
+						연구현황
+					</h3>
+                    <div id="tab-1" class="tab-box">
+                    <?php
+                        $dummy = 1;
+                        for ($i = 0 ; $i < $data_list_cnt ; $i++) {
+                            $s_idx 		= $data_list[$i]['s_idx'];
+                            $s_year 		= $data_list[$i]['s_year'];
+                    ?>
+
+						<div class="tab-cont">
+							<p class="on" style="cursor: pointer;">
+								<a href="#none"><?=$s_year?></a>
+							</p>
+							<div class="board-list list bg-c01">
+								<table class="bordered fz10">
+									<caption class="dpn">2018년 연혁</caption>
+									<colgroup>
+										<col style="width:50px;">
+										<col>
+										<col style="width:22%;">
+										<col style="width:140px;">
+									</colgroup>
+									<thead>
+										<tr class="bg-gray">
+											<th class="text-center border-t">번호</th>
+											<th class="text-center border-t">연구제목</th>
+											<th class="text-center border-t">발표 및 등재기관</th>
+											<th class="text-center border-t">연구자</th>
+										</tr>
+									</thead>
+									<tbody>
+                                    <?php
+
+                                        $args['s_year'] = $s_year ;
+                                        $args['s_type'] = "B" ;
+
+                                        //print_r($args);
+                                        $data_day = "";
+                                        $data_day = $C_seoulrh->seoulrh_List_day(array_merge($_GET,$_POST,$args));
+                                        $data_list_day 		= $data_day['data'];
+                                        $data_list_cnt_day 	= count($data_list_day);
+
+                                        $page_link 		= $data_day['page_info']['link'];
+                                        $page_search 	= $data_day['page_info']['search'];
+                                        $totalcount 	= $data_day['page_info']['total'];
+
+                                        $totalpages 	= $data_day['page_info']['totalpages'];
+                                        $nowPage 		= $data_day['page_info']['page'];
+                                        $totalcount_l 	= number_format($totalcount,0);
+                                        $dummy = 0;
+                                        for ($j = 0 ; $j < $data_list_cnt_day ; $j++) {
+                                            $s_idx 		= $data_list_day[$j]['s_idx'];
+                                            $s_year 		= $data_list_day[$j]['s_year'];
+                                            $s_content1		= nl2Br($data_list_day[$j]['s_content1']);
+                                            $s_content2		= nl2Br($data_list_day[$j]['s_content2']);
+                                            $s_content3		= nl2Br($data_list_day[$j]['s_content3']);
+                                            $s_content4		= nl2Br($data_list_day[$j]['s_content4']);
+                                            $s_content5		= nl2Br($data_list_day[$j]['s_content5']);
+                                            $s_content6		= nl2Br($data_list_day[$j]['s_content6']);
+                                            $dummy += 1;
+                                        ?>
+										<tr>
+                                            <td class="text-center"><?=$dummy?></td>
+											<td class="text-center"><?=$s_content1?></td>
+											<td class="text-center"><?=$s_content2?></td>
+											<td class="text-center"><?=$s_content3?></td>
+										</tr>
+										<? } ?>
+									</tbody>
+								</table>
+							</div>
+						</div>
+                <? } ?>
+                </div>
+                </div>
+			</section>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+	<script>
+		//<![CDATA[
+			$(document).ready(function () {
+				$(".tab-cont > .list").hide();
+				$('.tab-cont > p').click(function () {
+					var obj = $(this).next();
+
+					if (obj.css('display') == 'none') {
+
+						obj.slideDown();
+						$(this).addClass("on").parent().siblings().children('p').removeClass('on').next().hide();
+					}
+					else {
+						obj.slideUp();
+						$(this).removeClass("on");
+					}
+				}).css('cursor', 'pointer');
+
+				$('.tab-cont').eq(0).find('p').trigger('click');
+			});
+		//]]>
+	</script>
+</body>
+
+</html>

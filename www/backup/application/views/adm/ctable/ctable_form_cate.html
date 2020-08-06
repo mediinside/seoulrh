@@ -1,0 +1,46 @@
+<form id='fwrite' name='fwrite' method='post' action='<?=$path?>/ctable/form_cate/<?=$row['ctg_id']?>'>
+
+<ul id="form_cont">
+	<li class="form_li center pd10">
+		<h3 class="pd10">※ 추가할 분류를 입력하세요.</h3>
+		<div class="pd10">
+			분류명 <input type="text" class="ed" maxlength="20" size="20" name="subject" value="<?=$row['ctg_subject']?>"/>
+		</div>
+	</li>
+</ul>
+
+<p class='center'>
+	<input type='submit' id='btn_submit' class='btn' value='  확  인  ' />
+	<input type='button' class='btn' onclick="parent.CtrlWinDlg.closeWinDlg();" value='  취  소  ' />
+</p>
+</form>
+
+<div id='loading'></div>
+
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function() {
+	$('#fwrite').validate({
+		rules: {
+			subject: { required: true }
+		},
+		messages: {
+			subject: { required: '분류명을 입력하세요.' }
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+			f.submit();
+		}
+	});
+});
+//]]>
+</script>

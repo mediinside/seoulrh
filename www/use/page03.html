@@ -1,0 +1,210 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once "../inc/head.php";
+$dep1 = "2";
+$dep2 = "2-1";
+$dep3 = "2-1-3";
+?>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/use-bnnr3.png" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="wd-1200">
+					<h3 class="sub-tit">입원안내</h3>
+					<div class="text-box">
+						<p>
+							<b>
+								성인 및 소아청소년 환자에게 집중적인 재활치료가 필요한 경우 병동에 입원하게 됩니다.
+							</b>
+						</p>
+						<p>
+							입원 대상은 뇌졸중, 척수손상 발병 후 회복기 환자의 기능 수준 향상을 위해 포괄적 재활치료가 필요한 환자입니다. 아동의 경우 뇌성마비, 발달지연 등으로 집중 재활치료나 부모교육이 필요한
+							경우, 수술 이후 집중관리가 필요할 때 입원치료를 권합니다. 입원치료는 재활병동 생활을 통해 치료실에서 뿐 아니라 일상에서의 환자의 생활을 전반적으로 평가하고 보다 세밀한 치료 계획을
+							세울 수 있다는 장점이 있습니다. 각 환자의 필요에 따라 물리치료, 작업치료, 통증치료, 인지치료, 연하치료, 언어치료, 재활심리치료 및 의료사회복지 상담 등을 받게 되며, 빠른 사회복귀를 위해
+							입원시기별로 갖추어진 전문가 교육 및 지역연계 등 특화된 맞춤형 서비스 실시합니다.
+						</p>
+					</div>
+
+					<h3 class="sub-tit mt60">입원신청안내</h3>
+					<ul class="clinic-list">
+						<li>
+							<label for=""></label>
+							<div class="text">
+								<ul class="step-list">
+									<li>
+										<img src="/resource/images/step-11.png" alt="">
+										<p>STEP 1</p>
+										<p>
+											안내
+										</p>
+									</li>
+									<li class="arrow">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-06.png" alt="">
+										<p>STEP 2</p>
+										<p>
+											진료 및
+											입원처방
+										</p>
+									</li>
+									<li class="arrow mb-hide">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-02.png" alt="">
+										<p>STEP 3</p>
+										<p>
+											입원접수
+											및 상담
+										</p>
+									</li>
+									<li class="arrow">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-07.png" alt="">
+										<p>STEP 4</p>
+										<p>귀가</p>
+									</li>
+									<li>
+										<img src="/resource/images/step-08.png" alt="">
+										<p>STEP 5</p>
+										<p>입원 예정일</p>
+									</li>
+									<li class="arrow">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-09.png" alt="">
+										<p>STEP 6</p>
+										<p>입원 수속</p>
+									</li>
+									<li class="arrow mb-hide">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-10.png" alt="">
+										<p>STEP 7</p>
+										<p>입원</p>
+									</li>
+								</ul>
+								<p class="color-green" style="font-weight: 500;">※ 해당 진료과에서 진료를 받으시고, 원무팀 담당자의 입원상담을 받으신 후 입원접수 안내지를 수령하시기 바랍니다.</p>
+								<p class="color-green" style="font-weight: 500;">
+									※ 사정으로 방문접수가 어려운 경우에는 FAX접수가 가능합니다.<br>
+									<span class="mb-hide">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>(FAX접수시 서류는 의사소견서이며, 반드시 연락처를 기재하여 주시기 바랍니다.)
+								</p>
+								<p class="color-green" style="font-weight: 500;">※ 현재 입원중인 병원의 협력센터를 통하여 입원접수를 문의하실 수 있습니다.</p>
+								<p class="color-green" style="font-weight: 500;">※ 팩스번호 안내 02-6020-3015</p>
+							</div>
+						</li>
+						<li>
+							<label for="">입원예정일 통보</label>
+							<div class="text">
+								<ul class="green-middot">
+									<li>입원일자가 확정되면 유선으로 미리 통보하여 드립니다.(단, 부득이 한 경우는 제외합니다.)</li>
+									<li>개인의 사정으로 입원이 어려울 경우, 환자의 상태변화 등 추후관리를 위해 외래진료를 보신 후 입원 재신청을 하시기 바랍니다.</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<label for="">병동위치</label>
+							<div class="text">
+								<div class="board-list border-t" style="padding:0;">
+									<table>
+										<tbody>
+											<tr>
+												<th class="text-center bg-gray">성인</th>
+												<td class="text-center">신관 8층</td>
+												<th class="text-center bg-gray">소아</th>
+												<td class="text-center">본관 4층</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</li>
+						<li>
+							<label for="">입원안내</label>
+							<div class="text">
+								<ul class="green-middot">
+									<li>입원연락을 받으신 분은 오후 14:00~15:30 까지 본원 1충 원무팀을 방문하여 입원 수속을 하시기 바랍니다.</li>
+									<li>준비 사항 : 퇴원약 4주 분, 약 처방전, CT & MRI사본, 개인위생도구, 보호자 침구류, 휠체어(필요시), 수저(2벌)</li>
+									<li>입원수속을 끝낸 환자 및 보호자께서는 병동으로 가면 담당간호사가 병실로 안내를 해드립니다.</li>
+									<li>주차는 입 퇴원 당일 차량한대에 한하여 최대 24시간 이내 무료주차가 가능합니다.(입원 소속시 수속 담당자에게 차량등록)</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<label for="">간병안내</label>
+							<div class="text">
+								<ul class="green-middot">
+									<li>입원 중 보호자나 간병인이 24시간 동반함을 원칙으로 합니다. 단, 일상생활이 가능한 경우는 의사의 판단 하에 무 간병으로 진행 할 수 있습니다.</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<label for="">퇴원안내</label>
+							<div class="text">
+								<ul class="green-middot">
+									<li>환자보호자 상담 후 담당주치의로부터 퇴원결정 되면 진료비 심사 후 병실로 연락합니다.</li>
+									<li>퇴원수속창구에서 진료비계산서를 받아서 진료비를 수납하시면 됩니다.</li>
+									<li>병동 간호사실에 계산서를 보여주시고, 퇴원약과 주의사항을 확인한 후 귀가하시면 됩니다.</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<label for="">중간진료비안내</label>
+							<div class="text">
+								<ul class="green-middot">
+									<li>입원기간 중 매달 15일, 30일 진료비중간정산을 안내해 드립니다.</li>
+									<li>중간진료비 고지 후 7일 이내에 납부하시기 바랍니다.</li>
+									<li>중간계산서 진료비는 입원시작일로부터 합산하여 계산된 것이며 이전 수납금은 차감하여 발행합니다.</li>
+									<li>보험공단에서 통보되는 진료비 내역은 보험적용이 되는 부분만 통보되어 병원에서 납부하신 진료비와 차이가 있을 수 있습니다.</li>
+								</ul>
+
+								<div class="gift-wrap mt60">
+									<a href="tel:0260203010" class="gift-box center mb60">
+										<img src="/resource/images/headset.png" alt="" width="75">
+										<div class="text" style="line-height: 1;">
+											<small>입원상담</small><br>
+											02-6020-<span class="color-green">3010</span><br>
+											02-6020-<span class="color-green">3011</span>
+										</div>
+									</a>
+									<a href="tel:0260203015" class="gift-box center mb60">
+										<img src="/resource/images/fax.png" alt="" width="75">
+										<div class="text" style="line-height: 0.7;">
+											<small>외래진료 팩스</small><br>
+											02-6020-<span class="color-green">3015</span>
+										</div>
+									</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+</body>
+
+</html>

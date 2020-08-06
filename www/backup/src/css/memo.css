@@ -1,0 +1,26 @@
+/* memo */
+#mm_wrap { width:600px; margin:0 auto; padding:20px 0; }
+#mm_wrap p.me_close { text-align:center; margin-top:10px; padding:15px 0; border-top:1px dotted #e4e4e4; }
+#mm_title { padding:0 0 10px 0; border-bottom:2px solid #ebebeb; }
+#mm_header { padding:10px 20px 10px 20px; }
+
+#mm_list { padding:0 20px 20px 20px; }
+#mm_list img { vertical-align:middle; }
+#mm_list col.me_check { width:30px; }
+#mm_list col.me_name { width:115px; }
+#mm_list col.me_date { width:95px; }
+#mm_list col.me_confirm { width:40px; }
+#mm_list col.me_del { width:65px; }
+#mm_list th { height:24px; background-color:#f6f6f6; border-top:2px solid #e1e1e1; }
+#mm_list tr.me_row { height:25px; text-align:center; }
+#mm_list p.me_none { text-align:center; padding:20px 0; }
+#mm_list p.me_select { padding-top:3px; }
+
+#mm_write { padding:0 20px 20px 20px; }
+#mm_write p.me_recv { height:25px; padding:4px 0 0 10px; background-color:#f6f6f6; border-top:2px solid #e1e1e1; }
+#mm_write p.me_cont { margin-bottom:15px; padding:5px; background-color:#ebebeb; }
+#me_content { width:538px; height:150px; overflow:hidden; }
+
+#mm_header p.me_link { float:left; }
+#mm_view { padding:0 20px 20px 20px; }
+#mm_view p.me_cont { padding:10px; border-top:2px solid #e1e1e1; }

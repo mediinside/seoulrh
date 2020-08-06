@@ -1,0 +1,168 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once "../inc/head.php";
+
+$dep1 = "2";
+$dep2 = "2-2";
+$dep3 = "2-2-2";
+?>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/use-bnnr7.png" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="wd-1200">
+					<h3 class="sub-tit">대표번호</h3>
+					<div class="board-list" style="padding: 0 0 60px;">
+						<table class="fz14">
+							<tbody>
+								<tr>
+									<th class="vt-middle bg-gray text-center">대표</th>
+									<td class="vt-middle text-center">02-6020-3000</td>
+									<th class="vt-middle bg-gray text-center">대표팩스</th>
+									<td class="vt-middle text-center">02-6020-3015</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h3 class="sub-tit">외래 및 입원</h3>
+					<div class="board-list" style="padding: 0 0 60px;">
+						<table class="fz14">
+							<tbody>
+								<tr>
+									<th class="vt-middle bg-gray text-center">외래예약</th>
+									<td class="vt-middle text-center">02-6020-3100</td>
+									<th class="vt-middle bg-gray text-center">입원/낮병동 상담</th>
+									<td class="vt-middle text-center">02-6020-3010<br>02-6020-3011</td>
+								</tr>
+								<tr>
+									<th class="vt-middle bg-gray text-center">외래 간호사실</th>
+									<td class="vt-middle text-center">02-6020-3016</td>
+									<th class="vt-middle bg-gray text-center">접수/수납</th>
+									<td class="vt-middle text-center">02-6020-3014</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h3 class="sub-tit">치료실</h3>
+					<div class="board-list" style="padding: 0 0 60px;">
+						<table class="fz14">
+							<tbody>
+								<tr>
+									<th class="vt-middle bg-gray text-center">성인물리치료실</th>
+									<td class="vt-middle text-center">02-6020-3070</td>
+									<th class="vt-middle bg-gray text-center">심리치료실</th>
+									<td class="vt-middle text-center">02-6020-3053<br>02-6020-3054</td>
+								</tr>
+								<tr>
+									<th class="vt-middle bg-gray text-center">성인작업치료실</th>
+									<td class="vt-middle text-center">02-6020-3074</td>
+									<th class="vt-middle bg-gray text-center">언어치료실</th>
+									<td class="vt-middle text-center">02-6020-3025</td>
+								</tr>
+								<tr>
+									<th class="vt-middle bg-gray text-center">소아물리치료실</th>
+									<td class="vt-middle text-center">02-6020-3061</td>
+									<th class="vt-middle bg-gray text-center">통증치료실</th>
+									<td class="vt-middle text-center">02-6020-3033</td>
+								</tr>
+								<tr>
+									<th class="vt-middle bg-gray text-center">소아작업치료실</th>
+									<td class="vt-middle text-center">02-6020-3063</td>
+									<th class="vt-middle bg-gray text-center">성인낮병동 치료실</th>
+									<td class="vt-middle text-center">02-6020-3085</td>
+								</tr>
+								<tr>
+									<th class="vt-middle bg-gray text-center">청소년물리치료실</th>
+									<td class="vt-middle text-center">02-6020-3165</td>
+									<th class="vt-middle bg-gray text-center">청소년작업치료실</th>
+									<td class="vt-middle text-center">02-6020-3162</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h3 class="sub-tit">병동</h3>
+					<div class="board-list" style="padding: 0 0 60px;">
+						<table class="fz14">
+							<tbody>
+								<tr>
+									<th class="vt-middle bg-gray text-center">성인병동 간호사실</th>
+									<td class="vt-middle text-center">02-6020-3080</td>
+									<th class="vt-middle bg-gray text-center">소아병동 간호사실</th>
+									<td class="vt-middle text-center">02-6020-3040</td>
+								</tr>
+								<tr>
+									<th class="vt-middle bg-gray text-center">성인낮병동 간호사실</th>
+									<td class="vt-middle text-center">02-6020-3083</td>
+									<th class="vt-middle bg-gray text-center">영유아/소아낮병동 간호사실</th>
+									<td class="vt-middle text-center">02-6020-3030<br>02-6020-3031</td>
+								</tr>
+								<tr>
+									<th class="vt-middle bg-gray text-center">청소년낮병동 간호사실</th>
+									<td class="vt-middle text-center">02-6020-3130</td>
+									<th class="vt-middle bg-gray text-center"></th>
+									<td class="vt-middle text-center"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h3 class="sub-tit">행정</h3>
+					<div class="board-list" style="padding: 0 0 60px;">
+						<table class="fz14">
+							<tbody>
+								<tr>
+									<th class="vt-middle bg-gray text-center">인사</th>
+									<td class="vt-middle text-center">02-6020-3092</td>
+									<th class="vt-middle bg-gray text-center">의료사회복지</th>
+									<td class="vt-middle text-center">02-6020-3116<br>02-6020-3117</td>
+								</tr>
+								<tr>
+									<th class="vt-middle bg-gray text-center">총무</th>
+									<td class="vt-middle text-center">02-6020-3091<br>02-6020-3094</td>
+									<th class="vt-middle bg-gray text-center">가족지원센터</th>
+									<td class="vt-middle text-center">010-6641-3097</td>
+								</tr>
+								<tr>
+									<th class="vt-middle bg-gray text-center">교육</th>
+									<td class="vt-middle text-center">02-6020-3022</td>
+									<th class="vt-middle bg-gray text-center">칭찬/민원 접수</th>
+									<td class="vt-middle text-center">02-6020-3027</td>
+								</tr>
+								<tr>
+									<th class="vt-middle bg-gray text-center">모금</th>
+									<td class="vt-middle text-center">02-6020-3020</td>
+									<th class="vt-middle bg-gray text-center">장애진단서 발급 및 의무기록사본발급</th>
+									<td class="vt-middle text-center">02-6020-3100</td>
+								</tr>
+								<tr>
+									<th class="vt-middle bg-gray text-center">해외사업</th>
+									<td class="vt-middle text-center">02-6020-3113</td>
+									<th class="vt-middle bg-gray text-center color-green">서울특별시북부지역장애인보건의료센터</th>
+									<td class="vt-middle text-center">02-6020-3128</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+</body>
+
+</html>

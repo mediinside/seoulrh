@@ -1,0 +1,118 @@
+<h2><?=$_TITLE_?></h2>
+
+<form id='fpassword' name='fpassword' method='post'>
+<input type='hidden' name='token' value='<?=$token?>' />
+
+<ul id='form_cont'>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 관리자 비밀번호 확인</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+        	<tr>
+            	<th>현재 비밀번호 입력</th>
+                <td>
+                	<input type='password' id='old_password' name='old_password' class='ed' maxlength='20' size='20' />
+				</td>
+            </tr>
+		</table>
+	</li>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> PG사 설정</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+        	<tr>
+            	<th>PG사</th>
+                <td>
+                	<select name="pg_id">
+						<option value="">선택</option>
+						<? foreach($pg_list AS $pg_id => $pg_name) : ?>
+						<option value="<?=$pg_id?>" <?=($pg_id==$shop_conf['pg_id'])?'selected="selected"':''?>><?=$pg_name?></option>
+						<? endforeach; ?>
+					</select>
+				</td>
+            </tr>
+        	<tr>
+            	<th>동작 모드</th>
+                <td>
+                	<input type='radio' name='pg_is_real' value="0" <?=(!$shop_conf['pg_is_real'])?'checked="checked"':''?> /> 테스트모드 &nbsp; &nbsp;
+					<input type='radio' name='pg_is_real' value="1" <?=($shop_conf['pg_is_real'])?'checked="checked"':''?> /> 리얼모드
+				</td>
+            </tr>
+        	<tr>
+            	<th>제휴사 코드</th>
+                <td>
+                	<input type='text' name='pg_code' class='ed imeDis' maxlength='20' size='20' value="<?=$shop_conf['pg_code']?>" />
+				</td>
+            </tr>
+        	<tr>
+            	<th>상점 이름</th>
+                <td>
+                	<input type='text' name='pg_store' class='ed imeDis' maxlength='20' size='20' value="<?=$shop_conf['pg_store']?>" />
+				</td>
+            </tr>
+		</table>
+	</li>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 배송 설정</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+        	<tr>
+            	<th>배송사</th>
+                <td>
+                	<?=sel_deliverer('dlv_deliverer', $shop_conf['dlv_deliverer'])?>
+				</td>
+            </tr>
+        	<tr>
+            	<th>기본 배송비</th>
+                <td>
+                	<input type='text' name='dlv_price' class='ed right imeDis' maxlength='5' size='5' onkeypress="return only_number();" value="<?=$shop_conf['dlv_price']?>" /> 원
+				</td>
+            </tr>
+        	<tr>
+            	<th>제주/도서/산간 추가</th>
+                <td>
+                	<input type='text' name='dlv_additional' class='ed right imeDis' maxlength='5' size='5' onkeypress="return only_number();" value="<?=$shop_conf['dlv_additional']?>" /> 원
+				</td>
+            </tr>
+        	<tr>
+            	<th>무료배송 조건</th>
+                <td>
+                	결제금액 <input type='text' name='dlv_free' class='ed right imeDis' maxlength='7' size='7' onkeypress="return only_number();" value="<?=$shop_conf['dlv_free']?>" /> 원 이상
+				</td>
+            </tr>
+		</table>
+	</li>
+</ul>
+
+<p class='center bottom'>
+	<input type='submit' id='btn_submit' class='btn' value='  확  인  '/>
+</p>
+
+</form>
+
+<div id='loading'></div>
+
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#fpassword').validate({
+		rules: {
+			old_password: { required:true, minlength:4 }
+		},
+		messages: {
+			old_password: { required:'현재 비밀번호를 입력하십시오.', minlength:'최소 4자 이상 입력하십시오.' }
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+		    f.submit();
+		}
+	});
+});
+//]]>
+</script>

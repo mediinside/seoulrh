@@ -1,0 +1,6 @@
+@charset "utf-8";
+
+#member_wrap2 { width:620px; height:160px; border:1px solid #d9d9d9; margin:0px 0px 20px 30px;}
+#member_wrap2 #item {width:225px; float:right; margin-top:40px;}
+#member_wrap2 #btn {width:95px; float:right; margin-top:39px;}
+#memberbtn {width:620px; margin:0 auto; text-align:center;}

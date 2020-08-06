@@ -1,0 +1,50 @@
+<br/><p><h3>- <?=$_TITLE_?></h3></p>
+
+<form name='fvisit' method='get' onsubmit='return fvisit_submit(this)'>
+<div style="float:right;margin:20px 75px 10px 0;">
+	<input type='text' id='fr_date' name='fr_date' class='ed' size='10' maxlength='10' readonly='readonly' value='<?=$fr_date?>'/>
+	-
+	<input type='text' id='to_date' name='to_date' class='ed' size='10' maxlength='10' readonly='readonly' value='<?=$to_date?>'/>
+	<input type='image' src='<?=$img_path?>/btn_search.gif' align='top'/>
+</div>
+</form>
+
+<img id="gchart"/>
+
+<script type='text/javascript'>
+//<![CDATA[
+function fvisit_submit(f) {
+    location.href = rt_path + '/' + rt_admin + '/visit/hourly/from/' + f.fr_date.value + '/to/' + f.to_date.value;
+    return false;
+}
+
+$(document).ready(function(){
+	$('#fr_date').timepicker({
+		currentText: '오늘',
+		showTimepicker: false,
+		defaultDate: $.datepicker.parseDate("yy-mm-dd", "<?=$fr_date?>") 
+	});
+	$('#to_date').timepicker({
+		currentText: '오늘',
+		showTimepicker: false,
+		defaultDate: $.datepicker.parseDate("yy-mm-dd", "<?=$to_date?>") 
+	});
+	
+	// 차트 API
+	$('#gchart').attr('src',
+		'http://chart.apis.google.com/chart?cht=bvg&'+
+		'chs=800x370&'+
+		'chd=t:<?foreach($list as $hourly => $val){?><?=$val['count']?><?=count($list)!=$hourly+1?',':''?><?}?>&'+
+		'chxr=1,0,<?=$max_count?>&'+
+		'chds=0,<?=$max_count?>&'+
+		'chco=FFA000,FFC000,FFE000&'+
+		'chbh=11,1,20&'+
+		'chxt=x,y,x,r&'+
+		'chxl=0:|<?foreach($list as $hourly => $val){?><?=$hourly?>|<?}?>2:||&'+
+		'chm=<?foreach($list as $hourly => $val){?>t<?=$val['count']?$val['count']:''?>,000000,0,<?=$hourly?>,9,1<?=count($list)!=$hourly+1?'|':''?><?}?>&'+
+		//'chdl=접속|로그인|회원가입&'+
+		'chg=0,5,1,3'
+	);
+});
+//]]>
+</script>

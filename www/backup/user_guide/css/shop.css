@@ -1,0 +1,12 @@
+#list_cont { width:100%; }
+#list_cont tr.row td { border-bottom:1px solid #eee; padding-top:10px; padding-bottom:10px; }
+#list_cont td p { height:25px; }
+.pr_title { font-size:14px; padding-bottom:5px; font-weight:bold; }
+.pr_info { border-top:2px solid #e64700; }
+.pr_info th, .pr_info td { border-bottom:1px solid #ddd; padding-top:7px; padding-bottom:7px; }
+.pr_info th { text-align:left; padding-left:22px; background:url(/html_org/img/shop/i_arrow2.gif) #f8f8f8 10px 10px no-repeat; color:#7d7d7d; }
+.pr_info td { padding-left:10px; }
+.pr_bt_center { padding:15px; text-align:center; }
+.pr_bt_right { padding:15px; text-align:right; }
+.pr_detail_title { height:25px; border-bottom:1px solid #ccc; }
+.pr_detail_view { border-bottom:1px solid #ccc; padding-top:15px; padding-bottom:15px; }

@@ -1,0 +1,123 @@
+<link rel="stylesheet" type="text/css" href="/css/board.css" />
+
+<div class="board mgt_m20">
+	<div class="view">
+		<h2 class="dpn">게시물 내용</h2>
+		
+		<div class="info">
+			<dl class="col4">
+				<dt>제목</dt>
+				<dd style="width:82.4%;"><?=$row['subject']?></dd>
+				<dt class="cb">접수기간</dt>
+				<dd style="width:40%;"><?=$row['sdate']?> ~ <?=$row['edate']?></dd>
+				<dt>접수현황</dt>
+				<dd style="width:25%;"><img src="/img/board/accept_<?=$row['status']?>.gif" width="52" height="19" alt="접수중" /></dd>
+			</dl>
+		</div>
+
+		<div class="substance">
+			<div class="cont_col2_02">
+				<div class="col202_l" style="width:212; height:212px; border:1px solid #e2e2e2;"><img style="position:relative; top:50%;" src="<?=$row['thumbnail']?>" alt="강좌 사진" class="picture"/></div>
+				<script type="text/javascript">$('.picture').load(function(){ $('.picture').css('margin-top', '-'+ ($('.picture').outerHeight() / 2) +'px'); });</script>
+				
+				<div class="col202_r">
+					<div class="info" style="border-top:1px solid #ddd; width:100%;">
+						<dl class="col2">
+							<dt style="background:#fafafa;">강좌명</dt>
+							<dd style="width:81%;background:#fafafa;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;word-wrap:normal;"><strong><?=$row['subject']?></strong></dd>
+							<dt>계좌번호<br />&nbsp;&nbsp;</dt>
+							<dd style="width:81%;">* 신한은행 <strong>100-025-475515</strong><br />
+							* 예금주 : 서울재활병원 이지선</dd>
+							<dt>문의</dt>
+							<dd style="width:81%;">* 문의 : 교육센터 양승신 주임  Tel.02-6020-3020</dd>
+						</dl>
+					</div>
+
+					<div class="tar" style="border-bottom:1px solid #ddd; padding:16px 0"><a href="<?=$reg_href?>"><img src="/img/board/btn_request.gif" width="134" height="43" alt="신청하기" /></a></div>
+				</div>
+
+				<div class="clb"></div>
+
+				<div id="contenttabmenu4">
+					<h2 class="bg">본문 메뉴</h2>
+					
+					<ul>
+						<li id="ctabm1" class="btnTab on"><a>교육내용</a></li>
+						<li id="ctabm2" class="btnTab"><a>환불내용</a></li>
+					</ul>
+				</div>
+				
+				<div id="cnt01" class="cntTab">
+					<?=$row['content']?>
+					
+					<ul class="bu3">
+						<li><em>* 장소 :</em> <?=$row['pd_location']?></li>
+						<li><em>* 참가대상 :</em> <?=$row['pd_target']?></li>
+						<li><em>* 교육비 :</em> <?=number_format($row['pd_price'])?>원</li>
+						<li><em>* 세미나일정 :</em></li>
+					</ul>
+
+					<? foreach($row['schedule'] AS $key => $sche) : ?>
+					<?=count($row['schedule']) > 1 ? ($key + 1) .' 일차' : ''?>
+					<table class="t4 w60" summary="스웨디시 아로마 테라피 코스별 일반가, 회원가를 안내하는 표입니다.">
+						<caption class="dpn">스웨디시 아로마 테라피</caption>
+						<col width="30%" /><col />
+						<thead>
+							<tr>
+								<th scope="col">시간</th>
+								<th scope="col">강의 내용</th>
+							</tr>
+						</thead>
+						<tbody>
+							
+							<? foreach($sche AS $daily) : ?>
+							<tr>
+								<th scope="row"><?=$daily['stime']?>~<?=$daily['etime']?></th>
+								<td><?=$daily['text']?></td>
+							</tr>
+							<? endforeach; ?>
+							
+						</tbody>						
+					</table>
+					<br/>
+					<? endforeach; ?>
+					
+				</div>
+
+				<div id="cnt02" class="cntTab hide">
+					<ul class="bu3">
+						<li><span class="fc_bb01">* 접수방법 :</span> 기간 내 입금과 홈페이지에서 신청서 접수가 되어야 접수 완료됩니다.</li>
+						<li><span class="fc_bb01">* 입금방법 :</span> 신청서와 동일한 이름과 학교명을 기록하여 강의일 10일전까지 입금합니다.</li>
+						<li>
+							<span class="fc_bb01">* 신청취소 :</span> 강의일 10일전까지 취소 및 환불이 가능하며, 이후는 불가능합니다.<br />
+							<span style="margin-left:70px;">환불처리는 세미나 이후 일괄처리 합니다.</span>
+						</li>
+						<li><span class="fc_bb01">* 수료증 :</span>   8시간 강의를 모두 들었을 경우 수료증을 수여합니다.</li>
+					</ul>
+				</div>	
+			</div>
+		</div>
+
+		<div class="infomenu page">
+			<div class="left"></div>
+			
+			<div class="right">
+				<a href="<?=$list_href?>"><img src="/img/board/btn_list.gif" alt="목록" /></a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$('.btnTab').click(function() {
+	$('.btnTab').removeClass('on');
+	$(this).addClass('on');
+	$('.cntTab').removeClass('hide');
+	$('.cntTab').hide();
+	$('.cntTab').eq($(this).index()).show();
+});
+
+function ended() {
+	alert('접수 신청 기간이 아닙니다.');
+}
+</script>

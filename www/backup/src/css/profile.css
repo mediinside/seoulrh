@@ -1,0 +1,8 @@
+#prof_wrap { width:360px; margin:0 auto; padding:20px 0; }
+#prof_wrap p.close { text-align:center; padding-top:10px; }
+#prof_title { padding:0 0 10px 0; }
+#prof_cont { padding:10px 20px 10px 20px; border:2px solid #e1e1e1; }
+#prof_cont img { vertical-align:middle; }
+#prof_cont li { height:25px; padding-top:10px; border-top:1px solid #eeeeee; }
+#prof_cont li.first { border:none; }
+#prof_cont li.intro { padding-left:8px; }

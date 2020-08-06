@@ -1,0 +1,139 @@
+<link rel='stylesheet' href='<?=BO_IMG_PATH?>/style.css' type='text/css'/>
+
+<? if(!isset($_MENUS_)) include DOC_ROOT.'/include/'. $m1 .'_inc.php'; ?>
+
+<?=$board['bo_top_html']?>
+<h3><?=$board['bo_title_img']?></h3>
+
+<div id="board">
+	<table border="0" cellpadding="0" cellspacing="0" class="view">
+        <tr>
+        	<td width="70%" class="bd_b view_top">
+            	<table border="0" cellpadding="0" cellspacing="0">
+                	<tr>
+                    	<th width="60">작성자</th>
+                        <td><?=$view['name']?> <?=$ip?></td>
+                    </tr>
+                </table>
+            </td>
+            <td class="bd_b view_top">
+            	<table border="0" cellpadding="0" cellspacing="0">
+                	<tr>
+                    	<th width="60">등록일</th>
+                        <td><?=$view['datetime']?></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+        	<td class="bd_b">
+            	<table border="0" cellpadding="0" cellspacing="0">
+                	<tr>
+                    	<th width="60">제목</th>
+                        <td class="view_subject"><?=$view['subject']?></td>
+                    </tr>
+                </table>
+            </td>
+            <td width="25%" class="bd_b">
+            	<table border="0" cellpadding="0" cellspacing="0">
+                	<tr>
+                    	<th width="60">조회수</th>
+                        <td><?=$view['hit']?></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+	    
+	    <? if($files): ?>
+        <tr>
+        	<td class="bd_b" colspan="3">
+            	<table border="0" cellpadding="0" cellspacing="0">
+                	<tr>
+                    	<th width="60">첨부파일</th>
+                        <td>
+							<div id="view_file"> 
+							  <? foreach($files as $file) : if(!$file['type']) { ?>
+							    <p class="lh20"><a href="<?=$file['href']?>"><img src="<?=IMG_DIR?>/board/ico_file.gif"/> <?=$file['filename']?></a></p>
+							  <? } endforeach; ?>
+							</div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+		<?endif;?>
+		
+		<tr>
+			<td colspan="3">
+            	<span class="view_print">
+					<input type="button" class="btn_simp" onclick="resize_font($('#view_content'), 1);" value=" + "/>
+					<input type="button" class="btn_simp" onclick="resize_font($('#view_content'), -1);" value=" - "/>
+					<input type="button" class="btn_simp" onclick="$('#view_cont').printArea();" value="인쇄"/>
+				</span>
+				
+				<span class="view_sns"><?=$btn_sns?></span>
+			</td>
+		</tr>		
+        <tr>
+        	<td colspan="3" class="bd_b view_txt" >
+				
+			    <? if($videoSrc): ?>
+			    <? $CI =& get_instance(); ?>
+			    <? $CI->load->helper('video'); ?>
+				<div id="view_video">
+					<?
+					foreach($videoSrc as $key => $src) {
+						echo video($src,'video', 480, 360, FALSE);
+					}
+					?>
+				</div>
+				<? endif; ?>
+				
+				<div id='view_content'>
+					<?=$view['content']?>
+				</div>
+				
+				<? if($board['bo_use_tag']): ?>
+				<div id='view_tag'>
+					&lt;태그&gt; <?=$view['wr_tag']?>
+				</div>
+				<? endif; ?>
+				
+				<? if($board['bo_use_postlink'] && $postlink): ?>
+				<ul id='view_postlink'>
+					<li><h4>· 관련글</h4></li>
+				<? foreach($postlink as $row) : ?>
+				    <li><img src="<?=IMG_DIR?>/board/ico_total.gif"/> <a href="<?=$row['href']?>"><?=$row['wr_subject']?></a></li>
+				<? endforeach; ?>
+				</ul>
+				<? endif; ?>
+				
+            </td>
+        </tr>
+    </table>
+    <div class="board_btn">
+    	<p class="l_btn">
+        	<?=$button['copy']?> <?=$button['move']?>
+        </p>
+    	<p class="r_btn">
+        	<?=$button['update']?> <?=$button['delete']?> <?=$button['reply']?> <?=$button['write']?> <?=$button['list']?>
+        </p>
+    </div>
+    
+	<?=$view_comment?>
+    
+    <!--
+    <table border="0" cellpadding="0" cellspacing="0" class="view mg_t20">
+        <tr>
+        	<th>다음글 |</th>
+            <td><?=$wr_next['html']?></td>
+        </tr>
+    	<tr>
+        	<th width="60" class="bd_b">이전글 |</th>
+            <td class="bd_b"><?=$wr_prev['html']?></td>
+        </tr>
+    </table>
+    -->
+</div>
+
+<?=$board['bo_bottom_html']?>

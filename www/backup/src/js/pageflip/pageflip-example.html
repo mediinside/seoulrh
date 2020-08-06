@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Javascript Pageflip v0.3.2</title>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+
+<!-- Page Flip -->
+<script type="text/javascript" src="js/pageflip.js"></script>
+
+<script type="text/javascript">
+	/* pageflip timing */
+	var flipTime = 1000; // in ms [recommended 1000]
+</script>
+
+<link rel="stylesheet" type="text/css" href="style/reset.css">
+<link rel="stylesheet" type="text/css" href="style/pageflip.css">
+
+<style>
+body {
+	font-size: .9em;
+	font-family: Verdana, Arial, Helvetica;
+	line-height: 1.4em;
+}
+</style>
+
+</head>
+<body>
+  
+
+<!-- Page Flip -->
+
+<div id = "pagesContainer">
+
+<!-- the page DIVs at least 4, in multiples of 2. --> 
+
+<!-- insert your DIVs here, classed "pageContent" -->
+    <div class="pageContent">
+    	<div style="background: #eee; padding: 0; margin: 0; width: 300px; height: 400px;">
+    	<!-- IMPORTANT: you must set the height and width of the first page DIV. all other pages are based on this -->
+    	
+    	<p style="padding: 20px; margin: 0;">
+    		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    	</p>
+    	</div>
+    </div>
+    
+    <div class="pageContent">
+    	<div  style="background: #000; color: #fff; position:relative;">
+		   	<p style="text-align: center; padding-top: 20px;"><img src="images/avatar.jpg" alt="avatar" width="200" height="199"/></p>
+    		<div style="margin: 2px; position: absolute; bottom:0; right: 0;">
+			PAGE 2
+			</div>
+    	</div>
+    </div>
+    
+    <div class="pageContent">
+    	<div  style="background: #000;"><img src="images/Sad_mac.png" alt="Sad_mac" width="297" height="234" /></div>
+    </div>
+    
+    <div class="pageContent">
+    	<div  style="background: url(images/page4.jpg) top left no-repeat; text-align: right;"/>
+    		<p style="padding: 20px;">
+    		Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+    	</div>
+    </div>
+    
+    <div class="pageContent">
+    	<div  style="background: #aaa;">PAGE 5</div>
+    </div>
+    
+    <div class="pageContent">
+    	<div  style="background: #999;">PAGE 6</div>
+    </div>
+    
+    <div class="pageContent">
+    	<div  style="background: #888;">PAGE 7</div>
+    </div>
+    
+    <div class="pageContent">
+    	<div  style="background: #777;">PAGE 8</div>
+    </div>
+    
+
+</div>
+<!-- END Page Flip -->
+ 
+  </body>
+</html>

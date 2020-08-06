@@ -1,0 +1,151 @@
+2015-02-19 21:48:04 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('1', '0', 'satisfaction', '1', '4', 1, '', '2015-02-19 21:48:04', '2015-02-19 21:48:04')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2015-02-19 21:48:04'
+			
+2015-02-19 21:48:04 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('1', '12', 'motive', '0', '', 1, '아동 재활에 관심이 많아서 이년 전부터 다양하게 참여하고 있습니다.
+', '2015-02-19 21:48:04', '2015-02-19 21:48:04')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2015-02-19 21:48:04'
+			
+2015-02-19 21:48:04 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('1', '0', 'recommend', '0', '예', 1, '', '2015-02-19 21:48:04', '2015-02-19 21:48:04')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2015-02-19 21:48:04'
+			
+2015-02-19 21:48:04 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('1', '0', 'data', '0', '5', 1, '', '2015-02-19 21:48:04', '2015-02-19 21:48:04')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2015-02-19 21:48:04'
+			
+2015-02-19 21:48:04 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('1', '0', 'circum', '0', '5', 1, '', '2015-02-19 21:48:04', '2015-02-19 21:48:04')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2015-02-19 21:48:04'
+			
+2015-02-19 21:48:04 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('1', '0', 'time', '0', '5', 1, '', '2015-02-19 21:48:04', '2015-02-19 21:48:04')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2015-02-19 21:48:04'
+			
+2015-02-19 21:48:04 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('1', '0', 'plan', '0', '5', 1, '', '2015-02-19 21:48:04', '2015-02-19 21:48:04')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2015-02-19 21:48:04'
+			
+2015-02-19 21:48:04 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('1', '0', 'grade', '0', '4학년', 1, '', '2015-02-19 21:48:04', '2015-02-19 21:48:04')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2015-02-19 21:48:04'
+			
+2015-02-19 21:48:04 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('1', '0', 'type', '0', '물리', 1, '', '2015-02-19 21:48:04', '2015-02-19 21:48:04')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2015-02-19 21:48:04'
+			
+2015-02-19 21:48:04 [] : INSERT INTO ki_research_opt (
+					rsho_rsh_id,
+					rsho_is_text,
+					rsho_type,
+					rsho_order,
+					rsho_answer,
+					rsho_count,
+					rsho_text,
+					rsho_mdydate,
+					rsho_regdate )
+				VALUES ('1', '0', 'sex', '0', '여성', 1, '', '2015-02-19 21:48:04', '2015-02-19 21:48:04')
+				ON DUPLICATE KEY UPDATE
+					rsho_count = rsho_count + 1,
+					rsho_mdydate = '2015-02-19 21:48:04'
+			

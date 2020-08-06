@@ -1,0 +1,91 @@
+<div id='list_head'>
+	&deg; <b><?=$bo_subject?></b> 여분필드 관리
+</div>
+
+<form name='boardextra' method='post' action=''>
+<input type='hidden' name='bid' value='<?=$bid?>'/>
+<input type='hidden' name='type' value='<?=$type?>'/>
+<input type='hidden' name='w' value='<?=$w?>'/>
+
+<div id='list_cont'>
+	<? if (!$is_table): ?>
+	[ 테이블 생성 : <input type='image' src='<?=$IMG_PATH?>/icon_insert.gif' title='테이블 생성' align='middle'/> ]
+	<? else: ?>
+	[ 테이블 삭제 : <a href='javascript:tableDelete();'><img src='<?=$IMG_PATH?>/icon_delete.gif' alt='테이블 삭제' title='테이블 삭제' align='middle'/></a> ]
+	<h2>- 필드 관리</h2>
+	<table cellpadding='0' cellspacing='0'>
+		<tr>
+			<th width='110'>이름</th>
+			<th width='100'>속성</th>
+			<th width='50'>크기</th>
+			<th width='60'>양수</th>
+			<th width='70'>관리</th>
+		</tr>
+		<? foreach ($list as $o): ?>
+		<tr class='row'>
+			<td><?=$o->name?></td>
+			<td><input type='text' id='<?=$o->name?>_attr' class='ed' size='10' value='<?=$o->attr?>'/></td>
+			<td><input type='text' id='<?=$o->name?>_size' class='ed' size='3' maxlength='3' value='<?=$o->size?>'/></td>
+			<td>
+				<select id='<?=$o->name?>_unsg'>
+					<option value=''>NO</option>
+					<option value='1'<?=$o->unsg?>>YES</option>
+				</select>
+			</td>
+			<td>
+				<a href="javascript:extraSubmit('<?=$o->name?>', 'u');"><img src='<?=$IMG_PATH?>/icon_modify.gif' alt='필드 수정' title='필드 수정' align='middle'/></a>
+				<a href="javascript:extraSubmit('<?=$o->name?>', 'd');"><img src='<?=$IMG_PATH?>/icon_delete.gif' alt='필드 삭제' title='필드 삭제' align='middle'/></a>
+			</td>
+		</tr>
+		<? endforeach; ?>
+		<tr id='extraAdd' class='row'>
+			<td>ex_<input type='text' name='name' class='ed' size='10' maxlength='20' value=''/></td>
+			<td><input type='text' name='attr' class='ed' size='10' value=''/></td>
+			<td><input type='text' name='size' class='ed' size='3' maxlength='3' value=''/></td>
+			<td>
+				<select name='unsg'>
+					<option value=''>NO</option>
+					<option value='1'>YES</option>
+				</select>
+			</td>
+			<td><input type='image' src='<?=$IMG_PATH?>/icon_insert.gif' title='필드 추가' align='middle'/></td>
+		</tr>
+	</table>
+	<? endif; ?>
+	
+
+	<p class='bottom center'>
+		<input type='button' class='btn' value='  목  록  ' onclick="document.location.href='<?=$path?>/board/form/u/<?=$bid?>';"/>
+	</p>
+</div>
+
+</form>
+
+<script type='text/javascript'>
+//<![CDATA[
+function extraSubmit(name, w) {
+	if (w == 'd' && !confirm("한번 삭제한 필드는 복구할 방법이 없습니다.\n\n정말 삭제하시겠습니까?"))
+		return;
+
+	document.getElementById('extraAdd').style.display = 'none';
+
+	var f = document.boardextra;
+	f.w.value	 = w;
+	f.name.value = name;
+	f.attr.value = document.getElementById(name+'_attr').value;
+	f.size.value = document.getElementById(name+'_size').value;
+	f.unsg.value = document.getElementById(name+'_unsg').value;
+	f.submit();
+}
+
+function tableDelete() {
+	if (!confirm("한번 삭제한 테이블은 복구할 방법이 없습니다.\n\n정말 삭제하시겠습니까?"))
+		return;
+
+	var f = document.boardextra;
+	f.type.value = 'table';
+	f.w.value = 'd'
+	f.submit();
+}
+//]]>
+</script>

@@ -1,0 +1,427 @@
+<?php
+$_SERVER['DOCUMENT_ROOT']   = "/home1/seoulrh/www" ;
+include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+include_once $GP -> INC_WWW . '/count_inc.php';
+include_once "inc/head.php";
+include_once $GP -> HOME."main_lib/main_proc.php";
+
+//Check Mobile
+$mAgent = array("iPhone","iPod","Android","Blackberry",
+    "Opera Mini", "Windows ce", "Nokia", "sony" );
+$chkMobile = "PC";
+for($i=0; $i<sizeof($mAgent); $i++){
+    if(stripos( $_SERVER['HTTP_USER_AGENT'], $mAgent[$i] )){
+        $chkMobile = "mobile";
+        break;
+    }
+}
+
+
+$Main_Notice = Main_Notice(10);//공지사항
+$Main_media = Main_Notice(30);//언론보도
+$Main_employment = Main_Notice(60);//채용정보
+$Main_news = Main_news(80,""); //재활치료영상
+$Main_news2 = Main_news(20,$chkMobile);//병원소식
+$Slide_C = Main_Slide('C',$chkMobile,"kor"); //메인슬라이드
+$Slide_L = Main_Slide('L',$chkMobile,""); //메인슬라이드
+$Slide_R = Main_Slide('R',$chkMobile,""); //메인슬라이드
+
+
+?>
+<style>
+	@media screen and (max-width:1023px){
+		#footer .pad {padding:59px 40px 50px;}
+	}
+</style>
+</head>
+<body id="main">
+	<div id="wrap">
+		<?php include_once "inc/header.php"; ?>
+		<div id="container" class="" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents v2">
+				<div class="main-visual-wrap">
+					<!-- Swiper -->
+					<div class="swiper-container swiper-container1">
+						<div class="swiper-wrapper">
+							<?=$Slide_C?>
+
+						</div>
+						<!-- Add Pagination -->
+						<div class="pagenation-box wd-1400">
+							<div class="swiper-pagination"></div>
+						</div>
+					</div>
+				</div>
+				<div class="quick">
+					<ul class="wd-1200" style="padding:0;">
+						<li>
+							<a href="/use/page08-1.html">
+								<img src="/resource/images/icon-1.png" alt="">
+								<span>오시는길</span>
+							</a>
+						</li>
+						<li>
+							<a class="mb-hide" href="/use/page07.html">
+								<img src="/resource/images/icon-2.png" alt="">
+								<span>전화문의</span>
+							</a>
+							<a class="mb-show" href="tel:0260203000">
+								<img src="/resource/images/icon-2.png" alt="">
+								<span>전화문의</span>
+							</a>
+						</li>
+						<li>
+							<a href="/use/page03.html">
+								<img src="/resource/images/icon-3.png" alt="">
+								<span>입원안내</span>
+							</a>
+						</li>
+						<li>
+							<a href="/use/page02.html">
+								<img src="/resource/images/icon-4.png" alt="">
+								<span>외래진료안내</span>
+							</a>
+						</li>
+						<li>
+							<a href="/use/page04.html">
+								<img src="/resource/images/icon-5.png" alt="">
+								<span>낮병동안내</span>
+							</a>
+						</li>
+						<li>
+							<a href="/donation/page01-1.html">
+								<img src="/resource/images/icon-6.png" alt="">
+								<span>후원안내</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents">
+				<div class="main-list-menu v1">
+					<div class="main-list-inner main-clinic-list wd-1400 ani-down-slide">
+						<ul>
+							<li>
+								<a href="/service/page01.html" class="dec dec1 ani-a02">
+									<span class="txt ">
+										<b>소아/청소년재활</b>
+										<p>
+											성장과정에 따라 생애주기별 <br>맞춤 재활치료를 제공합니다
+										</p>
+										<span class="ani-a02">더보기</span>
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="/service/page05.html" class="dec dec2 ani-a02">
+									<span class="txt">
+										<b>뇌신경/척추손상재활</b>
+										<p>
+											최대한의 기능 회복을 위한 <br>최적의 재활치료를 시행합니다
+										</p>
+										<span class="ani-a02">더보기</span>
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="/service/page10-1.html" class="dec dec3 ani-a02">
+									<span class="txt">
+										<b>근골격/스포츠재활</b>
+										<p>
+											검증된 다양한 치료 방법으로 <br>통증을 감소시킵니다
+										</p>
+										<span class="ani-a02">더보기</span>
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="/service/page09.html" class="dec dec4 ani-a02">
+									<span class="txt">
+										<b>회복기재활</b>
+										<p>
+											180일간 재활치료에 집중하며 <br>성공적인 사회복귀를 준비합니다
+										</p>
+										<span class="ani-a02">더보기</span>
+									</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+			<!-- main section 02 end -->
+			<!-- main section 03 start -->
+			<section class="contents">
+				<div class="main-list-menu v2">
+					<div class="cont-tit ani-down-slide">
+						<h3>재활치료 영상</h3>
+						<p>서울재활병원의 모든 재활치료를<br> 영상으로 만나보세요</p>
+					</div>
+					<div id="m-swiper" class="main-list-inner wd-1400 ani-down-slide over">
+						<!-- pagination -->
+						<div class="swiper-pagination main-page"></div>
+						<ul class="swiper-wrapper">
+							<?=$Main_news?>
+						</ul>
+						<a href="/notice/notice.php?jb_code=80" class="more-btn-box ani-a02">
+							<img src="/resource/images/more-gray.png" alt="">더보기
+						</a>
+					</div>
+
+					<div id="pc-swiper" class="main-list-inner wd-1400 ani-down-slide over">
+						<!-- pagination -->
+						<div class="swiper-pagination main-page"></div>
+						<ul class="swiper-wrapper">
+							<?=$Main_news?>
+						</ul>
+						<a href="/notice/notice.php?jb_code=80" class="more-btn-box ani-a02">
+							<img src="/resource/images/more-gray.png" alt="">더보기
+						</a>
+					</div>
+				</div>
+			</section>
+			<!-- main section 03 end -->
+			<!-- main section 04 Start -->
+			<section class="contents">
+				<div class="main-board-menu">
+					<div class="main-board-inner wd-1400 ani-down-slide">
+						<div class="main-board-left">
+							<div class="slide-1st">
+								<!-- Swiper -->
+								<div class="swiper-container2">
+									<div class="swiper-wrapper">
+                                      <?=$Slide_L?>
+									</div>
+									<!-- Add Pagination -->
+									<div class="pagenation-box">
+										<div class="swiper-pagination"></div>
+									</div>
+								</div>
+							</div>
+							<div class="slide-2nd">
+								<!-- Swiper -->
+								<div class="swiper-container3">
+									<div class="swiper-wrapper">
+										<?=$Slide_R?>
+										<!--
+											pc이미지 클래스명
+											.mb-hide
+
+											mobile이미지 클래스명
+											.mb-show
+
+										 -->
+									</div>
+									<!-- Add Pagination -->
+									<div class="pagenation-box wd-1400">
+										<div class="swiper-pagination"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- //end main-board-left -->
+						<div class="main-board-right">
+							<div class="cont-tit aline-left ani-down-slide">
+								<h3>
+									서울재활병원<br class="non">
+									소식/참여
+								</h3>
+							</div>
+							<ul>
+								<li>
+									<button type="button" class="on ani-a02">공지사항</button>
+									<div class="tab-cont active">
+										<table>
+											<tbody>
+												<?=$Main_Notice?>
+
+											</tbody>
+										</table>
+										<a href="/notice/notice.php?jb_code=10" class="ani-a02">
+											<img src="/resource/images/more-gray-circle.png" alt="더보기">
+										</a>
+									</div>
+								</li>
+								<li>
+									<button type="button" class="ani-a02">언론보도</button>
+									<div class="tab-cont">
+										<table>
+											<tbody>
+											<?=$Main_media?>
+											</tbody>
+										</table>
+										<a href="/notice/notice.php?jb_code=30" class="ani-a02">
+											<img src="/resource/images/more-gray-circle.png" alt="더보기">
+										</a>
+									</div>
+								</li>
+								<li>
+									<button type="button" class="ani-a02">채용정보</button>
+									<div class="tab-cont">
+										<table>
+											<tbody>
+											<?=$Main_employment?>
+											</tbody>
+										</table>
+										<a href="/notice/notice.php?jb_code=60" class="ani-a02">
+											<img src="/resource/images/more-gray-circle.png" alt="더보기">
+										</a>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<!-- //end main-board-right -->
+					</div>
+				</div>
+			</section>
+			<!-- main section 04 end -->
+
+			<!-- main section 05 start -->
+			<section class="contents">
+				<div class="main-list-menu v2 m-bg-gray" style="overflow: hidden;">
+					<div class="cont-tit ani-down-slide">
+						<h3>병원소식</h3>
+						<p>병원의 다양한 활동과 <br class="mb-show">소식을 공유하여 소통합니다</p>
+					</div>
+					<!-- Add Arrows -->
+					<div class="swiper-button-box">
+						<div class="swiper-button-next"></div>
+						<div class="swiper-button-prev"></div>
+					</div>
+					<!-- slide -->
+					<div class="main-list-inner wd-1400 swiper-container4 ani-down-slide">
+						<ul class="swiper-wrapper main-1 sub-1 n3" style="flex-wrap:nowrap;">
+						<?=$Main_news2?>
+						</ul>
+						<a href="/notice/notice.php?jb_code=20" class="more-btn-box ani-a02">
+							<img src="/resource/images/more-gray.png" alt="">더보기
+						</a>
+					</div>
+
+					<div class="main-list-inner wd-1400 swiper-container7 ani-down-slide">
+						<ul class="swiper-wrapper main-1 sub-1 n3" style="flex-wrap:nowrap;">
+							<?=$Main_news2?>
+						</ul>
+						<a href="/notice/notice.php?jb_code=20" class="more-btn-box ani-a02">
+							<img src="/resource/images/more-gray.png" alt="">더보기
+						</a>
+					</div>
+
+				</div>
+			</section>
+			<!-- main section 05 end -->
+
+			<?php include_once "inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "inc/footer.php"; ?>
+	</div>
+
+	<script>
+		var swiper = new Swiper('.header-thumb', {
+			loop: true,
+			autoplay: {
+				delay: 2500,
+				disableOnInteraction: false,
+			},
+		});
+		var swiper = new Swiper('.swiper-container1', {
+			loop:true,
+			slidesPerView: 1,
+			autoplay: {
+				delay: 5000,
+				disableOnInteraction: false,
+			},
+			pagination: {
+				el: '.swiper-pagination',
+				clickable: true,
+				// renderBullet: function (index, className) {
+				// 	return '<span class="' + className + '">' + (index + 1) + '</span>';
+				// },
+			},
+		});
+		var swiper = new Swiper('.swiper-container2', {
+			loop: true,
+			autoplay: {
+				delay: 5000,
+				disableOnInteraction: false,
+			},
+			pagination: {
+				el: '.swiper-pagination',
+				clickable: true,
+			},
+		});
+		var swiper = new Swiper('.swiper-container3', {
+			loop: true,
+			autoplay: {
+				delay: 5000,
+				disableOnInteraction: false,
+			},
+			pagination: {
+				el: '.swiper-pagination',
+				clickable: true,
+			},
+		});
+
+		var swiper = new Swiper('.swiper-container4', {
+			loop: true,
+			autoplay: {
+				delay: 5500,
+				disableOnInteraction: false,
+			},
+			slidesPerView: 1,
+			spaceBetween: 24,
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+		});
+
+		var swiper = new Swiper('.swiper-container7', {
+				loop: true,
+				autoplay: {
+					delay: 5500,
+					disableOnInteraction: false,
+				},
+				slidesPerView: 3,
+				spaceBetween: 24,
+				navigation: {
+					nextEl: '.swiper-button-next',
+					prevEl: '.swiper-button-prev',
+				},
+			});
+
+
+		var swiper = new Swiper('#m-swiper', {
+			loop: true,
+			slidesPerView: 1,
+			spaceBetween: 24,
+			autoplay: {
+				delay: 5500,
+				disableOnInteraction: false,
+			},
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+			pagination: {
+				el: '.swiper-pagination',
+				clickable: true,
+			},
+		});
+	</script>
+    <?
+	$mobile_agent = '/(iPod|iPhone|Android|BlackBerry|SymbianOS|SCH-M\d+|Opera Mini|Windows CE|Nokia|SonyEricsson|webOS|PalmOS)/';
+
+	// preg_match() 함수를 이용해 모바일 기기로 접속하였는지 확인
+	if(preg_match($mobile_agent, $_SERVER['HTTP_USER_AGENT'])) {
+		include $_SERVER[DOCUMENT_ROOT]."/popup/popup_layer.php";
+	}else{
+		include $_SERVER[DOCUMENT_ROOT]."/popup/popup_script.php";
+	}
+?>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<div id='member_wrap'>
+
+<form id='fjoin' name='fjoin' method='post' action='/member/<?=$mb_id?'modify':'join'?>/update'>
+<input type='hidden' name='mb_id' value='<?=$mb_id?>'/>
+<input type='hidden' name='old_email' value='<?=$mb_email?>'/>
+<input type='hidden' name='token'	 value='<?=$token?>'/>
+<? if(!$mb_id): ?><input type='hidden' name='mb_jumin' value='<?=$jumin?>'/><? endif; ?>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="join">
+	 <colgroup>
+		<col width="160" />
+		<col />
+	 </colgroup>
+	  <tr>
+		<th class="check">아이디</th>
+		<td class="left10">
+		
+		<? if($mb_id) : ?>
+			<span class="b"><input type='hidden' name='mb_id' value='<?=$mb_id?>'/><?=$mb_id?></span>
+		<? else : ?>
+			<input type="text" id='reg_mb_id' name='mb_id' maxlength='20' class="box ed" style="width:150px"/> <img src='<?=$IMG_PATH?>/btn_overlap.gif' id='btn_id' align='top' alt='아이디 중복확인'/>
+		<? endif; ?>
+			
+			<div id='msg_mb_id'></div></td>
+	  </tr>
+	  
+	  <? if(!$mb_id) : ?>
+	  <tr>
+		<th class="check">비밀번호</th>
+		<td class="left10"><input type='password' id='mb_password' name='mb_password' hname='비밀번호' maxlength='20' class="box ed" style="width:150px" /> <span class="font11">* 4자 ~ 20자</span></td>
+	  </tr>
+	  <tr>
+		<th class="check">비밀번호 확인</th>
+		<td class="left10"><input type='password' id='mb_password_re' name='mb_password_re' hname='비밀번호 확인 maxlength='20' class="box ed" style="width:150px" /> <span class="font11">* 위에 기입한 비밀번호를 한번 더 입력해 주십시오.</span></td>
+	  </tr>
+	  <? endif; ?>
+	  
+	  <tr>
+		<th class="check">비밀번호 찾기 질문</th>
+		<td class="left10">
+				<p>
+				<select name='mb_password_q_select' id='select' hname='비밀번호 찾기 질문' onchange='this.form.mb_password_q.value=this.value;' style="width:400px">
+					<option value=''>선택하십시오.</option>
+					<option value='내가 좋아하는 캐릭터는?'>내가 좋아하는 캐릭터는?</option>
+					<option value='타인이 모르는 자신만의 신체비밀이 있다면?'>타인이 모르는 자신만의 신체비밀이 있다면?</option>
+					<option value='자신의 인생 좌우명은?'>자신의 인생 좌우명은?</option>
+					<option value='초등학교 때 기억에 남는 짝꿍 이름은?'>초등학교 때 기억에 남는 짝꿍 이름은?</option>
+					<option value='유년시절 가장 생각나는 친구 이름은?'>유년시절 가장 생각나는 친구 이름은?</option>
+					<option value='가장 기억에 남는 선생님 성함은?'>가장 기억에 남는 선생님 성함은?</option>
+					<option value='친구들에게 공개하지 않은 어릴 적 별명이 있다면?'>친구들에게 공개하지 않은 어릴 적 별명이 있다면?</option>
+					<option value='다시 태어나면 되고 싶은 것은?'>다시 태어나면 되고 싶은 것은?</option>
+					<option value='가장 감명깊게 본 영화는?'>가장 감명깊게 본 영화는?</option>
+					<option value='읽은 책 중에서 좋아하는 구절이 있다면?'>읽은 책 중에서 좋아하는 구절이 있다면?</option>
+					<option value='기억에 남는 추억의 장소는?'>기억에 남는 추억의 장소는?</option>
+					<option value='인상 깊게 읽은 책 이름은?'>인상 깊게 읽은 책 이름은?</option>
+					<option value='자신의 보물 제1호는?'>자신의 보물 제1호는?</option>
+					<option value='받았던 선물 중 기억에 남는 독특한 선물은?'>받았던 선물 중 기억에 남는 독특한 선물은?</option>
+					<option value='자신이 두번째로 존경하는 인물은?'>자신이 두번째로 존경하는 인물은?</option>
+					<option value='아버지의 성함은?'>아버지의 성함은?</option>
+					<option value='어머니의 성함은?'>어머니의 성함은?</option>
+				</select>
+			</p>
+			<p><input type='text' id='mb_password_q' name='mb_password_q' maxlength='50' value='<?=$mb_password_q?>' class='box ed' style="width:400px"/></p>
+		</td>
+	  </tr>
+	  <tr>
+		<th class="check">비밀번호 찾기 답변</th>
+		<td class="left10"><input type='text' id='mb_password_a' name='mb_password_a' hname='비밀번호 찾기 답변' maxlength='50' value='<?=$mb_password_a?>' class="box ed" style="width:400px"/></td>
+	</tr>
+	  <tr>
+		<th class="check">이름</th>
+		<td class="left10">
+		<? if($readonly_name !== true) : ?>
+			<input type='text' id='mb_name' name='mb_name' hname='이름' maxlength='10' <?=$readonly_name?> value='<?=$mb_name?>' class="box ed" style="width:150px"/>
+			<? else : ?>
+			<?=$mb_name?>
+		<? endif; ?>
+		<? if($readonly_name !== true){ ?><span class="font11">* 공백없이 한글만 입력 가능</span><? } ?><div class='msg_tip'></div>
+		</td>
+	  </tr>
+	  <? if ($cf_use_nick): ?>
+	  <tr>
+		<th class="check">별명</th>
+		<td class="left10">
+		<? if ($nick_modify) : ?>
+			<p><input type='hidden' name='mb_nick_default' value="<?=$mb_nick?>"/>
+			<p><input type='text' id='reg_mb_nick' name='mb_nick' maxlength='20' class="box ed" style="width:90px" value="<?=$mb_nick?>"/>
+			<img src='<?=$IMG_PATH?>/btn_overlap.gif' id='btn_nick' align='top' alt='별명 중복확인'/></p>
+			<? else : ?>
+			<?=$mb_nick?>
+		<? endif; ?>
+		<? if ($nick_modify){ ?><p><span class="font11">* 별명을 바꾸시면 앞으로 <?=$cf_nick_modify?>일 이내에는 변경 할 수 없습니다. * 공백없이 한글만 입력 가능</span></p> <? } ?><div id='msg_mb_nick'></div>
+		</td>
+	  </tr>
+	  <? endif; ?>
+	  <tr>
+		<th class="check">이메일</th>
+		<td class="left10"><input type='text' id='reg_mb_email' name='mb_email' maxlength='50' value='<?=$mb_email?>' class="box ed" style="width:300px"/>
+			<img src='<?=$IMG_PATH?>/btn_overlap.gif' id='btn_email' align='top' alt='이메일 중복확인' align="absmiddle"/>
+			<div id='msg_mb_email'></div>
+		</td>
+	  </tr>
+	  <tr>
+		<th class="check">정보메일수신</th>
+		<td class="left10"><input type='checkbox' id='mb_mailling' name='mb_mailling' value='1' class='chk_box' checked='checked' <?=$mb_mailling?'checked="checked"':''?>/> <label>정보 메일을 받겠습니다.</label> <div id='msg_mb_email'></div></td>
+	  </tr>
+	  <tr>
+		<th class="check">전화번호</th>
+		<td class="left10">
+		  <input type='text' id='mb_tel1' name='mb_tel1' class="box ed imeDis" maxlength='4' size='4' onkeypress="return only_number();" value="<?=$mb_tel1?>"/>-<input type='text' id='mb_tel2' name='mb_tel2' class="box ed imeDis" maxlength='4' size='4' onkeypress="return only_number();" value="<?=$mb_tel2?>"/>-<input type='text' id='mb_tel3' name='mb_tel3' class="box ed imeDis" maxlength='4' size='4' onkeypress="return only_number();" value="<?=$mb_tel3?>"/>
+		</td>
+	  </tr>
+	  <tr>
+		<th class="check">휴대전화</th>
+		<td class="left10">
+		  <input type='text' id='mb_hp1' name='mb_hp1' class="box ed imeDis" maxlength='4' size='4' onkeypress="return only_number();" value="<?=$mb_hp1?>"/>-<input type='text' id='mb_hp2' name='mb_hp2' class="box ed imeDis" maxlength='4' size='4' onkeypress="return only_number();" value="<?=$mb_hp2?>"/>-<input type='text' id='mb_hp3' name='mb_hp3' class="box ed imeDis" maxlength='4' size='4' onkeypress="return only_number();" value="<?=$mb_hp3?>"/>
+		</td>
+	  </tr>
+	  <tr>
+			<th class="check">주소</th>
+			<td class="left10"><p><input type='text' name='mb_zip1' maxlength='3' readonly='readonly' value='<?=$mb_zip1?>' class="box ed" style="width:50px"/>
+				  -
+				  <input type='text' name='mb_zip2' maxlength='3' readonly='readonly' value='<?=$mb_zip2?>' class="box ed" style="width:50px"/> <a href='javascript:;' onclick="javascript:win_zip('fjoin', 'mb_zip1', 'mb_zip2', 'mb_addr1', 'mb_addr2');"><img src='<?=$IMG_PATH?>/btn_zipcode.gif' align='top' alt='우편번호 검색'/></a></p>
+				  <p><input type='text' name='mb_addr1' maxlength='100' readonly='readonly' value='<?=$mb_addr1?>' class="box ed" style="width:500px"/></p>
+				  <p><input type='text' id='mb_addr2' name='mb_addr2' maxlength='100' value='<?=$mb_addr2?>' class="box ed" style="width:500px"/></p>
+			  </td>
+	  </tr>
+	  
+	  <? if ($open_modify): ?>
+	  <tr>
+		<th class="check">정보공개</th>
+		<td class="left10">
+			<input type='checkbox' id='mb_open' name='mb_open' value='1' checked='checked' <?=$mb_open?'checked="checked"':''?>/> 다른분들이 나의 정보를 볼 수 있도록 합니다.
+			<p class='msg_tip'>정보공개를 바꾸시면 앞으로 <?=$cf_open_modify?>일 이내에는 변경이 안됩니다.</p>
+		</td>
+	  </tr>
+	  <? endif; ?>
+	  
+	  <tr>
+		<th class="check">자동등록방지</th>
+		<td class="left10"><img src='' id='kcaptcha' width='100' height='50' alt='자동등록방지'/> <input type='text' id='wr_key' name='wr_key' class="box ed" style="width:100px"/> <span class="font11">* 왼쪽의 글자를 입력하세요.</span></td>
+	  </tr>
+	  <!-- 
+	  <tr>
+		<th class="check">주민등록번호&nbsp;<img src="/image/icon01.gif"></th>
+		<td class="left10"><input type='text' name='jumin2' hname='주민등록 번호' size='14' maxlength='14' value="" class="line" required="required" option="jumin" /></td>
+	  </tr>
+	  <tr>
+		<th class="check">생년월일</th>
+		<td class="left10"><input id='mb_birth' name='mb_birth' class='line' maxlength='10' size='10' value='<?=$mb_birth?>' readonly='readonly'/></td>
+	  </tr>
+	  
+	  <? if (!$mb_sex): ?>
+	  <tr>
+		<th class="check">성 별</th>
+		<td class="left10"><select id='mb_sex' name='mb_sex'>
+				<option value=''>선택하세요</option>
+				<option value='M' <?=$mb_sex=='M'?'selected="selected"':''?>>남자</option>
+				<option value='F' <?=$mb_sex=='F'?'selected="selected"':''?>>여자</option>
+			</select></td>
+	  </tr>
+	  <? endif; ?>
+	  
+	  <? if ($cf_icon_size): ?>
+		<tr>
+		  <th class="check">회원아이콘</th>
+		  <td class="left10">
+			<input type='file' id='mb_icon' name='mb_icon' class='ed' size='30'/><br/>
+			<span class='msg_tip'>
+			아이콘 크기는 가로(<?=$cf_icon_width?>픽셀) x 세로(<?=$cf_icon_height?>픽셀) 이하로 해주세요.
+			<br/>(gif만 가능 / 용량 : <?=$cf_icon_size?>Kbyte 이하만 등록됩니다.)
+			</span>
+			<? if ($mb_icon): ?>
+			<br/><img src='<?=$mb_icon?>' align='top' alt='회원아이콘'/> <input type='checkbox' name='del_mb_icon' value='1'/> 삭제
+			<? endif; ?>
+		  </td>
+		</tr>
+		<? endif; ?>
+		
+		<? if ($cf_named_size): ?>
+		<tr>
+		  <th class="check">이미지이름</th>
+		  <td class="left10">
+			<input type='file' id='mb_named' name='mb_named' class='ed' size='30'/><br/>
+			<span class='msg_tip'>
+			이미지 크기는 가로(<?=$cf_named_width?>픽셀) x 세로(<?=$cf_named_height?>픽셀) 이하로 해주세요.
+			<br/>(gif만 가능 / 용량 : <?=$cf_named_size?>Kbyte 이하만 등록됩니다.)
+			</span>
+			<? if ($mb_named): ?>
+			<br/><img src='<?=$mb_named?>' align='top' alt='이미지이름'/> <input type='checkbox' name='del_mb_named' value='1'/> 삭제
+			<? endif; ?>
+		  </td>
+		</tr>
+		<? endif; ?>
+		
+	  <tr>
+		<th class="check">홈페이지</th>
+		<td class="left10"><input type='text' id='mb_homepage' name='mb_homepage' class='line' size='50' maxlength='50' value='<?=$mb_homepage?>'/></td>
+	  </tr>
+	  <tr>
+		<th class="check">자기소개</th>
+		<td class="left10"><textarea id='mb_profile' name='mb_profile' class='tx' rows='3' cols='50'><?=$mb_profile?></textarea></td>
+	  </tr>
+	  <tr>
+		<th class="check">직업</th>
+		<td class="left10">
+			<select name="job2" required="required">
+			  <option value="">직업을 선택해주세요</option>
+			  <option value='주부'>주부</option>
+			  <option value='학생'>학생</option>
+			  <option value='회사원'>회사원</option>
+			  <option value='공무원'>공무원</option>
+			  <option value='자영업'>자영업</option>
+			  <option value='교직자'>교직자</option>
+			  <option value='의료인'>의료인</option>
+			  <option value='법조인'>법조인</option>
+			  <option value='금융/증권/보험업'>금융/증권/보험업</option>
+			  <option value='언론/방송'>언론/방송</option>
+			  <option value='종교'>종교</option>
+			  <option value='예술'>예술</option>
+			  <option value='농/축산/수산/광업'>농/축산/수산/광업</option>
+			  <option value='서비스업'>서비스업</option>
+			  <option value='군인'>군인</option>
+			  <option value='무직'>무직</option>
+			  <option value='건설업'>건설업</option>
+			  <option value='제조업'>제조업</option>
+			  <option value='유통업'>유통업</option>
+			  <option value='부동산업'>부동산업</option>
+			  <option value='운송업'>운송업</option>
+			  <option value='통신원'>통신원</option>
+			  <option value='기타'>기타</option>
+			</select>
+		</td>
+	  </tr>
+	  <tr>
+		<th class="check">남기고 싶은말</th>
+		<td class="left10"><textarea name="comment2" id="comment" hname="남기고싶은말" cols="90" class="line" rows="5"></textarea></td>
+	  </tr>
+		-->
+	</table>
+
+<!-- <p style="text-align:right; padding-top:20px;"><input type='image' src="<?=$IMG_PATH?>/btn_ok.jpg"/> <a href="/"><img src="<?=$IMG_PATH?>/btn_cancel.jpg" width="61" height="28"></a></p> -->
+
+<ul style="float:right; padding-top:20px;" >
+    <li style="float:left;"><input type='image' src='<?=$IMG_PATH?>/btn_ok.jpg'/></li>
+	<li style="float:left; margin-left:10px;"><a href="/"><img src="<?=$IMG_PATH?>/btn_cancel.jpg" width="61" height="28"></a></li>
+</ul>
+</form>
+</div>
+
+<div id='loading'></div>
+
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#jmore').toggle(
+      function () { $('#joption').show(); },
+      function () { $('#joption').hide(); }
+	);
+	var i = 0;
+	var year = new Date().getFullYear();
+	$('#mb_birth').timepicker({yearRange:(year-60)+':'+year});
+
+	$('#fjoin').validate({
+		rules: {
+			<? if ($cf_use_nick && $nick_modify) : ?>
+			mb_nick: { required:true, reg_mb_nick:true },
+			<? endif; ?>
+			<? if(!$mb_id): ?>
+			mb_id: { required:true, reg_mb_id:true },
+			mb_password: { required:true, minlength:4 },
+			mb_password_re: { required:true, equalTo:'#mb_password'},
+			mb_name: { required:true,  minlength:2, hangul:true },
+			<? endif; ?>
+			mb_email: { required:true, reg_mb_email:true },
+			mb_password_q: 'required',
+			mb_password_a: 'required',
+
+			wr_key: { required:true, wrKey:true }
+		},
+		messages: {
+			mb_id: '아이디 중복확인 결과가 올바르지 않습니다.',
+			mb_nick: '별명 중복확인 결과가 올바르지 않습니다.',
+			mb_email: '이메일 중복확인 결과가 올바르지 않습니다.',
+			mb_password: { required:'비밀번호를 입력하십시오.', minlength:'최소 3자 이상 입력하십시오.' },
+			mb_password_re: { required:'비밀번호 확인을 입력하십시오.', equalTo:'비밀번호가 일치하지 않습니다.' },
+			mb_password_q: '비밀번호 분실시 질문을 선택하거나 입력하십시오.',
+			mb_password_a: '비밀번호 분실시 답변을 입력하십시오.',
+			mb_name: { required:'이름을 입력하십시오.', minlength:'최소 2자 이상 입력하십시오.' },
+			//mb_profile: "만 14세가 지나지 않은 어린이는 정보통신망 이용촉진 및 정보보호 등에 관한 법률 제 31조 1항의 규정에 의하여 법정대리인의 동의를 얻어야 하므로 법정대리인의 이름과 연락처를 '자기소개'란에 별도로 입력하시기 바랍니다.",
+			wr_key: '자동등록방지용 코드가 맞지 않습니다.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+			f.submit();
+		}
+	});
+});
+//]]>
+</script>
+
+<?=validation_errors('<script>alert("','");</script>');?>

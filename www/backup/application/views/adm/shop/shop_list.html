@@ -1,0 +1,90 @@
+<h2>상품 리스트</h2>
+
+<form name='fsearch' method='get' onsubmit="return doSearch(this, 'shop/lists', '');">
+<div id='list_head'>
+	<ul class='lr'>
+		<li class="mT5"><a href='<?=$path?>/shop/lists'>처음</a> (총 <?=$total_cnt?>개)</li>
+		<li class='right'>
+	        <select name='sfl'>
+	            <option value='pd_name'>상품명</option>
+        	</select>
+	        <input type='text' name='stx' class='ed' value='<?=$stx?>' />
+	        <input type='image' src='<?=$IMG_PATH?>/button/btn_search.gif' align='top'/>
+        </li>
+    </ul>
+</div>
+</form>
+
+<form name='flist' method='post' action=''>
+<input type='hidden' name='token' value='<?=$token?>' />
+
+<div id='list_cont'>
+	<table width='100%' cellpadding='0' cellspacing='0' class="con_box2">
+		<colgroup>
+			<col class='check'/>
+			<col width="50"/>
+			<col width="110"/>
+			<col />
+			<col width="80"/>
+			<col width="160"/>
+			<col width="50"/>
+			<col width="50"/>
+			<col width="85"/>
+            <col width="60"/>
+		</colgroup>
+		
+		<!-- 타이틀 -->
+		<tr>
+            <th><input type="checkbox" onclick="allcheck(this);" value="1" /></th>
+			<th>No</th>
+            <th>대표이미지</th>
+            <th><a href='<?=$sort_link['pd_name']?>'>상품명</a></th>
+            <th><a href='<?=$sort_link['pd_price']?>'>가격</a></th>
+            <th><a href='<?=$sort_link['pd_cate']?>'>카테고리</a></th>
+            <th><a href='<?=$sort_link['pd_soldout']?>'>품절</a></th>
+            <th><a href='<?=$sort_link['pd_hidden']?>'>숨김</a></th>
+            <th><a href='<?=$sort_link['pd_regdate']?>'>등록일</a></th>
+			<th class="nobg"><?=$s_add?></th>
+		</tr>
+		
+		<!-- 리스트 -->
+		<? foreach($list as $key => $val) : ?>
+		<tr class='row list<?=$val['lst']?>'>
+			<td><input type='checkbox' name='chk[]' value='<?=$val['pd_id']?>' /></td>
+			<td><?=$val['no']?></td>
+			<td><img src="/useful/thumbnail/80x60/ki_shop/<?=$val['pd_id']?>?no=<?=$val['pd_image1']?>&ratio=true"/></td>
+			<td align="left"><?=$val['pd_name']?></td>
+			<td><?=$val['pd_price']?></td>
+			<td><?=$val['pd_cate']?></td>
+			<td><input type="checkbox" name="pd_soldout[<?=$val['pd_id']?>]" <?=$val['soldout_chk']?> value="1"/></td>
+			<td><input type="checkbox" name="pd_hidden[<?=$val['pd_id']?>]" <?=$val['hidden_chk']?> value="1"/></td>
+			<td><?=$val['pd_regdate']?></td>
+			<td><?=$val['s_mod']?> <?=$val['s_del']?> <?=$val['s_view']?></td>
+		</tr>
+		<? endforeach; ?>
+		
+		<? if (!$list): ?>
+		<tr>
+			<td colspan="10" height="50"><p class='none'>자료가 없습니다.</p></td>
+		</tr>
+		<? endif; ?>
+		
+	</table>
+	
+	<ul class='lr bottom'>
+		<li>
+			<input type='button' class='btn' value='선택수정' onclick="javascript:slt_check(this.form, '<?=$path?>/shop/update')"value="1" />
+			<input type='button' class='btn' value='선택삭제' onclick="javascript:slt_check(this.form, '<?=$path?>/shop/delete')"value="1" />
+		</li>
+		<li class='right'><?=$paging?></li>
+	</ul>
+</div>
+</form>
+
+<? if ($stx): ?>
+<script type='text/javascript'>
+//<![CDATA[
+document.fsearch.sfl.value = '<?=$sfl?>';
+//]]>
+</script>
+<? endif; ?>

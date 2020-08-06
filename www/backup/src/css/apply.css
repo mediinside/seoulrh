@@ -1,0 +1,6 @@
+@charset "utf-8";
+
+#apply tr { line-height: 23px; }
+#apply th { background: #EFEFEF; }
+#apply td { border-bottom: 1px #EFEFEF solid; }
+#apply tr:last-child td { border-bottom: 0; }

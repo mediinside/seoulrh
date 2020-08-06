@@ -1,0 +1,81 @@
+<h2><?=$_TITLE_?></h2>
+
+<form id='fconf' name='fconf' method='post'>
+
+<ul id='form_cont'>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 기본 정보 입력</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+			<tr>
+				<th>도메인</th>
+				<td>http://<input type='text' id='cf_domain' name='cf_domain' class='ed' maxlength='100' size='24' value='<?=$conf['cf_domain']?>' /></td>
+			</tr>
+			<tr>
+				<th>사이트명</th>
+				<td><input type='text' id='cf_title' name='cf_title' class='ed' maxlength='100' size='30' value='<?=$conf['cf_title']?>' /></td>
+			</tr>
+			<tr>
+				<th>자동발송 메일주소</th>
+				<td>
+					<input type='text' id='cf_webmaster' name='cf_webmaster' class='ed' maxlength='100' size='30' value='<?=$conf['cf_webmaster']?>' />
+					<span class="red">(홈페이지와 도메인이 다르면 메일이 발송되지 않을 수도 있습니다.)</span>
+				</td>
+			</tr>
+			<!-- 구현 미완성 -->
+			<tr>
+				<th>모바일웹 사용</th>
+				<td>
+					<input type='radio' id='cf_mobile' name='cf_mobile' value='1' <?=checked('1', $conf['cf_mobile'])?> /> 사용 &nbsp;
+					<input type='radio' id='cf_mobile' name='cf_mobile' value='0' <?=checked('0', $conf['cf_mobile'])?> /> 비사용
+				</td>
+			</tr>
+			<!-- 모바일 웹-->
+		</table>
+	</li>
+</ul>
+
+<p class='center bottom'> 
+	<input type='submit' id='btn_submit' class='btn' value='  확  인  '/>
+</p>
+</form>
+
+<div id='loading'></div>
+
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#fconf').validate({
+		rules: {
+			cf_domain: 'required',
+			cf_title: 'required',
+			cf_webmaster: { required:true, email:true }
+		},
+		messages: {
+			cf_domain: '도메인이 입력되지 않았습니다.',
+			cf_title: '사이트명이 입력되지 않았습니다.',
+			cf_webmaster: { required:'자동발송 메일주소가 입력되지 않았습니다.', email:'메일 형식이 올바르지 않습니다.' }
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+		    f.submit();
+		}
+	});
+});
+
+function show_table(obj, id) {
+	$('#conf table').hide();
+	$('#conf #'+ id).show();
+	$('#conf_btns button').removeClass('active');
+	$(obj).addClass('active');
+}
+//]]>
+</script>

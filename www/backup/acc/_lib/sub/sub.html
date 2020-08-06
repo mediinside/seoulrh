@@ -1,0 +1,399 @@
+<ul title="사용설명">
+<li><strong><em>템플릿은 디자인 가이드에 맞추어 sub.css, board.css 를 수정하세요.</em></strong></li>
+<li><strong>최근 보완된 템플릿 코드이므로 호환이 안되면 담당 코더와 협의하세요.</strong></li>
+</ul>
+
+<h1>본문 제목 h1 <span>: 콘텐츠별 템플릿 </span></h1>
+
+<!-- 2중박스 -->
+<div class="box0">
+<div class="box4">
+페이지 전문, box0+box4, <strong>유의사항</strong>, <em>강조할 문단</em> 등의 문장을 표현할 때..<br />
+타인의 명예를 훼손하거나 개인정보를 유출하는 등 법률에 위반되는 글을 삼가하여 주시기 바랍니다. 게시물에 대한 민형사상의 법적인 책임은 게시자에게 있으며 운영자에 의해 삭제되거나 관련 법률에 따라 처벌 받을 수 있습니다. 취지에 어긋나거나 음란, 홍보, 욕설 등의 사진이나 글은 임의로 삭제될 수 있습니다.
+</div>
+</div>
+<!-- //2중박스 -->
+
+<!-- 본문1차메뉴 -->
+<div id="contenttabmenu">
+<h2 class="bg">본문 메뉴</h2>
+<ul>
+<li id="ctabm1"><a href="?">본문소제목</a></li>
+<li id="ctabm2"><a href="?">본문메뉴</a></li>
+<li id="ctabm3"><a href="?">목록</a></li>
+<li id="ctabm4"><a href="?">테이블</a></li>
+<li id="ctabm5"><a href="?">버튼/서식</a></li>
+<li id="ctabm6"><a href="?">JS</a></li>
+<li id="ctabm7"><a href="/share/ui/popup.html" onclick="window.open(this.href,'','scrollbars=yes,resizable=yes,width=300,height=400,left=20,top=20');return false;" title="새 창">팝업*</a></li>
+<li id="ctabm8"><a href="../board/index.php">게시판*</a></li>
+</ul>
+</div>
+<script type="text/javascript">initClickOn("contenttabmenu","ctabm0");</script>
+<!-- //본문1차메뉴 -->
+
+<!-- box1 -->
+<p class="box1">
+initClickOn() 함수의 2번째 인수 "ctabm0" 를 개발언어에 따라 ctabm&lt;%=d4n%&gt;, 혹은 &lt;?=$d4n?&gt; 로 4차메뉴 순번을 받아서 활성화 시킬 수 있다.
+</p>
+<!-- //box1 -->
+
+<!-- fr -->
+<div class="fr">
+<!-- mselect1 -->
+<div id="mselect1" class="mselect">
+<h3>관련 사이트 바로가기</h3>
+<!-- moption1 -->
+<div id="moption1" class="moption">
+<ul>
+<li><a href="http://naver.com" onclick="window.open(this.href); return false;" target="_blank" title="새 창">네이버[새 창]</a></li>
+<li><a href="http://naver.com">네이버</a></li>
+<li><a href="#n3">바로가기 링크3</a></li>
+<li><a href="#n4">바로가기 링크4</a></li>
+<li><a href="#n5">바로가기 링크5</a></li>
+<li><a href="#n6">바로가기 링크6</a></li>
+<li><a href="#n7">바로가기 링크7명은 아주 길단다</a></li>
+<li><a href="http://yahoo.com" onclick="window.open(this.href); return false;" target="_blank" title="새 창">야후[새 창]</a></li>
+</ul>
+</div>
+<!-- //moption1 -->
+</div>
+<script type="text/javascript">initmSelect("mselect1","moption1");</script>
+<!-- //mselect1 -->
+</div>
+<!-- //fr -->
+<div class="brclear"></div>
+
+<h2>본문 소제목 1차 h2 <span>: 본문2차메뉴 현재위치를 지정하여 메뉴 활성</span></h2>
+
+
+<!-- fl -->
+<div class="fl">
+
+<!-- mselect2 -->
+<div id="mselect2" class="mselect" style="margin: 0 0 .5em 0;">
+<h3>관련 사이트 바로가기</h3>
+<div id="moption2" class="moption">
+<ul>
+<li><a href="http://naver.com" onclick="window.open(this.href); return false;" target="_blank" title="새 창">네이버[새 창]</a></li>
+<li><a href="http://naver.com">네이버</a></li>
+<li><a href="#n3">바로가기 링크3</a></li>
+<li><a href="#n4">바로가기 링크4</a></li>
+<li><a href="#n5">바로가기 링크5</a></li>
+<li><a href="#n6">바로가기 링크6</a></li>
+<li><a href="#n7">바로가기 링크7</a></li>
+<li><a href="http://yahoo.com" onclick="window.open(this.href); return false;" target="_blank" title="새 창">야후[새 창]</a></li>
+</ul>
+</div>
+</div>
+<script type="text/javascript">initmSelect("mselect2","moption2",10);</script>
+<!-- //mselect2 -->
+
+<!-- mselect3 -->
+<div id="mselect3" class="mselect">
+<h3>패밀리 사이트 바로가기</h3>
+<div id="moption3" class="moption">
+<ul>
+<li><a href="http://naver.com" onclick="window.open(this.href); return false;" target="_blank" title="새 창">네이버[새 창]</a></li>
+<li><a href="http://naver.com">네이버</a></li>
+<li><a href="#n3">바로가기 링크3</a></li>
+<li><a href="#n4">바로가기 링크4</a></li>
+<li><a href="#n5">바로가기 링크5</a></li>
+<li><a href="#n6">바로가기 링크6</a></li>
+<li><a href="#n7">바로가기 링크7</a></li>
+<li><a href="http://yahoo.com" onclick="window.open(this.href); return false;" target="_blank" title="새 창">야후[새 창]</a></li>
+</ul>
+</div>
+</div>
+<script type="text/javascript">initmSelect("mselect3","moption3",5);</script>
+<!-- //mselect3 -->
+
+</div>
+<!-- //fl -->
+
+<hr />
+<div class="brclear"></div>
+
+<!-- selectId -->
+<!-- <div id="selectId">
+<h3>관련 사이트 바로가기</h3>
+<div id="optionId">
+<ul>
+<li><a href="http://naver.com" onclick="window.open(this.href); return false;" target="_blank" title="새 창">네이버[새 창]</a></li>
+<li><a href="http://naver.com">네이버</a></li>
+<li><a href="#n3">바로가기 링크3</a></li>
+<li><a href="#n4">바로가기 링크4</a></li>
+<li><a href="#n5">바로가기 링크5</a></li>
+<li><a href="#n6">바로가기 링크6</a></li>
+<li><a href="#n7">바로가기 링크7</a></li>
+<li><a href="http://yahoo.com" onclick="window.open(this.href); return false;" target="_blank" title="새 창">야후[새 창]</a></li>
+</ul>
+</div>
+</div>
+<script type="text/javascript">initSelect("selectId","optionId");</script> -->
+<!-- //selectId -->
+
+<br />
+
+<!-- 본문2차메뉴 -->
+<div class="contentmenu" id="contentmenu"><div>
+<ul>
+<li id="cm1"><a href="?">본문2차메뉴</a></li>
+<li id="cm2"><a href="?">본문2차메뉴 제목</a></li>
+<li id="cm3"><a href="?">본문2차메뉴 제목 링크</a></li>
+<li id="cm4"><a href="?">본문2차메뉴 제목 링크</a></li>
+<li id="cm5"><a href="?">본문2차메뉴 제목 링크</a></li>
+<li id="cm6"><a href="?">본문2차메뉴 제목 링크</a></li>
+<li id="cm7"><a href="?">본문2차메뉴 제목 링크</a></li>
+</ul>
+</div></div>
+<script type="text/javascript">initClickOn("contentmenu","cm2");</script>
+<!-- //본문2차메뉴 -->
+
+<br />
+<h3>본문 소제목 2차 h3 <span>: 본문3차메뉴 현재위치 지정하지 않으면 첫번째 메뉴가 활성</span></h3>
+
+<!-- 본문3차내용메뉴 -->
+<div class="content2menu" id="content2menu">
+<ul>
+<li id="c2m1"><a href="?">본문3차메뉴(내용 참조 링크)</a></li>
+<li id="c2m2"><a href="?">본문3차메뉴 제목</a></li>
+<li id="c2m3"><a href="?">본문3차메뉴 제목 링크</a></li>
+<li id="c2m4"><a href="?">본문3차메뉴 제목 링크</a></li>
+</ul>
+</div>
+<script type="text/javascript">initClickOn("content2menu","");</script>
+<!-- //본문3차내용메뉴 -->
+
+<h4>본문 소제목 3차 h4 <span>: 다단 배치 샘플, box3, box4</span></h4>
+
+<!-- 2단배치 -->
+<div class="multicol w100 ofh">
+<!-- fl -->
+<div class="fl box3" style="width: 45%;">
+<ul class="bu mg0">
+<li>순서없는 목록 1차</li>
+<li>순서없는 목록 1차
+	<ul>
+	<li>순서없는 목록 2차</li>
+	<li>순서없는 목록 2차
+		<ul>
+		<li>순서없는 목록 3차</li>
+		<li>순서없는 목록 3차
+			<ul>
+			<li>순서없는 목록 4차</li>
+			<li>순서없는 목록 4차</li>
+			</ul>
+		</li>
+		<li>순서없는 목록 3차</li>
+		</ul>
+	</li>
+	<li>순서없는 목록 2차</li>
+	</ul>
+</li>
+<li>순서없는 목록 1차</li>
+</ul>
+</div>
+<!-- //fl -->
+<!-- fr -->
+<div class="fr box4" style="width: 45%;">
+<dl class="bu mg0">
+<dt>(정의 목록 타이틀) meta data</dt>
+<dd>
+<p>(정의 목록 데이터) 웹 검색 엔진이나 사이트 관리에 유용한 정보로 메타 데이터를 지정하면 문서 헤더에 메타 태그가 삽입됩니다.</p>
+  <dl>
+  <dt>keyword</dt>
+  <dd>검색 엔진이 문서를 내용에 따라 분류하는 데 사용됩니다.</dd>
+  <dt>description</dt>
+  <dd>설명 메타 태그는 문서의 내용을 간단하게 설명하는 데 사용합니다.</dd>
+  </dl>
+</dd>
+</dl>
+</div>
+<!-- //fr -->
+</div>
+<!-- //2단배치 -->
+
+
+<h5>본문 소제목 4차 h5 <span>: 테이블 타입 class="t3"</span></h5>
+
+<p class="bu">
+summary 속성은 좀더 자세히 적어주세요.<br />
+caption 안에 &lt;span class="tar"&gt;(단위:원)&lt;/span&gt;사용시 caption 표제목에 공백(&amp;nbsp;)이라도 있어야 제대로 보인다.
+</p>
+
+<table border="1" class="t3" summary="표요약정보는표제목보다는자세히"><caption>caption 표제목<span> : caption 안에 span 태그 사용하면 font-weight: normal; 적용</span> <span class="tar">(단위:원)</span></caption>
+<col style="width: 20%;" /><col span="4" style="width: 10%;" /><col /><!-- 열너비 width 는 col 태그에 style 속성으로 지정하며 % 값을 사용 -->
+<thead>
+<tr>
+<th scope="col" rowspan="2">평가 대상</th>
+<th scope="col" colspan="4">평가 결과</th>
+<th scope="col" rowspan="2">비고</th>
+</tr>
+<tr>
+<th scope="col">우수</th>
+<th scope="col">향상</th>
+<th scope="col">노력</th>
+<th scope="col">부진</th>
+</tr>
+</thead>
+<tbody class="tdtac"><!-- tbdoy 안에 td의 text-align 은 left 가 기본인데, 모두 중앙 정렬할 때 -->
+<tr>
+<th scope="row">57개 사업</th>
+<td>14</td>
+<td>32</td>
+<td>8</td>
+<td>3</td>
+<td class="tal"><!-- 셀(td, td)이나 열(col)의 정렬은 각각의 셀(td, td)에 class 로 지정 -->
+<ul class="bu">
+<li>열너비 width 는 col 태그에 style 속성으로 지정하며 %값 사용.</li>
+<li>tbdoy 안에 td의 text-align 은 left 가 기본인데, 모두 중앙, 우측 정렬할 때.
+    <ul class="bu">
+    <li>&lt;tbody class="tdtac"&gt;</li>
+    <li>&lt;tbody class="tdtar"&gt;</li>
+    </ul>
+</li>
+<li>셀(td, td)이나 열(col)의 정렬은 각각의 셀(td, td)에 class 로 지정.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h6>본문 소제목 5차 h6 <span>: 버튼 및 링크 타입</span></h6>
+
+<dl class="bu">
+<dt>본문 內 버튼 : 기본 버튼, 내부 링크 class="button"</dt>
+<dd><a href="?" class="button">글쓰기</a><br /><br /></dd>
+<dt>테이블 內 버튼 : class="button"</dt>
+<dd>
+
+<table class="t3" summary="테이블 내 버튼 샘플 코드 디자인을 보여준다."><caption class="dpn">테이블 내 버튼</caption>
+<tbody>
+<tr>
+<th scope="col"><label for="zipcode">우편번호</label></th>
+<td><span class="explain">* 사용성을 위해 입력 전에 설명하라!</span><br />
+<input type="text" name="zipcode" id="zipcode" value="" class="text" /> <a href="?" class="button">찾아보기</a>
+<span class="explain">이어지는 텍스트와 어울림.</span><br />
+다음 줄의 텍스트와도 어울림.
+</td>
+</tr>
+</tbody>
+</table>
+<br />
+
+</dd>
+<dt>외부 링크 버튼 : 도메인이 다른 웹페이지 링크 class="button_outside"</dt>
+<dd><a href="?" class="button_outside">콜센터 바로가기</a><br /><br /></dd>
+<dt>단순 링크 : class="link"</dt>
+<dd><a href="?" class="link">그냥 링크를 조금 꾸미고 싶을 때</a><br /><br /></dd>
+<dt>다운로드 : class="download"</dt>
+<dd><a href="?" class="download">다운로드파일.zip</a> (다른 모양으로 적용)<br /><br /></dd>
+<dt>다운로드 : class="button"</dt>
+<dd><a href="?" class="button">다운로드파일.zip</a> (버튼 모양으로 적용)<br /><br /></dd>
+</dl>
+
+<h2>서식 요소 가로 배치 정렬</h2>
+
+<form action="?">
+<fieldset><legend>서식 그룹명</legend>
+
+<p>
+legend 요소는 브라우저별 css 렌더링이 상이해서 디자인 적용 불가<br />
+서식 요소는 브라우저 버전별로도 차이가 있기에 비슷하게 보이는 수준으로만 작업함.
+</p>
+
+<label for="textA">인풋텍스트A</label><input type="text" name="textA" id="textA" value="" class="text" />
+<label for="id">레이블</label>
+<select name="id" id="id" class="select" title="레이블">
+<optgroup label="그룹이름">
+<option value="" selected="selected">셀렉트</option>
+</optgroup>
+</select>
+<select name="id2" id="id2" class="select" title="레이블">
+<optgroup label="그룹이름">
+<option value="" selected="selected">셀렉트</option>
+</optgroup>
+</select>
+<a href="?" class="button">앵커</a>
+<input type="submit" value="인풋" class="button" />
+<button class="button">버튼</button>
+<input type="image" src="/img/board/btn_search.gif" alt="인풋이미지" class="image" />
+<img src="/img/board/btn_search.gif" width="40" height="21" alt="이미지버튼" class="button" />
+<input type="radio" name="radioA" id="radioA0" value="" checked="checked" class="radio" /><label for="radioA0">적용</label>
+<input type="radio" name="radioA" id="radioA1" value="" class="radio" /><label for="radioA1">미적용</label>
+<input type="checkbox" name="checkA" id="checkA0" value="" checked="checked" class="checkbox" /><label for="checkA0">예</label>
+<input type="checkbox" name="checkA" id="checkA1" value="" class="checkbox" /><label for="checkA1">아니오</label>
+<label for="textareaA">텍스트에어리어한줄</label><textarea  name="textareaA" id="textareaA" rows="1" cols="1" class="textarea" style="height: 15px;"></textarea>
+<label for="textareaB">텍스트에어리어다줄</label><textarea name="textareaB" id="textareaB" class="textarea scroll" rows="2" cols="20">rows="2" cols="20" default값</textarea>
+<label for="textB">인풋텍스트B</label><input type="text" name="textB" id="textB" value="초기값" class="text" />
+<label for="fileA">첨부</label><input type="file" name="fileA" id="fileA" value="파일" class="file" />
+
+</fieldset>
+</form>
+
+<br />
+
+<hr class="dash" />
+<h2>자바스크립트 라이브러리</h2>
+<hr class="dash" />
+
+<br />
+<h3>활성상태 표시 activeOnly(); <span class="">// 그룹핑 id가 없고, class="" 값이 있어도 가능.</span>activeOnly('coid',8,1);</h3>
+
+<!-- 활성상태표시 -->
+<ul class="coId">
+<li id="coId1" class="first on"><a href="?" onclick="activeOnly('coid',8,1); return false;">활성상태표시 링크1</a></li>
+<li id="coId2" class="on"><a href="?" onclick="activeOnly('coId',8,2); return false;">활성상태표시 링크2</a></li>
+<li id="coId3" class="last"><a href="?" onclick="activeOnly('coId',8,3); return false;">활성상태표시 링크3</a></li>
+<li id="coId4" class="onlast"><a href="?" onclick="activeOnly('coId',8,4); return false;">활성상태표시 링크4</a></li>
+<li id="coId5" class="laonst"><a href="?" onclick="activeOnly('coId',8,5); return false;">활성상태표시 링크5</a></li>
+<li id="coId6" class="laston"><a href="?" onclick="activeOnly('coId',8,6); return false;">활성상태표시 링크6</a></li>
+<li id="coId7" class="laston "><a href="?" onclick="activeOnly('coId',8,7); return false;">활성상태표시 링크7</a></li>
+<li id="coId8" class=" onlast"><a href="?" onclick="activeOnly('coId',8,8); return false;">활성상태표시 링크8</a></li>
+</ul>
+<!-- //활성상태표시 -->
+
+<br />
+
+<!-- 이벤트위치에보여주기 -->
+<a href="?" onclick="objPop=document.getElementById('pop'); eventOnOff(event); traceTest(event); return false;" class="button">콘텐츠 팝업 레이어 보여줘! 마우스 커서 위치에 보여주기. <em>eventOnOff()함수필요</em></a>
+<div id="pop" style="display: none; position: absolute; left: 0; top: 0; padding: 5px; border: 1px solid #000; background: #ffd; z-index: 11;">
+<a href="?" onclick="displayOff('pop'); return false;">닫기</a><br />
+</div>
+<script type="text/javascript">/*<![CDATA[*/
+var traceTest = function(e){
+	//objPop = document.getElementById("pop");
+	var test ="";
+	test += "clientX : "+e.clientX+" &nbsp;|&nbsp; "
+	test += "clientY : "+e.clientY+" &nbsp;|&nbsp; IE6, IE7, FF, Op, Sf<br />"
+	test += "screenX : "+e.screenX+" &nbsp;|&nbsp; "
+	test += "screenY : "+e.screenY+" &nbsp;|&nbsp; IE6, IE7, FF, Op, Sf<br />"
+	test += "offsetX : "+e.offsetX+" &nbsp;|&nbsp; "
+	test += "offsetY : "+e.offsetY+" &nbsp;|&nbsp; IE6, IE7, Op, Sf<br />"
+	test += "pageX : "+e.pageX+" &nbsp;|&nbsp; "
+	test += "pageY : "+e.pageY+" &nbsp;|&nbsp; FF, Op, Sf<br />"
+	test += "clientLeft : "+objPop.clientLeft+" &nbsp;|&nbsp; "
+	test += "clientTop : "+objPop.clientTop+" &nbsp;|&nbsp; <br />"
+	test += "offsetLeft : "+objPop.offsetLeft+" &nbsp;|&nbsp; "
+	test += "offsetTop : "+objPop.offsetTop+" &nbsp;|&nbsp; IE6, IE7, FF, Op, Sf<br />"
+	objPop.innerHTML = objPop.innerHTML+test;
+}
+/*]]>*/</script>
+<!-- //이벤트위치에보여주기 -->
+
+<br /><br />
+
+<!-- 이벤트위치에보여주기2 -->
+<a href="http://www.busan.go.kr/01_cityhall/01_participation/07.jsp" class="button_outside">이벤트 위치에 보여주기 : 부모 기준 위치 고정 (예: 게시판 달력)</a>
+
+<br /><br />
+
+<a href="http://gimhae.go.kr/05administration/03_07.jsp" class="button_outside">이벤트 위치에 보여주기 : mouseover, mousemove, focus (예: 조직도)</a>
+<!-- //이벤트위치에보여주기2 -->
+
+<br />
+<br />
+
+
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+

@@ -1,0 +1,753 @@
+@charset "UTF-8";
+/*
+**
+**	예약관리시스템 스타일 시트
+**
+*/
+
+/* *** layout color *** */
+
+
+/*** 레이아웃 ***/
+html, body {width:100%; height:100%; color:#666;}
+.Wrap {padding-left:230px}
+.boxLeftMenuIcon {display:none;}
+.dim {background:rgba(0,0,0,0.5); width:100%; min-height:100%; display:none; position:fixed; top:0; left:0; z-index:1;}
+@media all and (max-width:1024px) {
+	.Wrap {padding-left:0;}
+	.boxLeftMenuIcon {display:block; position:fixed; cursor:Pointer; right:16px; bottom:16px; width:50px; height:50px; border-radius:100%; border:2px solid #fff; box-shadow:2px 2px 5px rgba(0,0,0,0.5); background:#2b2f3e url("../images/icon_list.png")no-repeat 50% 50%; background-size:30px;font-size:0; z-index:2;}
+}
+@media all and (min-width:1025px) {
+	.boxLeft {left:0 !important;}
+}
+.Wrap_layer {height:100%;background:#fff;overflow:auto;}
+.Wrap_layer .boxContentHeader {position:static;background:#2b2f3e;font-size:16px;color:#fff;}
+.Wrap_layer .boxContentBody {margin:0;padding:10px;background:#fff;}
+.boxContent {min-width:910px;padding: 0 40px 80px; border: 1px solid #ddd; background: #fff; margin: 150px 18px 0;}
+@media all and (max-width:1024px) {
+	.boxContent {min-width:auto;padding: 0 20px 80px;}
+}
+@media all and (max-width:760px) {
+	.boxContent {padding: 0 8px 80px 8px; margin:150px 2px 0;}
+}
+
+table caption {display:none;}
+.table {width:100%;border-collapse: collapse !important;}
+.table th ,.table td {text-align: left;}
+.table-bordered th,
+.table-bordered td {padding:10px 0;border-top: 1px solid #ddd;}
+.table-bordered tr:first-child th,
+.table-bordered tr:first-child td {border:0;}
+.table-bordered td iframe {background:#fff;}
+.table-bordered td label {margin:0 20px 0 0;}
+.table-bordered td input[type="checkbox"],
+.table-bordered td input[type="radio"] {vertical-align:-2px;}
+.table-bordered td.week p {margin:5px 0 0;}
+.table-bordered td.week p:first-child {margin:0;}
+.table-bordered td.week .day {display:inline-block;width:36px;height:36px;margin:0 10px 0 0;line-height:36px;background:#fff;border:1px solid #ccc;border-radius:4px;vertical-align:middle;text-align:center;}
+.table-bordered td.week .cell {display:inline-block;margin:0 10px 0 0;}
+.table-bordered td.week select {width:80px;}
+@media all and (max-width:1024px) {}
+.layerTable {padding:20px;background:#f9f9f9;border:1px solid #dedede;border-radius:5px;}
+
+/** 로그인 **/
+.loginWrap {background:#CCCCCC;}
+.wrapLoginBox {
+	width: 308px;
+	position: absolute;
+	top:50%;
+	left: 50%;
+	margin-top: -200px;
+	margin-left: -154px;
+}
+.wrapLoginBox h1 {
+	margin:0;
+	padding:25px 0;
+	background:#43bba3;
+	text-align: center;
+	color:#330000;
+}
+.boxLoginInput {
+	padding:40px 26px 35px;
+	border:1px solid #ddd;
+	border-top:0;
+	background: #ebeced;
+}
+.boxLoginInput:after {content:"";height:5px;position:absolute;left:0;right:0;bottom:-5px;background:url(../images/bg_login_shadow.gif) no-repeat 50%;}
+.boxLoginInput p {
+	position:relative;
+	margin:4px 0;
+	padding:0 54px;
+	border-radius:5px;
+	background-color: #fff;
+}
+.boxLoginInput label {position:absolute;overflow:hidden;top:0;left:0;width:52px;height:48px;text-indent:-9999px;}
+.boxLoginInput input {width:100%;padding:15px 0;border:0;background:none;}
+.boxLoginInput .loginId label {background:url(../images/icon_login.gif) no-repeat 50%;}
+.boxLoginInput .loginPw label {background:url(../images/icon_password.gif) no-repeat 50%;}
+.boxOkBtn {
+	text-align: center;
+	margin-top: 30px;
+}
+.btnOk {
+	width:100%;
+	height:48px;
+	background:#82848b;
+	border:0;
+	border-radius:5px;
+	color:#fff;
+	font-size:18px;
+	font-weight:bold;
+
+}
+.btnOk:hover {background:#43bba3;}
+.loginFooter {position:fixed;padding:25px 0;left:0;right:0;bottom:0;background:#333333;color:#fff;text-align:center;color:#fff;}
+/*.error { color:#F60;}*/		
+
+/** 왼쪽 **/
+.boxLeft {position:fixed; top:0; left:0; width:230px; height:100%; background:#333333; z-index:2;}
+@media all and (max-width:1024px) {
+	.boxLeft {position:fixed; top:0; left:-100%; width:230px; height:100%; background:#333333; z-index:2; box-shadow:10px 2px 20px}
+}
+.boxTitleArea > h1 {color:#fff;text-align:center;}
+.boxLeftMenu {margin-top:46px;}
+.boxLeftMenu > li:first-child {margin-top: 0; border-top: 1px solid #2f3444;}
+.boxLeftMenu > li > a {position:relative; display:block; width:205px; height:44px; padding-left:25px; line-height:44px; font-size:12px; font-weight:700; color:#7a7e8a; border-bottom:1px solid #2f3444; color:#7a7e8a;}
+.boxLeftMenu > li > a:after {position:absolute; top:14px; right:24px; width:8px; height:12px; overflow:hidden; content:""; background:url(../images/icon_pack.png) no-repeat scroll -15px 0;}
+.boxLeftMenu > li > a.top_menu_on:after{display:none;}
+.boxLeftMenu > li > a:hover,.boxLeftMenu > li > a.top_menu_on {display:block; width:206px; height:44px; color:#fff;}
+
+/** 공통 상단 **/
+.boxContentHeader {height:58px; background:#f1eeee; padding-left:15px; font-size:18px; line-height:58px; font-weight:400; position:absolute; top:0; left:0; width:100%; box-sizing:border-box; z-index:0;}
+@media all and (max-width:1024px) {
+	.boxContentHeader {padding-left:18px;}
+}
+.boxTopNav {}
+.boxTopBtns {position:absolute; z-index:2; top:24px; right:32px; font-size:12px; line-height:12px;}
+.boxTopBtns > a {color:#999;}
+.boxTopBtns > a:hover {color: #428bca;}
+
+/** 메인 본문 **/
+.boxContentBody {margin:40px 0;}
+.boxSearchMember {
+	overflow-y:hidden !important;
+}
+.boxSearch {padding:20px;background:#f9f9f9;border:1px solid #ddd;border-radius:5px;font-size:12px;}
+#s_date, #e_date {padding:10px 0 10px 35px;background:#fff url(../images/bg_cal.png) no-repeat 10px 9px;}
+#s_date2, #e_date2 {padding:10px 0 10px 35px;background:#fff url(../images/bg_cal.png) no-repeat 10px 9px;}
+.boxSearch .tit {display:inline-block;width:100px;padding:0 0 10px;font-size:14px;font-weight:normal;}
+.boxSearch li {margin:10px 0 0;padding:10px 0 0;border-top:1px solid #ddd;}
+@media all and (max-width:760px) {
+	.boxSearch .tit {display:block;}
+}
+.boxSearch input[type="radio"] {vertical-align:-2px;}
+.boxSearch label {margin:0 20px 0 0;}
+select {height:36px; padding:0 5px; border:1px solid #ccc; border-radius:4px; background:#fff; color:#666; font-size:12px;}
+input.inputSearch { padding:10px 5px; border:1px solid #ccc; border-radius:4px; background:#fff; color:#666; font-size:12px;}
+button.btnM,
+input[type="button"] { padding:10px 20px; border:1px solid #ccc; border-radius:4px; background:#fff; color:#666; font-size:14px;}
+button.btnSearch { padding:9px 20px; border:1px solid #ccc; border-radius:4px; width:auto !important; font-size:14px; background:#f6f6f6; border:1px solid #999;}
+
+.boxCaseValue {
+	color: #000;
+	font-size: 0.8571428571428571em;
+	height: 35px;
+	line-height: 35px;
+	vertical-align: middle;
+	padding-left: 14px;
+	padding-right: 14px;
+	margin-top: 5px;
+	border: 1px solid #666;
+	background-color: #fff;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	-moz-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
+}
+.boxCaseValue > span {
+	height: 12px;
+	margin-right: 5px;
+}
+.boxCaseValue span.imgColor {
+	display: inline-block;
+	*display: block;
+	*zoom: 1;
+	width: 12px;
+	height: 12px;
+	margin-right: 3px;
+	vertical-align: middle;
+}
+.boxCaseValue span.valNum {
+	color: #007267;
+}
+.boxCaseValue .imgColor.Val1 {
+	background-color: #f7941d;
+}
+.boxCaseValue .imgColor.Val2 {
+	background-color: #994499;
+}
+.boxCaseValue .imgColor.Val3 {
+	background-color: #3366cc;
+}
+.boxCaseValue .imgColor.Val4 {
+	background-color: #109618;
+}
+.boxCaseValue .imgColor.Val5 {
+	background-color: #dd5511;
+}
+.boxCaseValue .imgColor.Val6 {
+	background-color: #627487;
+}
+.boxCaseValue .imgColor.Val7 {
+	background-color: #cc3333;
+}
+.boxCaseValue .imgColor.Val8 {
+	background-color: #888888;
+}
+
+/** 고객 수정 **/
+.boxModifyBtn {
+	float: right;
+	margin-top: 5px;
+}
+.btnModify {
+	height: 24px;
+}
+.boxMemberBasic {
+	color: #000;
+	font-size: 0.8571428571428571em;
+	height: 35px;
+	line-height: 35px;
+	vertical-align: middle;
+	padding-left: 14px;
+	padding-right: 14px;
+	margin-top: 5px;
+	border: 1px solid #666;
+	background-color: #fff;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	-moz-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
+}
+.boxMemberBasic > span {
+	margin-right: 20px;
+}
+.listDot {
+	display: inline-block;
+	*display: block;
+	*zoom: 1;
+	width: 8px;
+	height: 8px;
+	background-color: #2c2c2c;
+	margin-right: 3px;
+	vertical-align: middle;
+}
+.boxMemberBasic span.valNum {
+	color: #007267;
+}
+.boxMemberInfoTable {
+	margin-top: 5px;
+}
+
+.boxMemberInfoTable > table {
+	width: 100%;
+}
+.boxMemberInfoTable > table th,
+.boxMemberInfoTable > table td {
+	color: #000;
+	font-size: 0.8571428571428571em;
+	height: 29px;
+}
+.boxMemberInfoTable > table th {
+	width: 105px;
+	padding-left: 15px;
+}
+.boxMemberInfoTable > table td {
+	width: 130px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.boxMemberInfoTable > table td input[type="radio"],
+.boxMemberInfoTable > table td input[type="checkbox"] {
+	vertical-align: middle;
+}
+.boxMemberInfoTable > table td.singleRow {
+	color: #f13e82;
+	padding-left: 15px;
+}
+.boxMemberInfoTable > table td.inputTd,
+.boxMemberInfoTable > table td.inputTd {
+	width: 144px !important;
+	height: 22px !important;
+	padding: 3px;
+}
+.boxMemberInfoTable > table td .tableInput {
+	text-align: center;
+	border: 1px solid #888;
+}
+.boxMemberInfoTable > table td .tableInput > li {
+	width: 40%;
+	height: 22px;
+	line-height: 22px;
+	display: inline-block;
+	*display: block;
+	*zoom: 1;
+	vertical-align: middle;
+}
+.boxMemberInfoTable > table td .tableInput > li.Split {
+	width: auto;
+	padding-left: 4px;
+	padding-right: 4px;
+}
+.boxMemberInfoTable > table td .tableInput input {
+	color: #007267;
+	width: 100%;
+	height: 22px;
+	line-height: 22px;
+	text-align: center;
+	vertical-align: top;
+	padding: 0;
+	margin: 0;
+	border: none;
+	background-color: transparent;
+}
+.boxMemberInfoTable > table td select {
+	font-size: 1em;
+	height: 24px;
+	border: 1px solid #888;
+	-webkit-border-radius: 0 0 0 0;
+	-moz-border-radius: 0 0 0 0;
+	border-radius: 0 0 0 0;
+	background-color: #fff;
+}
+.boxMemberInfoTable > table td select option {
+}
+.boxMemberInfoTable > table td.inputTd select {
+	float: left;
+	width: 55px;
+	margin-right: 3px;
+}
+.boxMemberInfoTable > table td .phoneInput {
+	float: left;
+	width: 85px;
+	border: 1px solid #888;
+}
+.boxMemberInfoTable > table td .phoneInput > li {
+	width: 50%;
+	height: 22px;
+	line-height: 22px;
+	display: inline-block;
+	*display: block;
+	*zoom: 1;
+	vertical-align: middle;
+}
+.boxMemberInfoTable > table td .phoneInput > li:first-child {
+	width: 30%;
+}
+.boxMemberInfoTable > table td .phoneInput > li.Split {
+	width: auto;
+	padding-left: 4px;
+	padding-right: 4px;
+}
+.boxMemberInfoTable > table td .phoneInput input {
+	color: #007267;
+	width: 100%;
+	height: 22px;
+	line-height: 22px;
+	text-align: center;
+	vertical-align: top;
+	padding: 0;
+	margin: 0;
+	border: none;
+	background-color: transparent;
+}
+.boxMemberInfoTable > table td.emailTd > span {
+	display: inline-block;
+	*display: block;
+	*zoom: 1;
+	vertical-align: middle;
+}
+.boxMemberInfoTable > table td.emailTd > span > input[type="text"] {
+	color: #007267;
+	width: 113px;
+	height: 22px;
+	line-height: 22px;
+	text-align: center;
+	vertical-align: top;
+	padding: 0;
+	margin: 0;
+	border: 1px solid #888;
+}
+.boxMemberInfoTable > table td.emailTd > span > input.inputHandText {
+	float: left;
+	margin-right: 3px;
+}
+.boxMemberInfoTable > table td.emailTd > span > select {
+	width: 143px;
+}
+.boxMemberInfoTable > table td.emailTd > span.inputCheck {
+	color: #f13e82;
+	height: 22px;
+	line-height: 22px;
+	padding-left: 10px;
+	vertical-align: middle;
+}
+.boxMemberInfoTable > table td.emailInput > span.inputCheck > input {
+	vertical-align: middle;
+}
+.boxMemberInfoTable > table td.addressTd .addressInput {
+	float: left;
+	width: 113px;
+}
+.boxMemberInfoTable > table td.addressTd > span {
+	float: left;
+}
+.boxMemberInfoTable > table td.addressTd > span > button {
+	height: 24px;
+	margin-left: 3px;
+}
+.boxMemberInfoTable > table td.addressTd > input {
+	float: left;
+	color: #007267;
+	height: 22px;
+	line-height: 22px;
+	vertical-align: top;
+	padding: 0 3px;
+	margin: 0;
+	border: 1px solid #888;
+}
+.boxMemberInfoTable > table td.addressTd .address1 {
+ 	width: 265px;
+	margin-right: 2px;
+}
+.boxMemberInfoTable > table td.addressTd .address2 {
+ 	width: 411px;
+}
+.boxMemberInfoTable > table td.gradeTd > select {
+	width: 100%;
+}
+.boxMemberInfoTable > table td.knowTd span,
+.boxMemberInfoTable > table td.inviteTd span {
+	float: left;
+}
+.boxMemberInfoTable > table td.knowTd > span > select,
+.boxMemberInfoTable > table td.inviteTd > span > select {
+	width: 144px;
+}
+.boxMemberInfoTable > table td.inviteTd > input {
+	color: #888;
+	width: 142px;
+	height: 22px;
+	line-height: 22px;
+	vertical-align: top;
+	padding: 0 3px;
+	margin: 0;
+	border: 1px solid #888;
+}
+.boxMemberInfoTable > table td.knowTd > span > input,
+.boxMemberInfoTable > table td.inviteTd > span > input {
+	color: #888;
+	width: 262px;
+	height: 22px;
+	line-height: 22px;
+	vertical-align: top;
+	padding: 0 3px;
+	margin: 0;
+	border: 1px solid #888;
+}
+
+.boxMemberInfoTable_layer {
+	margin-top: 5px;
+}
+
+.boxMemberInfoTable_layer > table {
+	width: 100%;
+}
+.boxMemberInfoTable_layer > table th,
+.boxMemberInfoTable_layer > table td {
+	color: #000;
+	font-size: 0.9285714285714286em;
+	height: 29px;
+}
+.boxMemberInfoTable_layer > table th {
+	/*width: 20%;*/
+	padding-left: 15px;
+}
+.boxMemberInfoTable_layer > table td {
+	/*width: 80%;*/
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.boxMemberInfoTable_layer > table td input[type="radio"],
+.boxMemberInfoTable_layer > table td input[type="checkbox"] {
+	vertical-align: middle;
+}
+
+/*.input_text {padding:10px 5px; border:1px solid #ccc; border-radius:4px; background:#fff; color:#666; font-size:12px;}*/
+.input_text {padding:7px 15px;width:80%;font-size:15px;font-weight:300;line-height:24px;color:#666666;border:1px solid #ddd;outline:0;}
+
+/* 회원 정보 게시판 */
+
+
+.boxBoardHead > ul {zoom:1;margin:-55px -41px 0;}
+.Wrap_layer .boxBoardHead > ul {margin:0;}
+.boxBoardHead > ul:after {content:"";display:block;clear:both;}
+.boxBoardHead > ul > li {float:left;margin:0 5px 0 0;}
+.boxBoardHead > ul > li:first-child {border-left: none;}
+.boxBoardHead > ul > li.ui-state-active > a,.boxBoardHead > ul > li > a.active {color: #999;}
+.boxBoardHead > ul > li > a {font-size:14px; text-decoration:none; height:53px; line-height:53px; padding:0 15px;  display:inline-block; border-radius:4px 4px 0px 0px; background:#f1f1f1; border:1px solid #f1f1f1; border-bottom:1px solid #ddd;}
+.boxBoardHead > ul > li > a.active {background:#fff; border:1px solid #ddd; border-bottom:1px solid #fff;}
+@media all and (max-width:1024px) {
+	.boxBoardHead > ul {margin:-55px -21px 0;}
+}
+@media all and (max-width:760px) {
+	
+	.boxMemberBoard {overflow-x:auto; }
+	.boxMemberBoard > table {min-width:760px;}
+	.boxBoardHead ul {margin:-27px -9px 0;}
+	.boxBoardHead > ul > li > a {padding:0 2px;height:25px;line-height:25px;}
+}
+
+.boxMemberBoard > table {margin-top:20px; width:100%; border:1px solid #ddd; color:#999;}
+.boxMemberBoard > table th:first-child {border-left:0;}
+.boxMemberBoard > table td {height: 25px;font-size:12px;}
+.boxMemberBoard > table thead {border-bottom:2px solid #ddd;}
+.boxMemberBoard > table thead th {padding:8px 10px;text-align: left;border-left: 1px solid #ddd;border-bottom: 2px solid #ddd;text-align:center;}
+.boxMemberBoard > table tbody tr {border-top: 1px solid #ccc;}
+.boxMemberBoard > table tbody tr:hover {background-color: #f3f3f3;}
+.boxMemberBoard > table td {border:1px solid #ddd; padding:5px 10px; background:#f9f9f9; text-align: center;}
+.boxMemberBoard > table td input[type="button"] {display:inline-block;min-width:34px;height:22px;padding:0 2px;margin:0 2px;font-size:11px;background:#ccc;border:1px solid #999;}
+.boxMemberBoard > table td input[type="text"] {width:95%;border:1px solid #cecece;border-radius:2px;}
+.boxMemberBoard > table tr:nth-of-type(2n) td {background:#fff}
+.boxMemberBoard > table td:first-child{border-left:0;}
+.boxMemberBoard > table .txtDesc {	text-align: left;	padding-left: 10px;	padding-right: 10px;}
+.boxMemberBoard > table .txtDesc a {color: #5c5c5c;text-decoration: none;}
+.boxMemberBoard > table .alignCenter {text-align:center;}
+.boxMemberBoard > table .editBtn input[type="button"] {background:#f6f6f6;border:1px solid #999;}
+.tableBtn {text-align:center;}
+.boxBoardPaging {zoom:1;overflow:hidden;margin-top:14px; float:right;}
+.boxBoardPaging li {display:inline-block; height:32px; min-width:32px; text-align:center; line-height:32px; background:#fff;}
+
+.boxPagingNum a,
+.boxPagingNum strong {display:inline-block;min-width:32px; height:32px; margin:0 -3px;border:1px solid #ccc;background:#fff;}
+.boxPagingNum strong {color:#fff;}
+.boxPagingPrev {border:1px solid #ccc;border-radius:4px 0 0 4px;}
+.boxPagingNext {border:1px solid #ccc;border-radius: 0 4px 4px 0;}
+.boxPagingNum {background: #fff;}
+.analysis_tot {
+	margin-top:10px;
+	margin-bottom:15px;
+}
+
+.analysis_tot li {
+	display:inline-block;
+	margin-left:15px;
+}
+
+.analysis_tot span {
+	color:#903;
+}
+
+.mem_search_pop {
+	margin-top:10px;
+	margin-bottom:15px;
+}
+
+.mem_search_pop li {
+	display:inline-block;
+	vertical-align:middle;
+}
+.mem_search_pop li:first-child {
+	padding-left:10px;
+	padding-right:10px;
+}
+.mem_search_pop li span {
+	height:24px;
+	line-height:24px;
+	vertical-align:middle;
+	font-size: 12px;
+}
+
+.boxMemberBoard_layer {
+	margin-top: 5px;
+	border: 1px solid #666;
+}
+.boxMemberBoard_layer > table {
+	width: 100%;
+	background-color: #fff;
+}
+
+.boxMemberBoard_layer > table td {
+	height: 25px;
+	font-size: 0.8571428571428571em;
+}
+.boxMemberBoard_layer > table > tbody tr {
+	border-top: 1px solid #ccc;
+}
+.boxMemberBoard_layer > table > tbody tr:hover {
+	background-color: #f3f3f3;
+}
+.boxMemberBoard_layer > table > tbody td,
+.boxMemberBoard_layer > table > tbody td a {
+	color: #5c5c5c;
+	text-align: left;
+	text-decoration:none;
+	padding-left:10px;
+}
+.treat_set {
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.treat_set li {
+	margin-right:5px;
+	display:inline-block;
+	*display:block;
+	*zoom:1;
+}
+.treat_set li a {
+	color:#fff;
+	text-align:center;
+	text-decoration:none;
+	display:block;
+	width:60px;
+	height:26px;
+	line-height:26px;
+	vertical-align:middle;
+	background-color:#888;
+}
+.treat_set li a:hover,
+.treat_set li a.active {
+  color: #F13E82;
+	background-color:#000;
+}
+.capa_show {
+	margin-top: 5px;
+	border: 1px solid #666;
+}
+.capa_show > table {
+	width: 100%;
+	background-color: #fff;
+}
+.capa_show > table th,
+.capa_show > table td {
+	height: 25px;
+	font-size: 0.8571428571428571em;
+}
+.capa_show > table > thead {
+	background-color: #555;
+}
+.capa_show > table > thead th {
+	color: #fff;
+	font-weight: normal;
+}
+.capa_show > table > thead td {
+	color: #888;
+}
+.capa_show > table > tbody tr {
+	border-top: 1px solid #ccc;
+}
+.capa_show > table > tbody tr:hover {
+	background-color: #f3f3f3;
+}
+.capa_show > table > tbody td {
+	color: #5c5c5c;
+	text-align: center;
+}
+
+.calSection {zoom:1;position:relative;height:630px;padding:0 0 0 440px;}
+.calSection:after {content:"";display:block;clear:both;}
+
+.calWrap {position:absolute;top:0;left:0;width:300px;padding:50px 55px;border:1px solid #ddd;border-radius:5px;}
+.calWrap .calHead {padding:20px 0;text-align:center;background:#f9f9f9;font-size:20px;}
+.calWrap .calHead button {width:35px;height:34px;background:none;border:0;cursor:pointer;vertical-align:middle;}
+.calWrap .calHead button span {position:fixed;top:-9999px;}
+.calWrap .calHead button.prev {background:url(../images/btn_cal_left.gif) no-repeat;}
+.calWrap .calHead button.next {background:url(../images/btn_cal_right.gif) no-repeat;}
+.calWrap .calHead strong {display:inline-block;margin:0 30px;font-weight:normal;vertical-align:middle;}
+.calWrap .calBody th {height:50px;font-size:20px;font-weight:normal;}
+.calWrap .calBody th.sun,
+.calWrap .calBody td.sun button {color:#df4a32;}
+.calWrap .calBody td {width:42px;height:42px;text-align:center;border:1px solid #ddd;}
+.calWrap .calBody td button {width:25px;padding:0;background:none;border:0;font-size:20px;}
+.calWrap .calBody td.today button {font-weight:bold;color:#0098de;}
+.calWrap .calBody td.cho {background:#0098de;}
+.calWrap .calBody td.cho button {font-weight:bold;color:#fff;}
+.calWrap .calBody td.on button {border-bottom:1px solid #666;}
+.calWrap table {width:100%;}
+.calWrap .calInfo {margin:20px 0 0;padding:15px 0 0;border-top:1px solid #d7d7d7;}
+.calWrap .calInfo span {margin:0 30px 0 0;}
+.calWrap .calInfo img {vertical-align:middle;}
+.calSection iframe {width:100%;height:575px;background:#fff;border:0;}
+.iframeBody {background:#fff;}
+@media all and (max-width:1024px) {
+	.calSection {padding:0 0 0 350px;}
+	.calWrap {padding:25px 20px;}
+}
+@media all and (max-width:760px) {
+	.calSection {padding:0;}
+	.calWrap {position:static;}
+}
+.btnWrap {zoom:1;margin:10px 0 0;text-align:center;}
+.btnWrap:after {content:"";display:block;clear:both;}
+.btnWrap .txtLeft,
+.btnWrap .btnLeft {float:left;}
+.btnWrap .btnRight {float:right;}
+.btnWrap .boxBoardPaging {margin:0;}
+
+button.btnGray,
+input[type="button"].btnGray {background:#f6f6f6;}
+button.btnM,
+input[type="button"].btnM {padding:8px 10px;}
+button.btns,
+input[type="button"].btns {padding:2px 4px;font-size:12px;}
+
+button.btnIdt,
+input[type="button"].btnIdt {background:#428bca;border:1px solid #357ebd;color:#fff;}
+
+.boxLeftMenu > li > a:hover,.boxLeftMenu > li > a.top_menu_on {background:#428bca;}
+.boxPagingNum strong {background:#428bca;}
+.boxBoardHead > ul > li > a {color:#428bca;}
+.boxBoardHead > ul > li > a:hover {border:1px solid #428bca;}
+.boxMemberBoard table tr td table tr td {background:#428bca; height:20px; border:1px solid #428bca;}
+.boxMemberBoard table tr:nth-of-type(2n) td table tr td {background:#428bca; height:20px; border:1px solid #428bca;}
+
+.smsWrap {zoom:1;}
+.smsWrap:after {content:"";display:block;clear:both;}
+.phoneWrap {position:relative;float:left;width:221px;padding:40px 16px 68px;background:#616266;border-radius:24px;}
+.phoneWrap:after {content:"";position:absolute;top:18px;left:50%;margin:0 0 0 -28px;width:57px;height:6px;background:#fff;border-radius:6px;}
+.phoneWrap .phoneInner {padding:19px;background:#fff;border:1px solid #ccc;}
+.phoneWrap .phoneInner:after {content:"";position:absolute;bottom:19px;left:50%;margin:0 0 0 -18px;width:35px;height:35px;background:#fff;border-radius:35px;}
+.phoneWrap textarea {display:block;width:80%;height:85px;margin:0 auto;padding:15px;resize:none;font-size:14px;}
+.phoneWrap li {position:relative;margin:5px 0 0;padding:0 0 0 60px;}
+.phoneWrap li label {position:absolute;top:2px;left:0;width:60px;}
+.phoneWrap li input {display:block;width:94%;}
+.phoneWrap .btnWrap {margin:25px -20px -20px;border-top:1px solid #ccc;}
+.phoneWrap .btnWrap button {float:left;width:33.33%;height:40px;border:1px solid #fff;border-left:1px solid #ccc;border-right:0;background:#f1f1f1;font-size:14px;color:#000;}
+.phoneWrap .btnWrap button:first-child {border-leftt0;}
+
+.groupWrap,
+.massageWrap {float:left;position:relative;margin:0 0 0 25px;}
+.smsbox {width:248px;height:450px;padding:10px;border:1px solid #ddd;border-radius:5px;}
+.smsbox .tit {margin:-10px -10px 0;padding:10px 0 10px 14px;background:#f5f5f5;font-size:16px;color:#666;}
+.smsbox #img_del {position:absolute;top:10px;right:10px;}
+.smsbox .selHead {margin:15px 0 10px;}
+.smsbox .selHead span {display:inline-block;width:70px;text-align:center;}
+.groupWrap select {width:100%;height:375px;}
+.groupWrap .btnWrap {text-align:center;}
+
+.massageWrap .smsbox {width:300px;}
+.massageWrap li {margin:10px 0 0;}
+.selHead {font-size:16px;color:#444;font-weight:bold;}
+
+.manageBox {padding:20px;border:1px solid #ddd;border-radius:0 5px 5px 5px;margin:-1px 0 0;}
+.mngBtn {position:absolute;top:0;right:15px;}
+
+.mngSection {float:left;width:45%;}
+.mngSection .tit {margin:0;padding:8px 13px;background:#f5f5f5;border:1px solid #ddd;border-bottom:0;border-radius:5px 5px 0 0;color:#666;font-size:16px;}
+.mngSection .selBox {padding:8px;border:1px solid #ddd;border-radius:0 0 5px 5px;}
+.mngSection .groupBtn {margin:12px 0;text-align:center;}
+.mngMove {float:left;width:10%;margin:100px 0 0;text-align:center;}
+.mngMove a {display:inline-block;margin:5px 0;padding:8px;background:#428bca;}
+.manageBox .btnWrap {padding:20px 0 0;clear:both;text-align:center;}
+.manageBox select {width:100%;}
+.manageBox select option {padding:5px 10px;background:#f6f6f6;font-size:14px;}
+.manageBox select option:nth-of-type(2n) {background:#fff;}
+

@@ -1,0 +1,203 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once "../inc/head.php";
+$dep1 = "7";
+$dep2 = "7-1";
+$dep3 = "7-1-2";
+?>
+<style>
+	.btn-group:not(.m-menu-info) {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 30px 0 0;
+	}
+
+	.btn-group:not(.m-menu-info):after {
+		display: none;
+	}
+
+	.btn-group:not(.m-menu-info) .btn-sm {
+		width: 268px;
+		margin: 0 20px;
+	}
+
+	.btn-group:not(.m-menu-info) .btn-sm img {
+		margin-right: 10px;
+	}
+
+	#btn-box a {
+		width:auto;
+	}
+
+	@media screen and (max-width:1023px) {
+		.btn-group:not(.m-menu-info) {
+			flex-flow: column;
+		}
+
+		.btn-group:not(.m-menu-info) .btn-sm {
+			width: 100%;
+			margin: 0 0 15px;
+		}
+
+		.btn-group:not(.m-menu-info) .btn-sm img {
+			width: 20px !important;
+		}
+
+		img.mt60 {
+			margin-top: 140px !important;
+		}
+
+		table.bordered td>img {
+			height: 40px;
+			margin-top: -8px;
+			margin-right: 10px;
+		}
+	}
+</style>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/center-bnnr2.png" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="wd-1200">
+					<div class="page-location">
+						<div id="btn-box" class="center half">
+							<a href="/center/page02-1.html" class="btn">장애인건강보건관리사업</a>
+							<a href="/center/page02-2.html" class="btn">여성장애인 모성보건사업</a>
+							<a href="/center/page02-3.html" class="btn bg-green">보건의료인력 및 <br class="mb-show">장애인·가족 교육</a>
+							<a href="/center/page02-4.html" class="btn">건강검진/진료/재활 등 <br class="mb-show">의료서비스 제공</a>
+						</div>
+					</div>
+					<img class="mt60" src="/resource/images/center02.jpg" alt="" style="max-width:100%;">
+					<h3 class="sub-tit mt60">
+						보건의료인력 및 장애인·가족 교육
+					</h3>
+					<ul class="clinic-list">
+						<li>
+							<label for="">교육목적</label>
+							<div class="text">
+								전문 종사자 및 당사자에게 건강권 교육을 제공, 건강권에 대한 인식을 강화하여 의료접근성 향상에 기여
+							</div>
+						</li>
+						<li>
+							<label for="">교육대상자별 교육 내용</label>
+							<div class="text">
+								<div class="board-list border-t mt30 mb30" style="padding:0;overflow-x: auto;">
+									<table class="bordered fz10">
+										<thead>
+											<tr class="bg-gray">
+												<th width="20%" class="text-center vt-middle"></th>
+												<th class="text-center vt-middle">교육 대상</th>
+												<th class="text-center vt-middle">교육 내용</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th class="text-center vt-middle">의료기관 종사자</th>
+												<td class="vt-middle">
+													· 검진기관 종사자<br>
+													· 구강관련 종사자<br>
+													· 임신출산 관련 종사자 등
+												</td>
+												<td class="vt-middle">
+													· 장애의이해와 건강권<br>
+													· 장애인의 의료결정권<br>
+													· 여성장애인의 임신출산<br>
+													· 장애인의 구강진료 등
+												</td>
+											</tr>
+											<tr>
+												<th class="text-center vt-middle">비의료기관 종사자</th>
+												<td class="vt-middle">
+													· 장애인복지관 종사자<br>
+													· 재활의료기관 종사자<br>
+													· 보건소 CBR사업 담당자<br>
+													· 돌봄종사자, 수어통역사 등
+												</td>
+												<td class="vt-middle">
+													· 장애의 이해와 건강권<br>
+													· 장애인 건강을 위한 보건의료 자원연계 등
+												</td>
+											</tr>
+											<tr>
+												<th class="text-center vt-middle">예비 의료인</th>
+												<td class="vt-middle">
+													의대, 치의대, 간호대 등 재학생
+												</td>
+												<td class="vt-middle">
+													· 장애의 이해와 건강권<br>
+													· 진료실에서 만나는 장애인 건강 등
+												</td>
+											</tr>
+											<tr>
+												<th class="text-center vt-middle">장애인 당사자 및 가족</th>
+												<td class="vt-middle">
+													유형과 특성에 따른 장애인 당사자와 그 가족
+												</td>
+												<td class="vt-middle">
+													· 장애인의 만성질환관리<br>
+													· 장애인의 구강관리<br>
+													· 장애인의 의료결정권 등
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<p class="color-green">※ 교육 대상자 및 내용은 상황에 따라 변동될 수 있습니다.</p>
+							</div>
+						</li>
+						<li>
+							<label for="">교육지원 방법</label>
+							<div class="text">
+								<div class="board-list border-t mt30 mb30" style="padding:0;overflow-x: auto;">
+									<table class="bordered">
+										<colgroup>
+											<col style="width:30%;">
+											<col style="width:70%;">
+										</colgroup>
+										<tbody>
+											<tr>
+												<th width="200px" class="bg-gray text-center vt-middle">교육지원 방법</th>
+												<td class="vt-middle">
+													- 집합 교육 및 내방 교육<br>
+													- 서울특별시북부지역장애인보건의료센터 전문강사풀 연계 지원<br>
+													- 주제별 동영상 강의 제공
+												</td>
+											</tr>
+											<tr>
+												<th class="bg-gray text-center vt-middle">문의</th>
+												<td class="vt-middle color-green">
+													02-6020-3126
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomInfo.php"; ?>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+</body>
+
+</html>

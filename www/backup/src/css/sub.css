@@ -1,0 +1,34 @@
+@charset "utf-8";
+/* 서브스타일 */
+#wrapper { padding-top:142px; }
+
+#mainContents { background:url(/img/sub/top_bg.jpg) right top no-repeat; }
+
+#sub_navi { float:left; width:205px; }
+#sub_navi .navi_view { background:url(/img/menu/menu_bg.jpg) repeat-y;  border-bottom:1px solid #c9252b; }
+#sub_navi .navi_view h2 { height:244px; }
+#sub_navi .navi_view ul { margin-left:15px; margin-bottom:15px; width:175px; }
+#sub_navi .navi_view li { padding-top:5px;  }
+#sub_navi .navi_view li img { vertical-align:bottom; }
+#sub_navi .navi_view .line { border-bottom:1px solid #e2e2e2; padding-bottom:5px; }
+
+#container { float:right; width:775px; }
+#container .sub_visual { width:775px; height:229px; }
+
+#content { float:right; margin-top:15px; width:745px; }
+#content .title { width:100%; height:80px; }
+#content .title h3 { float:left; }
+#content .title span { float:right; text-align:right; font-size:11px; padding-top:29px; }
+#content .tabmenu { margin-bottom:60px; width:100%; height:29px; background:url(/img/menu/tabmenu_bg.jpg) left bottom repeat-x; }
+#content .tabmenu li { float:left;}
+#content .tabmenu li img { vertical-align:bottom; }
+#content .cont_list li img { vertical-align:bottom; }
+#content .mg40 { margin-bottom:40px; }
+
+#sitemap li { float:left; margin-left:55px; width:175px; margin-bottom:30px; }
+#sitemap dd { background:url(/img/sub/icon_sitemap.jpg) 10px center no-repeat; padding-left:18px; border-bottom:1px solid #dcdcdc; height:30px; line-height:30px; }
+
+
+#quick { margin-top:30px; }
+
+#footer { margin-top:20px; }

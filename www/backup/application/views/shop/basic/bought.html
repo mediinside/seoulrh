@@ -1,0 +1,59 @@
+<!--주문/배송조회 -->
+<? if(IS_MEMBER) : ?>
+<p class="order_serach_title"><strong class="fontred">*</strong> 조회기간을 이용하여 원하시는 기간동안 거래내역을 조회하실 수 있으며 신용카드 매표전표를 출력 하실 수 있습니다.</p>
+<form name="fsch" action="<?=RT_PATH?>/shop/bought/lists" onsubmit="return dateSearch(this);">
+<table width="100%" cellspacing="0" cellpadding="0" border="0" class="order_search">
+	<colgroup>
+		<col width="100" />
+		<col >
+	</colgroup>
+	<tr>
+		<th rowspan="2">조회<br />기간</th>
+		<td>
+			<a href="<?=$sch_week?>"><img src="/img/shop/btn_1week.gif" alt="1주일" /></a>
+			<a href="<?=$sch_month1?>"><img src="/img/shop/btn_1month.gif" alt="1개월" /></a>
+			<a href="<?=$sch_month3?>"><img src="/img/shop/btn_3month.gif" alt="3개월" /></a>
+			<a href="<?=$sch_month6?>"><img src="/img/shop/btn_6month.gif" alt="6개월" /></a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<?=$sch_min?>부터&nbsp; &nbsp;<?=$sch_max?>까지
+			<input type="image" src="/img/shop/btn_search.gif" align="middle" alt="조회" />
+		</td>
+	</tr>
+</table>
+</form>
+<br />
+<? endif; ?>
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0" class="order_search_list">
+	<tr>
+		<th>주문번호</th>
+		<th>주문일</th>
+		<th>주문금액</th>
+		<th>운송장번호</th>
+		<th>배송현황</th>
+		<th></th>
+	</tr>
+	
+	<? foreach($list as $o) : ?>
+	<tr>
+		<td><a href="<?=RT_PATH?>/shop/bought/view/<?=$o['od_no']?>"><?=$o['od_no']?></a></td>
+		<td><?=$o['od_regdate']?></td>
+		<td><?=number_format($o['od_amount'])?> 원</td>
+		<td><?=$o['dlv_no']?></td>
+		<td><strong><?=$o['od_status']?></strong></td>
+		<td>
+			<input type="button" class="btn_simp" onclick="receipt('<?=$shop_conf['pg_id']?>','<?=$shop_conf['pg_code']?>','<?=$o['pay_method']?>','<?=$o['pay_auth']?>','<?=$o['pay_tid']?>','<?=date('Ymd',strtotime($o['pay_datetime']))?>');" value=" 영수증 "/>
+			<input type="button" class="btn_simp" onclick="dlv_trace('<?=$o['od_no']?>', <?=$o['dlv_deliverer']&&$o['dlv_no']?'true':'false'?>);" value=" 배송조회 "/>
+		</td>
+	</tr>
+	<? endforeach; ?>
+	
+</table>
+<br /><br />
+
+<? if(IS_MEMBER) : ?>
+<div style="text-align:center;"><?=$paging?></div>
+<? endif; ?>

@@ -1,0 +1,42 @@
+@charset "utf-8";
+/* all page
+#2010.06.28. CSS2.1 Valid
+*/
+@media print {/* 본문인쇄용 */
+#head, #visual, #sidebar, #body_foot, #foot, #wing, #location, #bodyutil { display: none !important; }
+body, #container, #wrap, #body, #body_head, #body_content { margin: 0 !important; padding: 0 !important; border: 0 !important; background: #fff !important; }
+#body_title { padding: 0 !important; padding: 0 !important; }
+}
+#container_wp { overflow: hidden; }
+
+#gnb #logo { float:left; margin:27px 0 0 0; }
+#gnb { position:absolute; top:45px; left:180px; }
+#gnb li { margin-left: 10px; padding-left: 27px; }
+
+#gnb_fulldown { top: 87px; left: -610px; width:2200px; background-color: #fff; }
+#gnb_fulldown div { width: 800px; margin:0 auto; padding:10px 0 30px 230px; }
+#gnb_fulldown ul { border-left:2px #e0e0e0 solid; display:inline-block; }
+#gnb_fulldown ul#snb1 { }
+#gnb_fulldown ul#snb2 { margin-left:16px; }
+#gnb_fulldown ul#snb3 { margin-left:63px; }
+#gnb_fulldown ul#snb4 { margin-left:8px; }
+#gnb_fulldown ul#snb5 { margin-left:28px; }
+#gnb_fulldown ul#snb6 { margin-left:28px; }
+#gnb_fulldown ul#snb7 { margin-left:8px; }
+#gnb_fulldown ul#snb8 { margin-left:8px; }
+
+#snb ul { display:none; }
+
+#greenplus { padding: 30px; border-top:2px #737373 solid; }
+#greenplus div { float:left; width:182px; height:230px; margin-bottom: 30px; border-bottom:1px #e4e4e4 solid; }
+
+#greenplus2 { padding-top:18px; border-top:2px #737373 solid; }
+#greenplus2 div { float:left;width:100%;padding:0px 0 8px;margin-bottom:12px;border:0;border-bottom:1px #e4e4e4 solid; }
+
+/* 페이징 */
+.paging {clear:both; text-align:center; margin:0 auto;}
+.paging span {display:inline-table; text-decoration:none; padding:5px 5px; vertical-align:8px; font-size:12px; font-family:Verdana, AppleGothic,"굴림",Dotum,sans-serif}
+.paging span.current {font-weight:bold;}
+.paging span.out {background:#fff;}
+.paging span.out a {color:#767676; font-size:12px;}
+.paging img {padding:0px 1px;}

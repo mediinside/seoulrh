@@ -1,0 +1,511 @@
+<h2><?=$_TITLE_?></h2>
+
+<form id='fboard' name='fboard' method='post' action='<?=$path?>/board/form/<?=$w?>' enctype='multipart/form-data'>
+<input type='hidden' name='w'    value='<?=$w?>'/>
+<input type='hidden' name='token' value='<?=$token?>'/>
+
+<ul id='form_cont'>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 기본 설정</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+        	<tr>
+            	<th>게시판 ID</th>
+            	<td>
+            		<? if ($w == 'u'): ?>
+						<b><?=$board['bid']?></b> <a href='<?=RT_PATH?>/board/<?=$board['bid']?>/lists' target='_blank'><img src='<?=$IMG_PATH?>/icon_view.gif' align='middle' title='게시판 보기' alt='게시판 보기'/></a>
+						<input type='hidden' name='bid' value='<?=$board['bid']?>' />
+						<input type="button" class="btn" onclick="getConfig();" value="설정 내보내기"/>
+						<input type="button" id="fileBtn" class="btn" onclick="$('#confFile').click();" value="설정 가져오기"/>
+						<input type="file" id="confFile" class="hideFile" name="confFile" onchange="setConfig();" />
+					<? else: ?>
+						<input type='text' id='bid' name='bid' class='ed imeDis' maxlength='20' size='20' value='<?=$board['bid']?>'/>
+						영문자, 숫자, _ 만 가능 (공백없이 20자 이내)
+						<input type="button" id="fileBtn" class="btn" onclick="alert('게시판 생성 후 사용 가능합니다.');" value="설정 가져오기"/>
+					<? endif; ?>
+				</td>
+			</tr>
+			<tr>
+            	<th>그룹</th>
+            	<td>
+            		<?=$group_select?>
+					<? if ($w == 'u'): ?>
+						<a href='<?=$path?>/board/lists/sfl/gr_id/stx/<?=$board['gr_id']?>'>동일그룹게시판목록</a>
+					<? endif; ?>
+				</td>
+			</tr>
+			<tr>
+            	<th>DB</th>
+            	<td>
+            		<select name='bo_db'>
+						<option value=''>이 게시판 DB 사용</option>
+						<? foreach($board_list AS $row) : ?>
+						<? if($row['bid'] != $board['bid']) : ?>
+						<option value='<?=$row['bid']?>' <?=$row['bid']==$board['bo_db']?'selected="selected"':''?>>[<?=$row['bo_subject']?>] 게시판 DB</option>
+						<? endif; ?>
+						<? endforeach; ?>
+					</select>
+            	</td>
+            </tr>
+			<tr>
+            	<th>레이아웃</th>
+            	<td>
+            		<?=$layout_select?>
+            	</td>
+            </tr>
+			<tr>
+            	<th>게시판 이름</th>
+            	<td>
+            		<input type='text' id='bo_subject' name='bo_subject' class='ed' maxlength='20' size='20' value='<?=$board['bo_subject']?>'/>
+            	</td>
+            </tr>
+			<tr>
+            	<th>게시판 관리자</th>
+            	<td>
+            		<input type='text' id='bo_admin' name='bo_admin' class='ed' maxlength='20' size='20' value='<?=$board['bo_admin']?>'/>
+            	</td>
+            </tr>
+            
+            
+			<? if($w) : ?>
+			<tr>
+            	<th>댓글 카운트 조정</th>
+            	<td>
+            		<input type='checkbox' id='proc_count' name='proc_count' value='1'/> 카운트를 조정합니다.
+					(현재 원글수 : <?=$board['bo_count_write']?> , 현재 코멘트수 : <?=$board['bo_count_comment']?>)
+            	</td>
+            </tr>
+            <? endif; ?>
+            
+		</table>
+	</li>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 권한 설정</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+        	<tr>
+            	<th>목록보기 권한</th>
+            	<td>
+            		<?=$bo_list_level?>
+				</td>
+			</tr>
+        	<tr>
+            	<th>글읽기 권한</th>
+            	<td>
+            		<?=$bo_read_level?>
+				</td>
+			</tr>
+        	<tr>
+            	<th>글쓰기 권한</th>
+            	<td>
+            		<?=$bo_write_level?>
+				</td>
+			</tr>
+        	<tr>
+            	<th>글답변 권한</th>
+            	<td>
+            		<?=$bo_reply_level?>
+				</td>
+			</tr>
+        	<tr>
+            	<th>코멘트쓰기 권한</th>
+            	<td>
+            		<?=$bo_comment_level?>
+				</td>
+			</tr>
+        	<tr>
+            	<th>업로드 권한</th>
+            	<td>
+            		<?=$bo_upload_level?>
+				</td>
+			</tr>
+        	<tr>
+            	<th>다운로드 권한</th>
+            	<td>
+            		<?=$bo_download_level?>
+				</td>
+			</tr>
+		</table>
+	</li>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 옵션 설정</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+        	<tr>
+            	<th>원글 수정 불가</th>
+            	<td>
+            		코멘트 <input type='text' id='bo_count_modify' name='bo_count_modify' class='ed' size='3' maxlength='4' value='<?=$board['bo_count_modify']?>'/>개 이상 달리면 수정불가 (0 이면 제한 없음)
+				</td>
+			</tr>
+        	<tr>
+            	<th>원글 삭제 불가</th>
+            	<td>
+            		코멘트 <input type='text' id='bo_count_delete' name='bo_count_delete' class='ed' size='3' maxlength='4' value='<?=$board['bo_count_delete']?>'/>개 이상 달리면 삭제불가 (0 이면 제한 없음)
+				</td>
+			</tr>
+        	<tr>
+            	<th>RSS 사용</th>
+            	<td>
+            		<input type='checkbox' id='bo_use_rss' name='bo_use_rss' value='1' <?=$use_rss_chk?>/> 사용
+					( <a href='http://ko.wikipedia.org/wiki/RSS' target='_blank'>RSS 란?</a> )
+				</td>
+			</tr>
+        	<tr>
+            	<th>SNS 보내기 사용</th>
+            	<td>
+            		<input type='checkbox' id='bo_use_sns' name='bo_use_sns' value='1' <?=$use_sns_chk?>/> 사용
+				</td>
+			</tr>
+        	<tr>
+            	<th>코멘트 사용</th>
+            	<td>
+            		<input type='checkbox' id='bo_use_comment' name='bo_use_comment' value='1' <?=$use_comment_chk?>/> 사용
+				</td>
+			</tr>
+        	<tr>
+            	<th>태그 사용</th>
+            	<td>
+            		<input type='checkbox' id='bo_use_tag' name='bo_use_tag' value='1' <?=$use_tag_chk?>/> 사용
+				</td>
+			</tr>
+        	<tr>
+            	<th>폼 업로드 사용</th>
+            	<td>
+            		<input type='checkbox' id='bo_use_upload' name='bo_use_upload' value='1' <?=$use_upload_chk?>/> 사용
+				</td>
+			</tr>
+        	<tr>
+            	<th>카테고리 사용</th>
+            	<td>
+            		<input type='checkbox' id='bo_use_category' name='bo_use_category' value='1' <?=$use_category_chk?>/> 사용
+					<? if ($w): ?>
+					[ <a href='<?=$path?>/category/lists/board/<?=$board['bid']?>'><img src='<?=$IMG_PATH?>/icon_modify.gif' align='middle' title='분류 입력' alt='분류 입력'/></a> ]
+					<? endif; ?>
+				</td>
+			</tr>
+        	<tr>
+            	<th>글쓴이 사이드뷰</th>
+            	<td>
+            		<input type='checkbox' id='bo_use_sideview' name='bo_use_sideview' value='1' <?=$use_sideview_chk?>/> 사용 (글쓴이 클릭시 나오는 레이어 메뉴)
+				</td>
+			</tr>
+        	<tr>
+            	<th>이름(실명) 사용</th>
+            	<td>
+            		<input type='checkbox' id='bo_use_name' name='bo_use_name' value='1' <?=$use_name_chk?>/> 사용
+				</td>
+			</tr>
+        	<tr>
+            	<th>IP 보이기 사용</th>
+            	<td>
+            		<input type='checkbox' id='bo_use_ip_view' name='bo_use_ip_view' value='1' <?=$use_ip_view_chk?>/> 사용
+				</td>
+			</tr>
+        	<tr>
+            	<th>읽기에 목록 보이기</th>
+            	<td>
+            		<input type='checkbox' id='bo_use_list_view' name='bo_use_list_view' value='1' <?=$use_list_view_chk?>/> 사용
+				</td>
+			</tr>
+        	<tr>
+            	<th>게시판 이동 셀렉트</th>
+            	<td>
+            		<input type='checkbox' id='bo_use_board_sel' name='bo_use_board_sel' value='1' <?=$use_board_sel_chk?>/> 사용
+				</td>
+			</tr>
+        	<tr>
+            	<th>게시판 메일발송</th>
+            	<td>
+            		<input type='checkbox' id='bo_use_email' name='bo_use_email' value='1' <?=$use_email_chk?>/> 사용 (스킨:
+					<select name="bo_mail_skin">
+					<option value="">선택</option>
+					<? foreach($mail_skin AS $skin): ?>
+					<option value="<?=$skin['ms_id']?>" <?=$skin['ms_id']==$board['bo_mail_skin']?'selected="selected"':'';?>><?=$skin['ms_name']?></option>
+					<? endforeach; ?>
+					</select>
+					)
+				</td>
+			</tr>
+		</table>
+	</li>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 디자인 설정</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+        	<tr>
+            	<th>Location 그룹명</th>
+            	<td>
+            		<select id='bo_show_gr' name='bo_show_gr'>
+						<option value='1'>보이기</option>
+						<option value='0'>숨김</option>
+					</select>
+				</td>
+			</tr>
+        	<tr>
+            	<th>타이틀 이미지 URL</th>
+            	<td>
+            		<input type='text' id='bo_title_img' name='bo_title_img' class='ed' size='87' value='<?=$board['bo_title_img']?>'/>
+				</td>
+			</tr>
+        	<tr>
+            	<th>상단 HTML</th>
+            	<td>
+            		<textarea id='bo_top_html' name='bo_top_html' class='tx' rows='3' cols='70'><?=$board['bo_top_html']?></textarea>
+				</td>
+			</tr>
+        	<tr>
+            	<th>하단 HTML</th>
+            	<td>
+            		<textarea id='bo_bottom_html' name='bo_bottom_html' class='tx' rows='3' cols='70'><?=$board['bo_bottom_html']?></textarea>
+				</td>
+			</tr>
+		</table>
+	</li>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 리스트 설정</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+        	<tr>
+            	<th>스킨 디렉토리</th>
+            	<td>
+            		<?=$skin_select?>
+				</td>
+			</tr>
+        	<tr>
+            	<th>페이지당 목록 수</th>
+            	<td>
+            		<input type='text' id='bo_page_rows' name='bo_page_rows' class='ed' size='10' maxlength='4' value='<?=$board['bo_page_rows']?>'/>
+				</td>
+			</tr>
+        	<tr>
+            	<th>제목 길이</th>
+            	<td>
+            		<input type='text' id='bo_subject_len' name='bo_subject_len' class='ed' size='10' maxlength='4' value='<?=$board['bo_subject_len']?>'/> 목록에서의 제목 글자수. 잘리는 글은 … 로 표시
+				</td>
+			</tr>
+        	<tr>
+            	<th>new 아이콘</th>
+            	<td>
+            		<input type='text' id='bo_new' name='bo_new' class='ed' size='10' maxlength='4' value='<?=$board['bo_new']?>'/> 글 입력후 new 이미지를 출력하는 시간
+				</td>
+			</tr>
+        	<tr>
+            	<th>hot 아이콘</th>
+            	<td>
+            		<input type='text' id='bo_hot' name='bo_hot' class='ed' size='10' maxlength='4' value='<?=$board['bo_hot']?>'/> 조회수가 설정값 이상이면 hot 이미지 출력
+				</td>
+			</tr>
+        	<tr>
+            	<th>이미지 폭 크기</th>
+            	<td>
+            		<input type='text' id='bo_image_width' name='bo_image_width' class='ed' size='10' maxlength='4' value='<?=$board['bo_image_width']?>'/> 픽셀 (게시판에서 출력되는 이미지의 폭 크기)
+				</td>
+			</tr>
+        	<tr>
+            	<th>답변 달기</th>
+            	<td>
+            		<?=$order_select?>
+				</td>
+			</tr>
+        	<tr>
+            	<th>리스트 정렬 필드</th>
+            	<td>
+            		<?=$sort_select?>
+				</td>
+			</tr>
+        	<tr>
+            	<th>리스팅 조건</th>
+            	<td>
+            		<select id='bo_where' name='bo_where'>
+						<option value=''>전체</option>
+						<option value='mb_id'>자기글</option>
+						<option value='sca'>카테고리</option>
+					</select> (관리자는 전체 고정)
+				</td>
+			</tr>
+		</table>
+	</li>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 글쓰기 설정</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+        	<tr>
+            	<th>에디터 사용</th>
+            	<td>
+            		<input type='checkbox' id='bo_use_editor' name='bo_use_editor' value='1' <?=$use_editor_chk?>/> 사용 
+					(파일 업로더:
+					<input type='checkbox' id='bo_use_edt_img' name='bo_use_edt_img' value='1' <?=$use_edt_img_chk?>/> 이미지,
+					<input type='checkbox' id='bo_use_edt_file' name='bo_use_edt_file' value='1' <?=$use_edt_file_chk?>/> 파일,
+					<input type='checkbox' id='bo_use_edt_ocon' name='bo_use_edt_ocon' value='1' <?=$use_edt_ocon_chk?>/> 외부컨텐츠)
+				</td>
+			</tr>
+        	<tr>
+            	<th>비밀글 사용</th>
+            	<td>
+            		<select id='bo_use_secret' name='bo_use_secret'>
+					<option value='0'>사용하지 않음</option>
+					<option value='1'>체크박스</option>
+					<option value='2'>무조건</option>
+				</td>
+			</tr>
+        	<tr>
+            	<th>관련글 사용</th>
+            	<td>
+            		<input type='checkbox' id='bo_use_postlink' name='bo_use_postlink' value='1' <?=$use_postlink_chk?>/> 사용
+				</td>
+			</tr>
+        	<tr>
+            	<th>자동등록방지 사용</th>
+            	<td>
+            		<input type='checkbox' id='bo_use_captcha' name='bo_use_captcha' value='1' <?=$use_captcha_chk?>/> 사용
+				</td>
+			</tr>
+        	<tr>
+            	<th>글쓰기 기본 내용</th>
+            	<td>
+            		<textarea id='bo_insert_content' name='bo_insert_content' class='tx' rows='6' cols='70'><?=$board['bo_insert_content']?></textarea>
+				</td>
+			</tr>
+        	<tr>
+            	<th>업로드 파일 형식</th>
+            	<td>
+            		<input type='text' id='bo_upload_ext' name='bo_upload_ext' class='ed' size='50' value='<?=$board['bo_upload_ext']?>'/> 콤마( , )로 구분 (gif, jpg, png 제외)
+				</td>
+			</tr>
+        	<tr>
+            	<th>업로드 제한용량</th>
+            	<td>
+            		업로드 파일 한개당 <input type='text' id='bo_upload_size' name='bo_upload_size' class='ed right imeDis' size='10' maxlength='10' onkeypress='return only_number();' value='<?=$board['bo_upload_size']?>'/> Mb 이하 (최대 <?=$upload_max_size?> 이하)
+				</td>
+			</tr>
+		</table>
+	</li>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 검색 설정</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+        	<tr>
+            	<th>전체 검색 사용</th>
+            	<td>
+            		<input type='checkbox' id='bo_use_search' name='bo_use_search' value='1' <?=$use_search_chk?>/> 사용
+				</td>
+			</tr>
+        	<tr>
+            	<th>전체 검색 순서</th>
+            	<td>
+            		<input type='text' id='bo_order_search' name='bo_order_search' class='ed' size='5' maxlength='4' value='<?=$board['bo_order_search']?>'/> 숫자가 낮은 게시판 부터 검색
+				</td>
+			</tr>
+		</table>
+	</li>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 기타 설정</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+        	<tr>
+            	<th>여분필드 사용</th>
+            	<td>
+            		<input type='checkbox' id='bo_use_extra' name='bo_use_extra' value='1' <?=$use_extra_chk?>/> 사용
+					<? if ($w): ?>
+					[ <a href='<?=$path?>/boardextra/ex/<?=$board['bid']?>'><img src='<?=$IMG_PATH?>/icon_modify.gif' align='middle' title='여분필드 관리' alt='여분필드 관리'/></a> ]
+					<? endif; ?>
+				</td>
+			</tr>
+        	<tr>
+            	<th>파라메터</th>
+            	<td>
+					<ul id="param_list"></ul>
+					<input type="button" class="btn_simp" onclick="add_param('','');" value=" + 추가 "/>
+				</td>
+			</tr>
+		</table>
+	</li>
+</ul>
+
+<p class='center bottom'>
+	<input type='submit' id='btn_submit' class='btn' value='  확  인  '/>&nbsp;
+	<input type='button' class='btn' value='  목  록  ' onclick="document.location.href='<?=$path?>/board/lists';"/>
+</p>
+
+</form>
+
+<div id='loading'></div>
+
+<script type='text/javascript'>
+//<![CDATA[
+document.fboard.bo_use_secret.value = '<?=$board['bo_use_secret']?>';
+document.fboard.bo_reply_order.value = '<?=$board['bo_reply_order']?>'; 
+document.fboard.bo_sort_field.value = '<?=$board['bo_sort_field']?>'; 
+document.fboard.bo_show_gr.value = '<?=$board['bo_show_gr']?>'; 
+document.fboard.bo_where.value = '<?=$board['bo_where']?>'; 
+
+$(document).ready(function() {
+	$('#fboard').validate({
+		rules: {
+			bid: { required:true, minlength:3, alphanumunder:true },
+			bo_subject: 'required',
+			bo_admin: { minlength:3, alphanumunder:true },
+			bo_count_modify: { required:true, min:0 },
+			bo_count_delete: { required:true, min:0 },
+			bo_page_rows: { required:true, min:0 },
+			bo_subject_len: { required:true, min:0 },
+			bo_new: { required:true, min:0 },
+			bo_hot: { required:true, min:0 },
+			bo_image_width: { required:true, min:0 },
+			bo_upload_ext: 'required',
+			bo_upload_size: { required:true, min:0 },
+			bo_order_search: { min:0 }
+		},
+		messages: {
+			bid: { required:'TABLE을 입력하십시오.', minlength:'최소 3자 이상 입력하십시오.' },
+			bo_subject: '게시판 제목을 입력하십시오.',
+			bo_admin : { required:'게시판 관리자를 입력하십시오.', minlength:'최소 3자 이상 입력하십시오.' },
+			bo_count_modify: '숫자가 아닙니다.',
+			bo_count_delete: '숫자가 아닙니다.',
+			bo_page_rows: '숫자가 아닙니다.',
+			bo_subject_len: '숫자가 아닙니다.',
+			bo_new: '숫자가 아닙니다.',
+			bo_hot: '숫자가 아닙니다.',
+			bo_image_width: '숫자가 아닙니다.',
+			bo_upload_ext: '업로드 확장자를 입력하십시오.',
+			bo_upload_size: '숫자가 아닙니다.',
+			bo_order_search: '숫자가 아닙니다.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+		    f.submit();
+		}
+	});
+});
+
+function add_param(name, value) {
+	var HTML =	' <li class="children">변수명 <input type="text" name="bo_parameter[name][]" class="ed imeDis" value="'+ name +'"/>'+
+	' &nbsp; 값 <input type="text" name="bo_parameter[value][]" class="ed" value="'+ value +'"/>'+
+	' <input type="button" class="btn_simp" onclick="remove_child($(this));" value=" - 제거 "/></li>';
+
+	$('#param_list').append(HTML);
+}
+
+function getConfig() {
+	if(confirm('설정 내보내기는 저장된 설정값으로 내보내집니다.\n\n변경된 설정이 있다면 저장 후 다시 실행해 주세요.\n\n계속 하시겠습니까?')) { 
+		location.href='<?=$path?>/board/saveConf/<?=$board['bid']?>';
+	}
+}
+
+function setConfig() {
+	$('#fboard').attr('action', '<?=$path?>/board/loadConf/<?=$board['bid']?>');
+	$('#fboard').validate();
+
+	if(confirm('이 게시판의 모든 설정과 여분필드 설정을 변경합니다.\n\n계속 하시겠습니까?')) {
+		$('#fboard').submit();
+	}
+}
+
+<? if($board['bo_parameter']): ?>
+<? foreach(param_decode($board['bo_parameter']) AS $name => $value): ?>
+add_param('<?=$name?>', '<?=$value?>');
+<? endforeach; ?>
+<? endif; ?>
+//]]>
+</script>

@@ -1,0 +1,62 @@
+<br/><p><h3>- <?=$_TITLE_?></h3></p>
+
+<form name='fvisit' method='get' onsubmit='return fvisit_submit(this)'>
+
+<div style="float:right;margin:20px 75px 10px 0;">
+	<input type='text' id='fr_date' name='fr_date' class='ed' size='10' maxlength='10' readonly='readonly' value='<?=$fr_date?>'/>
+	-
+	<input type='text' id='to_date' name='to_date' class='ed' size='10' maxlength='10' readonly='readonly' value='<?=$to_date?>'/>
+	<input type='image' src='<?=$img_path?>/btn_search.gif' align='top'/>
+</div>
+</form>
+
+<div id='list_cont'>
+	<table width='100%' cellpadding='0' cellspacing='1'>
+		<colgroup>
+			<col class='vs_ip'/>
+			<col/>
+			<col class='vs_date'/>
+		</colgroup>
+		<tr>
+            <th>IP</th>
+            <th>AGENT</th>
+            <th>일시</th>
+        </tr>
+        
+        <? foreach ($list as $o): ?>
+		<tr class='row list<?=$o['lst']?>'>
+			<td><?=$o['vs_ip']?></td>
+			<td class='left'>
+				(유입경로: <a href='<?=$o['vs_referer']?>' target='_blank' title='<?=$o['vs_title']?>'><?=$o['vs_referer']?></a>) &nbsp;
+				(뷰페이지: <a href='<?=$o['vs_url']?>' target='_blank' title='<?=$o['vs_url']?>'><?=$o['vs_url']?></a>)<br/>
+				<?=$o['vs_agent']?>
+			</td>
+			<td><?=$o['vs_regdate']?><br/><?=$o['vs_time']?></td>
+		</tr>
+		<? endforeach; ?>
+	</table>
+	<? if (!$list): ?><p class='none'>자료가 없습니다.</p><? endif; ?>
+	<p class='bottom center'><?=$paging?></p>
+</div>
+
+<script type='text/javascript'>
+//<![CDATA[
+function fvisit_submit(f) {    
+    location.href = rt_path + '/' + rt_admin + '/visit/logs/page/1/from/' + f.fr_date.value + '/to/' + f.to_date.value;
+    return false;
+}
+
+$(document).ready(function(){
+	$('#fr_date').timepicker({
+		currentText: '오늘',
+		showTimepicker: false,
+		defaultDate: $.datepicker.parseDate("yy-mm-dd", "<?=$fr_date?>") 
+	});
+	$('#to_date').timepicker({
+		currentText: '오늘',
+		showTimepicker: false,
+		defaultDate: $.datepicker.parseDate("yy-mm-dd", "<?=$to_date?>") 
+	});
+});
+//]]>
+</script>

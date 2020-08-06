@@ -1,0 +1,122 @@
+<form id='fwrite' name='fwrite' method='post' enctype='multipart/form-data' action='<?=$path?>/banner/form'>
+<input type='hidden' name='w'    value='<?=$w?>'/>
+<input type='hidden' name='token' value='<?=$token?>'/>
+<input type='hidden' name='bn_id' value='<?=$row['bn_id']?>'/>
+
+<div id='form_title'>
+	&deg; <b><?=$_TITLE_?></b>
+</div>
+
+<ul id="form_cont">
+	<li class="form_li">
+		<div>
+			<h4>정보 입력</h4>
+			<dl>
+				<dt>배너 이미지</dt>
+				<dd><table border="0" cellpadding="0" cellspacing="0"><tr><td>
+						<?=$row['bn_image']?'<img src="/useful/thumbnail/180x60/banner/?file='.$row['bn_image'].'&ratio=true"/><br/>':''?>
+						<input type='file' id='bn_image' name='bn_image' class='ed' size='50' value='<?=$row['bn_image']?>'/>
+						<input type='checkbox' id='bn_hidden' name='bn_hidden' value='1' <?=$row['bn_hidden']?'checked="checked"':''?>/> 숨김
+					</td></tr>
+					<tr><td style="color:#999999;">
+						(최대 사이즈: Width <?=$max_size['w']?>px, Height <?=$max_size['h']?>px)
+					</td></tr></table>
+				</dd>
+				<dt>링크 URL</dt>
+				<dd><input type='text' id='bn_url' name='bn_url' class='ed' size='50' value='<?=$row['bn_url']?>'/>
+					(외부로 연결시 'http://'까지 입력)
+				</dd>
+				<dt>타겟</dt>
+				<dd><select id='bn_target' name='bn_target'>
+						<option value='_blank' <?=$row['bn_target']=='_blank'?'selected="selected"':''?>>새창</option>
+						<option value='_self' <?=$row['bn_target']=='_self'?'selected="selected"':''?>>현재창</option>
+					</select>
+				</dd>
+				<dt>배너 그룹</dt>
+				<dd><select name='bn_group'>
+						<option value=''>선택</option>
+						
+						<? foreach($group as $val => $name): ?>
+						<option value='<?=$val?>' <?=$val==$row['bn_group']?'selected="selected"':''?>><?=$name?></option>
+						<? endforeach; ?>
+						
+					</select>
+				</dd>
+				<dt>시작일</dt>
+				<dd>
+					<input type='text' id='bn_sdate' name='bn_sdate' class='ed' size='18' maxlength='19' readonly='readonly' value='<?=$row['bn_sdate']?>'/>
+				</dd>
+				<dt>종료일</dt>
+				<dd>
+					<input type='text' id='bn_edate' name='bn_edate' class='ed' size='18' maxlength='19' readonly='readonly' value='<?=$row['bn_edate']?>'/>
+				</dd>
+				
+				<? if($row['bn_regdate']): ?>
+				<dt>등록일</dt>
+				<dd>
+					<?=$row['bn_regdate']?>
+				</dd>
+				<? endif; ?>
+				<? if($row['bn_mdydate']): ?>
+				<dt>최종수정일</dt>
+				<dd>
+					<?=$row['bn_mdydate']?>
+				</dd>
+				<? endif; ?>
+				
+			</dl>
+		</div>
+	</li>
+</ul>
+
+<p class='center bottom' style="margin-top:30px;">
+	<input type='submit' id='btn_submit' class='btn' value='  확  인  '/>&nbsp;
+	<input type='button' class='btn' value='  목  록  ' onclick="document.location.href='<?=$path?>/banner/lists';"/>
+</p>
+</form>
+
+<div id='loading'></div>
+
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#bn_sdate').datetimepicker();
+	$('#bn_edate').datetimepicker({
+		hour: 23,
+		minute: 59,
+		second: 59,
+	});
+	
+	$('#fwrite').validate({
+		rules: {
+			bn_image: {
+				required: <?=$row['bn_image']?'false':'true'?>,
+				accept: 'png|gif|jp?g',
+			},
+			bn_sdate: 'required',
+			bn_edate: 'required'
+		},
+		messages: {
+			bn_image: '배너 이미지 파일이 없습니다..',
+			bn_sdate: '시작일을 입력하세요.',
+			bn_edate: '종료일을 입력하세요.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+		    f.submit();
+		}
+	});		
+});
+//]]>
+</script>
+
+<?=validation_errors('<script>alert("','");</script>');?>

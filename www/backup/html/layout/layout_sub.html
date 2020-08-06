@@ -1,0 +1,115 @@
+<script type="text/javascript">
+//<![CDATA[
+function loadJS(){var el=document.body;if(el)el.className+=" js sub";}
+loadJS();
+//]]>
+</script>
+<noscript><p>일부 기능은 자바스크립트가 지원되어야 사용하실 수 있습니다.</p></noscript>
+
+<div id="container_wp">
+	<div id="container">
+		<div id="head">
+			<? include DOC_ROOT.'/include/topbar.html'; ?>
+			<? include DOC_ROOT ."/include/navigation.html"; ?>
+		</div>
+		
+		<div id="wrap">
+			<div id="rightWrap"><div id='right'>
+				<div id="sidebar">
+					<h2 id="side_title"><a href="/sub/01_01"><img src="/img/inc/side1h<?=$m1?>.gif" width="200" height="172" alt="<?=$m1_tt?>" /></a></h2>
+					<div id="sidemenu">
+						<h3>부 메뉴</h3>
+						<? if(isset($m1) && file_exists(DOC_ROOT."/include/right.html")) include DOC_ROOT."/include/right.html"; ?>
+					</div>
+					
+					<div id="sm1">
+						<ul>
+							<li><a href="/sub/05_01"><img src="/img/inc/sb1.gif" width="56" height="55" alt="오시는길" /></a></li>
+							<li><a href="/sub/05_02_01"><img src="/img/inc/sb2.gif" width="56" height="55" alt="전화번호" /></a></li>
+							<li><a href="/board/md_schedule/lists"><img src="/img/inc/sb3.gif" width="56" height="55" alt="진료시간표" /></a></li>
+							<li><a href="/sub/07_02"><img src="/img/inc/sb4.gif" width="56" height="55" alt="후원안내" /></a></li>
+						</ul>
+					</div>
+					
+					<hr />
+				</div>			
+			</div></div>
+			
+			<div id="body">
+				<div id="forPrint">
+					<div id="body_head">
+						
+						<div id="location">
+							<h4>현재 위치</h4>
+							<span>Home > </span><?='<span>'. $m1_tt .'</span> <span>></span> <span>'. $m2_tt .'</span>' . (isset($m3_tt)?' <span>></span> <span>'. $m3_tt .'</span>':'')?>
+						</div>
+						<script type="text/javascript">$('#location span').last().css('font-weight', 'bold').css('color', '#6c6b6b');</script>
+						
+						<div id="body_title"><h1><img src="/img/inc/h/h<?=$m1?>_<?=$m2?><?=isset($m3)?'_'.$m3:''?>.gif"/></h1></div>
+					
+					</div>
+					
+					<div id="body_content">
+						<? $this->load->view($_BODY_); ?>
+					</div>
+					
+				</div>
+			</div>
+			
+			<hr />
+			<hr />
+		</div>
+	</div>
+</div>
+
+<div id="foot">
+	<div class="in">
+		<h2 class="blind">하단 정보</h2>
+		<div class="btn_facebook"><a href="https://www.facebook.com/Greensrh/" target="_blank"><img src="/img/inc/foot_facebook.png" alt="페이스북" /></a>&nbsp;&nbsp;&nbsp;<a href="https://www.youtube.com/channel/UChroqEAmDNMoLVTBSPANdrw" target="_blank"><img src="/img/inc/foot_youtube.png" alt="유튜브" /></a></div>
+
+		<div id="siteguide">
+			<h3 class="blind">사이트 안내 및 정책</h3>
+			
+			<ul>
+				<li><a href="/sub/05_03"><img src="/img/inc/foot_m01.png" alt="병원소개" /></a></li>
+				<li><a href="/sub/01_01"><img src="/img/inc/foot_m02.png" alt="진료안내" /></a></li>
+				<li><a href="/sub/01_05"><img src="/img/inc/foot_m07.png" alt="비급여 진료비" /></a></li>
+				<li><a href="/sub/01_04_02"><img src="/img/inc/foot_m08.png" alt="의무기록사본발급" /></a></li>
+				<li><a href="http://www.hira.or.kr/re/diag/getNpayNotiCsuiSvcFom.do?yadmSbstKey=SKUNmUk9Aek9I54v"><img src="/img/inc/foot_m03.png" alt="오시는길" /></a></li>
+				<li><a href="/sub/privacy"><img src="/img/inc/foot_m04.png" alt="개인정보취급방침" /></a></li>
+				<li><a href="/sub/stipulation"><img src="/img/inc/foot_m05.png" alt="이용약관" /></a></li>
+				<li><a href="/sub/nophishing"><img src="/img/inc/foot_m06.png" alt="이메일무단수집거부" /></a></li>
+			</ul>
+		</div>
+
+		<!-- <div id="dgo1">
+			<dl>
+				<dt><a href="#dgo1d" onclick="displayOn('dgo1d');return false;" title="hospital Partner 목록 보기"><img src="/img/inc/dgo1m.gif" width="158" height="21" alt="hospital Partner" /></a></dt>
+				<dd id="dgo1d">
+					<h3>hospital Partner</h3>
+					
+					<ul>
+						<li><a href="?" target="_blank" title="새 창에서 열립니다.">hospital Partner 01</a></li>
+						<li><a href="?" target="_blank" title="새 창에서 열립니다.">hospital Partner 02</a></li>
+						<li><a href="?" target="_blank" title="새 창에서 열립니다.">hospital Partner 03</a></li>
+						<li><a href="?" target="_blank" title="새 창에서 열립니다.">hospital Partner 04</a></li>
+					</ul>
+					
+					<a href="#dgo1" onclick="displayOff('dgo1d');return false;" title="hospital Partner 목록 닫기" class="x"><img src="/img/inc/dgo1close.gif" width="10" height="10" alt="닫기" /></a>
+				</dd>
+			</dl>
+		</div> -->
+
+		<div id="authorinfo">
+			<h4 class="blind">작성자 정보 (연락처 및 저작권)</h4>
+			<address><img src="/img/inc/address.gif" width="734" height="27" alt="서울재활병원 대표자 : 이지선, 서울시 은평구 갈현로 11길 30 (구, 은평구 구산동 191-1), 대표번호 : 6020-3000, 팩스 : 6020-3015,     고유번호 : 110-82-60714, copyright (c) SEOUL REHABILITATION HOSPITAL. all rights reserved" /></address>
+            
+            <div class="ft_bn01">
+                <ul>
+				    <li style="margin-top:-3px;"><a href="http://angelshaven.or.kr/" target="_blank" title="새 창에서 열립니다."><img src="/img/inc/foot_bn01.gif" width="204" height="45" alt="엔젤스헤이븐(Angels' Haven), 서울재활병원은 사회복지법인 엔젤스헤이븐 산하기관입니다." /></a></li>
+					<li><a href="http://blog.naver.com/seoulrh" target="_blank" title="새 창에서 열립니다."><img src="/img/inc/foot_bn02.gif" width="71" height="42" alt="서울재활병원 블로그" /></a></li>
+				</ul>
+            </div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+
+<? if($layout_platform == 'mobile') : ?>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<? endif; ?>
+
+<meta http-equiv='content-type' content='text/html; charset=<?=$this->config->item('charset')?>'/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+<title><?=$_TITLE_?></title>
+
+<? if($layout_platform == 'pc') : ?>
+<link rel='stylesheet' href='<?=CSS_DIR?>/common.css' type='text/css'/>
+<link rel='stylesheet' href='<?=CSS_DIR?>/jquery-ui.min.css' type='text/css'/>
+<link rel='stylesheet' href='<?=CSS_DIR?>/outer_basic.css' type='text/css'/>
+<link rel='stylesheet' href='<?=CSS_DIR?>/outer_custom.css' type='text/css'/>
+<link rel='stylesheet' href='<?=CSS_DIR?>/navigation.css' type='text/css'/>
+<? else : ?>
+<link rel="stylesheet" href="<?=CSS_DIR?>/jmobile/jquery.mobile-1.4.0.min.css">
+<? endif; ?>
+
+<? if(isset($_CSS_) && is_array($_CSS_)) : ?>
+<? foreach ($_CSS_ as $style) : ?>
+<link rel='stylesheet' href='<?=$style?>.css' type='text/css'/>
+<? endforeach; ?>
+<? endif; ?>
+
+<script type='text/javascript'>
+//<![CDATA[
+var rt_path = '<?=RT_PATH?>';
+var rt_charset = '<?=$this->config->item('charset')?>';
+<?=isset($var_board)?$var_board:''?>
+
+<? if (SU_ADMIN) : ?>
+var rt_admin = '<?=ADM_F?>';
+<? endif; ?>
+//]]>
+</script>
+
+<script type='text/javascript' src='<?=JS_DIR?>/jquery-1.9.1.min.js'></script>
+<script type='text/javascript' src='<?=JS_DIR?>/common.js'></script>
+<script type='text/javascript' src='<?=JS_DIR?>/navigation.js'></script>
+<script type="text/javascript" src="http://apis.daum.net/maps/maps3.js?apikey=d6c0f5a9ec33d27011930cca1e8aeba7641a2f09"></script>
+<? if($layout_platform == 'pc') : ?>
+<script type='text/javascript' src='<?=JS_DIR?>/jquery-ui.min.js'></script>
+<? else : ?>
+<? /* <script type='text/javascript' src='<?=JS_DIR?>/jmobile/jquery.mobile-1.4.0.min.js'></script> */ ?>
+<? endif; ?>
+
+<? if(isset($_JS_) && is_array($_JS_)) : ?>
+<? foreach ($_JS_ as $script) : ?>
+<script type='text/javascript' src='<?=$script?>.js'></script>
+<? endforeach; ?>
+<? endif; ?>
+
+<!--[if lt IE 9]><script src="<?=JS_DIR?>/ie.print.js"></script><![endif]-->
+
+<?=isset($popup)?$popup:''?>
+
+</head>
+<body>

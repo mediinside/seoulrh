@@ -1,0 +1,265 @@
+<form id='fwrite' name='fwrite' method='post' enctype="multipart/form-data" action='<?=$path?>/edu/form'>
+<input type='hidden' name='w'    value='<?=$w?>' />
+<input type='hidden' name='token' value='<?=$token?>' />
+<input type='hidden' name='pd_id' value='<?=$row['pd_id']?>' />
+
+<h2><?=$_TITLE_?></h2>
+
+<ul id="form_cont">
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 정보 입력</h3>
+        <table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+        	<tr>
+            	<th>분류</th>
+                <td>
+                	<?=$cate_sel?>
+				</td>
+            </tr>
+        	<tr>
+            	<th>강좌명</th>
+                <td>
+                	<input type='text' id='pd_name' name='pd_name' class='ed' size='35' value='<?=$row['pd_name']?>' />
+					<input type='checkbox' id='pd_soldout' name='pd_soldout' value='1' <?=$row['soldout_chk']?> /> 마감
+				</td>
+            </tr>
+        	<tr>
+            	<th>대표 이미지</th>
+                <td>
+                	
+                	<? if($row['pd_image1']) : ?>
+					<img src="/useful/thumbnail/80x60/ki_edu/<?=$row['pd_id']?>?no=1" width="80" height="60"/> <input type="hidden" name="pd_image[1]" value="<?=$row['pd_image1']?>"><input type="checkbox" name="delPdFile[pd_image1]" value="<?=$row['pd_image1']?>"> 삭제
+					<? else : ?>
+					<input type='file' id='pd_image1' name='pd_image[1]' class='ed' size='35' value='<?=$row['pd_image1']?>' />
+					<? endif; ?>
+					
+				</td>
+            </tr>
+        	<tr>
+            	<th>신청기간</th>
+                <td>
+                	<input type='text' id='pd_sdatetime' name='pd_sdatetime' class='ed' class='ed' size='18' maxlength='19' readonly='readonly' value='<?=$row['pd_sdatetime']?>' /> <button type="button" class="btn_simp" onclick="$('#pd_sdatetime').val('');">&nbsp;삭제&nbsp;</button>
+                	~
+                	<input type='text' id='pd_edatetime' name='pd_edatetime' class='ed' class='ed' size='18' maxlength='19' readonly='readonly' value='<?=$row['pd_edatetime']?>' />  <button type="button" class="btn_simp" onclick="$('#pd_edatetime').val('');">&nbsp;삭제&nbsp;</button>
+				</td>
+            </tr>
+        	<tr>
+            	<th>장소</th>
+                <td>
+                	<input type='text' id='pd_location' name='pd_location' class='ed' size='35' value='<?=$row['pd_location']?>' />
+				</td>
+            </tr>
+        	<tr>
+            	<th>참가대상</th>
+                <td>
+                	<input type='text' id='pd_target' name='pd_target' class='ed' size='35' value='<?=$row['pd_target']?>' />
+				</td>
+            </tr>
+        	<tr>
+            	<th>교육비</th>
+                <td>
+                	<input type='text' id='pd_price' name='pd_price' class='ed right imeDis' size='10' onkeypress="return only_number();" value='<?=$row['pd_price']?>' /> 원
+				</td>
+            </tr>
+        	<tr>
+            	<th>교육기간</th>
+                <td>
+                	<input type='text' id='pd_eduSdate' name='pd_eduSdate' class='ed' class='ed' size='18' maxlength='19' readonly='readonly' value='<?=$row['pd_eduSdate']?>' /> <button type="button" class="btn_simp" onclick="$('#pd_eduSdate').val('');">&nbsp;삭제&nbsp;</button>
+                	~
+                	<input type='text' id='pd_eduEdate' name='pd_eduEdate' class='ed' class='ed' size='18' maxlength='19' readonly='readonly' value='<?=$row['pd_eduEdate']?>' />  <button type="button" class="btn_simp" onclick="$('#pd_eduEdate').val('');">&nbsp;삭제&nbsp;</button>
+				</td>
+            </tr>
+        	<tr>
+            	<th>교육시간</th>
+                <td>
+                	<input type='text' id='pd_price' name='pd_eduTime' class='ed right imeDis' size='5' onkeypress="return only_number();" value='<?=$row['pd_eduTime']?>' /> 시간
+				</td>
+            </tr>
+            
+            <? if($row['pd_regdate']): ?>
+        	<tr>
+            	<th>등록일</th>
+                <td>
+                	<?=$row['pd_regdate']?>
+				</td>
+            </tr>
+            <? endif; ?>
+            
+        </table>
+    </li>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 세미나 일정</h3>
+        <table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+        	<tr>
+            	<th><input type="button" style="cursor:pointer;height:18px;" onclick="add_day(true);" value=" + " /><input type="button" style="cursor:pointer;height:18px;" onclick="del_day();" value=" - " /></th>
+                <td>
+                	<dl id="days"></dl>
+				</td>
+            </tr>
+        </table>
+    </li>
+	<li>
+		<?=$editor?>
+    </li>
+</ul>
+
+<p class='center bottom editor' style="margin-top:30px;">
+	<input type='submit' class='btn' value='  확  인  ' />&nbsp;
+	<input type='button' class='btn' value='  목  록  ' onclick="document.location.href='<?=$path?>/edu/lists<?=$qstr?>';" />
+</p>
+</form>
+
+<script type='text/javascript'>
+//<![CDATA[
+var beforeUnload = true;
+
+window.onbeforeunload = function() {
+	if (beforeUnload) return '이 페이지를 벗어나시면 작성 중인 글이 지워집니다.';
+}
+
+$(document).ready(function() {
+	$('#pd_sdatetime').datetimepicker();
+	$('#pd_edatetime').datetimepicker({
+		hour: 23,
+		minute: 59,
+		second: 59
+	});
+	$('#pd_eduSdate').datetimepicker({
+		showTimepicker: false
+	});
+	$('#pd_eduEdate').datetimepicker({
+		showTimepicker: false
+	});
+	
+	$('#fwrite').validate({
+		rules: {
+			pd_name: 'required'
+		},
+		messages: {
+			pd_name: '강좌명을 입력하세요.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+			beforeUnload = false;
+			
+			var file_length = $("#fwrite input[type='file']").length;
+			for(i = 0; i <= file_length; i++) {
+				if(!$("#fwrite input[type='file']").eq(i).val()) {
+					$("#fwrite input[type='file']").eq(i).remove();
+					file_length = file_length - 1;
+					i = i - 1;
+				}
+			}
+			if($("#fwrite input[type='file']").length > 16)
+				alert('한번에 업로드되는 파일의 수가 너무 많습니다.');
+			
+            Editor.save();
+		}
+	});
+});
+
+cnt = new Array();
+
+function add_file(objNo, arrVal)
+{
+  var objTbl;
+  var objRow;
+  var objCell;
+  var addHTML = addLine(objNo, arrVal);
+  
+  if (document.getElementById)
+	objTbl = document.getElementById("variableFiles"+objNo);
+  else
+	objTbl = document.all["variableFiles"]; 
+
+  objRow = objTbl.insertRow(objTbl.rows.length);
+  objCell = objRow.insertCell(0);
+
+  objCell.innerHTML = addHTML;
+}
+
+function del_file(objNo)
+{
+  // file_length 이하로는 필드가 삭제되지 않아야 합니다.
+  var file_length = 0;
+  var objTbl = document.getElementById("variableFiles"+objNo);
+  if (objTbl.rows.length - 1 > file_length)
+  {
+	cnt[objNo]--;
+	objTbl.deleteRow(objTbl.rows.length - 1);
+  }
+}
+
+function add_day(addFile)
+{
+	var obj = $('#days');
+	var dcnt = $('#days').children().length / 2;
+	cnt[dcnt] = 0;
+	
+	$('<dt>'+(dcnt+1)+' 일차 '+
+		'<input type="button" style="cursor:pointer;height:18px;" onclick="add_file('+dcnt+',new Array(\'\',\'\',\'\'));" value=" + " /><input type="button" style="cursor:pointer;height:18px;" onclick="del_file('+dcnt+');" value=" - " />'+
+		'</dt>'+
+		'<dd style="min-height:27px;"><table id="variableFiles'+dcnt+'" cellpadding="0" cellspacing="0"></table></dd>'
+	).appendTo('#days');
+	
+	if(addFile)
+		add_file(dcnt, new Array('','','',''));
+}
+
+function del_day()
+{
+	var dcnt = ($('#days').children().length / 2) - 1;
+	
+	if(dcnt > 0) {
+		cnt[dcnt] = 0;
+		$('#days dt:last').remove();
+		$('#days dd:last').remove();
+	}
+}
+
+function addLine(no, arrVal) {
+	var file = "";
+	var link = (arrVal[5] == undefined) ? '' : arrVal[5];
+	var target = (arrVal[6] == undefined) ? '' : arrVal[6];
+	var self_sel = '';
+	
+	if(target == '_self') self_sel = 'selected="seledted"'; 
+	
+	if(!arrVal[3])
+		file = "<input type='file' name='day_file["+no+"]["+cnt[no]+"]' class='ed' size='48'/>";
+	else
+		file = "<input type='hidden' name='oldFileNo["+no+"]["+cnt[no]+"]' value='"+arrVal[4]+"'/><input type='hidden' name='oldFile["+no+"]["+cnt[no]+"]' value='"+arrVal[3]+"'/>"+arrVal[3]+" <input type='checkbox' name='delFile[]' class='ed' size='48' value='"+arrVal[4]+"'/>삭제";
+		
+	var _HTML = "<div>시간: <input type='text' name='day_stime["+no+"][]' class='ed' size='5' value='"+arrVal[0]+"'/>~"+
+			"<input type='text' name='day_etime["+no+"][]' class='ed' size='5' value='"+arrVal[1]+"'/> "+
+			/*
+			"사진:"+file+"<br/>"+
+			"사진 LINK: http://<input type='text' class='ed' size='65' name='day_link["+no+"][]' value='"+link+"'> "+
+			"<select name='day_target["+no+"][]'><option value='_blank'>새창</option><option value='_self' "+self_sel+">현재창</option></select><br/>"+
+			*/
+			"<textarea name='day_text["+no+"][]' rows='2' cols='40' style='margin-bottom:15px;'>"+arrVal[2]+"</textarea></div>";
+	
+	cnt[no]++;
+	
+	return _HTML;
+}
+
+<? if(isset($row['pd_schedule']['stime']) && is_array($row['pd_schedule']['stime'])): ?>
+<? foreach($row['pd_schedule']['stime'] as $key => $val): ?>
+	add_day(false);
+	<? foreach($val as $k => $v): ?>
+	add_file(<?=$key?>, new Array('<?=$v?>','<?=$row['pd_schedule']['etime'][$key][$k]?>','<?=preg_replace("/\'/","\'",$row['pd_schedule']['text'][$key][$k])?>'));
+	<? endforeach; ?>
+<? endforeach; ?>
+<? else: ?>
+	add_day(true);
+<? endif; ?>
+
+//]]>
+</script>

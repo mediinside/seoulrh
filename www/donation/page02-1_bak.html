@@ -1,0 +1,339 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+include_once "../inc/head.php";
+$dep1 = "5";
+$dep2 = "5-1";
+$dep3 = "5-1-2";
+?>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+<script src="/resource/js/counter/jquery.counterup.min.js"></script>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/donation-bnnr1.jpg" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="wd-1200">
+					<div class="donation-bg">
+						<img src="/resource/images/donation-bg-01.png" alt="">
+						<h3>
+							서울재활병원<br>
+							나눔이야기 -
+							<small class="mb-hide">
+								서울재활병원은 후원금을 투명하게 운영하며, 모법인 엔젤스헤이븐은 외부 회계법인 감사,<br class="mb-hide">
+								세무서, 구청, 보건복지부 등 다양한 정부 기관 감사도 진행합니다.
+							</small>
+						</h3>
+					</div>
+					<ul id="tab-nav" class="tab3">
+						<li class="on">
+							<a href="/donation/page02-1.html#tab-nav">후원금 수입· 지출</a>
+						</li>
+						<li>
+							<a href="/donation/page02-2.html#tab-nav">기부자</a>
+						</li>
+						<!--li>
+							<a href="/donation/page02-3.html#tab-nav">직원 헌금</a>
+						</li-->
+					</ul>
+					<div id="tab-1" class="tab3-cont">
+						<div class="tab-box">
+							<div class="tab-cont">
+								<p>
+									<a href="#none">2019</a>
+								</p>
+								<div class="list2">
+									<!-- 아직 데이터 없음 -->
+									데이터 준비중
+								</div>
+							</div>
+
+							<div class="tab-cont on">
+								<p>
+									<a href="#none">2018</a>
+								</p>
+								<div class="list2" style="height:0;">
+									<div class="side-box">
+										<div class="chart">
+											<div id="donutchart1" class="donutchart"></div>
+											<div class="all-pay">
+												<img src="/resource/images/hand-heart.png" alt="">
+												<span class="counter">723,360,726</span>
+											</div>
+										</div>
+										<div class="board-list dp-block" style="padding:0;">
+											<table>
+												<colgroup>
+													<col>
+													<col style="width:40%">
+												</colgroup>
+												<thead>
+													<tr class="bg-gray">
+														<th>구분</th>
+														<th class="text-left">금액(원)</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>
+															<img src="/resource/images/chart-dot-1.png" alt="">
+															새병원기금 이월액
+														</td>
+														<td>229,621,397</td>
+													</tr>
+													<tr>
+														<td>
+															<img src="/resource/images/chart-dot-2.png" alt="">
+															새병원건립기금
+														</td>
+														<td>300,053,728</td>
+													</tr>
+													<tr>
+														<td>
+															<img src="/resource/images/chart-dot-3.png" alt="">
+															공공재활기금 이월액
+														</td>
+														<td>9,915,971</td>
+													</tr>
+													<tr>
+														<td>
+															<img src="/resource/images/chart-dot-4.png" alt="">
+															공공재활기금
+														</td>
+														<td>157,769,630</td>
+													</tr>
+													<tr>
+														<td>
+															<img src="/resource/images/chart-dot-5.png" alt="">
+															기타지정기금
+														</td>
+														<td>26,000,000</td>
+													</tr>
+												</tbody>
+												<tfoot>
+													<tr class="bg-gray">
+														<th class="text-center">계</th>
+														<th class="text-left">723,360,726</th>
+													</tr>
+												</tfoot>
+											</table>
+										</div>
+									</div>
+									<div class="side-box">
+										<div class="chart">
+											<div id="donutchart2" class="donutchart"></div>
+											<div class="all-pay">
+												<img src="/resource/images/hand-heart.png" alt="">
+												<span class="counter">723,360,726</span>
+											</div>
+										</div>
+										<div class="board-list dp-block" style="padding:0;">
+											<table>
+												<colgroup>
+													<col>
+													<col style="width:40%">
+												</colgroup>
+												<thead>
+													<tr class="bg-gray">
+														<th>구분</th>
+														<th class="text-left">금액(원)</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>
+															<img src="/resource/images/chart-dot-1.png" alt="">
+															새병원건립기금 누적
+														</td>
+														<td>467,610,197</td>
+													</tr>
+													<tr>
+														<td>
+															<img src="/resource/images/chart-dot-2.png" alt="">
+															새병원건립 연구용역
+														</td>
+														<td>50,000,000</td>
+													</tr>
+													<tr>
+														<td>
+															<img src="/resource/images/chart-dot-3.png" alt="">
+															기부금품 모집비용
+														</td>
+														<td>48,984,480</td>
+													</tr>
+													<tr>
+														<td>
+															<img src="/resource/images/chart-dot-4.png" alt="">
+															의료 및 물품지원
+														</td>
+														<td>33,531,450</td>
+													</tr>
+													<tr>
+														<td>
+															<img src="/resource/images/chart-dot-5.png" alt="">
+															사회복귀 사업
+														</td>
+														<td>19,423,610</td>
+													</tr>
+													<tr>
+														<td>
+															<img src="/resource/images/chart-dot-6.png" alt="">
+															가족행복 사업
+														</td>
+														<td>15,363,070</td>
+													</tr>
+													<tr>
+														<td>
+															<img src="/resource/images/chart-dot-7.png" alt="">
+															지역사회 사업
+														</td>
+														<td>1,301,410</td>
+													</tr>
+													<tr>
+														<td>
+															<img src="/resource/images/chart-dot-8.png" alt="">
+															공공재활기금 이월액
+														</td>
+														<td>87,146,509</td>
+													</tr>
+												</tbody>
+												<tfoot>
+													<tr class="bg-gray">
+														<th class="text-center">계</th>
+														<th class="text-left">723,360,726</th>
+													</tr>
+												</tfoot>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		google.charts.load("current", { packages: ["corechart"] });
+		google.charts.setOnLoadCallback(drawChart1);
+		google.charts.setOnLoadCallback(drawChart2);
+		function drawChart1() {
+			var data = google.visualization.arrayToDataTable([
+				['Task', 'donation'],
+				['새병원기금 이월액', 229621397],
+				['새병원건립기금', 300053728],
+				['공공재활기금 이월액', 9915971],
+				['공공재활기금', 157769630],
+				['기타지정기금', 26000000]
+			]);
+
+			var options = {
+				title: '수입',
+				titleTextStyle: {
+					color: '#72c312',
+					fontName: 'Noto Sans KR',
+					fontSize: 22
+				},
+				pieHole: 0.65,
+				legend: 'none',
+				width: '100%',
+				height:'100%',
+				colors:['#16b944', '#92d21c', '#bfde14', '#fee00c', '#ffc40e', '#ff9c0b', '#c6c6c6', '#fd7a12'],
+			};
+
+			var chart = new google.visualization.PieChart(document.getElementById('donutchart1'));
+			chart.draw(data, options);
+		}
+		function drawChart2() {
+			var data = google.visualization.arrayToDataTable([
+				['Task', 'donation'],
+				['새병원건립기금 누적', 467610197],
+				['새병원건립 연구용역', 50000000],
+				['기부금품 모집비용', 48984480],
+				['의료 및 물품지원', 33531450],
+				['사회복귀 사업', 19423610],
+				['가족행복 사업', 15363070],
+				['지역사회 사업', 1301410],
+				['공공재활기금 이월액', 87146509]
+			]);
+
+			var options = {
+				title: '지출',
+				titleTextStyle:{
+					color: '#72c312',
+					fontName: 'Noto Sans KR',
+					fontSize: 22
+				},
+				pieHole: 0.65,
+				legend: 'none',
+				width: '100%',
+				height: '100%',
+				colors: ['#16b944', '#92d21c', '#bfde14', '#fee00c', '#ffc40e', '#ff9c0b', '#c6c6c6', '#fd7a12'],
+			};
+
+			var chart2 = new google.visualization.PieChart(document.getElementById('donutchart2'));
+			chart2.draw(data, options);
+		}
+
+		$(window).on("resize load",function(){
+			drawChart1();
+			drawChart2();
+		});
+	</script>
+	<script>
+		//<![CDATA[
+		$(document).ready(function () {
+			$('.counter').counterUp({
+				delay: 10,
+				time: 2000
+			});
+
+			//첫번째 탭
+			$('.tab-cont > .list2').data('toggle','on');
+			$('.tab-cont > p').click(function () {
+				var obj = $(this).next('.list2');
+
+				if (obj.data('toggle') == 'on') {
+					obj.css('height','auto');
+					$(this).addClass("on");
+					obj.data('toggle','off');
+				}
+				else if(obj.data('toggle') == 'off'){
+					obj.css('height', 0);
+					$(this).removeClass("on");
+					obj.data('toggle','on');
+				}
+			}).css('cursor', 'pointer');
+
+			$('.tab-cont.on').find('p').trigger('click');
+
+			$(".tab3 li").on("click", function () {
+				// $(this).addClass("on").siblings().removeClass("on");
+				// var $tab_idx = $(this).index() + 1;
+				// $('#tab-' + $tab_idx).show().siblings().not('.tab3, .donation-bg').hide();
+
+			});
+		});
+		//]]>
+
+	</script>
+</body>
+
+</html>

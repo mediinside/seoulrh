@@ -1,0 +1,17 @@
+#all { width:100%;}
+
+#header { width:950px; height:108px; margin:0 auto; }
+ #t_menu { width:950px; height:22px; margin:0 auto; text-align:right;} 
+ #logo { width:200px; height:50px; margin-top:22px; float:left;} 
+ #category { width:750px; height:86px; float:left; margin-top:22px;}
+ 
+.line { border-bottom:1px solid #dedede;}
+.div_width { width:100%;}
+
+#mainimg { width:100%; margin:0 auto; float:right;}
+
+#m_body { width:950px; margin:0 auto; float:right; margin-top:15px;}
+
+#footer { width:100%; }
+ #f_logo { width:200px; height:115px; float:left;}
+ #f_menu {width:750px; float:left;}

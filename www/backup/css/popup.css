@@ -1,0 +1,98 @@
+@charset "utf-8";
+/* sub #20130910. Revision. */
+/* popup Base ───── 팝업배치와기본 */
+
+
+body{background:#fff;margin:0;padding:0;}
+
+*{font-style: normal; font-family: Verdana, AppleGothic,"굴림",Dotum,sans-serif;}
+
+body,td,th {color:#565656;font-size:75%;line-height:1.5;}
+
+body #container{}
+body #head{}
+body #visual{}
+body #wrap{background:transparent;}
+body #body{}
+body #foot{}
+
+/* Content ───── */
+
+/* 가상치료체험 */
+#popup01{ position:absolute;left:0;top:0;width:483px;margin:0;padding:0;background:url(/img/sub/pop01_img_bg01.gif) repeat-y;vertical-align:top;text-align:left;line-height:0;}
+#popup01 .top{ position:relative; width:420px;margin:26px 0 0 30px;padding: 0 0 6px;border-bottom:2px solid #494f57;}
+#popup01 .top h2{font-size:20px;color:#1076eb;font-weight:normal;line-height:1.28;letter-spacing:-1px;background:transparent;margin:0;padding:0;}
+#popup01 .top .close{position:absolute;top:7px;right:0;width:15px; height:15px;margin:0;padding:0;}
+#popup01 .cnt{ position:relative;width:420px;height:350px;left:30px; top:4px;padding: 0 10px 0 0; margin:0; overflow:auto;line-height:1.5;}
+#popup01 .cnt_scb{ position:relative;width:435px;height:370px;left:30px; top:4px;padding: 0 10px 0 0; margin:0; overflow:auto;line-height:1.5;}
+#popup01 .foot{ position:relative;width:483px;height:15px;margin:0;padding:0;}
+#popup01 .bds01{border:1px solid #e5e5e5;}
+
+.pop_box01{border:1px solid #cfcfcf;padding:5px;margin:.5em 0; background-color:#f0f0f0;}
+
+ul.bu2_pop{list-style:none;margin:12px 0 .8em .4em;padding:0;text-align:left;}
+ul.bu2_pop li{margin:.25em 0;padding:0 0 0 12px;background:url(/img/inc/li1bg.png) no-repeat 0 2px; /* line-height:22px; */}
+ul.bu2_pop.mg li{margin:.5em 0;}
+ul.bu2_pop.mg li ul li{margin:0;}
+ul.bu2_pop ul li{background:url(/img/inc/li2bg.png) no-repeat 0 2px;}
+ul.bu2_pop ul ul li{background:url(/img/inc/li3bg.png) no-repeat 0 2px;}
+ul.bu2_pop ul ul ul li{background:url(/img/inc/li4bg.png) no-repeat 0 2px;}
+ul.bu2_pop ul, ul.bu2_pop ul ul, ul.bu2_pop ul ul ul{list-style:none;margin:.5em 0;padding:0;}
+
+/* 교육연구사업_세미나신청_수료증 팝업 */
+#pop_certi01{ position:absolute;left:0;top:0;width:630px;height:885px;margin:0;padding:0;border:1px solid #c2c2c2;vertical-align:top;text-align:left;}
+#pop_certi01 .top{ position:absolute;top:17px;right:0;width:630px;margin:0;padding:0;}
+#pop_certi01 .top .close{position:absolute;top:0;right:14px;width:19px; height:19px;margin:0;padding:0;}
+#pop_certi01 .cnt{ width:485px;height:738px;padding:7px; margin:50px auto 0;border:3px solid #186f18;background:url(/img/sub/certifi_bg01.gif) no-repeat 94% 88%;}
+#pop_certi01 .cnt2{ height:712px;padding:12px;}
+#pop_certi01 .t_txt{ font-size:11px;}
+#pop_certi01 .sbj{ margin-top:80px;font:bold 50px "돋움";color:#000;text-align:center;letter-spacing:2px;}
+#pop_certi01 .name{ margin-top:56px; font-size:19px;text-align:right;}
+#pop_certi01 .term{ margin-top:30px; font-size:13px;text-align:center;}
+#pop_certi01 .term1{ margin-top:10px; font-size:13px;text-align:center;}
+#pop_certi01 .txt01{ margin-top:20px; font-size:14px;text-align:center;line-height:2.5;}
+#pop_certi01 .day{ margin-top:90px; font-size:14px;text-align:center;}
+#pop_certi01 .f_txt{ margin-top:72px;padding:0 40px; font-size:15px;text-align:right;}
+#pop_certi01 .f_txt2{ margin-top:72px;padding:0 80px 0 25px; font-size:15px;text-align:right;}
+#pop_certi01 .sq_stamp{ z-index:10;position: relative;top:-52px;right:-3px;}
+#pop_certi01 .bt01{ text-align:center;margin:25px 0;}
+
+/* 교육연구사업_세미나신청_영수증 팝업 */
+#pop_recei01{ position:absolute;left:0;top:0;width:726px;height:579px;margin:0;padding:0;border:1px solid #c2c2c2;vertical-align:top;text-align:left;}
+#pop_recei01 .top{ position:absolute;top:18px;right:0;width:726px;margin:0;padding:0;}
+#pop_recei01 .top .close{position:absolute;top:0;right:15px;width:15px; height:15px;margin:0;padding:0;}
+#pop_recei01 .cnt{ width:634px;height:430px;padding:0; margin:50px auto 0;border:double #686868;background:url(/img/sub/receipt_vdot01.gif) repeat-y 50% 2px;}
+#pop_recei01 .cnt_01{float:left;width:281px;height:402px;margin:0;padding:14px;background:url(/img/sub/receipt_bg01.gif) no-repeat 98% 76%;}
+#pop_recei01 .cnt_02{float:left;width:281px;height:402px;margin:0 0 0 7px;;padding:14px;background:url(/img/sub/receipt_bg01.gif) no-repeat 98% 76%;}
+#pop_recei01 .t_txt{ margin-top:0;font:bold 16px "돋움";}
+#pop_recei01 .sbj{ margin-top:18px;font:bold 28px "돋움";color:#000;text-align:center;letter-spacing:2px;}
+#pop_recei01 .name{ margin:38px 0 0 40px;font:bold 14px "돋움";color:#3d3d3d;line-height:1.75;}
+#pop_recei01 .txt01{ margin-top:42px;font:normal 14px "돋움";text-align:center;}
+#pop_recei01 .day{ margin-top:-7px;font:normal 14px "돋움";text-align:center;}
+#pop_recei01 .stamp{ margin-top:17px;}
+#pop_recei01 .f_txt{ margin-top:-17px;font:normal 11px "돋움";padding:1px 0 0 9px;background:url(/img/inc/ic_info03.gif) no-repeat 1px 0;}
+#pop_recei01 .logo{ margin-top:25px;text-align:center;}
+#pop_recei01 .bt01{ text-align:center;margin:33px 0;}
+
+/* 교육연구사업_세미나신청_안내 팝업 */
+#pop_guide01{ position:absolute;left:0;top:0;width:374px;height:163px;margin:0;padding:0;border:1px solid #737373;vertical-align:top;text-align:left;}
+#pop_guide01 .close{ position:absolute;top:8px;right:8px;margin:0;padding:0;}
+#pop_guide01 .cnt{ width:354px;padding:0;margin-top:48px;font:bold 12px "돋움";text-align:center;line-height:1.5;}
+#pop_guide01 .bt01{ text-align:center;margin:30px 0;}
+
+/* 페이지 오류 팝업 */
+#pop_error01{ position:absolute;left:0;top:0;width:470px;height:280px;margin:0 auto;padding:0;font-family:Verdana,"굴림";color:#444;}
+#pop_error01 .close{ position:absolute;top:8px;right:8px;margin:0;padding:0;}
+#pop_error01 .cnt{ width:470px;height:250px;margin:0;padding:0;border:2px solid #127baa;font-size:14px;text-align:center;line-height:1.75;background:url(/img/pop/top_img01.jpg) no-repeat 0 0;}
+#pop_error01 h2{ margin:60px 0 20px;padding:0;font:bold 42px "굴림";color:#333;line-height:1.28;letter-spacing:-2px;background:transparent;}
+#pop_error01 img{ vertical-align:middle;}
+#pop_error01 .cpr01{ font-size:11px;text-align:right; margin-top:8px;padding:0;}
+
+#pop_error02{ position:relative;width:700px;height:440px;margin:30px auto;padding:0;font-family:Verdana,"굴림";color:#444;background:url(/img/pop/pop_error01_bg01.jpg) no-repeat 0 0;}
+#pop_error02 .cnt{ width:350px;height:300px;margin:0 0 0 330px;padding:100px 0 0;;font-size:14px;text-align:center;line-height:1.75;}
+#pop_error02 h2{ margin:0;padding:0;font:bold 48px "굴림";color:#333;line-height:1.28;letter-spacing:-3px;background:transparent;}
+#pop_error02 .txt{ margin_top:30px;padding:0;line-height:2;}
+#pop_error02 img{ vertical-align:middle;}
+#pop_error02 .cpr01{ font-size:10px;text-align:center; margin-top:15px;padding:0;color:#777;}
+
+

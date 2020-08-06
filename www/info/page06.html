@@ -1,0 +1,48 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once "../inc/head.php";
+$dep1 = "1";
+$dep2 = "1-1";
+$dep3 = "1-1-6";
+?>
+<!-- <style>
+	@media screen and (max-width:1023px){
+		.over-x {overflow-x:auto;}
+		.m-img {width: 100%;}
+	}
+</style> -->
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/info-bnnr6.jpg" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents mb60">
+				<div class="wd-1200">
+					<h3 class="sub-tit mb60">
+						조직도
+					</h3>
+					<div class="over-x">
+						<img class="m-img" src="/resource/images/center-map.png" alt="" style="max-width: 100%;">
+					</div>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once "../inc/head.php";
+$dep1 = "3";
+$dep2 = "3-2";
+$dep3 = "3-2-3";
+$dr_menu = "G";
+?>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/service-bnnr7.png" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="wd-1200">
+					<div class="mt60 mb-show"></div>
+					<h3 class="sub-tit">뇌신경재활 재활치료</h3>
+					<div class="text-box">
+						<p>
+							<b>
+								서울재활병원은 뇌졸중, 외상성 뇌손상 등의 원인으로 인한 후유장애가 발생한 환자의 기능적 회복은 물론,
+							</b>
+						</p>
+						<p>
+							다양한 분야의 전문가들이 함께 재활의료서비스, 심리, 사회, 경제, 가족적인 문제를 포함한 전인적 재활치료로 가정과 완전한 사회복귀를 목표로 재활치료를 실시하고
+							있습니다.
+						</p>
+					</div>
+
+					<div class="page-location">
+						<div id="btn-box" class="center">
+							<a href="page07-1.html" class="btn">물리치료</a>
+							<a href="page07-2.html" class="btn">작업치료</a>
+							<a href="page07-3.html" class="btn bg-green">언어치료</a>
+							<a href="page07-4.html" class="btn">심리치료</a>
+						</div>
+					</div>
+
+					<h3 class="sub-tit mt60">언어치료</h3>
+					<div class="text-box">
+						<p>
+							언어치료는 뇌출혈, 뇌경색으로 인한 뇌졸중, 교통사고나 낙상 등의 외상, 중독에 의한 산소부족, 종양, 감염, 치매 등의 질환에 의해서 언어에 대한 우성반구(좌반구) 손상으로 인한 실어증으로
+							인해 발생한 구어와 비구어, 신호 등을 이해하고 표현하고 기억에서 회상하는 정신적 과정에서의 장애를 치료하게 됩니다. 서울재활병원은 실어증과 관련한 다감각적인 치료와 대뇌 활성화 치료
+							및 언어훈련으로 사회적 소통이 가능하게 하여 일상으로의 복귀를 돕고 있습니다.
+						</p>
+					</div>
+					<ul class="clinic-list mb30">
+						<li>
+							<label for="">언어진단평가</label>
+							<img src="/resource/images/service073-1.jpg" alt="">
+							<div class="text">
+								<ul class="green-middot" style="margin-top: -15px;">
+									<li>수용 및 표현언어 평가</li>
+									<li>명명하기 수행평가</li>
+									<li>음성평가</li>
+									<li>조음평가</li>
+									<li>어휘력 평가</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<label for="">언어치료</label>
+							<img src="/resource/images/service073-2.jpg" alt="">
+							<div class="text">
+								<ul class="green-middot" style="margin-top: -15px;">
+									<li>조음기관 근력치료</li>
+									<li>멜로디억양치료(MIT)</li>
+									<li>시각-행동 치료(VAT)</li>
+									<li>보완대체 의사소통 기구(AAC)</li>
+									<li>음성치료</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<label for="">상담 및 교육</label>
+							<img src="/resource/images/service073-3.jpg" alt="">
+							<div class="text"></div>
+						</li>
+					</ul>
+					<div class="dp-table">
+						<div class="dp-cell ">
+							<a href="/service/page05.html" class="btn bg-green dp-block mr15">
+								<img src="/resource/images/more-detail-2.png" alt="">
+								뇌신경재활 클리닉 안내 바로가기
+							</a>
+						</div>
+						<div class="dp-cell">
+							<a href="/use/page01.html" class="btn bg-green dp-block ml15">
+								<img src="/resource/images/more-detail-2.png" alt="">
+								전문의료진 안내 바로가기
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+			<?php include_once "../inc/doc_list.php"; ?>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+	<script>
+		$(window).on("load resize", function () {
+			if ($(window).width() < 1024) {
+				$('.dp-table > div').removeClass('dp-cell').find('a').css('margin', '15px 0');
+			} else {
+				$('.dp-table > div').addClass('dp-cell').find('a').removeAttr('style');
+			}
+		});
+	</script>
+</body>
+
+</html>

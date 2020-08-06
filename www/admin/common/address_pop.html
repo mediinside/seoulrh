@@ -1,0 +1,332 @@
+<?php
+	include_once  '../../_init.php';
+
+	$title = "주소 찾기";
+	include_once ($GP -> INC_WWW."/inc.addrheader.php");
+	include_once $GP -> CLS . 'class.zipcode.php';
+	$C_Zipcode = new Zipcode();
+
+
+	$obj = $_REQUEST['obj'];
+	$obj1 = $_REQUEST['obj1'];
+	$obj2 = $_REQUEST['obj2'];
+	$obj3 = $_REQUEST['obj3'];
+	$obj4 = $_REQUEST['obj4'];
+	$obj5 = $_REQUEST['obj5'];
+?>
+<!-- 팝업사이즈 365*270 -->
+
+<div class="pop1">
+	<h1 class="pop1_t">우편번호 검색</h1>
+	<!-- pop1_cont_layout -->
+	<section class="pop1_cont_layout">
+		<div class="boxTypeSelect">
+			<ul class="TypeSelectTabs">
+				<li class="Type-B"><a href="#type-b">지번</a></li
+				><li class="Type-F"><a href="#type-f">도로명주소</a></li>
+			</ul>
+				<!--input name="show_type" type="radio" value="B" /> 지번
+				<input name="show_type" type="radio" value="F" checked="checked" /> 도로명주소-->
+			<div id="type-b" class="TypeBody">
+				<form id="frm_addr" name="frm_addr" action="?" method="post">
+					<fieldset id="div_1">
+						<legend>우편번호 검색 입력</legend>
+						<h2 class="pop1_t2"> 동/읍/리
+							<input type="text" class="input_type1" size="20" name="search_key" id="search_key" value="<?=$search_key?>" />
+							<span class="button btntype10">
+							<input type="submit" id="serach_submit" value="검색" />
+							</span> <span class="ex">(예시 : 신립, 회현)</span> </h2>
+						<!-- pop1_cont2 -->
+						<div id="result_data" class="resultList">
+						</div>
+						<!-- //pop1_cont2 -->
+					</fieldset>
+				</form>
+			</div>
+
+			<div id="type-f" class="TypeBody">
+				<form id="frm_addr2" name="frm_addr" action="?" method="post">
+					<fieldset id="div_2">
+						<div class="layer_box1">
+							<ul id="searchType" class="input_list">
+								<li class="Type2-D"><a href="#guideTxtDong">동(읍/면) + 지번</a></li
+								><li class="Type2-R"><a href="#guideTxtRoad">도로명주소 + 건물번호</a></li
+								><li class="Type2-B"><a href="#guideTxtBdnm">건물명(아파트명)</a></li>
+							</ul>
+							<div id="guideTxtDong">
+								<div class="boxBg">
+									<p><strong>검색방법 : 시/도 및 시/군/구 선택 후 동(읍/면) + 지번 입력</strong><br />
+									예) 역삼동  737 &rarr; 서울특별시 선택 후  역삼동 (동명) + 737 (지번)</p>
+									<p class="sm_info">* 도로명 주소가 검색되지 않는 경우는 행정안전부 새주소안내시스템<br />
+									(<a class="eng" href="http://www.juso.go.kr" target="_blank">http://www.juso.go.kr</a>) 에서 확인하시기 바랍니다.</p>
+								</div>
+							</div>
+							<div id="guideTxtRoad">
+								<div class="boxBg">
+									<p><strong>검색방법 : 시/도 및 시/군/구 선택 후 도로명과 건물번호 입력</strong><br />
+									예) 테헤란로(도로명) + 152 (건물번호)</p>
+									<p class="sm_info">* 도로명 주소가 검색되지 않는 경우는 행정안전부 새주소안내시스템<br />
+									(<a class="eng" href="http://www.juso.go.kr" target="_blank">http://www.juso.go.kr</a>) 에서 확인하시기 바랍니다.</p>
+								</div>
+							</div>
+							<div id="guideTxtBdnm">
+								<div class="boxBg">
+									<p><strong>검색방법 : 시/도 및 시/군/구 선택 후 건물명 입력</strong><br />
+									예) 강남파이낸스센터 (건물명)</p>
+									<p class="sm_info">* 도로명 주소가 검색되지 않는 경우는 행정안전부 새주소안내시스템<br />
+									(<a class="eng" href="http://www.juso.go.kr" target="_blank">http://www.juso.go.kr</a>) 에서 확인하시기 바랍니다.</p>
+								</div>
+							</div>
+						</div>
+						<table class="InputTable">
+						<colgroup>
+							<col width="50" /><col width="123" /><col width="50" /><col />
+						</colgroup>
+						<tbody>
+							<tr>
+								<th>시도</th>
+								<td>
+									<select class="selbox" id="sido" name="sido">
+										<option value="">전체</option>
+										<option value="강원">강원도</option>
+										<option value="경기">경기도</option>
+										<option value="경남">경상남도</option>
+										<option value="경북">경상북도</option>
+										<option value="광주">광주광역시</option>
+										<option value="대구">대구광역시</option>
+										<option value="대전">대전광역시</option>
+										<option value="부산">부산광역시</option>
+										<option value="서울">서울특별시</option>
+										<option value="세종">세종특별자치시</option>
+										<option value="울산">울산광역시</option>
+										<option value="인천">인천광역시</option>
+										<option value="전남">전라남도</option>
+										<option value="전북">전라북도</option>
+										<option value="제주">제주특별자치도</option>
+										<option value="충남">충청남도</option>
+										<option value="충북">충청북도</option>
+									</select>
+								</td>
+								<th>시군구</th>
+								<td>
+									<select class="selbox" id="gugun" name="gugun">
+										<option value="">::: 선택 :::</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<th>검색어</th>
+								<td colspan="3">
+									<div id="divDongNameSearch">
+										<span><input type="text" name="txtDongName" id="txtDongName" class="input_txt" value="동(읍/면)"  onblur="if (this.value == '') {this.value = '동(읍/면)';}" onfocus="if (this.value == '동(읍/면)') {this.value = '';}"></span><span>+</span><span><input type="text"  name="txtDongNameJibunNo" id="txtDongNameJibunNo" class="input_txt" value="지번"  onblur="if (this.value == '') {this.value = '지번';}" onfocus="if (this.value == '지번') {this.value = '';}"></span>
+									</div>
+									<div id="divRoadNameSearch">
+										<span><input type="text" name="txtRoadName" id="txtRoadName" class="input_txt" value="도로명" onblur="if (this.value == '') {this.value = '도로명';}" onfocus="if (this.value == '도로명') {this.value = '';}"></span><span>+</span><span><input type="text" name="txtRoadNameBldgNo" id="txtRoadNameBldgNo" class="input_txt" value="건물번호" onblur="if (this.value == '') {this.value = '건물번호';}" onfocus="if (this.value == '건물번호') {this.value = '';}"></span>
+									</div>
+									<div id="divBldgNameSearch">
+										<input type="text" name="txtRoadNameBldgNm" id="txtRoadNameBldgNm" class="input_txt w151" value="건물명(아파트명)" onblur="if (this.value == '') {this.value = '건물명(아파트명)';}" onfocus="if (this.value == '건물명(아파트명)') {this.value = '';}">
+									</div>
+									<div class="boxBtnSearch">
+										<span class="button btntype10">
+										<input type="submit" id="serach_submit_new" value="검색" />
+										</span>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+						</table>
+						<!-- pop1_cont2 -->
+						<div id="result_data_new" class="resultList">
+						</div>
+						<!-- //pop1_cont2 -->
+					</fieldset>
+					<input type="hidden" name="rdtype" id="rdtype" value="R" />
+				</form>
+        
+			</div>
+      
+		</div>
+    <div style="margin:0 auto; text-align:center; padding-top:15px;">
+      <button id="img_cancel" class="btnSearch ">닫기</button>
+    </div>
+	</section>
+	<!-- //pop1_cont_layout -->
+</div>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		//엔터키 막기
+		$("*").keypress(function(e){
+			if(e.keyCode==13)
+			{
+				$('#serach_submit').click();
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		});
+		
+		$('#img_cancel').click(function(){
+				parent.modalclose();				
+		});		
+
+		$('#sido').change(function(){
+			var val = $(this).val();
+
+			var data = "sido=" + val;
+
+			$.ajax({
+				url: "/inc/gugun_json.php",
+				type: 'POST',
+				data: data,
+				dataType :"json",
+				contentTypeString : "text/xml; charset=utf-8",
+				success: function(data){
+					$('#gugun').html('');
+					$('#gugun').append("<option value=''>::: 선택 :::</option>");
+					if (data.msg) {
+						$.each(data.result, function(i) {
+								$('#gugun').append("<option value='" + data.result[i]['zc_gugun'] + "'>"  + data.result[i]['zc_gugun'] + " </option>");
+						});
+					}
+				}
+			});
+
+		});
+
+		$('#serach_submit_new').click(function(){
+
+			var data = $('#frm_addr2').serialize();
+
+			$.ajax({
+				url: "/inc/address_data2.php",
+				type: 'POST',
+				data: data,
+				contentTypeString : "text/xml; charset=utf-8",
+				success: function(data){
+					$('#result_data_new').html('');
+					$('#result_data_new').html(data);
+				}
+			});
+			return false;
+		});
+
+/*
+		$("input:radio[name='rdtype']").click(function(){
+				var val = $(this).val();
+
+				$("#divRoadNameSearch").hide();
+				$("#divBldgNameSearch").hide();
+				$("#divDongNameSearch").hide();
+				$("#guideTxtDong").hide();
+				$("#guideTxtRoad").hide();
+				$("#guideTxtBdnm").hide();
+
+				if(val == "D") {
+					$("#divDongNameSearch").show();
+					$("#guideTxtDong").show();
+				}else if(val == "R") {
+					$("#divRoadNameSearch").show();
+					$("#guideTxtRoad").show();
+				}else {
+					$("#divBldgNameSearch").show();
+					$("#guideTxtBdnm").show();
+				}
+		});
+*/
+
+		$("#divDongNameSearch").hide();
+		$("#divRoadNameSearch").show();
+		$("#divBldgNameSearch").hide();
+		$("#guideTxtDong").hide();
+		$("#guideTxtRoad").show();
+		$("#guideTxtBdnm").hide();
+
+		$('.boxTypeSelect').tabs();
+		$('.layer_box1').tabs({active:1});
+		$('.Type2-D').click(function(){
+			$("#divDongNameSearch").show();
+			$("#divRoadNameSearch").hide();
+			$("#divBldgNameSearch").hide();			
+			$("#guideTxtDong").show();
+			$("#guideTxtRoad").hide();
+			$("#guideTxtBdnm").hide();
+			$('#rdtype').val('D');
+		});
+		$('.Type2-R').click(function(){
+			$("#divDongNameSearch").hide();
+			$("#divRoadNameSearch").show();
+			$("#divBldgNameSearch").hide();			
+			$("#guideTxtDong").hide();
+			$("#guideTxtRoad").show();
+			$("#guideTxtBdnm").hide();
+			$('#rdtype').val('R');
+		});
+		$('.Type2-B').click(function(){
+			$("#divDongNameSearch").hide();
+			$("#divRoadNameSearch").hide();
+			$("#divBldgNameSearch").show();			
+			$("#guideTxtDong").hide();
+			$("#guideTxtRoad").hide();
+			$("#guideTxtBdnm").show();
+			$('#rdtype').val('B');
+		});
+
+		$('#search_key').focus();
+
+		$('#serach_submit').click(function(){
+
+
+			if($('#search_key').val().replace(/\s/g, "") == '') {
+				alert('동/면/리를 입력하세요.');
+				$('#search_key').focus();
+				return false;
+			}
+
+			var data = "search_key=" + $('#search_key').val();
+
+			$.ajax({
+				url: "/inc/address_data1.php",
+				type: 'POST',
+				data: data,
+				contentTypeString : "text/xml; charset=utf-8",
+				success: function(data){
+					$('#result_data').html('');
+					$('#result_data').html(data);
+				}
+			});
+			return false;
+		});
+
+	});
+
+	function parent_addr(result,type) {
+			var rst = result.split("^");
+
+			if(type == "B") {
+				var zipAr = rst[0].split("-");
+				var zip1 = zipAr[0];
+				var zip2 = zipAr[1];
+
+				$(parent.document).find('#<?=$obj?>').val(zip1);
+				$(parent.document).find('#<?=$obj1?>').val(zip2);
+				$(parent.document).find('#<?=$obj2?>').val(rst[1]);
+				$(parent.document).find('#<?=$obj3?>').focus();
+			} else{
+				var zip1 = rst[0].substring(0,3);
+				var zip2 = rst[0].substring(3,6);
+
+				$(parent.document).find('#<?=$obj?>').val(zip1);
+				$(parent.document).find('#<?=$obj1?>').val(zip2);
+				$(parent.document).find('#<?=$obj2?>').val(rst[2]);
+				$(parent.document).find('#<?=$obj4?>').val(rst[1]);
+				$(parent.document).find('#<?=$obj5?>').focus();
+			}
+
+			//window.close();
+			parent.modalclose();
+	}
+</script>
+</body></html>

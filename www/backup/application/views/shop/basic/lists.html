@@ -1,0 +1,26 @@
+<div id="list_cont" class="fL mg10">
+	<form name="fshop" id="fshop" method="post">
+	<input type="hidden" name="idx" id="idx" value="" />
+	<input type="hidden" name="mode" id="mode" value="cart" />
+	<input type="hidden" name="quantity" id="quantity" value="1" />
+	<input type="hidden" name="option" id="option" value="" />
+
+	<? foreach($list AS $k => $o) : ?>
+	<div id="list_item" class="shop_list <?=$k%4==3?'right':'left'?>">
+		<p class="thumnail_"><a href="<?=$o['href']?>"><img src="/useful/thumbnail/162x224/ki_shop/<?=$o['pd_id']?>/1?no=<?=$o['dimg']?>" /></a></p>
+		<p class="title_"><a href="<?=$o['href']?>"><strong><?=$o['pd_name']?></strong></a></p>
+		<p class="price_"><span id="price<?=$o['pd_id']?>"><?=$o['price']?></span></p>
+		<!-- <p class="bt_"><a href="<?=$o['href']?>"><img src="/img/shop/btn_detail.gif" alt="상세보기" /></a></p> -->
+	</div>
+	<? endforeach; ?>
+
+	</form>
+
+</div>
+
+<? if (!$list) : ?>
+<div class="center"><p class='none'>등록된 자료가 없습니다.</p></div>
+<? endif; ?>
+
+<br class="clear" /><br /><br />
+<div style="clear:both; border-top:1px solid #e5e5e5; padding-top:10px; text-align:center;"><?=$paging?></div>

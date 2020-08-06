@@ -1,0 +1,184 @@
+<?php
+//error_reporting(E_ALL);
+//ini_set("display_errors", 1);
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once $GP -> INC_WWW . '/count_inc.php';
+include_once "../inc/head.php";
+
+include_once($GP->CLS."class.list.php");
+include_once($GP -> CLS."/class.donation.php");
+$C_ListClass 	= new ListClass;
+$C_donation 		= new donation;
+
+
+$args = array();
+//	$args['show_row'] = 9;
+
+//$args['do_idx'] = $do_idx;
+$args['orderby'] = " do_day DESC";
+$args['do_type'] = "do_3";
+$args['q_group'] = "do_year";
+$data = "";
+$data = $C_donation->donation3_List(array_merge($_GET,$_POST,$args));
+$data_list 		= $data['data'];
+$data_list_cnt 	= count($data_list);
+
+
+$dep1 = "5";
+$dep2 = "5-1";
+$dep3 = "5-1-2";
+
+//echo $data_list_cnt;
+?>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/donation-bnnr1.jpg" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="wd-1200">
+					<div class="donation-bg">
+						<img src="/resource/images/donation-bg-01.png" alt="">
+						<h3>
+							서울재활병원<br>
+							나눔이야기 -
+							<small class="mb-hide">
+								서울재활병원은 후원금을 투명하게 운영하며, 모법인 엔젤스헤이븐은 외부 회계법인 감사,<br class="mb-hide">
+								세무서, 구청, 보건복지부 등 다양한 정부 기관 감사도 진행합니다.
+							</small>
+						</h3>
+					</div>
+					<ul id="tab-nav" class="tab3">
+						<li>
+							<a href="/donation/page02-1.html#tab-nav">후원금 수입· 지출</a>
+						</li>
+						<li class="on">
+							<a href="/donation/page02-2.html#tab-nav">기부자</a>
+						</li>
+						<!--li>
+							<a href="/donation/page02-3.html#tab-nav">직원 헌금</a>
+						</li-->
+					</ul>
+					<div id="tab-1" class="tab-box">
+                    <?php
+                        $dummy = 1;
+                        for ($i = 0 ; $i < $data_list_cnt ; $i++) {
+                            $do_idx 		= $data_list[$i]['do_idx'];
+                            $do_year 		= $data_list[$i]['do_year'];
+                            if($i == 0 ){
+                                $class = "on";
+                            }
+                            else{
+                                $class = "";
+                            }
+
+                    ?>
+						<div class="tab-cont">
+							<p class="on" style="cursor: pointer;">
+								<a href="#none"><?=$do_year?></a>
+							</p>
+							<div class="board-list list bg-c01">
+								<table class="bordered">
+									<caption class="dpn">2018년 연혁</caption>
+
+									<thead>
+										<tr class="bg-gray">
+											<th class="text-center border-t">구분</th>
+											<th class="text-center border-t">후원자</th>
+											<th class="text-center border-t">후원금(품)</th>
+										</tr>
+									</thead>
+									<tbody>
+                                    <?php
+                                    $args = "";
+                                    $args['do_year'] = $do_year ;
+                                    $args['do_type'] = "do_3";
+                                    //print_r($args);
+                                    $data_day = "";
+                                    $data_day = $C_donation->donation3_List(array_merge($_GET,$_POST,$args));
+                                    $data_list_day 		= $data_day['data'];
+                                    $data_list_cnt_day 	= count($data_list_day);
+                                    $dummy = 0;
+                                    for ($j = 0 ; $j < $data_list_cnt_day ; $j++) {
+                                        $do_idx 		= $data_list_day[$j]['do_idx'];
+                                        $do_year 		= $data_list_day[$j]['do_year'];
+                                        $do_day		= $data_list_day[$j]['do_day'];
+                                        $do_gubun		= $data_list_day[$j]['do_gubun'];
+                                        $do_content		= nl2Br($data_list_day[$j]['do_content']);
+                                        $dummy += 1;
+                                     
+
+                                        if(is_numeric($do_content)){
+                                            $do_content = number_format($do_content);
+                                        }
+                                        else{
+                                            $do_content = $do_content;
+                                        }
+                                    ?>
+										<tr>
+											<td><?=$do_gubun?></td>
+                                            <td><?=$do_day?></td>
+                                            <td><?=$do_content?></td>
+										</tr>
+                                    <? } ?>
+									</tbody>
+								</table>
+							</div>
+						</div>
+                     <? } ?>
+					</div>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+	<script>
+		//<![CDATA[
+		$(document).ready(function () {
+
+			$(".tab-cont > .list").hide();
+			$('.tab-cont > p').click(function () {
+				var obj = $(this).next();
+
+				if (obj.css('display') == 'none') {
+
+					obj.slideDown();
+					$(this).addClass("on").parent().siblings().children('p').removeClass('on').next().hide();
+				}
+				else {
+					obj.slideUp();
+					$(this).removeClass("on");
+				}
+			}).css('cursor', 'pointer');
+
+			$('.tab-cont').eq(0).find('p').trigger('click');
+
+
+			$("#tab-1").show();
+			$(".tab3 li").on("click", function () {
+				// $(this).addClass("on").siblings().removeClass("on");
+				// var $tab_idx = $(this).index() + 1;
+				// $('#tab-' + $tab_idx).show().siblings().not('.tab3, .donation-bg').hide();
+
+			});
+		});
+		//]]>
+
+	</script>
+</body>
+
+</html>

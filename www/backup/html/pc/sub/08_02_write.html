@@ -1,0 +1,99 @@
+<link rel="stylesheet" type="text/css" href="/css/board.css" />
+
+<? include DOC_ROOT.'/include/08_inc.php'; ?>
+<br />
+
+<h3 class="mgt_m50"><img src="/img/sub/08_02_h3_txt01.gif" alt="채용안내" /></h3>
+
+<span class="info4">이력서, 자기소개, 성적증명서 등 해당되는 서류를 첨부해 주시기 바랍니다.</span>
+
+<span class="info4">채용관련 질문은 <em>이메일</em>로 해주시기 바랍니다.</span>
+
+<!-- begin boardWrite -->
+<div class="board">
+  <div class="right fs11 mgt_m_20"><img src="/img/board/ico_est.gif" width="3" height="11" alt="" class="vam" /> 표시는 필수사항 입니다.</div>
+  <div class="title w98" style="height:0px;"></div>
+  
+  <!-- 쓰기폼 -->
+  <form action="?">
+    <!-- fieldset -->
+    <fieldset>
+      <legend class="dpn">쓰기폼</legend>
+      <table border="1" class="write3" summary="멀티게시판 쓰기 폼">
+        <col style="width: 20%;" />
+        <col />
+        <tbody>
+          <tr>
+            <th scope="row" class="item"><label for="tname">이름</label></th>
+            <td><input type="text" name="tname" id="tname" value="" class="text w70" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="item"><label for="tname">연락처</label></th>
+            <td><select name="hp1" OnChange="if(this.value) frm.hp2.focus();" class="put_write" style="width:80px;">
+                <option value="">선택</option>
+                <option value="010">010</option>
+                <option value="011">011</option>
+                <option value="016">016</option>
+                <option value="017">017</option>
+                <option value="018">018</option>
+                <option value="019">019</option>
+              </select>
+              -
+              <input type="text" name="number1" id="number1" value="" class="text" style="width:80px;" />
+              -
+              <input type="text" name="number2" id="number2" value="" class="text" style="width:80px;" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="item"><label for="tmail">이메일</label></th>
+            <td><input type="text" name="tmail" id="tmail" value="" class="text w70" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="item"><label for="tfile01">이력서</label></th>
+            <td><input type="file" name="tfile01" id="tfile01" value="" class="file w70" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="item"><label for="tfile02">자기소개서</label></th>
+            <td><input type="file" name="tfile02" id="tfile02" value="" class="file w70" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="item"><label for="tfile03">성적증명서</label></th>
+            <td><input type="file" name="tfile03" id="tfile03" value="" class="file w70" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="item"><label for="tfile04">졸업증명서</label></th>
+            <td><input type="file" name="tfile04" id="tfile04" value="" class="file w70" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="item"><label for="tfile05">주민등록등본</label></th>
+            <td><input type="file" name="tfile05" id="tfile05" value="" class="file w70" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="item"><label for="tfile06">가족관계증명서</label></th>
+            <td><input type="file" name="tfile06" id="tfile06" value="" class="file w70" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="item bin"><label for="tfile07">경력증명서</label></th>
+            <td><input type="file" name="tfile07" id="tfile07" value="" class="file w70" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="item bin"><label for="tfile08">면허증(자격증)</label></th>
+            <td><input type="file" name="tfile08" id="tfile08" value="" class="file w70" /> &nbsp; <em class="tdu">파일추가+</em></td>
+          </tr>
+        </tbody>
+      </table>
+    </fieldset>
+    <!-- //fieldset --> 
+    
+    <!-- infomenu -->
+    <div class="infomenu2 page">
+      <div class="center">
+        <a href="?"><img src="/img/board/btn_register.gif" width="77" height="26" alt="등록" /></a> &nbsp; &nbsp;<a href="?"><img src="/img/board/btn_cancel.gif" width="77" height="26" alt="취소" /></a>
+      </div>
+    </div>
+    <!-- //infomenu -->
+    
+  </form>
+  <!-- //쓰기폼 --> 
+  
+</div>
+<!-- end boardWrite -->

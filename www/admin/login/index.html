@@ -1,0 +1,33 @@
+<?php
+	include_once("../../_init.php");
+	include_once($GP -> INC_ADM_PATH."/head.php");
+?>
+<body class="loginWrap">
+<script type="text/javascript" src="/admin/js/jquery.validate.js"></script>
+<script type="text/javascript" src="/admin/js/login.check.js"></script>
+<script type='text/javascript' src='/admin/js/jquery.alphanumeric.js'></script>
+<div class="Wrap">
+	<div class="wrapLoginBox">
+		<h1><?=$GP-> WEB_TITLE?></h1>
+		<div class="boxLoginInput">
+			<form name="base_form" id="base_form" method="POST" action="?">
+				<input type="hidden" name="bakurl" value="<?=$_GET['bakurl']?>">
+				<input type="hidden" name="mode" id="mode" value="login" />
+				<p class="loginId">
+					<label for="loginAdminId">ID</label><input type="text" name="loginAdminId" id="loginAdminId" placeholder="User ID" />
+				</p>
+				<p class="loginPw">
+					<label for="loginAdminpw">Password</label><input type="password" name="loginAdminpw" id="loginAdminpw" placeholder="Password" />
+				</p>
+				<div class="boxOkBtn">
+					<button type="submit" class="btnOk">Login</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="loginFooter">
+		<p><?=$GP-> WEB_TITLE?></p>
+	</div>
+</div>
+</body>
+</html>

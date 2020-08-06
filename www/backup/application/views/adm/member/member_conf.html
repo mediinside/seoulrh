@@ -1,0 +1,172 @@
+<h2><?=$_TITLE_?></h2>
+
+<form id='fconf' name='fconf' method='post'>
+
+<ul id='form_cont'>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 마이페이지 정보 입력</h3>
+		<table id="tab_buttons">
+			<tr>
+				<td><button type="button" class="w85 btn_simp active" onclick="show_table(this,'conf_default');">기본설정</button></td>
+				<td><button type="button" class="w85 btn_simp" onclick="show_table(this,'conf_login');">로그인</button></td>
+				<td><button type="button" class="w90 btn_simp" onclick="show_table(this,'conf_idpw');">ID/PW찾기</button></td>
+				<td><button type="button" class="w85 btn_simp" onclick="show_table(this,'conf_join');">회원가입</button></td>
+				<td><button type="button" class="w85 btn_simp" onclick="show_table(this,'conf_confirm');">PW확인</button></td>
+				<td><button type="button" class="w85 btn_simp" onclick="show_table(this,'conf_password');">PW변경</button></td>
+				<td><button type="button" class="w85 btn_simp" onclick="show_table(this,'conf_modify');">정보수정</button></td>
+				<td><button type="button" class="w90 btn_simp" onclick="show_table(this,'conf_point');">포인트조회</button></td>
+				<td><button type="button" class="w90 btn_simp" onclick="show_table(this,'conf_leave');">회원탈퇴</button></td>
+			</tr>
+		</table>
+		<div id="tab_content">
+			<table width='100%' cellpadding='0' cellspacing='0' id="conf_default" class="con_box1 tab_layer">
+				<tr>
+					<th>스킨</th>
+					<td>
+						<?=$sel_skins?>
+					</td>
+				</tr>
+				<tr>
+					<th>사이트 이용약관</th>
+					<td><textarea name='mcf_stipulation' class='ed' cols='70' rows='10'><?=$conf['mcf_stipulation']?></textarea></td>
+				</tr>
+				<tr>
+					<th>개인정보 보호정책</th>
+					<td><textarea name='mcf_privacy' class='ed' cols='70' rows='10'><?=$conf['mcf_privacy']?></textarea></td>
+				</tr>
+			</table>
+			<table width='100%' cellpadding='0' cellspacing='0' id="conf_login" class="con_box1 hide tab_layer">
+				<tr>
+					<th>파라메터</th>
+					<td>
+						<ul id="login_param_list"></ul>
+						<input type="button" class="btn_simp" onclick="add_param('login');" value=" + 추가 "/>
+					</td>
+				</tr>
+			</table>
+			<table width='100%' cellpadding='0' cellspacing='0' id="conf_idpw" class="con_box1 hide tab_layer">
+				<tr>
+					<th>파라메터</th>
+					<td>
+						<ul id="idpw_param_list"></ul>
+						<input type="button" class="btn_simp" onclick="add_param('idpw');" value=" + 추가 "/>
+					</td>
+				</tr>
+			</table>
+			<table width='100%' cellpadding='0' cellspacing='0' id="conf_join" class="con_box1 hide tab_layer">
+				<tr>
+					<th>파라메터</th>
+					<td>
+						<ul id="join_param_list"></ul>
+						<input type="button" class="btn_simp" onclick="add_param('join');" value=" + 추가 "/>
+					</td>
+				</tr>
+			</table>
+			<table width='100%' cellpadding='0' cellspacing='0' id="conf_confirm" class="con_box1 hide tab_layer">
+				<tr>
+					<th>파라메터</th>
+					<td>
+						<ul id="confirm_param_list"></ul>
+						<input type="button" class="btn_simp" onclick="add_param('confirm');" value=" + 추가 "/>
+					</td>
+				</tr>
+			</table>
+			<table width='100%' cellpadding='0' cellspacing='0' id="conf_password" class="con_box1 hide tab_layer">
+				<tr>
+					<th>파라메터</th>
+					<td>
+						<ul id="password_param_list"></ul>
+						<input type="button" class="btn_simp" onclick="add_param('password');" value=" + 추가 "/>
+					</td>
+				</tr>
+			</table>
+			<table width='100%' cellpadding='0' cellspacing='0' id="conf_modify" class="con_box1 hide tab_layer">
+				<tr>
+					<th>파라메터</th>
+					<td>
+						<ul id="modify_param_list"></ul>
+						<input type="button" class="btn_simp" onclick="add_param('modify');" value=" + 추가 "/>
+					</td>
+				</tr>
+			</table>
+			<table width='100%' cellpadding='0' cellspacing='0' id="conf_point" class="con_box1 hide tab_layer">
+				<tr>
+					<th>파라메터</th>
+					<td>
+						<ul id="point_param_list"></ul>
+						<input type="button" class="btn_simp" onclick="add_param('point');" value=" + 추가 "/>
+					</td>
+				</tr>
+			</table>
+			<table width='100%' cellpadding='0' cellspacing='0' id="conf_leave" class="con_box1 hide tab_layer">
+				<tr>
+					<th>파라메터</th>
+					<td>
+						<ul id="leave_param_list"></ul>
+						<input type="button" class="btn_simp" onclick="add_param('leave');" value=" + 추가 "/>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</li>
+</ul>
+
+<p class='center bottom'> 
+	<input type='submit' id='btn_submit' class='btn' value='  모두 저장  '/>
+</p>
+</form>
+
+<div id='loading'></div>
+
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#fconf').validate({
+		rules: {
+			cf_domain: 'required',
+			cf_title: 'required',
+			cf_webmaster: { required:true, email:true }
+		},
+		messages: {
+			cf_domain: '도메인이 입력되지 않았습니다.',
+			cf_title: '사이트명이 입력되지 않았습니다.',
+			cf_webmaster: { required:'자동발송 메일주소가 입력되지 않았습니다.', email:'메일 형식이 올바르지 않습니다.' }
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+		    f.submit();
+		}
+	});
+
+	<? foreach(array('login','idpw','join','confirm','password','modify','point','leave') AS $fld) : ?>
+	<? foreach($conf[$fld .'_param'] AS $key => $val) : ?>
+	add_param('<?=$fld?>', '<?=$key?>', '<?=$val?>');
+	<? endforeach; ?>
+	<? endforeach; ?>
+});
+
+// 파라메터 추가
+function add_param(fld, name, value) {
+	name = name != undefined ? name : '';
+	value = value != undefined ? value : '';
+	
+	var _html =	'<dl><dt style="width:100px;">변수명</dt>'+
+		'<dd class="inline" style="width:130px;"><input type="text" class="ed imeDis" size="15" name="mcf_'+ fld +'_param[name][]" value="'+ name +'"/></dd>'+
+		'<dt style="width:100px;">값</dt>'+
+		'<dd><input type="text" class="ed imeDis" size="25" name="mcf_'+ fld +'_param[value][]" value="'+ value +'"/> '+
+		'<input type="button" class="btn_simp" onclick="remove_child($(this).parent());" value=" - 제거 "/>'+
+		'</dd></dl>';
+	
+	$('#'+ fld +'_param_list').append(_html);
+}
+//]]>
+</script>

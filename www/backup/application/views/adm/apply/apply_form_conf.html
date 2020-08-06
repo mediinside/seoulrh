@@ -1,0 +1,302 @@
+<h2><?=$_TITLE_?></h2>
+
+<form id='fwrite' name='fwrite' method='post' action='<?=$path?>/apply/form_conf'>
+<input type='hidden' name='w'    value='<?=$w?>' />
+<input type='hidden' name='token' value='<?=$token?>' />
+
+<ul id="form_cont">
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 신청서 정보</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+			<tr>
+				<th>신청서 ID</th>
+				<td>
+					
+					<? if($w) : ?>
+					<span class="b"><?=$row['apc_id']?></span>
+					<input type='hidden' name='apc_id' value='<?=$row['apc_id']?>' />
+					<? else : ?>
+					<input type='text' name='apc_id' class='ed' size='20' maxlength='20' value='<?=$row['apc_id']?>'/>
+					<? endif; ?>
+					
+				</td>
+			</tr>
+			<tr>
+				<th>신청서 이름</th>
+				<td>
+					<input type='text' name='apc_name' class='ed' size='62' maxlength='20' value='<?=$row['apc_name']?>'/>
+				</td>
+			</tr>
+			<tr>
+				<th>레이아웃</th>
+				<td>
+					<?=$layout_select?>
+				</td>
+			</tr>
+			<tr>
+				<th>모바일 레이아웃</th>
+				<td>
+					<?=$layout_select_m?>
+				</td>
+			</tr>
+			<tr>
+				<th>이메일 발송</th>
+				<td>
+					<ul id="email_list"></ul>
+					<input type="button" class="btn_simp" onclick="add_email('','');" value=" + 추가 "/>
+				</td>
+			</tr>
+			<tr>
+				<th>상태값 설정</th>
+				<td>
+					<ul id="status_list"></ul>
+					<input type="button" class="btn_simp" onclick="add_status('','');" value=" + 추가 "/>
+				</td>
+			</tr>
+			
+			<? if($w) : ?>
+			<tr>
+				<th>등록일</th>
+				<td><?=$row['apc_regdate']?></td>
+			</tr>
+			<tr>
+				<th>최종수정일</th>
+				<td><?=$row['apc_mdydate']?></td>
+			</tr>
+			<? endif; ?>
+			
+		</table>
+	</li>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 디자인 설정</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+			<tr>
+				<th>상단 HTML</th>
+				<td>
+					<textarea class="w100p" rows="8" name="apc_top_html"><?=htmlentities($row['apc_top_html'])?></textarea>
+				</td>
+			</tr>
+			<tr>
+				<th>하단 HTML</th>
+				<td>
+					<textarea class="w100p" rows="8" name="apc_bottom_html"><?=htmlentities($row['apc_bottom_html'])?></textarea>
+				</td>
+			</tr>			
+		</table>
+	</li>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 파라메터 설정</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+			<tr>
+				<td>
+					<ul id="param_list"></ul>
+					<div class="pd10 center"><input type="button" class="btn_simp" onclick="add_param();" value=" + 추가 "/></div>
+				</td>
+			</tr>
+		</table>
+	</li>
+	<li id='list_cont'>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 신청서 양식</h3>
+		<table id="field_list" width="100%" cellpadding="0" cellspacing="0" class="con_box2">
+			<colgroup>
+	            <col width="120"/>
+	            <col width="130"/>
+	            <col width="120"/>
+	            <col width="*"/>
+				<col width="50"/>
+				<col width="50"/>
+				<col width="50"/>
+	            <col width="80"/>
+				<col width="60"/>
+			</colgroup>
+			
+			<tr>
+	            <th>필드 ID</th>
+	            <th>항목 이름</th>
+	            <th>입력 형식</th>
+	            <th>선택 옵션/값</th>
+           	    <th>우측</th>
+           	    <th>필수</th>
+           	    <th>리스팅</th>
+	            <th>등록일</th>
+				<th class="nobg"><?=icon("추가", "javascript:add_field(++tcnt);")?></th>
+			</tr>
+			
+		</table>
+		<p class="red mT10 right">* 입력 형식과 선택 옵션/값을 변경할 경우, 기등록된 신청서의 해당 항목 데이터 손실이 있을 수 있습니다.</p>
+	</li>
+</ul>
+
+<p class='center bottom'>
+	<input type='submit' id='btn_submit' class='btn' value='  확  인  ' />&nbsp;
+	<input type='button' class='btn' value='  목  록  ' onclick="document.location.href='<?=$path?>/apply/lists_conf';" />
+</p>
+</form>
+
+<div id='loading'></div>
+
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function() {
+	$('#fwrite').validate({
+		rules: {
+			apc_name: 'required'
+		},
+		messages: {
+			apc_name: '신청서 이름을 입력하세요.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+		    f.submit();
+		}
+	});
+
+	<? foreach($row['form'] AS $key => $val) : ?>
+		add_field(<?=$key?>);
+		$('input[name="apf_id[]"]').eq(<?=$key?>).val('<?=$val['apf_id']?>');
+		$('input[name="apf_field[]"]').eq(<?=$key?>).val('<?=$val['apf_field']?>');
+		$('input[name="apf_field[]"]').eq(<?=$key?>).attr('readonly', 'readonly');
+		$('input[name="apf_field[]"]').eq(<?=$key?>).css('border', '0');
+		$('input[name="apf_field[]"]').eq(<?=$key?>).focus(function(){ $('body').focus(); });
+		$('input[name="apf_name[]"]').eq(<?=$key?>).val('<?=$val['apf_name']?>');
+		$('select[name="apf_type[]"]').eq(<?=$key?>).val('<?=$val['apf_type']?>');
+		$('.regdate').eq(<?=$key?>).html('<?=substr($val['apf_regdate'],0,10)?>');
+		
+		<? // 체크박스는 값이 없으면 빈배열이 채워지지 않고 넘겨지므로 조금 다르게 처리함 ?>
+		$('input[name="apf_align_r[<?=$key?>]"]').attr('checked', <?=$val['apf_align_r']?'true':'false'?>);
+		$('input[name="apf_required[<?=$key?>]"]').attr('checked', <?=$val['apf_required']?'true':'false'?>);
+		$('input[name="apf_listing[<?=$key?>]"]').attr('checked', <?=$val['apf_listing']?'true':'false'?>);
+		
+		<? if(is_array($val['options'])) : ?>
+			<? foreach($val['options'] AS $k => $v) : ?>
+				var insert_form = '';
+				
+				if('<?=$val['apf_type']?>' == 'hidden') {
+					$('#field_list .value_form').eq(<?=$key?>).find('input').val('<?=$v?>');
+				}
+				else {
+					add_option($('#field_list .option_form').eq(<?=$key?>), '<?=$v?>');
+				}
+			<? endforeach; ?>
+		<? endif; ?>
+	
+		show_option($('select[name="apf_type[]"]').eq(<?=$key?>));
+	<? endforeach; ?>
+
+	<? foreach($row['email'] AS $val) : ?>
+		add_email('<?=$val?>');
+	<? endforeach; ?>
+
+	<? foreach($row['status'] AS $val) : ?>
+		add_status('<?=$val?>');
+	<? endforeach; ?>
+});
+
+var tcnt = <?=(count($row['form'])-1)?>;
+function add_field(cnt){
+	var _html = '<tr>'+
+        '<td>'+
+        '<input type="text" class="ed" name="apf_field[]" size="15" maxlength="25" value=""/>'+
+        '</td>'+
+		'<td><input type="text" class="ed" name="apf_name[]" size="17" maxlength="25" value=""/></td>'+
+		'<td><?=preg_replace('/\n/','',form_dropdown('apf_type[]', $input_types, 'text', 'onchange="show_option($(this));"'));?></td>'+
+		'<td>'+
+		'<div class="option_form hide">'+
+		'<ul class="vals_list"></ul>'+
+		'<input type="button" class="btn_simp" onclick="add_option($(this).parent());" value=" + 추가 "/>'+
+		'</div>'+
+		'<div class="value_form hide">'+
+		'<span class="val"><input type="text" class="ed" name="apf_options['+ cnt +'][]" size="17" maxlength="20" value=""/></span>'+
+		'</div>'+
+		'<div class="empty_form">'+
+		'&nbsp;'+
+		'</div>'+
+		'</td>'+
+		'<td><input type="checkbox" name="apf_align_r['+ cnt +']" value="1" /></td>'+
+		'<td><input type="checkbox" name="apf_required['+ cnt +']" value="1" /></td>'+
+		'<td><input type="checkbox" name="apf_listing['+ cnt +']" value="1" /></td>'+
+		'<td class="regdate">&nbsp;</td>'+
+		'<td><?=preg_replace('/\'/', '"', icon("삭제","javascript:remove_child($(this).parent());"))?></td>'+
+		'</tr>';
+	$('#field_list').append(_html);
+}
+
+function add_email(value) {
+	var limit = 5;
+	var cnt = $('input[name="apc_email[]"]').length;
+	if(cnt >= limit) {
+		alert('더 이상 추가하실 수 없습니다.');
+		return false;
+	}
+	
+	var HTML =	' <li class="children">이메일 주소 <input type="text" name="apc_email[]" class="ed" size="30" maxlength="50" value="'+ value +'"/>'+
+	' <input type="button" class="btn_simp" onclick="remove_child($(this));" value=" - 삭제 "/></li>';
+
+	$('#email_list').append(HTML);
+}
+
+function add_status(value) {
+	var limit = 10;
+	var cnt = $('input[name="apc_status[]"]').length;
+	if(cnt >= limit) {
+		alert('더 이상 추가하실 수 없습니다.');
+		return false;
+	}
+	
+	var HTML =	' <li class="children">상태 <input type="text" name="apc_status[]" class="ed" size="15" maxlength="15" value="'+ value +'"/>'+
+	' <input type="button" class="btn_simp" onclick="remove_child($(this));" value=" - 삭제 "/></li>';
+
+	$('#status_list').append(HTML);
+}
+
+function add_option(obj, val) {
+	var in_obj = obj.find('.vals_list');
+	var index = $('#field_list .option_form').index(obj);
+	var val = val == undefined ? '' : val;
+	var _html =	'<li style="margin-bottom:2px;">'+
+		'<input type="text" class="ed" name="apf_options['+ index +'][]" size="12" maxlength="100" value="'+ val +'"/>'+
+		' <input type="button" class="btn_simp" value=" 삭제 " onclick="remove_child($(this));"/>'+
+		'</li>';
+
+	$(in_obj).append(_html);
+}
+
+function show_option(obj) {
+	val = obj.val();
+	opt = obj.parent().parent().find('.option_form');
+	opt_val = obj.parent().parent().find('.value_form');
+	opt_emp = obj.parent().parent().find('.empty_form');
+	
+	if(val == 'checkbox' || val == 'radio' || val == 'select') {
+		opt.show();
+		opt_val.hide();
+		opt_emp.hide();
+	}
+	else if(val == 'hidden') {
+		opt.hide();
+		opt_val.show();
+		opt_emp.hide();
+	}
+	else {
+		opt.hide();
+		opt_val.hide();
+		opt_emp.show();
+	}
+}
+
+<? if($row['apc_parameter']): ?>
+<? foreach(param_decode($row['apc_parameter']) AS $name => $value): ?>
+add_param('<?=$name?>', '<?=$value?>');
+<? endforeach; ?>
+<? endif; ?>
+//]]>
+</script>

@@ -1,0 +1,39 @@
+<div id='member_wrap'>
+	<div id='pnt_title'><b>&gt;&gt; <?=$_TITLE_?></b></div>
+	<div id='pnt_list'>
+		<table width='100%' cellpadding='0' cellspacing='1'>
+			<colgroup>
+				<col class='po_date'/>
+				<col/>
+				<col class='po_give'/>
+				<col class='po_use'/>
+			</colgroup>
+			<tr>
+                <th>일시</th>
+                <th>내용</th>
+                <th>지급P</th>
+                <th>사용P</th>
+            </tr>
+            
+            <? foreach ($list as $o): ?>
+			<tr class='po_row'>
+				<td><?=$o->po_datetime?></td>
+				<td class='left' title='<?=$o->po_content?>'>&nbsp;<?=$o->po_content?></td>
+				<td class='right'><?=$o->point1?>&nbsp;</td>
+				<td class='right'><?=$o->point2?>&nbsp;</td>
+			</tr>
+			<? endforeach; ?>
+			
+			<? if ($sum_point1): ?>
+			<tr class='po_sum'>
+				<td colspan='2'>소계</td>
+				<td class='right'><?=$sum_point1?>&nbsp;</td>
+				<td class='right'><?=$sum_point2?>&nbsp;</td>
+			</tr>
+			<? endif; ?>
+		</table>
+		<? if (!$list): ?><p class='po_none'>자료가 없습니다.</p><? endif; ?>
+		<p class='po_paging'><?=$paging?></p>
+		<p class='po_total'>&deg; 보유 포인트 : <b><?=$mb_point?> 점</b></p>
+	</div>
+</div>

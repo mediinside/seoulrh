@@ -1,0 +1,66 @@
+<style type="text/css">
+#mb_list th { background: #efefef; }
+#mb_list td { padding-left:10px; border-bottom: 1px #efefef solid; }
+</style>
+
+<form name='fmem' method='get'>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="center"><table width="220" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td height="40"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td>
+            	<select id="sfl" name="sfl">
+            		<option value="mb_id" <?=$sfl=='mb_id'?"selected='selected'":''?>>아이디</option>
+            		<option value="mb_name" <?=$sfl=='mb_name'?"selected='selected'":''?>>이름</option>
+            	</select>
+            </td>
+            <td><input type="text" name="stx" id="stx" class="box_white" style="width:100px" value="<?=$stx?>"></td>
+            <td class="lh0"><input type="image" src="/images/myroom/btn_search_post.jpg" width="43" height="20"></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+      <? if ($search_count > 0): ?>
+      <tr>
+        <td align="left">(총 <?=$search_count?>건 가나다순)<br>
+          <br>
+          <table id="mb_list" width="100%" border="0" cellspacing="0" cellpadding="5">
+            <tr>
+              <th>아이디</th>
+              <th>이름</th>
+            </tr>
+			<? foreach($list AS $row): ?>
+            <tr>
+			  <td><a href="javascript:sch_member('<?=$row[$retField]?>');"><?=$row['mb_id']?></a></td>
+			  <td><a href="javascript:sch_member('<?=$row[$retField]?>');"><?=$row['mb_name']?></a></td>
+            </tr>
+			<? endforeach; ?>
+          </table>
+        </td>
+      </tr>
+      <? endif; ?>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</form>
+
+<script type='text/javascript'>
+//<![CDATA[
+function sch_member(data) {
+    var pr = parent.document.<?=$form?>;
+
+    pr.<?=$finput?>.value  = data;
+    parent.CtrlWinDlg.closeWinDlg();
+}
+//]]>
+</script>

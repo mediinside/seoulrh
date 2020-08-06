@@ -1,0 +1,20 @@
+<div id='mm_wrap'>
+	<div id='mm_title'>　<b>&gt;&gt; <?=$_TITLE_?></b></div>
+	<div id='mm_header'>
+		<p class='me_link'>
+			<a href="<?=$prev_link?>"><img src='<?=$img_path?>/btn_memo_prev.gif' alt='이전'/></a>&nbsp;&nbsp;
+			<a href="<?=$next_link?>"><img src='<?=$img_path?>/btn_memo_next.gif' alt='다음'/></a>
+		</p>
+		<p class='right'><?=$memo_msg?></p>
+	</div>
+	<div id='mm_view'>
+		<p class='me_cont'>
+			<?=$content?>
+		</p>
+   		<p class='me_close'>
+   			<?=$btn_reply?>
+        	<a href='<?=$path?>/memo/lists/<?=$flag?>'><img src='<?=$img_path?>/btn_list_view.gif' width='62' height='20' alt='목록보기'/></a>&nbsp;&nbsp;
+        	<a href='javascript:window.close();'><img src='<?=$img_path?>/btn_close.gif' alt='창닫기'/></a>
+		</p>
+	</div>
+</div>

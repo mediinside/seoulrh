@@ -1,0 +1,170 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once "../inc/head.php";
+
+$dep1 = "2";
+$dep2 = "2-2";
+$dep3 = "2-2-4";
+?>
+<style>
+	.map-box .root_daum_roughmap {
+		width: 100%;
+	}
+
+	@media screen and (max-width:1023px){
+		.board-list .category {
+			display: table-cell !important;
+			width: 124px !important;
+		}
+		.board-list .category img {width: 38px;}
+		.schedule table.fz14 td {
+			font-size: 17px !important;
+			font-weight: 300 !important;
+		}
+	}
+</style>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/use-bnnr9.png" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="board-list wd-1200" style="padding-top: 0;">
+					<h3 class="sub-tit">면회시간</h3>
+					<table>
+						<caption>면회시간</caption>
+						<colgroup class="mb-hide">
+							<col style="width:12%">
+							<col style="width:15%">
+							<col>
+							<col style="width:12%">
+							<col style="width:15%">
+							<col>
+						</colgroup>
+						<!-- pc 노출 -->
+						<tbody class="mb-hide">
+							<tr>
+								<td rowspan="2" class="category bg-gray vt-middle">
+									<img src="/resource/images/adult-time.png" alt=""><br>
+									성인병동
+								</td>
+								<td class="subject">
+									평일
+								</td>
+								<td>
+									18:00~20:00
+								</td>
+								<td rowspan="2" class="category bg-gray vt-middle">
+									<img src="/resource/images/teen-time.png" alt=""><br>
+									소아청소년병동
+								</td>
+								<td class="subject">
+									평일
+								</td>
+								<td>
+									18:00~20:00
+								</td>
+							</tr>
+							<tr>
+								<td class="subject">
+									주말/공휴일
+								</td>
+								<td>
+									10:00~12:00/18:00~20:00
+								</td>
+								<td class="subject">
+									주말/공휴일
+								</td>
+								<td>
+									10:00~12:00/18:00~20:00
+								</td>
+							</tr>
+						</tbody>
+						<!-- 모바일 노출 -->
+						<tbody class="mb-show">
+							<tr>
+								<td rowspan="2" class="category bg-gray vt-middle">
+									<img src="/resource/images/adult-time.png" alt=""><br>
+									성인병동
+								</td>
+								<td class="text-center">
+									평일
+								</td>
+								<td class="subject">
+									18:00~20:00
+								</td>
+							</tr>
+							<tr>
+								<td class="text-center vt-middle">
+									주말/공휴일
+								</td>
+								<td class="subject">
+									10:00~12:00<br class="mb-show">18:00~20:00
+								</td>
+							</tr>
+							<tr>
+								<td rowspan="2" class="category bg-gray vt-middle">
+									<img src="/resource/images/teen-time.png" alt=""><br>
+									소아청소년병동
+								</td>
+								<td class="text-center">
+									평일
+								</td>
+								<td class="subject">
+									18:00~20:00
+								</td>
+							</tr>
+							<tr>
+								<td class="text-center vt-middle">
+									주말/공휴일
+								</td>
+								<td class="subject">
+									10:00~12:00<br class="mb-show">18:00~20:00
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 class="sub-tit mt60">면회제한 대상</h3>
+					<ul class="green-middot">
+						<li>감기나 인플루엔자 등 호흡기 질환자</li>
+						<li>최근 감염성 질환자와 접촉한 사람</li>
+						<li>단체방문 제한</li>
+						<li>보호가 필요한 경우 : 노약자, 미취학 아동, 면역기능이 저하된 분</li>
+						<li>해외 여행 후 발열이 있는 경우</li>
+						<li>국가지정 감염병 유행시기 면회 제한실시</li>
+					</ul>
+
+					<h3 class="sub-tit mt60">반입금지물품</h3>
+					<ul class="green-middot">
+						<li>꽃, 화분, 애완동물, 외부 음식물</li>
+					</ul>
+
+					<h3 class="sub-tit mt60">면회 시 주의사항</h3>
+					<ul class="green-middot">
+						<li>면회 시 방문대장을 작성해 주시기 바랍니다.</li>
+						<li>환자 면회 전 손을 깨끗이 씻어주시기 바랍니다.</li>
+						<li>면회는 최소한 짧게 해주시고 면회시간을 준수해 주시기 바랍니다.</li>
+					</ul>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+</body>
+
+</html>

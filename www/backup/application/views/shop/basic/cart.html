@@ -1,0 +1,105 @@
+<form id='fshop' name='fshop' method='post' action=''>
+<input type="hidden" id="ctrl" value="shop" />
+<input type="hidden" id="dlvPri" value="<?=$shop_conf['dlv_price']?>" />
+<input type="hidden" id="dlvFre" value="<?=$shop_conf['dlv_free']?>" />
+
+<div id="list_cont" class="fL mg10">
+	<p style="height:25px;">※ 장바구니에 담긴 상품의 수량 및 총 결제금액을 확인하신 후 주문해 주시기 바랍니다.</p>
+	<p style="height:25px;">※ 장바구니는 저장일로부터 30일간 보관되며, 30일 이후에는 자동 삭제됩니다.</p>
+	
+	<table width="100%" cellspacing="0" cellpadding="0" border="0" class="cart_list">
+		<colgroup>
+			<col width="50" />
+			<col width="100" />
+			<col  />
+			<col width="100" />
+			<col width="70" />
+			<col width="100" />
+		</colgroup>
+		<tr style="background:#cfd0d0;">
+			<th><input type='checkbox' id='allcheck'/></th>
+			<th>&nbsp;</th>
+			<th>상품명</th>
+			<th>결제금액</th>
+			<th>수량</th>
+			<th>변경/삭제</th>
+		</tr>
+		<? foreach($list as $key => $o) : ?>
+		<input type="hidden" name="cart_ssid[]" value="<?=$o['cart_ssid']?>" />
+		<input type="hidden" name="price[]" id="price<?=$o['num']?>" value="<?=$o['pd_price']?>" />
+		<input type="hidden" name="amntPrice[]" id="amntPrice<?=$o['num']?>" value="<?=$o['amount']?>" />
+		<input type="hidden" name="dlvFreItem[]" id="dlvFreItem<?=$o['num']?>" value="<?=$o['pd_dlvFree']?>" />
+		<tr class="row">
+			<td align="center"><input type='checkbox' id='allcheck' class='check' name='chk[<?=$key?>]' value='<?=$o['cart_no']?>' /></td>
+			<td>
+				<a href="<?=$o['href']?>"><img src="/useful/thumbnail/80x110/shop/<?=$o['pd_id']?>?no=<?=$o['imgNo']?>" class="cart_img" /></a>
+			</td>
+			<td>
+				<p style="font-size:15px"><a href="/shop/view/id/<?=$o['pd_id']?>/cid/<?=$o['pd_cate']?>"><strong><?=$o['pd_name']?></strong></a></p>
+				<!-- <? if($o['pd_price_ori']){ ?>
+				<div id="pr_pic">
+				 <ul>
+				  <li><img src="/img/shop/i_price1.gif" align="middle" alt="정상가" /></li>
+				  <li style="margin-top:2px;">&nbsp;&nbsp;<span class="tdLT"><?=number_format($o['pd_price_ori'])?> 원</span></li>
+				 </ul>
+				 </div><? } ?> 
+				<p><div id="pr_pic">
+				 <ul>
+				  <li><img src="/img/shop/i_price2.gif" align="middle" alt="판매가" /></li>
+				  <li style="margin-top:2px;">&nbsp;&nbsp;<span id="price<?=$o['num']?>"><?=number_format($o['pd_price'])?></span> 원</li>
+				 </ul>
+				 </div></p><?=$o['option']?> -->
+			</td>
+			<td class="price" id="amount<?=$o['num']?>"><?=number_format($o['amount'])?> 원</td>
+			<td class="quantity">
+			  <ul>
+				<li style="float:left;"><input type="text" class="ed right vaM imeDis" name="quantity[]" id="quantity<?=$o['num']?>" size="4" onkeypress="return only_number();" onkeyup="set_listQty(<?=$o['num']?>,<?=$o['pd_price']?>,<?=$o['option_data']['pdo_price']?>,0);" value="<?=$o['cart_quantity']?>" /></li>
+				<li style="float:left; margin:0px 5px 0px 5px"><img src="<?=RT_PATH?>/img/shop/btn_quantity.gif" class="vaB" usemap="#btn_quantity<?=$o['num']?>" /></li>
+				<li style="float:left; margin-top:4px;">개</li>
+			  </ul>
+				<map name="btn_quantity<?=$o['num']?>">
+				    <area shape="rect" coords="1,1,8,7" href="javascript:set_listQty(<?=$o['num']?>,<?=$o['pd_price']?>,<?=$o['option_data']['pdo_price']?>,1);" alt="+" />
+				    <area shape="rect" coords="1,10,8,18" href="javascript:set_listQty(<?=$o['num']?>,<?=$o['pd_price']?>,<?=$o['option_data']['pdo_price']?>,-1);" alt="-" />
+				</map>
+			</td>
+			<td align="center">
+				<p>
+					<a href="javascript:;"><img src="/img/shop/btn_modify.gif" onclick="exec_cart(<?=$key?>, false);" alt="변경" /></a>
+				</p>
+				<p>
+					<a href="javascript:;"><img src="/img/shop/btn_del.gif" onclick="exec_cart(<?=$key?>, true);" alt="삭제" /></a>
+				</p>
+			</td>
+			<? endforeach; ?>
+		</tr>
+		<? if (!$list) : ?>
+		<tr>
+			<td align="center" colspan="6"><p class='none'>등록된 자료가 없습니다.</p></td>
+		</tr>
+		<? endif; ?>
+		<tr class="tatal_bg1">
+			<td colspan="4" class="total_item">배송비 :</td>
+			<td colspan="2" class="dlv_price" id="dlv_price"><?=number_format($dlv_price)?> 원</td>
+		</tr>
+		<tr class="tatal_bg2">
+			<td colspan="4" class="total_item">총 결제금액 :</td>
+			<td colspan="2" class="total_price" id="total_price"><?=number_format($amount+$dlv_price)?> 원</td>
+		</tr>
+	</table>
+	<br />
+
+	<div class="btn_view">
+		<ul class="btn_left">
+			<li><a href="javascript:;" onclick="chk_cart($('#fshop'), 'mod');"><img src="/img/shop/btn_sel_modify.gif" alt="선택수정" /></a></li>
+			<li><a href="javascript:;" onclick="chk_cart($('#fshop'), 'del');"><img src="/img/shop/btn_sel_del.gif" alt="선택삭제" /></a></li>
+			<!-- <li><a href="javascript:;" onclick="chk_cart('ord');"><img src="/img/shop/btn_sel_order.gif" alt="선택주문" /></a></li> -->
+		</ul>
+
+		<div class="btn_right">
+			<p><a href="/shop/cart/order"><img src="/img/shop/btn_all_order.gif" alt="전체주문" /></a></p>
+		</div>
+	</div>
+</div>
+</form>
+
+<br class="clear" /><br />

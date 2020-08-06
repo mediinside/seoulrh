@@ -1,0 +1,159 @@
+<h2><?=$_TITLE_?></h2>
+
+<form id='fwrite' name='fwrite' method='post' onsubmit="return f_submit();" action='<?=$path?>/gallery/form?cate=<?=$row['ga_cate']?>'>
+<input type='hidden' name='w'    value='<?=$w?>'/>
+<input type='hidden' name='token' value='<?=$token?>'/>
+<input type='hidden' name='qstr' value='<?=$qstr?>'/>
+<input type='hidden' name='ga_id' value='<?=$row['ga_id']?>'/>
+<input type='hidden' name='ga_cate' value='<?=$row['ga_cate']?>'/>
+
+<ul id="form_cont">
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 정보 입력</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+			<tr>
+				<th>제목</th>
+				<td>
+					<input type='text' id='ga_subject' name='ga_subject' class='ed' size='62' maxlength='20' value='<?=$row['ga_subject']?>'/>
+					<input type='checkbox' id='ga_hidden' name='ga_hidden' value='1' <?=$row['ga_hidden_chk']?>/> 숨김
+				</td>
+			</tr>
+			<tr>
+				<!-- swf 업로더로 대체
+				<th>업로드
+				  <input type="button" style="cursor:pointer;height:18px;" onclick="add_file();" value=" + " /><input type="button" style="cursor:pointer;height:18px;" onclick="del_file();" value=" - " />
+				</th>
+				<td><table id="variableFiles" cellpadding="0" cellspacing="2"></table></td>
+				-->
+				<th>이미지 업로드</th>
+				<td>
+		            <div id='buttonWrap'>
+		            	<span id='swfuButton'></span>
+		            </div>
+		            <div>
+		            	<input id='btnCancel' type='button' value='업로드 취소' onclick='swfu.cancelQueue();' disabled='disabled'/>
+		            </div>
+		            <br class="cb"/>
+					<p class="pT5" style="color:red;">* 이미지 파일은 jpg, gif, png 파일만 업로드하실 수 있습니다.</p>
+		            <div id='swfuProgress'></div>
+		            <div id='divStatus' style='clear:both;'>0개 업로드 완료</div>
+				</td>
+			</tr>
+			
+			<? if(isset($row['files'])) : ?>
+			<tr>
+				<th>파일 리스트</th>
+				<td>
+					<table class="multiBox" cellpadding="0" cellspacing="0"><tr><td>
+					<? foreach ($row['files'] as $o): ?>
+					[<?=$o['uf_width']?>*<?=$o['uf_height']?>] <?=$o['uf_source']?> <input type="checkbox" name="delFile[]" value="<?=$o['uf_no']?>"> 삭제<br />
+					<? endforeach ?>
+					</td></tr></table>
+				</td>
+			</tr>
+			<? endif ?>
+			
+			<? if($w) : ?>
+			<tr>
+				<th>등록일</th>
+				<td><?=$row['ga_regdate']?></td>
+			</tr>
+			<tr>
+				<th>최종수정일</th>
+				<td><?=$row['ga_mdydate']?></td>
+			</tr>
+			<? endif; ?>
+			
+		</table>
+	</li>
+</ul>
+<p class='center bottom'>
+	<input type='submit' id='btn_submit' class='btn' value='  확  인  '/>&nbsp;
+	<input type='button' class='btn' value='  목  록  ' onclick="document.location.href='<?=$path?>/gallery/lists<?=$dqstr?>';"/>
+</p>
+
+</form>
+
+<div id='loading'></div>
+
+<script type='text/javascript'>
+//<![CDATA[
+
+<!-- File Uploader -->
+var f = document.fwrite;
+var _mockdata = new Array();
+var phpsessid = '<?=$this->session->userdata('session_id')?>';
+var upload_ext = '*.jpg;*.jpeg;*.gif;*.png';
+var file_upload_limit = 1;
+var upload_size = 2048;
+importScript(['swfu/settings']);
+
+function f_submit() {
+	var newName = '';
+	var oldName = '';
+	 
+    for (var i=0; i<_mockdata.length; i++) {
+        if(_mockdata[i].imageurl != undefined) {
+			fileUrl = 'imageurl';
+			oldNameInput = 'images[]';
+			newNameInput = 'inames[]';
+		}
+        else {
+			fileUrl = 'attachurl';
+			oldNameInput = 'files[]';
+			newNameInput = 'fnames[]';
+		}
+		newName = eval('_mockdata[i].'+fileUrl).match(/([0-9]{10}_)?[a-z0-9]{32}\.[a-z]*/i)[0];
+		oldName = _mockdata[i].filename;
+		
+		if (newName == null)
+			newName = _mockdata[i].attachurl.match(/[0-9]+$/);
+			
+		obj1 = document.createElement('input');
+		obj1.setAttribute('type', 'hidden');
+		obj1.setAttribute('name', oldNameInput);
+		obj1.setAttribute('value', newName);
+		
+		obj2 = document.createElement('input');
+		obj2.setAttribute('type', 'hidden');
+		obj2.setAttribute('name', newNameInput);
+		obj2.setAttribute('value', oldName);
+		
+		f.appendChild(obj1);
+		f.appendChild(obj2);
+    }
+    return true;
+}
+<!-- File Uploader -->
+
+
+var beforeUnload = false;
+window.onbeforeunload = function() {
+	if (beforeUnload) return '이 페이지를 벗어나시면 작성 중인 글이 지워집니다.';
+}
+
+$(document).ready(function() {
+	$('#fwrite').validate({
+		rules: {
+			ga_subject: 'required'
+		},
+		messages: {
+			ga_subject: '제목을 입력하세요.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+		    f.submit();
+		}
+	});
+});
+//]]>
+</script>

@@ -1,0 +1,119 @@
+<table width="100%"  height="100%"border="0" cellspacing="0" cellpadding="0">
+  <form id='flogin' name='flogin' method='post' onsubmit='return false;'>
+  <tr>
+    <td align="center" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="400" height="47" class="lh0"><img src="/images/myroom/title06.jpg" width="400" height="30"></td>
+            <td align="right"><span class="pixel11"><br>
+              HOME &gt; 마이룸 &gt;<strong> 회원탈퇴</strong></span></td>
+          </tr>
+        </table>
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td height="1" background="/images/dot02.jpg"></td>
+            </tr>
+            <tr>
+              <td height="40">&nbsp;</td>
+            </tr>
+            <tr>
+              <td height="25">&nbsp;</td>
+            </tr>
+            <tr>
+              <td align="center"><table width="690" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td class="border"><table width="690" border="0" cellspacing="0" cellpadding="0" style="text-align:left;">
+                    <tr>
+                      <td width="248" height="300" valign="bottom" class="lh0"><img src="/images/myroom/login_img.jpg" width="215" height="201"></td>
+                      <td valign="top"><table width="417" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td height="110" valign="bottom" class="lh0"><img src="/images/myroom/out_copy01.jpg" width="404" height="80"></td>
+                        </tr>
+                      
+                        <tr>
+                          <td height="80" align="center" bgcolor="#fafafa" class="border"><table width="309" border="0" cellspacing="0" cellpadding="0" style="text-align:left;">
+                            <tr>
+                              <td width="77" class="lh0"><img src="/images/myroom/login_id.jpg" width="54" height="20"></td>
+                              <td><input class="box_white" type="text" name="mb_id" id="mb_id" required="required" hname="아이디" style="ime-mode:disabled; width:157px;"/ tabindex="1"></td>
+                              <td width="74" rowspan="2" align="right" class="lh0"><input type="image" src="/images/myroom/leave_button.jpg" id="btn_leave" alt="회원탈퇴"/></td>
+                            </tr>
+                            <tr>
+                              <td class="lh0"><img src="/images/myroom/login_pass.jpg" width="54" height="20"></td>
+                              <td><input class="box_white" type="password" name="mb_password" id="mb_password" required="required" hname="패스워드" onkeypress="javascript:check_capslock(event, this);" style="width:157px;"/ tabindex="2"></td>
+                            </tr>
+                          </table></td>
+                        </tr>
+                        
+                        <tr>
+                          <td height="20">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td class="lh0"><img src="/images/myroom/out_copy01-02.jpg" name="leave" width="404" height="35" border="0" id="leave"></td>
+                        </tr>
+                      </table></td>
+                    </tr>
+                  </table></td>
+                </tr>
+              </table></td>
+            </tr>
+            <tr>
+              <td align="center">&nbsp;</td>
+            </tr>
+          </table></td>
+        <td width="30" valign="top">&nbsp;</td>
+      </tr>
+    </table></td>
+  </tr>
+  </form>
+</table>
+
+<script type='text/javascript' src='<?=JS_DIR?>/capslock.js'></script>
+<script type="text/javascript" src='<?=JS_DIR?>/jvalidate.js'></script>
+<script type="text/javascript" src='<?=JS_DIR?>/jvalid_ext.js'></script>
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#flogin').validate({
+		rules: {
+			mb_id: { required:true, minlength:3, alphanumunder:true },
+			mb_password: 'required'
+		},
+		messages: {
+			mb_id: { required:'아이디를 입력하십시오.', minlength:'최소 3자 이상 입력하십시오.' },
+			mb_password: '비밀번호를 입력하십시오.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		}
+	});
+});
+
+$('#btn_leave').click(function() {
+	$.post(
+		'<?=RT_PATH?>/member/leave/confirm',
+		{'mb_id':$('#mb_id').val(), 'mb_password':$('#mb_password').val()},
+		function(data) {
+			if(data == '000') {
+				if(confirm('탈퇴하시겠습니까?\n\n삭제된 데이터는 복구할 수 없습니다.')) {
+					$('#flogin').attr('action', '<?=RT_PATH?>/member/leave/update');
+					$('#flogin').attr('onsubmit', '');
+					$('#flogin').submit();
+				}
+			}
+			else if(data) alert(data);
+		}
+	);
+});
+
+$('#mb_id').focus();
+
+<? if ($msg): ?>
+   alert('<?=$msg?>');
+<? endif; ?>
+
+//]]>
+</script>

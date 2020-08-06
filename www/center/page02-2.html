@@ -1,0 +1,225 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once "../inc/head.php";
+$dep1 = "7";
+$dep2 = "7-1";
+$dep3 = "7-1-2";
+?>
+<style>
+	.btn-group:not(.m-menu-info) {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 30px 0 0;
+	}
+
+	.btn-group:not(.m-menu-info):after {
+		display: none;
+	}
+
+	.btn-group:not(.m-menu-info) .btn-sm {
+		width: 268px;
+		margin: 0 20px;
+	}
+
+	.btn-group:not(.m-menu-info) .btn-sm img {
+		margin-right: 10px;
+	}
+
+	#btn-box a {
+		width:auto;
+	}
+
+	@media screen and (max-width:1023px) {
+		.m-img {width: 1600px !important;}
+		.over-x {overflow-x: auto;}
+		.btn-group:not(.m-menu-info) {
+			flex-flow: column;
+		}
+
+		.btn-group:not(.m-menu-info) .btn-sm {
+			width: 100%;
+			margin: 0 0 15px;
+		}
+
+		.btn-group .btn-sm img {
+			width: 20px !important;
+		}
+
+		img.mt60 {
+			margin-top: 140px !important;
+		}
+
+		table.bordered {
+			min-width: 1200px;
+		}
+
+		table.bordered td>img {
+			height: 40px;
+			margin-top: -8px;
+			margin-right: 10px;
+		}
+	}
+</style>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/center-bnnr2.png" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="wd-1200">
+					<div class="page-location">
+						<div id="btn-box" class="center half">
+							<a href="/center/page02-1.html" class="btn">장애인건강보건관리사업</a>
+							<a href="/center/page02-2.html" class="btn bg-green">여성장애인 모성보건사업</a>
+							<a href="/center/page02-3.html" class="btn">보건의료인력 및 <br class="mb-show">장애인·가족 교육</a>
+							<a href="/center/page02-4.html" class="btn">건강검진/진료/재활 등 <br class="mb-show">의료서비스 제공</a>
+						</div>
+					</div>
+					<img class="mt60" src="/resource/images/center02.jpg" alt="" style="max-width:100%;">
+					<h3 class="sub-tit mt60">
+						여성장애인 모성보건사업
+					</h3>
+					<ul class="clinic-list">
+						<li>
+							<label for="">임신 여성장애인 건강 클리닉</label>
+							<div class="text">
+								<div class="board-list border-t mb60" style="padding:0;">
+									<table>
+										<colgroup>
+											<col style="width:30%;">
+											<col style="width:70%;">
+										</colgroup>
+										<tbody>
+											<tr>
+												<th class="bg-gray text-center vt-middle">대상</th>
+												<td>서울특별시 북부지역 거주자로서 임신 진단을 받은 일로부터 분만 후 6개월 이내의 여성장애인</td>
+											</tr>
+											<tr>
+												<th class="bg-gray text-center vt-middle">주요내용</th>
+												<td>
+													임신·출산·육아와 관련된 보건·의료·복지 서비스 연계<br>
+													- 연계 : 산부인과 병의원, 보건소, 장애인복지관, 주민센터 등
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="over-x">
+									<img class="m-img" src="/resource/images/business-map5.png" alt="">
+								</div>
+							</div>
+						</li>
+						<li>
+							<label for="">여성장애인 건강관리 교실</label>
+							<div class="text">
+								<div class="board-list border-t" style="padding:0;">
+									<table>
+										<colgroup>
+											<col style="width:30%;">
+											<col style="width:70%;">
+										</colgroup>
+										<tbody>
+											<tr>
+												<th class="bg-gray text-center vt-middle">대상</th>
+												<td>서울특별시 북부지역 여성장애인 및 가족</td>
+											</tr>
+											<tr>
+												<th class="bg-gray text-center vt-middle">주요내용</th>
+												<td>
+													- 찾아가는 1:1 산모교실 운영<br>
+													- 임신·출산·육아와 관련한 가족교육<br>
+													- 생애주기별 여성장애인 건강관리 교육
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</li>
+						<li>
+							<label for="">참여형 동아리 사업</label>
+							<div class="text">
+								<div class="board-list border-t" style="padding:0;">
+									<table>
+										<colgroup>
+											<col style="width:30%;">
+											<col style="width:70%;">
+										</colgroup>
+										<tbody>
+											<tr>
+												<th class="bg-gray text-center vt-middle">대상</th>
+												<td>서울특별시 북부지역 여성장애인 관련 기관의 동아리 및 자조모임</td>
+											</tr>
+											<tr>
+												<th class="bg-gray text-center vt-middle">주요내용</th>
+												<td>
+													- 여성장애인 특성 건강증진 교육 및 정보제공<br>
+													- 자가건강관리 및 역량강화 지원
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</li>
+						<li>
+							<label for="">
+								문의전화
+								<!-- <span class="btn-sm bg-green" style="cursor: default;background-color: #6ec700;">문의전화</span> -->
+							</label>
+							<div class="text">
+								<div class="board-list border-t" style="padding:0;">
+									<table>
+										<colgroup class="mb-hide">
+											<col style="width:30%;">
+											<col style="width:70%;">
+										</colgroup>
+										<tbody>
+											<tr>
+												<th style="width:60%" class="bg-gray text-center vt-middle">여성장애인 모성보건사업 문의</th>
+												<td class="color-green vt-middle">
+													02-6020-3123
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<!-- <div class="border-t mb30"></div> -->
+					<!--
+						<div class="gift-box center">
+							<a href="tel:0260203123">
+								<img src="/resource/images/headset.png" alt="">
+							</a>
+							<div class="text">
+								<small>문의</small><br>
+								02-6020-<span class="color-green">3123</span>
+							</div>
+						</div>
+					 -->
+				</div>
+			</section>
+			<?php include_once "../inc/bottomInfo.php"; ?>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+</body>
+
+</html>

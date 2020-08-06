@@ -1,0 +1,1913 @@
+<?php
+	$CI =& get_instance();
+	$CI->load->model('M_ctable');
+	
+	$cates = $CI->M_ctable->list_result_cate();
+	$list = $CI->M_ctable->get_tables();
+?>
+<? include DOC_ROOT.'/include/01_inc.php'; ?>
+
+<br>
+
+<!-- <p><img src="/img/sub/ready01.jpg" alt="2014년 오픈 중비중입니다."></p> -->
+
+<?
+	// 프로그램 개발되면 아래 항목 삭제
+?>
+
+<ul class="bu2">
+  <li>관련 근거 : 의료법 제45조 제1항 및 제2항과 동법 시행규칙 제42조의2 제1항, 제2항 및 제3항에 의하여 비급여 진료비용을 고지합니다.</li>
+  <li>행위료는 단일 개별 항목의 비용으로 시행횟수 및 범위에 따라 달라질 수 있으며, 치료재료 및 약제가 필요한 경우 별도 산정됩니다.</li>
+</ul>
+<p class="fr">- 2020년 01월 17일 기준 -</p>
+
+<div class="fl mgb_m_30">
+
+	<h3>Ⅰ. 행위료</h3>
+    <h4 class="nbg first">1-1장. 상급병실료 차액</h4>
+    
+    <table class="t3 w100" summary="비급여항목 상급병실료 차액의 분류별 상세내용을 안내하는 표입니다.">
+	<caption class="dpn">1-1장 상급병실료 차액</caption>
+        <colgroup>
+        <col style="width:78px">
+        <col>
+        <col style="width:54px">
+        <col style="width:40px">
+        <col style="width:66px">
+        <col style="width:66px">
+        <col style="width:66px">
+        <col style="width:76px">
+        <col style="width:68px">
+        <col style="width:50px">
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col" rowspan="2">분류</th>
+                <th scope="col" colspan="2">항목</th>
+                <th scope="col" colspan="6">진료비용 등(단위:원)</th>
+                <th scope="col" rowspan="2">특이<br>
+                    사항</th>
+            </tr>
+            <tr>
+                <th scope="col">명칭</th>
+                <th scope="col">코드</th>
+                <th scope="col">구분</th>
+                <th scope="col">비용</th>
+                <th scope="col">최저비용</th>
+                <th scope="col">최고비용</th>
+                <th scope="col">치료재료대<br>
+                    포함여부</th>
+                <th scope="col">약제비<br>
+                    포함여부</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row" rowspan="1"></th>
+                <td style="text-align:left;"></td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    
+    <h4 class="nbg">제2장. 검사료</h4>
+    
+    <table class="t3 w100" summary="비급여항목 검사료의 분류별 상세내용을 안내하는 표입니다.">
+	<caption class="dpn">제2장 검사료</caption>
+        <colgroup>
+        <col style="width:78px">
+        <col>
+        <col style="width:54px">
+        <col style="width:40px">
+        <col style="width:66px">
+        <col style="width:66px">
+        <col style="width:66px">
+        <col style="width:76px">
+        <col style="width:68px">
+        <col style="width:50px">
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col" rowspan="2">분류</th>
+                <th scope="col" colspan="2">항목</th>
+                <th scope="col" colspan="6">진료비용 등(단위:원)</th>
+                <th scope="col" rowspan="2">특이<br>사항</th>
+            </tr>
+            <tr>
+                <th scope="col">명칭</th>
+                <th scope="col">코드</th>
+                <th scope="col">구분</th>
+                <th scope="col">비용</th>
+                <th scope="col">최저비용</th>
+                <th scope="col">최고비용</th>
+                <th scope="col">치료재료대<br>
+                    포함여부</th>
+                <th scope="col">약제비<br>
+                    포함여부</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">감염증<br>기타 검사</th>
+                <td style="text-align:left;">인플루엔자AB바이러스항원검사</td>
+                <td>CZ394</td>
+                <td></td>
+                <td style="text-align:right;">25,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+			<tr>
+                <th scope="row">자가면역<br>질환 검사</th>
+                <td style="text-align:left;">자가면역질환검사항CCP항체[IgG](류마티스성 관절염 진단 검사)</td>
+                <td>CZ432</td>
+                <td></td>
+                <td style="text-align:right;">44,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+			 <tr>
+                <th scope="row">분자병리<br>검사</th>
+                <td style="text-align:left;">핵산증폭-다종그룹2_호흡기 바이러스</td>
+                <td>D680206C</td>
+                <td></td>
+                <td style="text-align:right;">166,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+                <td></td>
+                <td>급여 인정기준외 실시한 경우</td>
+            </tr>
+			<tr>
+                <th scope="row" rowspan="2">내분비검사</th>
+                <td style="text-align:left;">DHEA(Dehydroepian-drosterone)</td>
+                <td>CZ199</td>
+                <td></td>
+                <td style="text-align:right;">170,780</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">성호르몬결합글로불린SHBG(ECLIA)</td>
+                <td>CZ202</td>
+                <td></td>
+                <td style="text-align:right;">62,180</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+                <td></td>
+                <td>국외 위탁</td>
+            </tr><tr>
+                <th scope="row" rowspan="8">신경계<br>기능검사</th>
+                <td style="text-align:left;">섭식장애평가</td>
+                <td>FZ685</td>
+                <td></td>
+                <td style="text-align:right;">35,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">학업성취검사</td>
+                <td>FZ691</td>
+                <td></td>
+                <td style="text-align:right;">106,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">교육진단검사</td>
+                <td>FZ692</td>
+                <td></td>
+                <td style="text-align:right;">75,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">뮌헨 유소아 기능발달검사</td>
+                <td>FZ696</td>
+                <td></td>
+                <td style="text-align:right;">86,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">언어전반진단검사</td>
+                <td>FZ689</td>
+                <td></td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;">21,000</td>
+                <td style="text-align:right;">56,000</td>
+                <td></td>
+                <td></td>
+                <td>검사항목에따른차등</td>
+            </tr>
+			 <tr>
+                <td style="text-align:left;">영유아발달검사(한국판덴버발달검사)</td>
+                <td>FZ693</td>
+                <td></td>
+                <td style="text-align:right;">40,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td style="text-align:left;">미각검사[인지 및 역치검사]</td>
+                <td>FZ710</td>
+                <td></td>
+                <td style="text-align:right;">12,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+			            <tr>
+                <td style="text-align:left;">자율신경계이상검사(기립성혈압검사)</td>
+                <td>FY891</td>
+                <td></td>
+                <td style="text-align:right;">13,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">평형 및<br>청각기능<br>검사</th>
+                <td style="text-align:left;">동적체평형검사</td>
+                <td>FZ731</td>
+                <td></td>
+                <td style="text-align:right;">32,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th rowspan="3" scope="row">외피,<br>
+                    근골기능<br>검사</th>
+                <td style="text-align:left;">동작분석 역동적근전도</td>
+                <td>EZ773</td>
+                <td></td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;">80,000</td>
+                <td style="text-align:right;">320,000</td>
+                <td></td>
+                <td></td>
+                <td rowspan="4">검사항목에따른차등</td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">체온열검사</td>
+                <td>EZ776</td>
+                <td></td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;">21,000</td>
+                <td style="text-align:right;">103,000</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">동적 족저압측정</td>
+                <td>EZ777</td>
+                <td></td>
+                <td style="text-align:right;">33,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">순환기<br>기능검사</th>
+                <td style="text-align:left;">동맥경화도검사</td>
+                <td>EZ868</td>
+                <td></td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;">36,000</td>
+                <td style="text-align:right;">59,000</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    
+    <h4 class="nbg">2-1장. 초음파 검사료</h4>
+    
+    <table class="t3 w100" summary="비급여항목 초음파 검사료의 상세내용을 안내하는 표입니다.">
+	<caption class="dpn">제2장 검사료</caption>
+        <colgroup>
+        <col style="width:78px">
+        <col>
+        <col style="width:54px">
+        <col style="width:40px">
+        <col style="width:66px">
+        <col style="width:66px">
+        <col style="width:66px">
+        <col style="width:76px">
+        <col style="width:68px">
+        <col style="width:50px">
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col" rowspan="2">분류</th>
+                <th scope="col" colspan="2">항목</th>
+                <th scope="col" colspan="6">진료비용 등(단위:원)</th>
+                <th scope="col" rowspan="2">특이<br>사항</th>
+            </tr>
+            <tr>
+                <th scope="col">명칭</th>
+                <th scope="col">코드</th>
+                <th scope="col">구분</th>
+                <th scope="col">비용</th>
+                <th scope="col">최저비용</th>
+                <th scope="col">최고비용</th>
+                <th scope="col">치료재료대<br>
+                    포함여부</th>
+                <th scope="col">약제비<br>
+                    포함여부</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">초음파<br>검사료</th>
+                <td style="text-align:left;">초음파영상(단순, 복잡, 특수)</td>
+                <td>DUS</td>
+                <td>초음파영상</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;">23,000</td>
+                <td style="text-align:right;">64,000</td>
+                <td></td>
+                <td></td>
+                <td>난이도에 따른차등</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    
+    <h4 class="nbg">제7장 이학요법료</h4>
+    
+    <table class="t3 w100" summary="비급여항목 이학요법료의 상세내용을 안내하는 표입니다.">
+	<caption class="dpn">제7장 이학요법료</caption>
+        <colgroup>
+        <col style="width:78px">
+        <col>
+        <col style="width:54px">
+        <col style="width:40px">
+        <col style="width:66px">
+        <col style="width:66px">
+        <col style="width:66px">
+        <col style="width:76px">
+        <col style="width:68px">
+        <col style="width:50px">
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col" rowspan="2">분류</th>
+                <th scope="col" colspan="2">항목</th>
+                <th scope="col" colspan="6">진료비용 등(단위:원)</th>
+                <th scope="col" rowspan="2">특이<br>
+                    사항</th>
+            </tr>
+            <tr>
+                <th scope="col">명칭</th>
+                <th scope="col">코드</th>
+                <th scope="col">구분</th>
+                <th scope="col">비용</th>
+                <th scope="col">최저비용</th>
+                <th scope="col">최고비용</th>
+                <th scope="col">치료재료대<br>
+                    포함여부</th>
+                <th scope="col">약제비<br>
+                    포함여부</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row" rowspan="6">물리치료료</th>
+                <td style="text-align:left;">언어치료</td>
+                <td>MZ006</td>
+                <td></td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;">48,000</td>
+                <td style="text-align:right;">88,000</td>
+                <td></td>
+                <td></td>
+                <td>30~60분</td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">전산화인지재활치료</td>
+                <td>MZ009</td>
+                <td></td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;">16,000</td>
+                <td style="text-align:right;">64,000</td>
+                <td></td>
+                <td></td>
+                <td>10~40분</td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">신장분사치료</td>
+                <td>MZ007</td>
+                <td></td>
+                <td style="text-align:right;">5,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">도수치료[1일당]</td>
+                <td>MX122</td>
+                <td></td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;">50,000</td>
+                <td style="text-align:right;">100,000</td>
+                <td></td>
+                <td></td>
+                <td>난이도에 따른차등</td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">증식치료(사지관절부위)</td>
+                <td>MY142</td>
+                <td></td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;">33,000</td>
+                <td style="text-align:right;">82,000</td>
+                <td></td>
+                <td></td>
+                <td rowspan="2">난이도에 따른차등</td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">증식치료(척추부위)</td>
+                <td>MY143</td>
+                <td></td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;">33,000</td>
+                <td style="text-align:right;">82,000</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    
+    <h4 class="nbg">제8장 정신요법료</h4>
+    
+    <table class="t3 w100" summary="비급여항목 정신요법료의 상세내용을 안내하는 표입니다.">
+	<caption class="dpn">제8장 정신요법료</caption>
+        <colgroup>
+        <col style="width:78px">
+        <col>
+        <col style="width:54px">
+        <col style="width:40px">
+        <col style="width:66px">
+        <col style="width:66px">
+        <col style="width:66px">
+        <col style="width:76px">
+        <col style="width:68px">
+        <col style="width:50px">
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col" rowspan="2">분류</th>
+                <th scope="col" colspan="2">항목</th>
+                <th scope="col" colspan="6">진료비용 등(단위:원)</th>
+                <th scope="col" rowspan="2">특이<br>
+                    사항</th>
+            </tr>
+            <tr>
+                <th scope="col">명칭</th>
+                <th scope="col">코드</th>
+                <th scope="col">구분</th>
+                <th scope="col">비용</th>
+                <th scope="col">최저비용</th>
+                <th scope="col">최고비용</th>
+                <th scope="col">치료재료대<br>
+                    포함여부</th>
+                <th scope="col">약제비<br>
+                    포함여부</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row" rowspan="2">정신요법료</th>
+                <td style="text-align:left;">기타 행동치료-심리적 재활중재치료</td>
+                <td>NZ010</td>
+                <td></td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;">37,000</td>
+                <td style="text-align:right;">63,000</td>
+                <td></td>
+                <td></td>
+                <td>20~40분</td>
+            </tr>
+                <td style="text-align:left;">기타 행동치료-신경발달중재치료</td>
+                <td>NZ009</td>
+                <td></td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;">48,000</td>
+                <td style="text-align:right;">73,000</td>
+                <td></td>
+                <td></td>
+                <td>30~50분</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    
+    <h4 class="nbg">제9장 처치 및 수술료 등</h4>
+    
+    <table class="t3 w100" summary="비급여항목 처치 및 수술료의 상세내용을 안내하는 표입니다.">
+	<caption class="dpn">제9장 처치 및 수술료 등</caption>
+        <colgroup>
+        <col style="width:78px">
+        <col>
+        <col style="width:54px">
+        <col style="width:40px">
+        <col style="width:66px">
+        <col style="width:66px">
+        <col style="width:66px">
+        <col style="width:76px">
+        <col style="width:68px">
+        <col style="width:50px">
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col" rowspan="2">분류</th>
+                <th scope="col" colspan="2">항목</th>
+                <th scope="col" colspan="6">진료비용 등(단위:원)</th>
+                <th scope="col" rowspan="2">특이<br>
+                    사항</th>
+            </tr>
+            <tr>
+                <th scope="col">명칭</th>
+                <th scope="col">코드</th>
+                <th scope="col">구분</th>
+                <th scope="col">비용</th>
+                <th scope="col">최저비용</th>
+                <th scope="col">최고비용</th>
+                <th scope="col">치료재료대<br>
+                    포함여부</th>
+                <th scope="col">약제비<br>
+                    포함여부</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">근골</th>
+                <td style="text-align:left;">체외충격파치료[근골격계질환)</td>
+                <td>SZ084</td>
+                <td></td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;">40,000</td>
+                <td style="text-align:right;">60,000</td>
+                <td></td>
+                <td></td>
+                <td>난이도에 따른차등</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    
+    <h4 class="nbg">제17장 입원환자 식대</h4>
+    
+    <table class="t3 w100" summary="비급여항목 입원환자 식대의 상세내용을 안내하는 표입니다.">
+	<caption class="dpn">제17장 입원환자 식대</caption>
+        <colgroup>
+        <col style="width:78px">
+        <col>
+        <col style="width:54px">
+        <col style="width:40px">
+        <col style="width:66px">
+        <col style="width:66px">
+        <col style="width:66px">
+        <col style="width:76px">
+        <col style="width:68px">
+        <col style="width:50px">
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col" rowspan="2">분류</th>
+                <th scope="col" colspan="2">항목</th>
+                <th scope="col" colspan="6">진료비용 등(단위:원)</th>
+                <th scope="col" rowspan="2">특이<br>
+                    사항</th>
+            </tr>
+            <tr>
+                <th scope="col">명칭</th>
+                <th scope="col">코드</th>
+                <th scope="col">구분</th>
+                <th scope="col">비용</th>
+                <th scope="col">최저비용</th>
+                <th scope="col">최고비용</th>
+                <th scope="col">치료재료대<br>
+                    포함여부</th>
+                <th scope="col">약제비<br>
+                    포함여부</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row" rowspan="2">입원환자<br>식대</th>
+                <td style="text-align:left;">보호자식(일반식)</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">6,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">공기밥</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">1,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+	    <h4 class="nbg">기타</h4>
+    
+    <table class="t3 w100" summary="비급여항목 입원환자 식대의 상세내용을 안내하는 표입니다.">
+	<caption class="dpn">기타</caption>
+        <colgroup>
+        <col style="width:78px">
+        <col>
+        <col style="width:54px">
+        <col style="width:40px">
+        <col style="width:66px">
+        <col style="width:66px">
+        <col style="width:66px">
+        <col style="width:76px">
+        <col style="width:68px">
+        <col style="width:50px">
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col" rowspan="2">분류</th>
+                <th scope="col" colspan="2">항목</th>
+                <th scope="col" colspan="6">진료비용 등(단위:원)</th>
+                <th scope="col" rowspan="2">특이<br>
+                    사항</th>
+            </tr>
+            <tr>
+                <th scope="col">명칭</th>
+                <th scope="col">코드</th>
+                <th scope="col">구분</th>
+                <th scope="col">비용</th>
+                <th scope="col">최저비용</th>
+                <th scope="col">최고비용</th>
+                <th scope="col">치료재료대<br>
+                    포함여부</th>
+                <th scope="col">약제비<br>
+                    포함여부</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row" rowspan="5">기타</th>
+                <td style="text-align:left;">이송처치료 일반구급차기본요금(10km이내)</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">30,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">이송처치료 일반구급차 10km초과시(1km당)</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">1,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+           <tr>
+                <td style="text-align:left;">이송처치료 일반구급차(의사, 간호사 또는 응급구조사 동승시)</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">15,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+           <tr>
+                <td style="text-align:left;">이송처치료 일반구급차기본요금(10km이내)(야간할증요금, 00:00~04:00)</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">36,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+           <tr>
+                <td style="text-align:left;">이송처치료 일반구급차 10km초과시(1km당)(야간할증요금, 00:00~04:00)</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">1,200</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3>Ⅱ. 치료재료대</h3>
+    <table class="t3 w100" summary="비급여항목  치료재료대의 분류별 상세내용을 안내하는 표입니다.">
+	<caption class="dpn">Ⅱ. 치료재료대</caption>
+        <colgroup>
+        <col style="width:78px">
+        <col>
+        <col>
+        <col>
+        <col style="width:70px">
+        <col style="width:70px">
+        <col style="width:70px">
+        <col style="width:50px">
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col" rowspan="2">분류</th>
+                <th scope="col" colspan="2">항목</th>
+                <th scope="col" colspan="4">진료비용 등(단위:원)</th>
+                <th scope="col" rowspan="2">특이<br>
+                    사항</th>
+            </tr>
+            <tr>
+                <th scope="col">명칭</th>
+                <th scope="col">코드</th>
+                <th scope="col">구분</th>
+                <th scope="col">비용</th>
+                <th scope="col">최저비용</th>
+                <th scope="col">최고비용</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row" rowspan="32">보장구</th>
+                <td style="text-align:left;">긴팔보조기-일반형(long arm brace)</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">240,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">짧은팔보조기(long  oppponens splint))</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;">120,000</td>
+                <td style="text-align:right;">150,000</td>
+                <td>재료의 재질에 따라 차등</td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">짧은팔보조기(cork-up  splint)</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;">120,000</td>
+                <td style="text-align:right;">150,000</td>
+                <td>재료의 재질에 따라 차등</td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">짧은팔보조기(resting hand splint)</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;">120,000</td>
+                <td style="text-align:right;">150,000</td>
+                <td>재료의 재질에 따라 차등</td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">손가락관절보조기(finger splint)</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">30,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">손가락관절보조기(short opponens)</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;">70,000</td>
+                <td style="text-align:right;">90,000</td>
+                <td>재료의 재질에 따라 차등</td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">adaptive device(아크릴)</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">35,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">adaptive device(실리콘)</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">40,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">ankle brace</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">24,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">ankle band</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">8,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">knee brace</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">37,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">L-S Corset</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;">45,000</td>
+                <td style="text-align:right;">50,000</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">Wrist Brace</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">22,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">neck collar</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">10,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">Cast Shoes</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">5,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">Toe Cushion</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">26,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">Bunion Shield</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">31,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">Toe Separtors of silsicon</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">14,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">Fore Foot Cushion</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">15,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">Heel Cushion</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">26,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">Silicon Ring</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">11,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">Meta Tasal Pad(bar)</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">8,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">Arm siling</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">2,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">Elbow band</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">12,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">TPS발 보조기</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">39,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">Wrist Thumb Splint</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">14,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">Toe Spreader</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">18,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+			<tr>
+                <td style="text-align:left;">Toe Separator</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">14,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">Max Belt</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">50,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+			 <tr>
+                <td style="text-align:left;">보조기수리(10분당)</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">4,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+			<tr>
+                <td style="text-align:left;">보조기끈1(1인치두께, 10cm)</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">700</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+			<tr>
+                <td style="text-align:left;">보조기끈2(2인치두께, 10cm)</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">1,400</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+			<tr>
+                <th rowspan="4" scope="row">압박고정용<br>SPLINT</th>
+                <td style="text-align:left;">JM-102 ANKLE BRACE</td>
+                <td>BC1208PV</td>
+                <td></td>
+                <td style="text-align:right;">20,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">JM-103 WRIST BRACE</td>
+                <td>BC1205PV</td>
+                <td></td>
+                <td style="text-align:right;">20,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+			<tr>
+                <td style="text-align:left;">JM-106 THUMB BRACE</td>
+                <td>BC1219PV</td>
+                <td></td>
+                <td style="text-align:right;">14,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+			<tr>
+                <td style="text-align:left;">JM-207 TENNIS ELBOW</td>
+                <td>BC1226PV</td>
+                <td></td>
+                <td style="text-align:right;">14,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+			<tr>
+                <th rowspan="1" scope="row">자착성<br>(탄력)붕대</th>
+                <td style="text-align:left;">QTIVE COHESIVE BANDAGE(쿨밴드)</td>
+                <td>BK7100UC</td>
+                <td></td>
+                <td style="text-align:right;">15,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+			<tr>
+                <th rowspan="4" scope="row">배액관<br>고정용판</th>
+                <td style="text-align:left;">Multifix EF</td>
+                <td>BJ1006GA</td>
+                <td></td>
+                <td style="text-align:right;">5,280</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">Multifix I.V(L) Type</td>
+                <td>BJ1012GA</td>
+                <td></td>
+                <td style="text-align:right;">2,620</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+			<tr>
+                <td style="text-align:left;">Multifix L-1</td>
+                <td>BJ1009GA</td>
+                <td></td>
+                <td style="text-align:right;">2,110</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+			<tr>
+                <td style="text-align:left;">FIXBAND-L</td>
+                <td>BJ1004RI</td>
+                <td></td>
+                <td style="text-align:right;">2,040</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+			 <tr>
+                <th rowspan="2" scope="row">기타</th>
+                <td style="text-align:left;">FIXING ROLL(SUPER FIX)</td>
+                <td>BM5103BL</td>
+                <td></td>
+                <td style="text-align:right;">100</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+			<tr>
+                <td style="text-align:left;">감각방어치료솔</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">2,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+      
+        </tbody>
+    </table>
+    
+
+	<h3>Ⅲ. 약제비</h3>
+    <table class="t3 w100" summary="비급여항목 약제비의 분류별 상세내용을 안내하는 표입니다.">
+	<caption class="dpn">Ⅲ. 약제비</caption>
+        <colgroup>
+        <col style="width:78px">
+        <col>
+        <col style="width:18%" span="3">
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col" rowspan="2">분류</th>
+                <th scope="col" colspan="2">항목</th>
+                <th scope="col" rowspan="2">비용(단위:원)</th>
+                <th scope="col" rowspan="2">특이<br>
+                    사항</th>
+            </tr>
+            <tr>
+                <th scope="col">명칭</th>
+                <th scope="col">코드</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row" rowspan="57">주사제 및 약제비</th>
+                <td style="text-align:left;">고려은단비타민씨정1000mg(고려은단)</td>
+                <td>642600040</td>
+                <td style="text-align:right;">100</td>
+                <td></td>
+            </tr>
+			 <tr>
+                <td style="text-align:left;">뉴로셀텍정(고려제약)</td>
+                <td>642802740</td>
+                <td style="text-align:right;">450</td>
+                <td></td>
+            </tr>
+			  <tr>
+                <td style="text-align:left;">레졸로정1mg(한국얀센)</td>
+                <td>645104100</td>
+                <td style="text-align:right;">1,670</td>
+                <td></td>
+            </tr>
+						  <tr>
+                <td style="text-align:left;">닥터라민골드주250ml</td>
+                <td>678901181</td>
+                <td style="text-align:right;">30,000</td>
+                <td></td>
+            </tr>
+			 <tr>
+                <td style="text-align:left;">대한멸균생리식염수110ml</td>
+                <td>646901810</td>
+                <td style="text-align:right;">2,340</td>
+                <td></td>
+            </tr>
+			 </tr>
+			 <tr>
+                <td style="text-align:left;">렉센에스연고20g</td>
+                <td>645305881</td>
+                <td style="text-align:right;">6,000</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">멀티블루5주</td>
+                <td>655604320</td>
+                <td style="text-align:right;">29,000</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">메디톡신주100unit</td>
+                <td>675500010</td>
+                <td style="text-align:right;">84,000</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">메가네슘주 10%</td>
+                <td>681100070</td>
+                <td style="text-align:right;">11,000~40,000</td>
+                <td></td>
+            </tr>
+			<tr>
+                <td style="text-align:left;">메가비타식스주1ml</td>
+                <td>681100060</td>
+                <td style="text-align:right;">10,000</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">메디라제주1500IU</td>
+                <td>669803300</td>
+                <td style="text-align:right;">18,000</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">메리트씨주사</td>
+                <td>670600790</td>
+                <td style="text-align:right;">22,000</td>
+                <td></td>
+            </tr>
+			 <tr>
+                <td style="text-align:left;">박씨그리프테트라주0.5ml</td>
+                <td>665900221</td>
+                <td style="text-align:right;">30,000</td>
+                <td>독감백신 4가</td>
+            </tr>
+						 <tr>
+                <td style="text-align:left;">박타프리필드시린지1ml(A형간염백신)</td>
+                <td>655501740</td>
+                <td style="text-align:right;">49,000</td>
+                <td></td>
+            </tr>
+			<tr>
+                <td style="text-align:left;">백시플루4가주사액프리필드시린지0.5ml</td>
+                <td>642507441</td>
+                <td style="text-align:right;">30,000</td>
+                <td>독감백신 4가</td>
+            </tr>
+			 <tr>
+                <td style="text-align:left;">비타민디3비코트랫주</td>
+                <td>679700390</td>
+                <td style="text-align:right;">50,000</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">삐콤정(유한양행)</td>
+                <td>642100700</td>
+                <td style="text-align:right;">20</td>
+                <td></td>
+            </tr>
+			 <tr>
+                <td style="text-align:left;">사메주(대한뉴팜)</td>
+                <td>669907191</td>
+                <td style="text-align:right;">35,000</td>
+                <td></td>
+            </tr>
+			<tr>
+                <td style="text-align:left;">생리식염키트주사250ml(녹십자웰빙)</td>
+                <td>672900360</td>
+                <td style="text-align:right;">2,400</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">서카딘서방정2mg</td>
+                <td>646802660</td>
+                <td style="text-align:right;">1,210</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">새로나민주250ml</td>
+                <td>645101720</td>
+                <td style="text-align:right;">44,000</td>
+                <td></td>
+            </tr>
+				<tr>
+                <td style="text-align:left;">스카이셀플루4가PFS 0.5ml(독감백신)</td>
+                <td>056400031</td>
+                <td style="text-align:right;">30,000</td>
+                <td>독감백신 4가</td>
+            </tr>
+			 <tr>
+                <td style="text-align:left;">스카이조스터주0.5ml(대상포진생바이러스백신)</td>
+                <td>056400041</td>
+                <td style="text-align:right;">150,000</td>
+                <td></td>
+            </tr>
+			<tr>
+                <td style="text-align:left;">아락실과립8g</td>
+                <td>642201400</td>
+                <td style="text-align:right;">617</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">아비나파스타10g</td>
+                <td>644801230</td>
+                <td style="text-align:right;">3,600</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">액티피드정(삼일제약)</td>
+                <td>643900900</td>
+                <td style="text-align:right;">40</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">에취라제주1500IU</td>
+                <td>646801020</td>
+                <td style="text-align:right;">25,000</td>
+                <td></td>
+            </tr>
+			 <tr>
+                <td style="text-align:left;">유박스비주1ml</td>
+                <td>668900920</td>
+                <td style="text-align:right;">24,000</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">유박스비프리필드주1ml</td>
+                <td>668902161</td>
+                <td style="text-align:right;">18,000</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">유니쎈타액</td>
+                <td>649502520</td>
+                <td style="text-align:right;">7,000</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">유니쎈타주</td>
+                <td>649506310</td>
+                <td style="text-align:right;">33,000</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">잘젠정</td>
+                <td>647300930</td>
+                <td style="text-align:right;">160</td>
+                <td></td>
+            </tr>
+			<tr>
+                <td style="text-align:left;">제스탈정</td>
+                <td>655403550</td>
+                <td style="text-align:right;">160</td>
+                <td></td>
+            </tr>
+			<tr>
+                <td style="text-align:left;">지씨글루콘산칼슘주</td>
+                <td>681100210</td>
+                <td style="text-align:right;">4,000</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">지씨비타일이주2ml</td>
+                <td>681100090</td>
+                <td style="text-align:right;">10,000~22,000</td>
+                <td></td>
+            </tr>
+			<tr>
+				<td style="text-align:left;">지씨비타오주2ml
+				</td>
+                <td>681100130</td>
+                <td style="text-align:right;">10,000</td>
+                <td></td>
+			</tr>
+			<tr>
+				<td style="text-align:left;">지씨비타디주</td>
+                <td>681100190</td>
+                <td style="text-align:right;">30,000</td>
+                <td></td>
+			</tr>
+			<tr>
+				<td style="text-align:left;">지씨아르기닌주15g/25ml</td>
+                <td>681100301</td>
+                <td style="text-align:right;">35,000</td>
+                <td></td>
+			</tr>
+				<tr>
+				<td style="text-align:left;">지씨징코(은행엽)주5ml</td>
+                <td>681100310</td>
+                <td style="text-align:right;">10,000</td>
+                <td></td>
+			</tr>
+						</tr>
+				<tr>
+				<td style="text-align:left;">지씨징크(아연)주10ml</td>
+                <td>681100160</td>
+                <td style="text-align:right;">12,000</td>
+                <td></td>
+			</tr>
+			<tr>
+				<td style="text-align:left;">지씨치옥트산주
+				</td>
+                <td>681100120</td>
+                <td style="text-align:right;">20,000</td>
+                <td></td>
+			</tr>
+			  <tr>
+                <td style="text-align:left;">지씨타치온주600mg</td>
+                <td>681100141</td>
+                <td style="text-align:right;">12,000~17,000</td>
+                <td></td>
+            </tr>
+			</tr>
+			  <tr>
+                <td style="text-align:left;">지씨타치온주1200mg</td>
+                <td>681100200</td>
+                <td style="text-align:right;">15,000~20,000</td>
+                <td></td>
+            </tr>
+			 <tr>
+                <td style="text-align:left;">지씨플루쿼드리팰런트PFS</td>
+                <td>643605130</td>
+                <td style="text-align:right;">30,000</td>
+                <td>독감백신 4가</td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">조스타박스19400(대상포진생바이러스백신)</td>
+                <td>655500900</td>
+                <td style="text-align:right;">170,000</td>
+                <td></td>
+            </tr>
+			<tr>
+                <td style="text-align:left;">코프시럽에스</td>
+                <td>642102290</td>
+                <td style="text-align:right;">20</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">큐라스텐액(대원제약)</td>
+                <td>671805120</td>
+                <td style="text-align:right;">1,970</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">트레스탄캅셀(삼진제약)</td>
+                <td>647802340</td>
+                <td style="text-align:right;">400</td>
+                <td></td>
+            </tr>
+			  <tr>
+                <td style="text-align:left;">폴락스산10g(안국약품)</td>
+                <td>650202470</td>
+                <td style="text-align:right;">960</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">푸르설타민주</td>
+                <td>643601740</td>
+                <td style="text-align:right;">33,000</td>
+                <td></td>
+            </tr>
+			<tr>
+                <td style="text-align:left;">프록토세딜연고15g</td>
+                <td>652101560</td>
+                <td style="text-align:right;">2,620</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">프리베나13주(폐렴구균백신)</td>
+                <td>646500900</td>
+                <td style="text-align:right;">120,000</td>
+                <td></td>
+            </tr>
+			            <tr>
+                <td style="text-align:left;">플루아릭스테트라프리필드시린지0.5ml</td>
+                <td>650003030</td>
+                <td style="text-align:right;">34,000</td>
+                <td>독감백신 4가</td>
+            </tr>
+			<tr>
+                <td style="text-align:left;">피엠에스니스타틴시럽 1ml</td>
+                <td>659600560</td>
+                <td style="text-align:right;">140</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">하이코민주</td>
+                <td>670602630</td>
+                <td style="text-align:right;">11,000</td>
+                <td></td>
+            </tr>
+			<tr>
+				<td style="text-align:left;">히시파겐씨주 20ml</td>
+                <td>681100260</td>
+                <td style="text-align:right;">20,000</td>
+                <td></td>
+			</tr>
+            <tr>
+                <td style="text-align:left;">후라바솔헤파주 100ml</td>
+                <td>640006330</td>
+                <td style="text-align:right;">27,000</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    
+
+	<h3>Ⅳ. 제증명수수료</h3>
+    <table class="t3 w100" summary="비급여항목 제증명수수료의 분류별 상세내용을 안내하는 표입니다.">
+	<caption class="dpn">Ⅳ. 제증명수수료</caption>
+        <colgroup>
+        <col style="width:78px">
+        <col>
+        <col>
+        <col>
+        <col style="width:70px">
+        <col style="width:70px">
+        <col style="width:70px">
+        <col>
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col" rowspan="2">분류</th>
+                <th scope="col" colspan="2">항목</th>
+                <th scope="col" colspan="4">진료비용 등(단위:원)</th>
+                <th scope="col" rowspan="2">특이<br>
+                    사항</th>
+            </tr>
+            <tr>
+                <th scope="col">명칭</th>
+                <th scope="col">코드</th>
+                <th scope="col">구분</th>
+                <th scope="col">비용</th>
+                <th scope="col">최저<br>
+                    비용</th>
+                <th scope="col">최고<br>
+                    비용</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row" rowspan="27">제증명 및<br>의무기록사본</th>
+                <td style="text-align:left;">일반진단서</td>
+                <td>PDZ01</td>
+                <td></td>
+                <td style="text-align:right;">20,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">건강진단서</td>
+                <td>PDZ01</td>
+                <td></td>
+                <td style="text-align:right;">20,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">근로능력평가용 진단서</td>
+                <td>PDZ10</td>
+                <td></td>
+                <td style="text-align:right;">10,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">사망진단서</td>
+                <td>PDZ03</td>
+                <td></td>
+                <td style="text-align:right;">10,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">장애진단서(뇌병변)</td>
+                <td>PDZ07</td>
+                <td></td>
+                <td style="text-align:right;">15,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td>동사무소 제출용</td>
+            </tr>
+			 <tr>
+                <td style="text-align:left;">장애진단서(지체, 뇌병변, 언어)</td>
+                <td>PDZ07</td>
+                <td></td>
+                <td style="text-align:right;">15,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td>동사무소 제출용</td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">장애진단서(정신지체)</td>
+                <td>PDZ07</td>
+                <td></td>
+                <td style="text-align:right;">40,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td>동사무소 제출용</td>
+            </tr>
+			<tr>
+                <td style="text-align:left;">장해진단서</td>
+                <td>PDZ07</td>
+                <td></td>
+                <td style="text-align:right;">70,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">후유장애진단서</td>
+                <td>PDZ07</td>
+                <td></td>
+                <td style="text-align:right;">100,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+			 <tr>
+                <td style="text-align:left;">병무용진단서</td>
+                <td>PDZ08</td>
+                <td></td>
+                <td style="text-align:right;">20,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">국민연금장애진단서</td>
+                <td>PDZ10</td>
+                <td></td>
+                <td style="text-align:right;">15,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+			    <tr>
+                <td style="text-align:left;">공무원연금장애진단서</td>
+                <td>PDZ10</td>
+                <td></td>
+                <td style="text-align:right;">15,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">상해진단서(3주미만)</td>
+                <td>PDZ02</td>
+                <td></td>
+                <td style="text-align:right;">100,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">상해진단서(3주이상)</td>
+                <td>PDZ02</td>
+                <td></td>
+                <td style="text-align:right;">150,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">영문 일반진단서</td>
+                <td>PDE01</td>
+                <td></td>
+                <td style="text-align:right;">20,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">입/통원확인서</td>
+                <td>PDZ09</td>
+                <td></td>
+                <td style="text-align:right;">3,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td>입원 중 무료</td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">진료비추정서(천만원 미만)</td>
+                <td>PDZ14</td>
+                <td></td>
+                <td style="text-align:right;">50,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">진료비추정서(천만원 이상)</td>
+                <td>PDZ14</td>
+                <td></td>
+                <td style="text-align:right;">100,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">장애인증명서</td>
+                <td>PDZ17</td>
+                <td></td>
+                <td style="text-align:right;">1,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">의무기록사본발급(1~5매)</td>
+                <td>PDZ11</td>
+                <td></td>
+                <td style="text-align:right;">1,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">의무기록사본 추가 발급(매당)</td>
+                <td>PDZ11</td>
+                <td></td>
+                <td style="text-align:right;">100</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">특수진단서(보험회사양식)</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">20,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">발달재활서비스 의뢰서</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">20,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">부본(장당)</td>
+                <td>PDZ16</td>
+                <td></td>
+                <td style="text-align:right;">1,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">X-RAY CD COPY</td>
+                <td>PDZ11</td>
+                <td></td>
+                <td style="text-align:right;">10,000</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+			<tr>
+                <td style="text-align:left;">노인장기요양보험의사소견서</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">37,590</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+			<tr>
+                <td style="text-align:left;">방문간호지시서(의료기관방문)</td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;">19,990</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;"></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+	<br>
+	※ 비급여 진료비 고지 이력<br>
+▪ 2019-01-16 : 지씨징코주5ml → 지씨징코(은행엽)주5ml (명칭변경)<br>
+▪ 2019-01-18 : FIXBAND-L (신설)<br>
+▪ 2019-01-02 : 핵산증폭-다종그룹2_호흡기 바이러스 (신설)<br>
+▪ 2019-02-19 : 도수치료(최저비용 변경), 코푸시럽에스 (신설)<br>
+▪ 2019-02-27 : DHEA, SHBG, 대한멸균생리식염수110ml (신설)<br>
+▪ 2019-03-12 : 대한멸균생리식염수110ml (삭제), 시각운동통합발달검사 (금액변경), Rey-Kim 기억검사 (신설)<br>
+▪ 2019-03-18 : Bladder scan을 이용한 방광 잔뇨량 측정 검사, 병무용진단서 (신설)<br>
+▪ 2019-03-28 : 유박스비주1ml (신설)<br>
+▪ 2019-04-29 : JM-102 ANKLE BRACE, JM-103 WRIST BRACE, JM-106 THUMB BRACE (신설)<br>
+▪ 2019-05-14 : 진료확인서(보험회사제출용) → 특수진단서(보험회사양식) (명칭변경) <br> 
+▪ 2019-05-24 : 피엠에스니스타틴시럽 1ml (신설) <br> 
+▪ 2019-06-13 : 신경인지기능검사 유형Ⅱ 스트룹검사(Stroop Test) (신설), 주의력검사(STL) 22,000원(삭제), 페그보드검사(최고비용 47,000원 삭제) <br>   
+▪ 2019-07-01 : 상급병실료차액 2인실 60,000원 (삭제), 호모시스테인 검사 42,000원 (삭제) <br>  
+▪ 2019-07-03 : 자율신경계이상검사(기립성혈압검사) 신설 <br>  
+▪ 2019-07-26 : 박타프리필드시린지1ml(A형간염백신) 신설 <br>  
+▪ 2019-08-05 : 손가락관절보조기(Short Opponens) 90,000원,  짧은팔보조기(Long Opponens splint), 짧은팔보조기(Cock-up splint)) 150,000원, 짧은팔보조기(Resting hand splint) 200,000원~250,000원 (신설)<br>
+▪ 2019-09-01 : EZ754 Bladder scan을 이용한 방광 잔뇨량 측정검사(1일당) 25,000원 (삭제)
+▪ 2019-09-28 : 대한멸균생리식염수110ml (신설)<br>
+▪ 2019-10-04 : 백시플루4가주사액프리필드시린지0.5ml(신설)<br>
+▪ 2019-10-23 : 닥터라민골드주250mll(신설)<br>
+▪ 2019-10-25 : JM-102 ANKLE BRACE(L, XL), JM-207 TENNIS ELBOW (신설)<br>
+▪ 2019-10-29 : 플루아릭스테트라프리필드시린지 0.5ml (신설)<br>
+▪ 2019-10-31 : QTIVE COHESIVE BANDAGE(쿨밴드) (신설)<br>
+▪ 2019-11-01 : 렉센에스연고20g (신설)<br>
+▪ 2019-12-01 : 신경인지기능검사 항목(급여인정기준외 실시한 경우) 삭제<br> 
+▪ 2020-01-01 : 비급여 수가 변경 (섭식장애평가, 영유아발달검사, 전산화, 신경발달중재치료, 심리적재활중재치료, 도수치료, 체외충격파, 언어치료, 언어전반진단검사, 동맥경화도검사, 인플루엔자항원검사, 항CCP항체, 증식치료, 초음파영상, 짧은팔보조기, 손가락관절보조기)<br>
+▪ 2020-01-17 : 생리식염키트주사250ml 수가 변경
+
+
+
+</div>
+
+<?
+	// 위의 내용으로 임시 진행
+?>
+
+<!--span class="fl">2015년 1월 1일 기준</span> <span class="fr">(단위:원)</span>
+ 
+<table class="t3 w100" summary="비급여항목 분류별 수가명, 수가를 안내하는 표입니다.">
+<caption class="dpn">비급여항목</caption>
+<col style="width: 20%;"><col><col style="width: 28%;"><col style="width: 15%;">
+<thead>
+	<tr>
+		<th scope="col">분류</th>
+		<th scope="col">수가명</th>
+		<th scope="col">수가</th>
+		<th scope="col">비고</th>
+	</tr>
+</thead>
+<tbody>
+
+	<? foreach($cates AS $cid => $cate) : ?>
+	<? foreach($list[$cid] AS $key => $row) : ?>
+	<tr>
+		<? if($key == 0) { ?><th rowspan="<?=count($list[$cid])?>" scope="row"><?=$cate?></th><? } ?>
+		<td><?=$row['cta_name']?></td>
+		<td class="tar pdr_p50"><?=$row['cta_price']?></td>
+		<td><?=$row['cta_memo']?></td>		
+	</tr>
+	<? endforeach; ?>
+	<? endforeach; ?>
+	
+</tbody>
+</table--> 
+
+<br>
+

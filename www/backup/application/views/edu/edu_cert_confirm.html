@@ -1,0 +1,104 @@
+<link rel="stylesheet" type="text/css" href="/css/board.css" />
+
+<h3 class="mgt_m60"><img src="/img/sub/06_02_h3_txt02.gif" alt="수료증 발급" /></h3>
+
+<div class="board mgt_m10">
+	<div class="title" style="padding:25px 0 20px 35px;background:#f1f1f1;border-top:2px solid #737373;border-bottom:0px solid #e4e4e4;">
+      <span class="info4">강좌 신청시 입력한 정보와 일치해야만 수료증 발급이 가능합니다.</span>
+    </div>
+	<form name="fcert" id="fcert" method="post">
+		<fieldset><legend class="dpn">쓰기폼</legend>
+			<table border="0" class="write4" summary="멀티게시판 쓰기 폼">
+				<col style="width: 35%;" /><col  />
+				<tbody>
+					<tr class="first">
+						<th scope="row"></th>
+						<td></td>
+					</tr>
+					<tr>
+						<th scope="row" class="item"><label for="tname">이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름</label></th>
+						<td class="text"><input type="text" name="name" id="name" class="text" style="width:100px;" /></td>
+					</tr>
+					<tr>
+						<th scope="row" class="item">연&nbsp;락&nbsp;처</th>
+						<td class="text">
+							<input type="text" name="phone[]" id="phone1" class="text imeDis" maxlength="4" onkeypress="return only_number();" style="width:50px;" />
+				            -
+				            <input type="text" name="phone[]" id="phone2" class="text imeDis" maxlength="4" onkeypress="return only_number();" style="width:50px;" />
+				            -
+				            <input type="text" name="phone[]" id="phone3" class="text imeDis" maxlength="4" onkeypress="return only_number();" style="width:50px;" />
+						</td>
+					</tr>
+					<tr class="last">
+						<th scope="row" class="item"><label for="email">이&nbsp;메&nbsp;일</label></th>
+						<td><?=email_selector('email')?></td>
+					</tr>
+				</tbody>
+			</table>
+		</fieldset>
+
+		<div class="center mgt_m20">
+			<input type="image" src="/img/board/btn_certifi2.gif" width="98" height="26" title="새 창에서 수료증 발급받기" alt="수료증 발급" />&nbsp; &nbsp;
+			<a href="javascript:;" onclick="history.go(-1);"><img src="/img/board/btn_cancel.gif" width="77" height="26" alt="취소" /></a>
+		</div>
+	</form>
+</div>
+
+<div id='loading'></div>
+
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function() {
+	$('#fcert').validate({
+		rules: {
+			name: 'required',
+			'phone[]': 'required',
+			account_email: 'required',
+			select_email: 'required'
+		},
+		messages: {
+			name: '이름을 입력하십시오.',
+			'phone[]': '연락처를 입력하십시오.',
+			account_email: '이메일을 입력하십시오.',
+			select_email: '이메일을 입력하십시오.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+			$.post(
+				'<?=$this->input->server('PHP_SELF')?>',
+				{
+					'name':$('#name').val(),
+					'phone':$('#phone1').val() +'-'+ $('#phone2').val() +'-'+ $('#phone3').val(),
+					'email':$('input[name="email"]').val()
+				},
+				function(jdata) {
+					try {
+						var jdata = $.parseJSON(jdata);
+
+						if(jdata.id) {
+							layerWin('/edu/printPage/'+ jdata.id +'/cert', 'cert', 650, 885, 'no', false);
+							//win_open('/edu/printPage/'+ jdata.id +'/cert', 'cert', 'width=630 ,height=885, left=20, top=20, scrollbars=no, resizable=no');
+						}
+						else {
+							layerWin('/sub/06_02_01_03_guide', 'msg', 395, 165, 'no', false);
+						}
+					}
+					catch(e) {
+						alert('시스템 오류! 잠시후 다시 시도해주세요.');
+					}
+					
+					return;
+				}
+			);
+		}
+	});
+});
+//]]>
+</script>

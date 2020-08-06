@@ -1,0 +1,120 @@
+
+<!-- begin boardWrite -->
+<div class="board">
+
+
+<!-- infomenu -->
+<div class="infomenu">
+<div class="left">
+<span class="required" title="필수항목">*</span> 는 필수 입력 사항입니다.
+</div>
+<div class="right">
+<a href="?" class="button">목록</a>
+</div>
+</div>
+<!-- //infomenu -->
+
+<div class="title"><h3>글쓰기</h3></div>
+
+<!-- 쓰기폼 -->
+<form action="?">
+<!-- fieldset -->
+<fieldset><legend class="dpn">쓰기폼</legend>
+
+<table border="1" class="write" summary="멀티게시판 쓰기 폼">
+<col style="width: 20%;" /><col style="width: 40%;" /><col style="width: 12%;" /><col style="width: 28%;" />
+<tbody>
+<tr class="first">
+<th scope="row" class="item"><label for="tname">이름</label> <span class="required" title="필수항목">*</span></th>
+<td><input type="text" name="tname" id="tname" value="" class="text w100" /></td>
+<th scope="row" class="item"><label for="tpassword">암호</label> <span class="required" title="필수항목">*</span></th>
+<td><input type="password" name="tpassword" id="tpassword" value="" class="text w100" /></td>
+</tr>
+<tr>
+<th scope="row" class="item"><label for="tmail">이메일</label></th>
+<td colspan="3"><input type="text" name="tmail" id="tmail" value="" class="text w50" /> <label for="checkbox1"><input type="checkbox" name="checkbox1" id="checkbox1" value="" checked="checked" class="checkbox" />응답메일 수신</label></td>
+</tr>
+<tr>
+<th scope="row" class="item"><label for="tphone">전화번호</label></th>
+<td colspan="3"><span class="explain">* 055-0000-0000 형식으로 입력하세요.</span><br />
+<input type="text" name="tphone" id="tphone" value="" class="text w50" /></td>
+</tr>
+<tr>
+<th scope="row" class="item"><label for="tmphone">핸드폰</label></th>
+<td colspan="3"><span class="explain">* 010-0000-0000 형식으로 입력하세요.</span><br />
+<input type="text" name="tmphone" id="tmphone" value="" class="text w50" /></td>
+</tr>
+<tr>
+<th scope="row" class="item"><label for="thomepage">홈페이지</label></th>
+<td colspan="3"><input type="text" name="thomepage" id="thomepage" value="" class="text w100" /></td>
+</tr>
+<tr>
+<th scope="row" class="item"><label for="tzipcode1">주소</label></th>
+<td colspan="3"><span class="explain">* 우편번호 링크를 통해서 입력하세요.</span><br />
+<input type="text" name="tzipcode1" id="tzipcode1" value="" size="3" class="text" title="우편번호 앞자리" />-<input type="text" name="tzipcode2" id="tzipcode2" value="" size="3" class="text" title="우편번호 뒷자리" /> <a href="./zipcode.html" onclick="window.open(this.href,'','width=500,height=410,scrollbars=no,left=20,top=20'); return false;" class="button" title="새 창">우편번호</a></td>
+</tr>
+<tr>
+<th scope="row" class="item"><label for="ttemp1">임시항목라벨</label></th>
+<td colspan="3"><input type="text" name="ttemp1" id="ttemp1" value="" class="text" /> </td>
+</tr>
+<tr>
+<th scope="row" class="item"><label for="ttemp2">일곱자까지가능</label></th>
+<td colspan="3"><input type="text" name="ttemp2" id="ttemp2" value="" class="text w100" /> </td>
+</tr>
+<tr>
+<th scope="row" class="item"><label for="ttemp3">일곱자를넘어가는경우에는</label></th>
+<td colspan="3"><input type="text" name="ttemp3" id="ttemp3" value="" class="text w100"/> </td>
+</tr>
+<tr>
+<th scope="row" class="item"><label for="tsubject">제목</label> <span class="required" title="필수항목">*</span></th>
+<td colspan="3"><input type="text" name="tsubject" id="tsubject" value="" class="text w100" /></td>
+</tr>
+<tr>
+<th scope="row" class="item"><label for="tcontent">내용</label> <span class="required" title="필수항목">*</span></th>
+<td colspan="3" class="text"><div class="explain">* 개인정보보호를 위해 주민번호, 주소, 전화번호 등은 내용에 남기지 마십시오.</div>
+<textarea name="tcontent" id="tcontent" rows="3" cols="80"></textarea></td>
+</tr>
+<tr>
+<th scope="row" class="item"><label for="tfile">첨부파일</label></th>
+<td colspan="3"><input type="file" name="tfile" id="tfile" value="" class="file" /></td>
+</tr>
+<tr>
+<th scope="row" class="item">공개</th>
+<td colspan="3" class="text">일반인에게 공개하시겠습니까?
+<input type="radio" name="radio1" id="radio1_1" value="" checked="checked" class="radio" /><label for="radio1_1">공개</label>
+<input type="radio" name="radio1" id="radio1_2" value="" class="radio" /><label for="radio1_2">비공개</label>
+</td>
+</tr>
+<tr class="last">
+<th scope="row" class="item">답변</th>
+<td colspan="3" class="text">답변요청을 하시겠습니까?
+<input type="radio" name="radio2" id="radio2_1" value="" checked="checked" class="radio" /><label for="radio2_1">예</label>
+<input type="radio" name="radio2" id="radio2_2" value="" class="radio" /><label for="radio2_2">아니요</label>
+</td>
+</tr>
+</tbody>
+</table>
+
+</fieldset>
+<!-- //fieldset -->
+
+<!-- infomenu -->
+<div class="infomenu page">
+<div class="left">
+<a href="?" class="button">뒤로</a>
+</div>
+<div class="right">
+<a href="?" class="button">목록</a>
+</div>
+<div class="center">
+<input type="submit" value="저장하기" class="button" />
+</div>
+</div>
+<!-- //infomenu -->
+
+</form>
+<!-- //쓰기폼 -->
+
+
+</div>
+<!-- end boardWrite -->

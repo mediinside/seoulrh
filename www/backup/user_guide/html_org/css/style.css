@@ -1,0 +1,72 @@
+ul {list-style:none; margin:0; padding:0px;}
+
+/* 전체레이아웃 */
+#header1 { width:100%; height:22px; background:#f2f2f2; margin:0 auto;}
+ #t_menu { width:950px; height:18px; margin:0 auto; text-align:right; padding-top:5px; font-size:11px; color:#848484;}
+
+ 
+#header2 { width:950px; height:66px; margin:0 auto; }
+ #logo { width:200px; height:50px; float:left; margin-top:25px;} 
+ #category { width:540px; height:66px; float:right; margin-top:20px;}
+ 
+#main_img { width:100%; height:431px; margin:0 auto;}
+ #main { width:100%; margin:5px 0px 5px 0px; float:left;}
+ #main2 { width:950px;margin:0 auto; }
+
+#m_body { width:950px; height:275px; margin:0 auto;}
+ #m_body img { border:0; float:left;}
+ #m_body1 { width:271px; height:115px; float:left; margin-right:40px; margin-top:15px;}
+ #m_body2 { width:357px; height:115px; float:left; margin-right:40px; margin-top:15px;}
+ #m_body3 { width:235px; height:115px; float:left; margin-top:15px;}
+ #m_body4 { width:271px; height:90px; float:left; margin-right:40px;}
+ #m_body5 { width:357px; height:90px; float:left; margin-right:40px;}
+ #m_body6 { width:235px; height:90px; float:left;}
+#m_body0 { width:950px; height:90px; margin:0 auto;}
+
+
+#f_all { width:100%; margin-top:40px; float:left;}
+#footer { width:950px; margin:0 auto;}
+ #f_logo { width:250px; height:115px; margin-top:45px; float:left;}
+ #f_menu {width:700px; float:left; margin-top:15px; color:#666;}
+
+#line {width:100%; height:1px; background:#dedede; float:left;}
+
+.div_width { width:100%;}
+.m_bottom {margin-bottom:35px;}
+.m_bottom2 {margin-bottom:15px;}
+.m_top {margin-top:35px;}
+.m {margin:25px; 0 25px; 0;}
+
+
+/* 서브 */
+#sub_img { width:100%; height:140px; margin:0 auto;}
+ #sub { width:100%; margin:5px 0px 5px 0px; float:left;}
+ #sub2 { width:1295px;margin:0 auto; }
+
+.banner_sli_w li { padding: 0 5px; }
+
+#content {width:950px; margin:0 auto;}
+ #left {width:186px; float:left; margin-right:50px; }
+ .img {margin:65px 0px 10px; 0px}
+
+#sub_navi {width:703px; height:20px; text-align:right; margin:18px 0 25px 0; float:right;}
+#sub_title {width:703px; float:right;}
+ .img2 {margin-bottom:40px}
+
+#sub_body {width:703px; float:left;}
+
+
+/* 상단 카테고리 */
+#navi { width:550px; height:50px; position:relative;}
+ #navi img { border:0; float:left;}
+	.navi_main { width:550px; height:25px; }
+	.navi_sub_1 { display:block; position:absolute; padding:7px 0 0 15px; background:url(/html_org/image/common/sub1_bg.gif) no-repeat; width:400px; height:18px; top:20px; left:00px;}
+	.navi_sub_1 a{padding-right:15px;}
+	.navi_sub_2 { display:block; position:absolute; padding:8px 0 0 12px; background:url(/html_org/image/common/sub2_bg.gif) no-repeat; width:122px; height:18px; top:20px; left:135px;}
+	.navi_sub_2 a{padding-right:16px;}
+	.navi_sub_3{ display:block; position:absolute; padding:6px 0 0 10px; background:url(/html_org/image/common/sub3_bg.gif) no-repeat; width:130px; height:18px; top:20px; left:270px;}
+	.navi_sub_3 a{padding-right:17px;}
+	.navi_sub_4{ display:block; position:absolute; padding:7px 0px 0 12px; background:url(/html_org/image/common/sub4_bg.gif) no-repeat; width:100px; height:18px; top:20px; left:383px;}
+	.navi_sub_4 a{padding-right:9px;}
+	.navi_sub_5{ display:block; position:absolute; padding:7px 0px 0 12px; background:url(/html_org/image/common/sub5_bg.gif) no-repeat; width:350px; height:18px; top:20px; left:260px;}
+	.navi_sub_5 a{padding-right:15px;}

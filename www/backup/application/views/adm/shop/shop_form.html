@@ -1,0 +1,277 @@
+<h2><?=$_TITLE_?></h2>
+
+<form id='fwrite' name='fwrite' method='post' enctype="multipart/form-data" action='<?=$path?>/shop/form'>
+<input type='hidden' name='w'     value='<?=$w?>' />
+<input type='hidden' name='qstr'  value='<?=$qstr?>' />
+<input type='hidden' name='token' value='<?=$token?>' />
+<input type='hidden' name='pd_id' value='<?=$row['pd_id']?>' />
+
+<ul id="form_cont">
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 필수정보</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+			<tr>
+	            <th>상품명</th>
+				<td>
+					<input type="text" id="pd_name" name="pd_name" size="50" maxlength="120" class="ed" value="<?=$row['pd_name']?>"/>
+					<input type="checkbox" id="pd_hidden" name="pd_hidden" value="1"  <?=$row['hidden_chk']?>/> 숨김
+				</td>
+			</tr>
+			<tr>
+	            <th>제조사</th>
+				<td>
+					<input type="text" id="pd_maker" name="pd_maker" size="30" maxlength="120" class="ed" value="<?=$row['pd_maker']?>"/>
+				</td>
+			</tr>
+			<tr>
+	            <th>카테고리</th>
+				<td>
+					<select id="pd_cate" name="pd_cate">
+						<option value="">없음</option>
+						<? foreach($cate AS $cid => $cname) : ?>
+						<option value="<?=$cid?>"><?=$cname?></option>
+						<? endforeach; ?>
+					</select>
+				</td>
+			</tr>
+			<tr>
+	            <th>담당 MD</th>
+				<td>
+					<select id="pd_md" name="pd_md">
+						<option value="">없음</option>
+						<? foreach($staff AS $mid => $mname) : ?>
+						<option value="<?=$mid?>"><?=$mname?></option>
+						<? endforeach; ?>
+					</select>
+				</td>
+			</tr>
+			<tr>
+	            <th>정상가</th>
+				<td>
+					<input type="text" id="pd_price_ori" name="pd_price_ori" class="ed imeDis" maxlength="20" onkeypress="return only_number();" value="<?=$row['pd_price_ori']?>"/> 원
+				</td>
+			</tr>
+			<tr>
+	            <th>판매가</th>
+				<td>
+					<input type="text" id="pd_price" name="pd_price" class="ed imeDis" maxlength="20" onkeypress="return only_number();" value="<?=$row['pd_price']?>"/> 원
+				</td>
+			</tr>
+			<tr>
+	            <th>배송비</th>
+				<td>
+					<select id="pd_dlvFree" name="pd_dlvFree">
+						<option value="0">기본 배송비 적용</option>
+						<option value="1">무료배송 상품</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+	            <th>상태</th>
+				<td>
+					<input type="checkbox" id="pd_soldout" name="pd_soldout" value="1" <?=$row['soldout_chk']?>/> 품절
+				</td>
+			</tr>
+		</table>
+	</li>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 상품 이미지</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+			<tr>
+	            <th>대표이미지</th>
+				<td>
+					<?=form_upload('pd_image[1]', 'pd_image[1]', 'pd_image1', 'ki_shop', $row['pd_image1'], $row['pd_id'], '80x60')?>
+				</td>
+			</tr>
+			<tr>
+	            <th>상품 이미지1</th>
+				<td>
+					<?=form_upload('pd_image[2]', 'pd_image[2]', 'pd_image2', 'ki_shop', $row['pd_image2'], $row['pd_id'], '80x60')?>
+				</td>
+			</tr>
+			<tr>
+	            <th>상품 이미지2</th>
+				<td>
+					<?=form_upload('pd_image[3]', 'pd_image[3]', 'pd_image3', 'ki_shop', $row['pd_image3'], $row['pd_id'], '80x60')?>
+				</td>
+			</tr>
+			<tr>
+	            <th>상품 이미지3</th>
+				<td>
+					<?=form_upload('pd_image[4]', 'pd_image[4]', 'pd_image4', 'ki_shop', $row['pd_image4'], $row['pd_id'], '80x60')?>
+				</td>
+			</tr>
+			<tr>
+	            <th>상품 이미지4</th>
+				<td>
+					<?=form_upload('pd_image[5]', 'pd_image[5]', 'pd_image5', 'ki_shop', $row['pd_image5'], $row['pd_id'], '80x60')?>
+				</td>
+			</tr>
+		</table>
+	</li>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 상품 옵션</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+			<tr>
+				<td>
+					<ul id="option_list"></ul>
+					<div class="pd10 center"><input type="button" class="btn_simp" onclick="add_option();" value=" + 추가 "/></div>
+				</td>
+			</tr>
+		</table>
+	</li>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 기타정보</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+			<tr>
+	            <th>목록 설명</th>
+				<td>
+					<textarea name="pd_benefit" class="ed" rows="5" cols="70"><?=$row['pd_benefit']?></textarea>
+				</td>
+			</tr>
+		</table>
+	</li>
+	
+	<? if($w) : ?>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 등록정보</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+			<tr>
+	            <th>등록일</th>
+				<td>
+					<?=$row['pd_regdate']?>
+				</td>
+			</tr>
+			<tr>
+	            <th>최종수정일</th>
+				<td>
+					<?=$row['pd_mdydate']?>
+				</td>
+			</tr>
+		</table>
+	</li>
+	<? endif; ?>
+	
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 상세정보</h3>
+		<?=$editor?>
+	</li>
+</ul>
+
+<p class='center bottom editor' style="margin-top:30px;">
+	<input type='submit' id='btn_submit' class='btn' value='  확  인  'value="1" />&nbsp;
+	<input type='button' class='btn' value='  목  록  ' onclick="document.location.href='<?=$path?>/shop/lists<?=$qstr?>';"value="1" />
+</p>
+</form>
+
+<div id='loading'></div>
+
+<script type='text/javascript'>
+//<![CDATA[
+var edtNoRequired = true;
+var beforeUnload = true;
+var cate_child = Array();
+
+<? foreach($cate_child as $pid => $html): ?>
+cate_child[<?=$pid?>] = '<?=$html?>';
+<? endforeach; ?>
+
+window.onbeforeunload = function() {
+	if (beforeUnload) return '이 페이지를 벗어나시면 작성 중인 글이 지워집니다.';
+}
+
+$(document).ready(function() {
+	$('#fwrite').validate({
+		rules: {
+			pd_name: 'required',
+			pd_cate: 'required'
+		},
+		messages: {
+			pd_name: '상품명을 입력하세요.',
+			pd_cate: '카테고리를 선택하세요.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+			beforeUnload = false;
+            Editor.save();
+		}
+	});
+
+	$('#pd_cate').change(function(){
+		sel_cate($('#pd_cate'));
+	});
+});
+
+function sel_cate(obj) {
+	var cate = obj.val();
+
+	if(cate) {
+		obj.prev().attr('name', '');
+		obj.attr('name', 'pd_cate');
+	}
+	else {
+		obj.prev().attr('name', 'pd_cate');
+		obj.attr('name', '');
+	}
+
+	obj.nextAll().remove();
+	
+	if(cate_child[cate] != undefined) {
+		obj.parent().append(cate_child[cate] +' ');
+	}
+}
+
+function add_option(name, calculate, price, id) {
+	if(typeof name == 'undefined') name = '';
+	if(typeof calculate == 'undefined') calculate = '';
+	if(typeof price == 'undefined') price = '';
+	if(typeof id == 'undefined') id = '';
+	
+	var calculate_sel = '<select class="h20" name="pd_options[calculate][]">';
+	if(calculate == '-') {
+		calculate_sel += '<option value="+">＋</option><option value="-" selected="selected">－</option></select>';
+	}
+	else {
+		calculate_sel += '<option value="+" selected="selected">＋</option><option value="-">－</option></select>';
+	}
+	
+	var _html =	'<dl><dt style="width:110px;">옵션명</dt>'+
+	'<dd class="inline" style="width:250px;"><input type="hidden" name="pd_options[id][]" value="'+ id +'"/>'+
+		'<input type="text" class="ed" size="35" name="pd_options[name][]" value="'+ name +'"/></dd>'+
+		'<dt style="width:110px;">가격</dt>'+
+		'<dd>'+ calculate_sel + ' '+
+		'<input type="text" class="ed imeDis" size="15" name="pd_options[price][]" onkeypress="return only_number();" value="'+ price +'"/> '+
+		'<input type="button" class="btn_simp" onclick="remove_child($(this).parent());" value=" - 제거 "/>'+
+		'</dd></dl>';
+	
+	$('#option_list').append(_html);
+}
+
+$('#pd_cate').val('<?=$row['pd_cate_sel'][0]?>');
+$('#pd_md').val('<?=$row['pd_md']?>');
+$('#pd_dlvFree').val('<?=$row['pd_dlvFree']?>');
+
+sel_cate($('#pd_cate'));
+<? for($i = 1; $i < count($row['pd_cate_sel']); $i++): ?>
+$('#cate_child<?=$row['pd_cate_sel'][($i-1)]?>').val('<?=$row['pd_cate_sel'][$i]?>');
+sel_cate($('#cate_child<?=$row['pd_cate_sel'][($i-1)]?>'));
+<? endfor; ?>
+
+<? if($row['pd_options']): ?>
+<? foreach($row['pd_options'] AS $option): ?>
+add_option('<?=$option['pdo_name']?>', '<?=$option['pdo_price']>=0?'+':'-'?>', '<?=abs($option['pdo_price'])?>', '<?=$option['pdo_id']?>');
+<? endforeach; ?>
+<? endif; ?>
+//]]>
+</script>
+
+<?=validation_errors('<script>alert("','");</script>');?>

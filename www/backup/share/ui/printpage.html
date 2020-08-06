@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>DocumentTitle - Preview for Print</title>
+<meta name="author" content="anonym" />
+<meta name="keywords" content="DocumentTitle, Print, Preview" />
+<meta name="description" content="DocumentTitle Preview for Print" />
+<script type="text/javascript" src="/share/js/all.js"></script>
+<script type="text/javascript" src="/share/js/sub.js"></script>
+<link rel="stylesheet" type="text/css" href="/share/css/print_preview.css" />
+<script type="text/javascript">
+/* 본문 인쇄 미리보기
+= amender: 
+= update: 2009.03.04
+= desc: /share/css/print_preview.css 필요. IE6,7,8,FF,Op,Sa이상무,GC인쇄창닫으면미리보기화면보임.
+ex) <a href="/share/ui/printpage.html" onclick="window.open(this.href,'','resizable=yes,menubar=yes,scrollbars=yes,width=660,height=600,left=10,top=10'); return false;" title="새 창에서 본문 인쇄 미리보기">인쇄</a>
+*/
+function startPrint(){
+	var openerURL = opener.location.pathname;
+	var openerIndex = openerURL.lastIndexOf("/") + 1;
+	var openerPath = openerURL.substr(0,openerIndex);
+	openerPath = escape(openerPath);
+	var newContent = opener.document.getElementById("forPrint").innerHTML;
+	newContent = escape(newContent);
+	newContent = absolutePath(newContent,"%22../",openerPath);
+	newContent = absolutePath(newContent,"%27../",openerPath);
+	newContent = absolutePath(newContent,"%3D../",openerPath);
+	document.getElementById("forPrint").innerHTML = unescape(newContent);
+	window.print();
+}
+function absolutePath(contentstr,findstr,restr){
+	var temp="";
+	var r;
+	do{
+		r=contentstr.indexOf(findstr,0);                                                  
+		if(r>0){
+			temp=temp+contentstr.substring(0,r+3);
+			temp=temp+restr;
+			contentstr=contentstr.substring(r+3,contentstr.length);
+		}
+	}while(r>0)
+	temp=temp+contentstr;
+	return temp;
+}
+</script>  
+</head>
+<body onload="startPrint();">
+<noscript><p>JavaScript 를 사용할 수 없습니다.<br />일부 콘텐츠가 정상적으로 작동하지 않을 가능성이 있습니다.</p></noscript>
+<div id="container">
+<div id="forPrint"></div>
+</div>
+</body>
+</html>

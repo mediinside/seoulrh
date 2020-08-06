@@ -1,0 +1,552 @@
+<?php
+$_SERVER['DOCUMENT_ROOT']   = "/home1/seoulrh/www" ;
+include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+include_once $GP -> INC_WWW . '/count_inc.php';
+include_once "inc/head.php";
+include_once $GP -> HOME."main_lib/main_proc.php";
+
+//Check Mobile
+$mAgent = array("iPhone","iPod","Android","Blackberry",
+    "Opera Mini", "Windows ce", "Nokia", "sony" );
+$chkMobile = "PC";
+for($i=0; $i<sizeof($mAgent); $i++){
+    if(stripos( $_SERVER['HTTP_USER_AGENT'], $mAgent[$i] )){
+        $chkMobile = "mobile";
+        break;
+    }
+}
+
+$Slide_C = Main_Slide('C',$chkMobile,"chn"); //메인슬라이드
+
+
+
+?>
+<html lang="ch">
+
+<head>
+	<meta charset="utf-8">
+	<title>首尔康复医院</title>
+	<meta id="viewport" name="viewport" content="width=720px">
+	<link rel="stylesheet" href="/resource/css/common.css">
+	<link rel="stylesheet" href="/resource/css/landing.css">
+	<link rel="stylesheet" href="/resource/css/swiper.min.css">
+	<!-- <script src="/resource/js/jquery-1.12.2.min.js"></script> -->
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script src="/resource/js/swiper.min.js"></script>
+
+</head>
+
+<body>
+	<div id="wrap">
+		<header>
+			<div class="inner">
+				<h1 class="logo">
+					<a href="#none">
+						<img class="none" src="/resource/images/landing-logo-wch.png" alt="首尔康复医院">
+						<img class="fix" src="/resource/images/landing-logo-ch.png" alt="首尔康复医院">
+					</a>
+				</h1>
+				<div class="menu">
+					<div class="header-lang">
+						<a href="#none"></a>
+						<div class="lang-ch">
+							<a href="/index.html">KOR</a>
+							<a href="/landing/eng/index.html">ENG</a>
+						</div>
+					</div>
+					<a href="#none">menu</a>
+				</div>
+			</div>
+		</header>
+		<ul id="nav">
+			<li><a href="#none" onclick="fnMove('mission')">使命 & 愿景</a></li>
+			<li><a href="#none" onclick="fnMove('care')">首尔康复医院的全面康复治疗系统</a></li>
+			<li><a href="#none" onclick="fnMove('special')">首尔康复医院治疗团队</a></li>
+			<li><a href="#none" onclick="fnMove('clinic')">特殊门诊</a></li>
+			<li><a href="#none" onclick="fnMove('personal')">提供患者个性化康复服务</a></li>
+			<li><a href="#none" onclick="fnMove('global')">为全球康复发展贡献</a></li>
+			<li><a href="#none" onclick="fnMove('certification')">荣誉资质</a></li>
+			<li><a href="#none" onclick="fnMove('how')">联系方式</a></li>
+		</ul>
+		<div id="container">
+			<div id="main-slide">
+				<!-- Swiper -->
+				<div class="swiper-container">
+					<div class="slide-control">
+
+						<!-- Add Pagination -->
+						<div class="now-page"></div>
+						<!-- .swiper-pagination -->
+						<div class="swiper-pagination"></div>
+						<!-- <div id="progress">
+							<span class="progress-bar"></span>
+						</div> -->
+						<div class="all-page"></div>
+						<div class="btn">
+							<a href="#none" class="pause">
+								<img src="/resource/images/pause.png" alt="">
+							</a>
+							<a href="#none" class="play">
+								<img src="/resource/images/play.png" alt="">
+							</a>
+						</div>
+					</div>
+					<ul class="swiper-wrapper">
+						<?=$Slide_C?>
+
+					</ul>
+					<div class="slide-btn">
+						<!-- Add Arrows -->
+						<div class="swiper-button-next"></div>
+						<div class="swiper-button-prev"></div>
+					</div>
+				</div>
+			</div>
+			<!-- //end #main-slide -->
+
+			<div id="mission">
+				<ul>
+					<li>
+						<h3>使命</h3>
+						<div class="img">
+							<img class="mb-hide" src="/resource/images/landing-mission.png" alt="">
+							<img class="mb-show" src="/resource/images/landing-mission-m.png" alt="">
+						</div>
+						<p>
+							我们一起创造有价值的生活
+						</p>
+					</li>
+					<li>
+						<h3>愿景</h3>
+						<div class="img">
+							<img class="mb-hide" src="/resource/images/landing-vision.png" alt="">
+							<img class="mb-show" src="/resource/images/landing-vision-m.png" alt="">
+						</div>
+						<p>
+							世界最佳康复医院，<br class="mb-show">
+							创建康复新典范
+						</p>
+					</li>
+				</ul>
+			</div>
+			<!-- //end #mission -->
+
+			<div id="care">
+				<ul>
+					<li>
+						<img src="/resource/images/landing-care.png" alt="">
+					</li>
+					<li>
+						<h3>首尔康复医院的全面康复治疗系统</h3>
+						<p>
+							康复医院就诊的患者，不仅有运动功能、日常生活、
+							认知、言语、二便习惯、吞咽、疼痛等医学上的问题，还可能存在心理、社会、经济和家庭问题。首尔康复医院为脑中风、脊髓损伤、脑瘫、发育迟缓、肌肉骨骼痛症等患者的成功回家、重返社会、提高生活质量，由不同的康复专家提供医疗服务，如康复医师、物理治疗师、作业治疗师、心理治疗师、言语治疗师、康复专业护士和社会福利工作者，全面照顾身体、心理、
+							职业、经济、 家庭及社会。
+						</p>
+					</li>
+				</ul>
+				<img class="c-01" src="/resource/images/circle01.png" alt="">
+				<img class="c-02" src="/resource/images/circle02.png" alt="">
+			</div>
+			<!-- //end #care -->
+
+			<div id="special">
+				<div class="inner">
+					<div class="tit">
+						<h3>
+							首尔康复医院<br>治疗团队
+						</h3>
+						<p>多学科专家协作治疗</p>
+						<img src="/resource/images/circle03.png" alt="">
+					</div>
+					<ul>
+						<li>
+							<div class="img">
+								<img src="/resource/images/landing-icon01.png" alt="">
+							</div>
+							<p>康复医师</p>
+						</li>
+						<li>
+							<div class="img">
+								<img src="/resource/images/landing-icon02.png" alt="">
+							</div>
+							<p>
+								物理治疗师
+							</p>
+						</li>
+						<li>
+							<div class="img">
+								<img src="/resource/images/landing-icon03.png" alt="">
+							</div>
+							<p>心理治疗师</p>
+						</li>
+						<li>
+							<div class="img">
+								<img src="/resource/images/landing-icon04.png" alt="">
+							</div>
+							<p>
+								社会福利工作者
+							</p>
+						</li>
+						<li>
+							<div class="img">
+								<img src="/resource/images/landing-icon05.png" alt="">
+							</div>
+							<p>护士</p>
+						</li>
+						<li>
+							<div class="img">
+								<img src="/resource/images/landing-icon06.png" alt="">
+							</div>
+							<p>
+								作业治疗师
+							</p>
+						</li>
+						<li>
+							<div class="img">
+								<img src="/resource/images/landing-icon07.png" alt="">
+							</div>
+							<p>
+								言语治疗师
+							</p>
+						</li>
+						<li>
+							<div class="img">
+								<img src="/resource/images/landing-icon08.png" alt="">
+							</div>
+							<p>
+								矫形器师
+							</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- //end #special -->
+
+			<div id="clinic">
+				<div class="img">
+					<img class="mb-hide" src="/resource/images/landing-clinic.png" alt="">
+					<img class="mb-show" src="/resource/images/landing-clinic-m.png" alt="">
+				</div>
+				<div class="inner">
+					<h3>特殊门诊</h3>
+					<ul class="green-middot half">
+						<li>脑瘫门诊</li>
+						<li>发育迟缓门诊</li>
+						<li>脑卒中门诊</li>
+						<li>脑损伤门诊</li>
+						<li>脊髓损伤门诊</li>
+						<li>痉挛门诊</li>
+						<li>吞咽康复门诊</li>
+						<li>进食障碍门诊</li>
+						<li>强制性使用运动疗法门诊</li>
+						<li>坐姿门诊</li>
+						<li>斜颈门诊</li>
+						<li>运动康复门诊</li>
+						<li>肌肉骨骼痛症门诊</li>
+						<li>脊柱侧凸</li>
+						<li>下肢矫正、足部门诊</li>
+					</ul>
+				</div>
+			</div>
+			<!-- //end #clinic -->
+
+			<div id="personal">
+				<h3>
+					<small>首尔康复医院</small>
+					提供患者<br>个性化康复服务
+				</h3>
+				<div class="bar"></div>
+				<ul>
+					<li>
+						<img src="/resource/images/landing-personal-01.png" alt="">
+						<div class="text">
+							<h4>
+								个性化生活方式 <br class="mb-hide">
+								康复治疗
+							</h4>
+							<p>
+								住院<br>
+								日间病房<br>
+								门诊
+							</p>
+						</div>
+					</li>
+					<li>
+						<img src="/resource/images/landing-personal-02.png" alt="">
+						<div class="text">
+							<h4>
+								年龄段康复<br class="mb-hide">
+
+							</h4>
+							<p>婴幼儿~老年人</p>
+						</div>
+					</li>
+					<li>
+						<img src="/resource/images/landing-personal-03.png" alt="">
+						<div class="text">
+							<h4>
+								全面康复
+							</h4>
+							<p>
+								多学科方法
+							</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<!-- //end #personal -->
+
+
+
+			<div id="global">
+				<img class="mb-hide" src="/resource/images/landing-global.png" alt="">
+				<div class="inner">
+					<h3>
+						<span>为全球</span>康复发展贡献
+					</h3>
+					<div class="bar"></div>
+					<ul>
+						<li>
+							<h4>国内贡献</h4>
+							<ul class="green-middot">
+								<li>
+									支援社区残疾人
+								</li>
+								<li>向社区居民指导残疾人工作</li>
+							</ul>
+						</li>
+						<li>
+							<h4>海外贡献</h4>
+							<p>
+								首尔康复医院面向世界，推广先进的康复医疗服务。例如， 与哈萨克斯坦开展国际康复医学交流，指导越南-韩国儿童青少年康复中心的工作人员等康复产业合作。
+							</p>
+						</li>
+						<li>
+							<h4>国内外教育研究合作</h4>
+							<p>
+								我们国内外积极举办培训班和研讨会，通过分享首尔康复医院的专业康复系统和经验，培养优秀的康复专家，为全球康复医学的发展做出贡献。
+							</p>
+							<ul class="green-middot">
+								<li>康复专业人员培训</li>
+								<li>康复技术研讨会</li>
+								<li>国际康复咨询合作</li>
+							</ul>
+						</li>
+					</ul>
+					<div class="logo-list">
+						<img src="/resource/images/landing-logo-01.png" alt="">
+						<img src="/resource/images/landing-logo-02.png" alt="">
+						<img src="/resource/images/landing-logo-03.png" alt="">
+						<img src="/resource/images/landing-logo-04.png" alt="">
+						<img src="/resource/images/landing-logo-05.png" alt="">
+					</div>
+				</div>
+			</div>
+			<!-- //end #global -->
+
+
+
+			<div id="certification">
+				<h3>荣誉资质</h3>
+				<div class="inner">
+					<ul>
+						<li>
+							<p>大韩康复医学会</p>
+							<span>大韩康复医学会定点康复专科医院(2011)</span>
+						</li>
+						<li>
+							<p>勤劳福祉公团</p>
+							<span>勤劳福祉公团定点康复专科医疗机构(2012/2015)</span>
+						</li>
+						<li>
+							<p>保健福祉部</p>
+							<span>保健福祉部定点康复专科医院 (2011/2015/ 2018)</span>
+						</li>
+						<li>
+							<p>保健福祉部</p>
+							<span>保健福祉部定点医疗机构 (2012/2016)</span>
+						</li>
+						<li>
+							<p>首尔市教育厅</p>
+							<span>首尔市教育厅定点特殊教育对象治疗援助机构 (2012/2016/2018)</span>
+						</li>
+						<li>
+							<p>保健福祉部 / 首尔市政府</p>
+							<span>
+								保健福祉部 / 首尔市政府共同定点“社区残疾人保健医疗中心” (2019)
+							</span>
+						</li>
+						<li>
+							<p>保健福祉部</p>
+							<span>保健福祉部定点“恢复期康复医疗机构” (2020)</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- //end #certification -->
+
+			<div id="how">
+				<h3>联系方式</h3>
+				<div class="inner">
+					<p>首尔特别市恩平区葛岘路11街30</p><br>
+					<iframe
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3160.873373460265!2d126.90535271531276!3d37.60513907979077!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c99cbf213e39d%3A0x8642de972a41761e!2z7ISc7Jq47J6s7Zmc67OR7JuQ!5e0!3m2!1szh-CN!2skr!4v1595205691818!5m2!1szh-CN!2skr"
+						width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+						tabindex="0"></iframe>
+				</div>
+			</div>
+			<!-- //end #how -->
+		</div>
+		<!-- //end #container -->
+		<footer>
+			<div class="inner">
+				<h1>
+					首尔康复医院
+				</h1>
+				<div class="info">
+					<span>Representative <b>Lee Ji-sun</b></span> <span>Representative number <b>6020-3000</b></span>
+					<span>Unique
+						number <b>110-82-60714</b></span>
+					<p class="copy">版权 (c) 首尔康复医院。版权所有。</p>
+				</div>
+			</div>
+			<a href="#" class="top" onclick="fnMove('wrap')">
+				<img src="/resource/images/landing-top.png" alt="go to top">
+			</a>
+		</footer>
+	</div>
+	<!-- //end #wrap -->
+	<script>
+		function fnMove(seq) {
+			var offset = $("#" + seq).offset();
+			$('html,body').animate({ scrollTop: offset.top }, 400);
+			console.log(offset = $("#" + seq).offset().top);
+		}
+
+		var autoplay = 5000;
+		var swiper = new Swiper('.swiper-container', {
+			pagination: {
+				el: '.swiper-pagination',
+				type: 'progressbar',
+			},
+			loop: true,
+			watchSlidesProgress: true,
+			autoplay: {
+				delay: autoplay,
+				disableOnInteraction: false
+			},
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+		});
+
+		$(window).on("load resize", function () {
+			var window_W = $(window).width();
+
+			if (window_W < 1024) {
+				$("#viewport").attr("content", "width=720");
+			} else if (window_W >= 1024) {
+				$("#viewport").attr("content", "width=1400");
+			} else if (window_W > 1500) {
+				$("#viewport").attr("content", "width=divice-width");
+			};
+		});
+
+		$(function () {
+
+			$(".pause").click(function () {
+				swiper.autoplay.stop();
+				$(this).hide();
+				$(".play").show();
+			});
+			$(".play").click(function () {
+				swiper.autoplay.start();
+				$(this).hide();
+				$(".pause").show();
+			});
+
+			// var e = $('#header, #header_sub'),
+			// 	 h = e.outerHeight(),
+			// 	 t = e.offset().top;
+			$(window).scroll(function () {
+				var s = $(window).scrollTop();
+				console.log();
+				if (s > 100) {
+					$('header').css({
+						padding: '30px 0',
+						borderBottom: '1px solid #eee',
+						'background-color': 'rgba(255,255,255,1)'
+					});
+
+					if ($("#nav").hasClass('on') == true) {
+						$('header .logo').css('opacity', 0);
+						$('header').css({
+							padding: '30px 0',
+							borderBottom: 'none',
+							'background-color': 'rgba(255,255,255,0)'
+						});
+					}
+					$('header .none').hide();
+					$('header .fix').show();
+					$('.menu > a').addClass('active');
+					$(".header-lang > a").addClass('active');
+				} else if (s < 101) {
+					$('header').css({
+						padding: '60px 0',
+						borderBottom: 'none',
+						'background-color': 'rgba(255,255,255,0)'
+					});
+					$('header .none').show();
+					$('header .fix').hide();
+					$('.menu > a').removeClass('active');
+					$(".header-lang > a").removeClass('active');
+				}
+			})
+
+			$(".menu > a").on('click', function () {
+				$(this).toggleClass('on');
+				$(".header-lang > a").toggleClass('on');
+				if ($(this).hasClass('on') == true) {
+					$("#nav").addClass('on');
+					$('header').css({
+						borderBottom: 'none',
+						'background-color': 'rgba(255,255,255,0)'
+					});
+					if ($(window).scrollTop() > 100) {
+						$('header .logo').css('opacity', 0);
+					}
+				} else {
+					$("#nav").removeClass('on');
+					$('header .logo').css('opacity', 1);
+					if ($(window).scrollTop() > 100) {
+						$('header').css({
+							borderBottom: '1px solid #eee',
+							'background-color': 'rgba(255,255,255,1)'
+						});
+					}
+				}
+			});
+
+			$(".header-lang > a").on('click', function () {
+				$(this).toggleClass('checked');
+			});
+
+			var all_page = $(".swiper-slide").length - 2;
+			$(".all-page").text(all_page);
+
+			setInterval(function () {
+				var old_page = 0;
+				var now_page = $(".swiper-slide-active").data('swiper-slide-index');
+				$(".now-page").text(now_page + 1);
+			}, 100);
+
+		});
+
+	</script>
+
+
+</body>
+
+</html>

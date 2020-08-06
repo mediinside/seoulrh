@@ -1,0 +1,61 @@
+<div id='m_left'>
+	<h2>계정 정보</h2>
+	<table border="0" cellpadding="0" cellspacing="0" class="con_box1">
+		<tr>
+        	<th>서버 운영시스템</th>
+            <td><?=PHP_OS?></td>
+        </tr>
+        <tr>
+        	<th>서버 운영시스템 버전</th>
+            <td><?=$os_version?></td>
+        </tr>
+        <tr>
+        	<th>Hostname</th>
+            <td><?=trim(`hostname`)?></td>
+        </tr>
+		<tr>
+        	<th>IP address</th>
+            <td><?=$ip_addr?></td>
+        </tr>
+		<tr>
+        	<th>계정 DISK 사용량(A)</th>
+            <td><?=$account_space?></td>
+        </tr>
+		<tr>
+        	<th>데이터 디렉토리 사용량(D)</th>
+            <td><?=$data_space?></td>
+        </tr>
+		<tr>
+        	<th>프로그램 사용량(A-D)</th>
+            <td><?=$code_space?></td>
+        </tr>
+		<tr>
+        	<th>Apache 버전</th>
+        	<td><?=$apache_version?></td>
+        </tr>
+		<tr>
+        	<th>PHP 버전</th>
+        	<td><?=$php_version?></td>
+        </tr>
+		<tr>
+        	<th>Zend 버전</th>
+        	<td><?=$zend_version?></td>
+        </tr>
+		<tr>
+        	<th>GD 버전</th>
+        	<td><?=$gd_version?></td>
+        </tr>
+		<tr>
+        	<th>최대 Upload 파일사이즈</th>
+        	<td><?=$max_filesize?></td>
+        </tr>
+		<tr>
+        	<th>MySQL 버전</th>
+        	<td><?=$db_version?></td>
+        </tr>
+	</table>
+</div>
+
+<div id='m_right'>
+	<b></b>
+</div>

@@ -1,0 +1,47 @@
+<?
+/*
+$this_url=substr($PHP_SELF, (strrpos($PHP_SELF , '/')+1)); 
+if($this_url  == "m04_01") {
+   $title = "진료안내";
+} elseif($this_url == "m02_01") {
+   $title = "전화번호";
+ 
+} elseif($this_url == "m05_01") {
+   $title = "재활치료";
+
+} elseif($this_url == "m06_01") {
+   $title = "입원안내";
+
+} elseif($this_url == "m01_01") {
+   $title = "병원소개";
+} 
+*/
+?>
+
+
+
+<!-- 탑메뉴 -->
+<div id="nav2">
+<div class="nav">
+<ul id="gnb">
+    <li rel="04" class="m14"><a href="/mobile/sub/m04_01"><span class="ico"></span><br />진료안내</a></li>  
+    <li rel="02" class="m12"><a href="/mobile/sub/m02_01"><span class="ico"></span><br />전화번호</a></li>
+	<!-- <li rel="03" class="m13"><a href="/mobile/sub/m03_01"><span class="ico"></span><br />시설안내</a></li> -->   
+    <li rel="05" class="m15"><a href="/mobile/sub/m05_01"><span class="ico"></span><br />재활치료</a></li>
+    <li rel="06" class="m16"><a href="/mobile/sub/m06_01"><span class="ico"></span><br />입원안내</a></li>
+	<li rel="01" class="m11"><a href="/mobile/sub/m01_01"><span class="ico"></span><br />후원안내</a></li>
+</ul>
+</div>
+</div>
+<!-- //탑메뉴 -->
+
+<!-- body_title -->
+<!--div id="body_title"><h1><?=$m2_tt?></h1></div-->
+<!--div id="body_title"><h1><?=$title?></h1></div-->
+<!-- /body_title -->
+
+<script type="text/javascript">
+  $("#gnb").navigation({
+  	current: Array('<?=isset($m1)?$m1:''?>')
+  });
+</script>

@@ -1,0 +1,84 @@
+@charset "utf-8";
+/* CSS Document */
+
+ul li {list-style:none;}
+
+#board {width:100%; *zoom:1; overflow:auto;}
+#board:after {content:""; clear:both; display:block;}
+#board .board_txt {text-align:left; width:200px; margin-bottom:10px; font:normal 12px Gulim; color:#999;}
+#board .board_box td a {color:#555; text-decoration:none;}
+#board .board_txt .total {color:#555; text-decoration:none;}
+
+/* 리스트 */
+#board .board_box {font:normal 12px dotum; color:#555;}
+#board .board_box .notice {background:#f3f3f3;}
+#board .board_box .head {width:100%; height:40px; background:#fafafa;}
+#board .board_box th {text-align:center; font-weight:bold; color:#333; border-top:2px solid #737373; border-bottom:1px solid #e1e1e1;}
+#board .board_box td {font-family:dotum; text-align:center; height:20px; border-bottom:1px solid #e1e1e1;}
+#board .board_box td a {font-family:dotum; color:#555;}
+#board .board_box td .member, #board .board_box td .guest {font-weight:normal; color:#555;}
+#board .board_box td.tit {text-align:left; line-height:16px; padding:7px 0;}
+
+/* 리스트 버튼 */
+#board .board_btn {clear:both; width:100%; height:26px; margin:15px 0 50px 0;}
+#board .board_btn .l_btn {float:left;}
+#board .board_btn .r_btn {float:right; text-align:right;}
+
+#board .board_none {width:100%; text-align:center; padding:40px 0; font:normal 12px Gulim; color:#333; background:#f6f6f6;}
+
+/* 페이징 */
+#board .paging {clear:both; text-align:center; margin:0 auto;}
+#board .paging span {display:inline-table; text-decoration:none; padding:5px 5px; vertical-align:8px; font-size:12px; font-family:Verdana, AppleGothic,"굴림",Dotum,sans-serif}
+#board .paging span.current {font-weight:bold;}
+#board .paging span.out {background:#fff;}
+#board .paging span.out a {color:#767676; font-size:12px;}
+#board .paging img {padding:0px 1px;}
+
+/* 리스트 검색 */
+#board .search {margin-top:15px; text-align:center;}
+#board .search input.text {padding:2px 2px 1px 2px;border:1px solid #aaa;font-size:1em;background:#fff;width:200px;min-height:21px;_height:21px;padding:0;}
+#board .search select{min-height:21px;_height:21px;font-size:1em;vertical-align:middle;}
+#board .search input.image{min-height:14px;_height:21px;vertical-align:middle;}
+/*
+#board .search select {width:100px; height:26px; border:1px solid #e5e5e5; font:normal 12px Gulim; color:#555;}
+#board .search input[type="text"] {width:300px; height:22px; border:1px solid #e5e5e5; font:normal 12px Gulim; color:#555;}
+#board .search img {vertical-align:-9px;}
+*/
+
+/* 작성 */
+#board #wr_subject { width:98%; }
+#board #wr_email { width:98%; }
+#board #wr_content { width:98%; }
+
+/* 뷰 페이지 */
+#board .view .view_print { clear:both; float:left; padding:10px; }
+#board .view .view_sns { float:right; padding:5px 10px; }
+#board .view {width:100%;}
+#board .view table td {padding-left:15px;}
+#board .view th {font:bold 12px Gulim; color:#555; padding:12px 20px;  text-align:left; background:#fafafa; }
+#board .view td {font:normal 12px Gulim; color:#666; text-align:left;}
+#board .view .view_top {border-top:2px solid #737373; border-bottom:1px solid #e6e6e6;}
+#board .view .view_txt {padding:30px 20px; line-height:18px;}
+#board .view .view_txt img {padding:10px 0;}
+#board .view img {vertical-align:-2px;}
+
+/* 작성 */
+#board .write td, #board .write th {border-bottom:1px solid #e6e6e6;}
+#board .write td { padding-left:10px; }
+#board #write_cont { padding-bottom: 10px; }
+#board #write_option span { line-height:30px; vertical-align:bottom;}
+#board .write #wr_content { margin-bottom:10px; }
+
+/* 답변 */
+#board .answer {width:100%; background:#f8f8f8; border:1px solid #f2f2f2; padding:15px;}
+#board .answer caption {font:bold 12px Gulim; color:#555; text-align:left; margin-bottom:10px;}
+#board .answer th {font:bold 12px Gulim; color:#555; text-align:left;}
+#board .answer td {font:normal 12px Gulim; color:#666; text-align:left; line-height:22px;}
+#board .answer .date {color:#999;}
+#board .answer .answer_txt {padding:10px 10px 0 10px;}
+#board .answer .icon {padding-bottom:6px;}
+
+.mg_r0 {margin-right:0;}
+.mg_t20 {margin-top:20px;}
+.mg_b20 {margin-bottom:20px;}
+.bd_b {border-bottom:1px solid #e6e6e6;}

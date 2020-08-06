@@ -1,0 +1,104 @@
+<h2>회원 리스트</h2>
+
+<form name='fsearch' method='post' action='<?=$path?>/member/lists' onsubmit="return doSearch(this, 'member/lists');">
+<div id='list_head'>
+	<ul class='lr'>
+		<li class="mT5"><a href='<?=$path?>/member/lists'>처음</a> (총회원수 : <?=$total_cnt?> /
+        	<a href='<?=$path?>/member/lists/sst/mb_leave_date/sod/desc/<?=$sfl?>/<?=$stx?>' title='탈퇴한 회원부터 출력'><font color='crimson'>탈퇴 : <?=$leave_cnt?></font></a>)
+		</li>
+		<li class='right'>
+	        <select name='sfl'>
+	            <option value='mb_id'>회원아이디</option>
+	            <option value='mb_name'>이름</option>
+	            <? if ($use_nick){ ?><option value='mb_nick'>별명</option><? } ?>
+	            <option value='mb_level'>권한</option>
+	            <option value='mb_email'>이메일</option>
+	            <option value='mb_tel'>전화번호</option>
+	            <option value='mb_hp'>핸드폰번호</option>
+	            <option value='mb_point'>포인트</option>
+	            <option value='mb_datetime'>가입일시</option>
+	            <option value='mb_ip'>IP</option>
+        	</select>
+	        <input type='text' name='stx' class='ed' value='<?=$stx?>'/>
+	        <input type='image' src='<?=$IMG_PATH?>/button/btn_search.gif' align='top'/>
+        </li>
+    </ul>
+</div>
+</form>
+
+<form name='fmemberlist' method='post' action=''>
+<input type='hidden' name='token' value='<?=$token?>'/>
+
+<div id="list_cont">
+	<table width="100%" cellpadding="0" cellspacing="0" class="con_box2">
+		<colgroup>
+			<col class="check"/>
+			<col />
+			<col width="80" />
+			<? if ($use_nick){ ?><col width="110" /><? } ?>
+			<col width="9"/>
+			<? if ($use_point){ ?><col width="60"/><? } ?>
+			<col width="80"/>
+			<col width="50"/>
+			<col width="50"/>
+			<col width="50"/>
+			<col class="control"/>
+		</colgroup>
+		<tr>
+			<th><input type="checkbox" onclick="allcheck(this);"/></th>
+			<th><a href='<?=$sort_mb_id?>'>회원아이디</a></th>
+		    <th><a href='<?=$sort_mb_name?>'>이름</a></th>
+		    <? if ($use_nick){ ?><th><a href='<?=$sort_mb_nick?>'>별명</a></th><? } ?>
+		    <th><a href='<?=$sort_mb_level?>'>권한</a></th>
+		    <? if ($use_point){ ?><th><a href='<?=$sort_mb_point?>'>포인트</a></th><? } ?>
+		    <th><a href='<?=$sort_mb_today_login?>'>최종접속</a></th>
+		    <th title='메일수신허용여부'><a href='<?=$sort_mb_mailling?>'>수신</a></th>
+		    <th title='정보공개여부'><a href='<?=$sort_mb_open?>'>공개</a></th>
+		    <th><a href='<?=$sort_mb_email_certify?>'>인증</a></th>
+			<th class="nobg"><?=$s_add?></th>
+		</tr>
+		
+		<? foreach($list as $o): ?>
+		<tr class='row'>
+			<td><input type='checkbox' name='chk[]' value='<?=$o['mb_id']?>'/></td>
+			<td><?=$o['mb_id_s']?></td>
+			<td><?=$o['mb_name']?></td>
+			<? if($use_nick){ ?><td><?=$o['mb_nick']?></td><? } ?>
+			<td><?=$o['mb_level_select']?></td>
+			<? if($use_point){ ?><td class='right'><a href='<?=$path?>/point/lists/sfl/mb_id/stx/<?=$o['mb_id']?>'><?=$o['mb_point']?></a>&nbsp;</td><? } ?>
+			<td><?=$o['mb_today_login']?></td>
+			<td><?=$o['mb_mailling']?'<img src="'. $IMG_PATH .'/icon_check.gif"/>':'&nbsp;'?></td>
+			<td><?=$o['mb_open']?'<img src="'. $IMG_PATH .'/icon_check.gif"/>':'&nbsp;'?></td>
+			<td><?=$o['mb_email_certify']?'<img src="'. $IMG_PATH .'/icon_check.gif"/>':'&nbsp;'?></td>
+			<td><?=$o['s_view']?> <?=$o['s_mod']?> <?=$o['s_del']?></td>
+		</tr>
+		<? endforeach; ?>
+		
+		<? if (!$list): ?>
+		<tr>
+			<td colspan="11" height="50"><p class='none'>자료가 없습니다.</p></td>
+		</tr>
+		<? endif; ?>
+		
+	</table>
+	
+	<ul class='lr bottom'>
+		<li>
+			<input type='button' class='btn' value='선택수정' onclick="slt_check(this.form, '<?=$path?>/member/update')"/>
+			<input type='button' class='btn' value='선택삭제' onclick="slt_check(this.form, '<?=$path?>/member/delete')"/>
+		</li>
+		<li class='right'><?=$paging?></li>
+	</ul>
+</div>
+</form>
+
+<span style="clear:both; display:block; padding-top:10px;">* 회원자료 삭제시 다른 회원이 기존 회원아이디를 사용하지 못하도록 회원아이디, 이름, 별명은 삭제하지 않고 영구 보관합니다.</span>
+
+<script type='text/javascript' src='<?=JS_DIR?>/sideview.js'></script>
+<? if ($stx): ?>
+<script type='text/javascript'>
+//<![CDATA[
+document.fsearch.sfl.value = '<?=$sfl?>';
+//]]>
+</script>
+<? endif; ?>

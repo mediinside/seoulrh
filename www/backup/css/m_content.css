@@ -1,0 +1,51 @@
+@charset "utf-8";
+/* sub #20140127. Revision. */
+/* #body_content ─── 본문콘텐츠 */
+
+/* body.d1n1 ─── */
+
+
+/* body.d1n2 ─── */ 
+
+
+/* body.d1n3 ─── */
+
+
+/* body.d1n4 ─── */
+
+
+/* body.d1n5 ─── */
+
+
+/* body.d1n6 ─── */
+
+
+/* body.d1n7 ─── */
+
+/* 오시는 길 */
+.location01 {position:relative;width:100%;/* width:480px;height:490px; */border:1px solid #dcdcdc;}
+.location01 *{list-style:none;margin:0;padding:0;background:transparent;}
+.location01 #map{height:280px;/* width:480px;height:400px; */border-bottom:1px solid #dcdcdc;}
+.location01 .api{width:480px;height:400px;background:url(/img/mobile/sub/naver_api.jpg) no-repeat;}
+.location01 .address{width:480px;height:94px;padding:12px 0 0 10px; margin:0; background:url(/img/mobile/sub/07_01_page_img01.jpg) no-repeat 280px 5px;}
+.location01 h3{font-size:1.286em;margin-bottom:5px;letter-spacing:0;}
+.location01 .nodata{z-index:10;position:absolute;top:0;left:0;width:480px;height:458px;}
+.location01 .nodata *{position:absolute;top:0;left:0;width:480px;height:459px;}
+.location01 .nodata .pic{z-index:20;display:block;}
+.location01 .nodata .pic img{left:129px;top:78px;width:399px;height:232px;}
+.location01 .nodata .mask{background:#fff;;opacity:.5;filter:alpha(opacity=60);}
+
+
+/* 설문조사 */
+#poll {position:relative;display:block;margin:0;font-size:1.125em;}
+#poll h2{height:48px;margin:-11px -10px 0 -10px;padding:12px 0 10px;color:#444;font-size:1.375em;background:url(/img/mobile/inc/bg_poll.gif) repeat-x;text-align:center;letter-spacing:-1px;}
+#poll h2.l2{height:78px;padding:10px 0 10px;background:url(/img/mobile/inc/bg_poll2.gif) repeat-x;text-align:center;letter-spacing:-1px;}
+#poll .cnt01{margin:0 0 30px;}
+#poll .bt01{width:176px;height:40px;margin:30px auto;padding:4px 0 4px;color:#fff;font-size:1.25em;background:url(/img/mobile/inc/btn_bg01.png) no-repeat;text-align:center;}
+#poll .bt01 a {color:#fff;font-weight:normal;}
+
+#qust{position:relative;margin:30px 0;}
+#qust ul{border:1px solid #c7c7c7;background:#fff;overflow:hidden;
+	    border-radius:8px;-moz-border-radius:8px;-webkit-border-radius:8px;}
+#qust ul li{display:block;height:24px;padding:11px 14px;border-top:1px solid #c7c7c7;text-align:left; /* background:url(/img/mobile/inc/nav3mbg.gif) no-repeat 100% 50%; */}
+#qust ul li:first-child{border-top:0}

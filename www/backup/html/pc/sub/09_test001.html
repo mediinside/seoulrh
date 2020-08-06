@@ -1,0 +1,75 @@
+<?
+// 페이징
+$pageConf['per_page'] =	12;			// 한 페이지당 컨텐츠 수
+$pageConf['total_rows'] = 26;		// 컨텐츠 총 개수 (새 이북 업데이트시 이 숫자만 업데이트 할 것!)
+$pageConf['base_url'] =	'/sub/09?';
+$pageConf['page_query_string'] = TRUE;
+
+$CI =& get_instance();
+$CI->load->library('pagination');
+
+$page = $CI->input->get('per_page') ? $CI->input->get('per_page') : 1;
+
+$CI->pagination->first_link =			'<img width="25" height="25" alt="처음" src="/img/board/p_first.gif"/>';
+$CI->pagination->next_link =			'<img width="25" height="25" alt="이전" src="/img/board/p_next.gif"/>';
+$CI->pagination->prev_link =			'<img width="25" height="25" alt="이전" src="/img/board/p_prev.gif"/>';
+$CI->pagination->last_link =			'<img width="25" height="25" alt="끝" src="/img/board/p_last.gif"/>';
+
+$CI->pagination->initialize($pageConf);
+?>
+
+
+<div class="cont_col2_07">
+    
+    <!-- <div><img src="/img/sub/ready01.jpg" alt="서울재활병원 2014 오픈 준비중입니다." class="center" /></div> -->
+    
+    <!-- left 그린플러스 최신호 -->
+    <div class="col207_l mgt_m60">
+      <img src="/img/sub/09_page_img02.jpg" width="291" height="372" alt="당신의 삶을 새롭게 디자인하는 Green Plus" class="mgb_m_10" /><br />
+      
+      <span class="fs24 fwb">그린플러스 <?=$pageConf['total_rows']?>호</span><br />
+      <a href="javascript:;" onclick="win_open('/ebook/gp_ebook01/gp_<?=str_pad($pageConf['total_rows'], 3, 0, STR_PAD_LEFT)?>/gp_<?=str_pad($pageConf['total_rows'], 3, 0, STR_PAD_LEFT)?>.htm', 'ebook', 'height=' + screen.height + ',width=' + screen.width + 'fullscreen=yes,resizable=yes,location=no');" title="새 창에서 열립니다."><img src="/img/sub/btn_ebook02.gif" width="176" height="39" alt="E-BOOK view" class="mgt_m10" /></a>
+    </div>
+    <!-- //left 그린플러스 최신호 -->
+
+    
+    <!-- right 그린플러스 리스트 -->
+    <div class="col207_r">
+    <p class="info4 mgt_m30">서울재활병원 병원신문 그린플러스(Green Plus)입니다.</p>
+
+    <div class="board mgt_m10">
+	    <div class="glly_ebook02">
+		    <h2 class="dpn">게시물 목록</h2>
+		    <div class="titleno"><h3>통합멀티게시판 목록</h3></div>
+
+		    <div id="greenplus2">
+<?
+for($i = $pageConf['total_rows'] - ($pageConf['per_page'] * ($page - 1)) - 1; $i > $pageConf['total_rows'] - ($pageConf['per_page'] * $page); $i--) :
+	if($i < 1) {
+		if($pageConf['total_rows']%4 > abs($i))
+			echo '';
+		else
+			break;
+	}
+	else {
+?>
+			    <div><a href="javascript:;" onclick="win_open('/ebook/gp_ebook01/gp_<?=str_pad($i, 3, 0, STR_PAD_LEFT)?>/gp_<?=str_pad($i, 3, 0, STR_PAD_LEFT)?>.htm', 'ebook', 'height=' + screen.height + ',width=' + screen.width + 'fullscreen=yes,resizable=yes,location=no');" title="새 창에서 열립니다."><span class="subject">그린플러스 <?=$i?>호</span><span class="btn"> <img src="/img/sub/btn_ebook01.gif" width="87" height="20" alt="E-BOOK" /></span></a></div>
+<?
+	}
+endfor;
+?>
+		    </div>
+	    </div>
+    </div>
+
+    <div class="paging">
+	    <?=$CI->pagination->create_links()?>
+    </div>
+
+    </div>
+    <!-- right 그린플러스 리스트 -->
+
+
+</div>
+
+<br />

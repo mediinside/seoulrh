@@ -1,0 +1,52 @@
+<style>
+h2 {margin:10px 10px 30px 10px; font:bold 16px Gulim; letter-spacing:-1px; width:95%; border-bottom:2px solid #ddd; padding:0 0 7px 10px;}
+.apply_view { margin-bottom:10px; }
+.apply_view .title { height:20px; color:#226688; background:#D5EFFA; text-align:center; font-weight:bold; }
+.apply_view th { padding:5px; color:#4C4C4C; background:#EFEFEF; }
+.apply_view td { padding:7px 10px; line-height: 20px;  }
+.apply_view th, .apply_view td { border-bottom:1px #E6E6E6 solid; }
+</style>
+
+<h2><?=$apc['apc_name']?></h2>
+
+<table class="apply_view" align="center" width="90%" cellpadding="0" cellspacing="0" style="border-top:2px #e6e6e6 solid; border-bottom:1px #e6e6e6 solid;">
+	<colgroup>
+		<col width="150" />
+		<col width="*" />
+		<col width="150" />
+		<col width="*" />
+	</colgroup>
+		
+	<?
+	foreach($apc['form'] AS $key => $form) :
+		$next_r = isset($apc['form'][$key + 1]) && $apc['form'][$key + 1]['apf_align_r'] ? TRUE : FALSE;
+	
+		echo !$form['apf_align_r'] ? '<tr>' : '';
+	
+		if($form['apf_type'] != 'hidden') :
+	?>
+	
+		<th><?=$form['apf_name']?></th>
+		<td colspan="<?=!$next_r && !$form['apf_align_r']?'3':''?>">
+			
+			<?
+			if($form['apf_type'] == 'file') {
+				echo $row['ap_'. $form['apf_field']];
+			}
+			else {
+				$text = is_array($row['ap_'. $form['apf_field']]) ? implode("\n", $row['ap_'. $form['apf_field']]) : $row['ap_'. $form['apf_field']];
+				echo autolink(nl2br(get_text($text)));
+			}
+			?>
+			 
+			&nbsp;
+		</td>
+		
+	<?
+		endif;
+	
+		echo !$next_r ? '</tr>' : '';
+	endforeach;
+	?>
+		
+</table>

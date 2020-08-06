@@ -1,0 +1,70 @@
+<form id='flogin' name='flogin' method='post' onsubmit='return false;'>
+
+<div id='member_wrap' class="leave_bg">
+	<ul id='login_header'>
+		<li class='infor'>
+			<p>
+				<label for='mb_id'><img src='<?=IMG_DIR?>/member/i_id.gif' alt='아이디' /></label>
+				<input class="box_white" type="text" name="mb_id" id="mb_id" required="required" hname="아이디" style="ime-mode:disabled; width:150px;"/ tabindex="1">
+			</p>
+        	<p>
+				<label for='mb_password'><img src='<?=IMG_DIR?>/member/i_pw.gif' alt='비밀번호' /></label>
+				<input class="box_white" type="password" name="mb_password" id="mb_password" required="required" hname="패스워드" onkeypress="javascript:check_capslock(event, this);" style="width:150px;"/ tabindex="2">
+			</p>
+		</li>
+		<li class="bt_login"><input type='image' src='<?=IMG_DIR?>/member/btn_leave.jpg' alt='회원탈퇴' align='bottom'/></li>
+	</ul>
+
+</div>
+</form>
+
+<script type='text/javascript' src='<?=JS_DIR?>/capslock.js'></script>
+<script type="text/javascript" src='<?=JS_DIR?>/jvalidate.js'></script>
+<script type="text/javascript" src='<?=JS_DIR?>/jvalid_ext.js'></script>
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#flogin').validate({
+		rules: {
+			mb_id: { required:true, minlength:3, alphanumunder:true },
+			mb_password: 'required'
+		},
+		messages: {
+			mb_id: { required:'아이디를 입력하십시오.', minlength:'최소 3자 이상 입력하십시오.' },
+			mb_password: '비밀번호를 입력하십시오.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		}
+	});
+});
+
+$('#btn_leave').click(function() {
+	$.post(
+		'<?=RT_PATH?>/member/leave/confirm',
+		{'mb_id':$('#mb_id').val(), 'mb_password':$('#mb_password').val()},
+		function(data) {
+			if(data == '000') {
+				if(confirm('탈퇴하시겠습니까?\n\n삭제된 데이터는 복구할 수 없습니다.')) {
+					$('#flogin').attr('action', '<?=RT_PATH?>/member/leave/update');
+					$('#flogin').attr('onsubmit', '');
+					$('#flogin').submit();
+				}
+			}
+			else if(data) alert(data);
+		}
+	);
+});
+
+$('#mb_id').focus();
+
+<? if ($msg): ?>
+   alert('<?=$msg?>');
+<? endif; ?>
+
+//]]>
+</script>

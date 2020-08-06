@@ -1,0 +1,128 @@
+<form id='freg' name='freg' method='post' action='<?=$path?>/recruit/reg_form' enctype="multipart/form-data">
+<input type='hidden' name='w'    value='<?=$w?>' />
+<input type='hidden' name='rreg_id' value='<?=$row['rreg_id']?>' />
+
+<h2><?=$_TITLE_?></h2>
+
+<ul id="form_cont">
+	<li>
+        <table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+        	<tr>
+            	<th>이름</th>
+                <td>
+                	<input type='text' id='rreg_name' name='rreg_name' class='ed' size='35' value='<?=$row['rreg_name']?>' />
+				</td>
+            </tr>
+        	<tr>
+            	<th>연락처</th>
+                <td>
+                	<input type="text" name="rreg_phone[]" id="rreg_phone1" class="ed" style="width:50px;" value="<?=$row['phone'][0]?>" />
+                	-
+                	<input type="text" name="rreg_phone[]" id="rreg_phone2" class="ed" style="width:50px;" value="<?=$row['phone'][1]?>" />
+                	-
+                	<input type="text" name="rreg_phone[]" id="rreg_phone3" class="ed" style="width:50px;" value="<?=$row['phone'][2]?>" />
+				</td>
+            </tr>
+        	<tr>
+            	<th>이메일</th>
+                <td><input type="text" name="rreg_email" id="rreg_email" class="ed" readonly="readonly" value="<?=$row['rreg_email']?>" /></td>
+            </tr>
+			<tr>
+				<th scope="row" class="item"><label for="resume">이력서</label></th>
+				<td><?=form_upload('rreg_resume', 'rreg_resume', 'rreg_resume', 'ki_recruit_reg', $row['rreg_resume'], $row['rreg_id'], '80x60', '/adm/recruit')?></td>
+			</tr>
+			<tr>
+				<th scope="row" class="item"><label for="introduction">자기소개서</label></th>
+				<td><?=form_upload('rreg_introduction', 'rreg_introduction', 'rreg_introduction', 'ki_recruit_reg', $row['rreg_introduction'], $row['rreg_id'], '80x60', '/adm/recruit')?></td>
+			</tr>
+			<tr>
+				<th scope="row" class="item"><label for="transcript">성적증명서</label></th>
+				<td><?=form_upload('rreg_transcript', 'rreg_transcript', 'rreg_transcript', 'ki_recruit_reg', $row['rreg_transcript'], $row['rreg_id'], '80x60', '/adm/recruit')?></td>
+			</tr>
+			<tr>
+				<th scope="row" class="item"><label for="diploma">졸업증명서</label></th>
+				<td><?=form_upload('rreg_diploma', 'rreg_diploma', 'rreg_diploma', 'ki_recruit_reg', $row['rreg_diploma'], $row['rreg_id'], '80x60', '/adm/recruit')?></td>
+			</tr>
+			<tr>
+				<th scope="row" class="item"><label for="registration">주민등록등본</label></th>
+				<td><?=form_upload('rreg_registration', 'rreg_registration', 'rreg_registration', 'ki_recruit_reg', $row['rreg_registration'], $row['rreg_id'], '80x60', '/adm/recruit')?></td>
+			</tr>
+			<tr>
+				<th scope="row" class="item"><label for="family">가족관계증명서</label></th>
+				<td><?=form_upload('rreg_family', 'rreg_family', 'rreg_family', 'ki_recruit_reg', $row['rreg_family'], $row['rreg_id'], '80x60', '/adm/recruit')?></td>
+			</tr>
+			<tr>
+				<th scope="row" class="item bin"><label for="experience">경력증명서</label></th>
+				<td><?=form_upload('rreg_experience', 'rreg_experience', 'rreg_experience', 'ki_recruit_reg', $row['rreg_experience'], $row['rreg_id'], '80x60', '/adm/recruit')?></td>
+			</tr>
+			<tr>
+				<th scope="row" class="item bin"><label for="license">면허증(자격증)</label></th>
+				<td id="licenseFiles">
+					<?
+						foreach($row['license'] AS $key => $val) {
+							echo form_upload('rreg_license_'. $key, 'rreg_license['. $val .']', 'rreg_license_'. $key, 'ki_recruit_reg', $val, $row['rreg_id'], '80x60', '/adm/recruit') .'<br />';
+						}
+					?>
+					<input type="button" id="addFile" class="btn_simp" value=" + 추가 " style="margin-top:5px;"/>
+				</td>
+			</tr>
+            
+            <? if($row['rreg_regdate']): ?>
+        	<tr>
+            	<th>등록일</th>
+                <td>
+                	<?=$row['rreg_regdate']?>
+				</td>
+            </tr>
+        	<tr>
+            	<th>최종수정일</th>
+                <td>
+                	<?=$row['rreg_mdydate']?>
+				</td>
+            </tr>
+            <? endif; ?>
+            
+        </table>
+    </li>
+</ul>
+
+<p class='center bottom editor' style="margin-top:30px;">
+	<input type='submit' class='btn' value='  확  인  ' />&nbsp;
+	<input type='button' class='btn' value='  목  록  ' onclick="document.location.href='<?=$path?>/recruit/reg_lists';" />
+</p>
+</form>
+
+<div id='loading'></div>
+
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#freg').validate({
+		rules: {
+			rreg_name: { required:true, maxlength:50 }
+		},
+		messages: {
+			rreg_name: { required:'이름을 입력하세요.', maxlength:'이름을 50자 이내로 입력하세요.' }
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+			beforeUnload = false;
+			f.submit();
+		}
+	});
+});
+
+$('#addFile').click(function() {
+	$('#licenseFiles').prepend('<p><input type="file" name="rreg_license[]" id="license" class="file" /> <input type="button" style="margin-top:5px;" class="btn_simp" onclick="remove_child($(this).prev());" value=" - 제거 "/></p>');
+}).css('cursor', 'pointer');
+//]]>
+</script>

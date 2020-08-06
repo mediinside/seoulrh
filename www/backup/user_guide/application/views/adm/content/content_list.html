@@ -1,0 +1,77 @@
+<form name='fsearch' method='post' action='<?=$path?>/content/lists' onsubmit="return doSearch(this, 'content/lists');">
+
+<div id='list_head'>
+	<ul class='lr'>
+		<li>&deg; <a href='<?=$path?>/content/lists'>처음</a> (총 <?=$total_cnt?>개)</li>
+		<li class='right'>
+	        <select name='sfl'>
+	            <option value='ct_url'>URL</option>
+	        </select>
+	        <input type='text' name='stx' class='ed' value='<?=$stx?>'/>
+	        <input type='image' src='<?=$img_path?>/btn_search.gif' align='top'/>
+        </li>
+    </ul>
+</div>
+
+</form>
+
+<form name='fcontentlist' method='post' action=''>
+<input type='hidden' name='token' value='<?=$token?>'/>
+
+<div id='list_cont'>
+	<table width='100%' cellpadding='0' cellspacing='1'>
+		<colgroup>
+			<col class='check'/>
+			<col/>
+			<col class='ct_filename'/>
+			<col class='ct_layout'/>
+			<col class='ct_hidden'/>
+			<col class='ct_date'/>
+			<col class='ct_date'/>
+			<col class='ct_control'/>
+		</colgroup>
+		<tr>
+            <th><input type="checkbox" onclick="allcheck(this);"/></th>
+            <th><a href='<?=$sort_ct_url?>'>URL</a></th>
+            <th><a href='<?=$sort_ct_filename?>'>파일명</a></th>
+			<th><a href='<?=$sort_ct_layout?>'>레이아웃</a></th>
+            <th><a href='<?=$sort_ct_hidden?>'>숨김</a></th>
+            <th>최종수정일</th>
+			<th>등록일</th>
+            <th><?=$s_add?></th>
+        </tr>
+        
+        <? foreach ($list as $row): ?>
+		<tr class='row list<?=$row['lst']?>'>
+			<td><input type='checkbox' name='chk[]' value='<?=$row['ct_id']?>'/></td>
+			<td><input type='text' name='ct_url[<?=$row['ct_id']?>]' class='ed' maxlength='200' size='20' value='<?=$row['ct_url']?>'/></td>
+			<td><input type='text' name='ct_filename[<?=$row['ct_id']?>]' class='ed' maxlength='20' size='12' value='<?=$row['ct_filename']?>'/>.html</td>
+			<td><?=get_layout_select('ct_layout['.$row['ct_id'].']', $row['ct_layout'])?></td>
+			<td><input type='checkbox' name='ct_hidden[<?=$row['ct_id']?>]' <?=$row['ct_hidden']?'checked="checked"':''?> value='1'/></td>
+			<td><?=$row['ct_mdydate_conv']?></td>
+			<td><?=$row['ct_regdate_conv']?></td>
+			<td><?=$row['s_mod']?> <?=$row['s_del']?> <?=$row['s_pre']?></td>
+		</tr>
+		<? endforeach; ?>
+	</table>
+	<? if (!$list): ?><p class='none'>자료가 없습니다.</p><? endif; ?>
+	<ul class='lr bottom'>
+		<li>
+			<input type='button' class='btn' value='선택수정' onclick="javascript:slt_check(this.form, '<?=$path?>/content/update');"/>
+			<input type='button' class='btn' value='선택삭제' onclick="javascript:slt_check(this.form, '<?=$path?>/content/delete');"/>
+		</li>
+		<li class='right'><?=$paging?></li>
+	</ul>
+</div>
+
+</form>
+
+<? if ($stx): ?>
+<script type='text/javascript'>
+//<![CDATA[
+document.fsearch.sfl.value = '<?=$sfl?>';
+//]]>
+</script>
+<? endif; ?>
+
+<?=validation_errors('<script>alert("','");</script>');?>

@@ -1,0 +1,118 @@
+<link rel='stylesheet' href='/css/sub.css' type='text/css'/>
+<link rel='stylesheet' href='/css/board.css' type='text/css'/>
+
+<div class="board">
+	<div class="title fs24" style="padding:30px 0 25px 20px;background:#f1f1f1; border-top:1px solid #e4e4e4;"><strong>세미나 신청하기</strong></div>
+	<form name="freg" id="freg" action="/edu/reg/<?=$id?><?=$qstr?>" method="post">
+		<fieldset><legend class="dpn">쓰기폼</legend>
+			<table border="0" class="write2" summary="멀티게시판 쓰기 폼">
+				<col style="width: 20%;" /><col  />
+				<tbody>
+					<tr class="first">
+						<th scope="row" class="item"><label for="tname">이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름&nbsp;&nbsp;&nbsp;&nbsp; :</label></th>
+						<td class="text">
+							<label for="kpassword">국문</label> <input type="text" name="name" id="name" class="text" style="width:150px;" /> &nbsp;
+							<label for="tpassword">영문</label> <input type="text" name="name_en" id="name_en" class="text imeDis" style="width:150px;" />
+						</td>
+					</tr>
+					<tr>
+						<th scope="row" class="item">성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;별&nbsp;&nbsp;&nbsp;&nbsp; :</th>
+						<td class="text">
+							<input type="radio" name="sex" id="sex1" value="1" class="radio" checked="checked" /><label for="sex1">  남자</label> &nbsp;&nbsp; 
+							<input type="radio" name="sex" id="sex2" value="2" class="radio" /><label for="sex2">  여자</label>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row" class="item">생&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일&nbsp;&nbsp;&nbsp;&nbsp; :</th>
+						<td class="text">
+							<?=$sel_birth[0]?>년 &nbsp; <?=$sel_birth[1]?>월 &nbsp; <?=$sel_birth[2]?>일
+						</td>
+					</tr>
+					<tr>
+						<th scope="row" class="item">연&nbsp;락&nbsp;처&nbsp;&nbsp;&nbsp;&nbsp; :</th>
+						<td class="text">
+							<input type="text" name="phone[]" id="phone1" class="text imeDis" maxlength="4" onkeypress="return only_number();" style="width:50px;" />
+				            -
+				            <input type="text" name="phone[]" id="phone2" class="text imeDis" maxlength="4" onkeypress="return only_number();" style="width:50px;" />
+				            -
+				            <input type="text" name="phone[]" id="phone3" class="text imeDis" maxlength="4" onkeypress="return only_number();" style="width:50px;" />
+						</td>
+					</tr>
+					<tr>
+						<th scope="row" class="item"><label for="email">이&nbsp;메&nbsp;일&nbsp;&nbsp;&nbsp;&nbsp; :</label></th>
+						<td><?=email_selector('email')?></td>
+					</tr>
+					<tr>
+						<th scope="row" class="item"><label for="request01">신&nbsp;청&nbsp;자&nbsp;&nbsp;&nbsp;&nbsp; :</label></th>
+						<td><label for="job1"><input type="radio" name="job" id="job1" value="학생" checked="checked" class="checkbox" /> 학생</label> &nbsp;
+							<label for="job2"><input type="radio" name="job" id="job2" value="치료사" class="checkbox" /> 치료사</label> &nbsp;
+							<label for="job3"><input type="radio" name="job" id="job3" value="의사" class="checkbox" /> 의사</label> &nbsp;
+							<label for="job4"><input type="radio" name="job" id="job4" value="기타" class="checkbox" /> 기타</label><br />
+							학교 <input type="text" name="school" class="text" style="width:150px;" />  &nbsp;
+							근무처 <input type="text" name="company" class="text" style="width:150px;" /><br />
+							<div style="padding-top:3px;">학년 <input type="text" name="grade" class="text" style="width:150px;" /></div>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row" class="item"><label for="request02">신청경로&nbsp;&nbsp;&nbsp;&nbsp; :</label></th>
+						<td><label for="inflow1"><input type="checkbox" name="inflow[]" id="inflow1" value="홈페이지 공지" checked="checked" class="checkbox" /> 홈페이지 공지</label> &nbsp;
+							<label for="inflow2"><input type="checkbox" name="inflow[]" id="inflow2" value="학교방문" class="checkbox" /> 학교방문</label> &nbsp;
+							<label for="inflow3"><input type="checkbox" name="inflow[]" id="inflow3" value="지인소개" class="checkbox" /> 지인소개</label> &nbsp;
+							<label for="inflow4"><input type="checkbox" name="inflow[]" id="inflow4" value="커뮤니티 공지" class="checkbox" /> 커뮤니티 공지</label> &nbsp;
+							<label for="inflow5"><input type="checkbox" name="inflow[]" id="inflow5" value="기타" class="checkbox" /> 기타</label>
+						</td>
+					</tr>
+					<tr class="last">
+						<th scope="row" class="item"><label for="message">신청동기&nbsp;&nbsp;&nbsp;&nbsp; :</label></th>
+						<td class="text">
+							<textarea name="message" id="message" rows="7" cols="60"></textarea>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</fieldset>
+
+		<div class="center mgt_m20">
+			<input type="image" id="btn_submit" src="/img/board/btn_request2.gif" width="77" height="26" alt="신청" /> &nbsp; &nbsp;<a href="<?=$back_href?>"><img src="/img/board/btn_cancel.gif" width="77" height="26" alt="취소" /></a>
+		</div>
+	</form>
+</div>
+
+<div id='loading'></div>
+
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#freg').validate({
+		rules: {
+			name: { required:true, maxlength:50 },
+			name_en: { required:true, maxlength:50 },
+			sex: 'required',
+			'birth[]': 'required',
+			'phone[]': 'required'
+		},
+		messages: {
+			name: { required:'국문 이름을 입력하세요.', maxlength:'국문 이름을 50자 이내로 입력하세요.' },
+			name_en: { required:'영문 이름을 입력하세요.', maxlength:'영문 이름을 50자 이내로 입력하세요.' },
+			sex: '성별을 입력하세요.',
+			'birth[]': '생일을 입력하세요.',
+			'phone[]': '연락처를 입력하세요.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+			f.submit();
+		}
+	});
+});
+
+//]]>
+</script>

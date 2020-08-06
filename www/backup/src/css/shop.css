@@ -1,0 +1,86 @@
+#list_cont { width:100%; }
+#list_cont #list_item { width:170px; margin-bottom:30px; }
+#list_cont #list_item.left { float:left; margin-right:27px; }
+#list_cont #list_item.right { float:right; }
+
+#list_cont #list_item_edu { width:160px; height:200px; margin-bottom:30px; }
+#list_cont #list_item_edu.left { float:left; margin-right:17px; }
+#list_cont #list_item_edu.right { float:right; }
+
+.shop_list .thumnail_ img { padding:3px; border:1px solid #e5e5e5; }
+.shop_list .title_ { text-align:center; line-height:16px; padding-left:5px; padding-right:5px; }
+.shop_list .price_ { text-align:center; font-weight:bold; color:#eb6100; line-height:20px;  }
+.shop_list .bt_ { text-align:center; padding-top:5px; }
+
+#bigImg { padding:3px; border:1px solid #e5e5e5; }
+#total_price { font-weight:bold; color:#eb6100;  }
+
+.pr_title { height:30px; line-height:30px; font-size:14px; font-weight:bold; }
+.pr_info { border-top:1px solid #f49800; border-bottom:1px solid #f49800; }
+.pr_info th, .pr_info td { border-bottom:1px solid #ddd; padding-top:7px; padding-bottom:7px; }
+.pr_info th { font-size:11px; text-align:left; padding-left:22px; background:url(/html_org/img/shop/i_arrow2.gif) #f8f8f8 11px 11px no-repeat; color:#7d7d7d; }
+.pr_info td { padding-left:10px; }
+.pr_bt_center { padding:15px; text-align:center; }
+.pr_bt_right { padding-top:15px; text-align:right; }
+.pr_detail_view { border-bottom:1px solid #ccc; padding-top:15px; padding-bottom:15px; }
+.pr_detail_view p { line-height:150%; }
+
+#info_tit {width:100%; background:#adadad;}
+
+#pr_btn {float:right; margin-top:30px;}
+#pr_btn ul li {float:left; margin-left:10px}
+
+#pr_pic ul li {float:left;}
+
+.pr_table th { border-top:2px solid #ee6f00; border-bottom:1px solid #ccc; background-color:#f8f8f8; padding-top:7px; padding-bottom:7px; }
+.pr_table td { padding-top:7px; padding-bottom:7px; border-bottom:1px solid #ccc; line-height:150%; }
+.pr_table .cba, .pr_table .cbb { text-align:center; border-right:1px solid #ccc; }
+.pr_table .cba { font-weight:bold;}
+.pr_table .cbc { padding-left:15px; padding-right:15px; }
+.pr_table .bg0 { background-color:#faf8ea; color:#986b32; }
+.pr_table .bg1 { background-color:#eafaf0; color:#61826d; }
+.pr_table .bg00 { background-color:#faf9f7; }
+.pr_table .bg01 { background-color:#f9f7f7; }
+.pr_table .bg11 { background-color:#f9fdfa; }
+.pr_table .bg12 { background-color:#f5fcf0; }
+.pr_table .line_right { border-right:1px solid #ccc; }
+
+
+/* 장바구니 */
+.cart_list { border-collapse:collapse; border-top:2px solid #ee6f00; }
+.cart_list th { background-color:#f8f8f8; border-bottom:1px solid #eeeeee; padding-top:10px; padding-bottom:10px; }
+.cart_list td { border-bottom:1px solid #dddddd; padding-top:8px; padding-bottom:8px; }
+.cart_list td p { height:20px; }
+.cart_list .cart_img { border:1px solid #eee; padding:3px; }
+.cart_list .price, .cart_list .quantity { text-align:center; }
+.cart_list .total_item { text-align:right; font-weight:bold; }
+.cart_list .dlv_price { text-align:right; padding-right:20px; }
+.cart_list .total_price { text-align:right; padding-right:20px; font-weight:bold; color:#ed7703; font-size:18px; }
+.cart_list .tatal_bg1 { background-color:#f9f9f9; }
+.cart_list .tatal_bg2 { background-color:#fcf7f3; }
+.btn_view .btn_left { float:left; }
+.btn_view .btn_left li { float:left; margin-right:5px; }
+.btn_view .btn_right { float:right; text-align:right; }
+
+#fshop input[type='text'] { border:1px solid #CCCCCC; padding:2px; _height:20px; }
+
+.order_info { border-top:2px solid #eb5a05; }
+.order_info th, .order_info td { text-align:left; vertical-align:top; padding-left:10px; padding-top:7px; padding-bottom:7px; border-bottom:1px solid #eee; }
+.order_info td p { height:22px; }
+.order_info th { background-color:#f8f8f8; border-right:1px solid #eee; }
+.order_info .radio_list li { float:left; margin-right:10px; }
+.order_info .radio_list li input { float:left; margin-right:3px; }
+.order_info .radio_list li label { display:block; float:left; margin-top:2px; }
+
+.dlv_addr h4 { float:left; }
+.dlv_addr span { float:right; text-align:right; }
+.dlv_addr span input { float:left; margin-right:5px; }
+.dlv_addr span label { float:left; }
+
+.dlv_view { margin-bottom:10px; }
+.dlv_view .title { height:20px; color:#226688; background:#D5EFFA; text-align:center; font-weight:bold; }
+.dlv_view th { padding:4px; color:#4C4C4C; background:#EFEFEF; }
+.dlv_view td { padding:4px 10px;  }
+.dlv_view th, .dlv_view td { border-bottom:1px #E6E6E6 solid; }
+
+.btn_order { text-align:center; padding-top:10px; }

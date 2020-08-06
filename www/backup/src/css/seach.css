@@ -1,0 +1,13 @@
+/* 통합검색 */
+#search_wrap { margin-left:20px; width:694px; }
+#search_wrap .search_box { width:694px; height:50px; background:url(/src/imgs/search/search_box.gif) no-repeat;  position:relative;}
+#search_wrap .search_form { position:absolute; left:118px; top:14px; width:550px; height:20px; }
+#search_wrap .search_form li { float:left; margin-right:10px;  }
+.search_title { margin-bottom:15px; width:100%; height:25px; border-bottom:1px solid #ccc; }
+.search_title h3 { float:left; }
+.search_title span { float:right; text-align:right; }
+.search_title span strong { color:#eb5a05; }
+#search_list li { margin-bottom:30px; }
+#search_list .subject { font-size:14px; color:#0000cc; text-decoration:underline; }
+#search_list .datetime { font-size:11px; color:#999; }
+#search_list p { padding-bottom:5px; }

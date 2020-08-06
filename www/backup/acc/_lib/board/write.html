@@ -1,0 +1,129 @@
+
+<!-- board -->
+<div class="board">
+
+
+<!-- write -->
+<div class="write">
+
+
+<h2 class="dpn">게시물 쓰기</h2>
+
+<!-- infomenu -->
+<div class="infomenu">
+<div class="left">
+<span class="required" title="필수항목">*</span> 로 표시된 항목은 필수 입력 사항입니다.
+</div>
+<div class="right">
+</div>
+</div>
+<!-- //infomenu -->
+
+<div class="title"><h3>글쓰기</h3></div>
+
+<!-- 쓰기폼 -->
+<form action="?">
+<!-- fieldset -->
+<div class="fieldset">
+<fieldset><legend>쓰기폼</legend>
+<div class="item">
+<label class="head" for="wsubject">제목 <span class="required" title="필수항목">*</span></label>
+<input type="text" name="wsubject" id="wsubject" value="" class="text w100" />
+</div>
+<div class="item">
+<label class="head" for="wfile">첨부파일</label>
+<input type="file" name="wfile" id="wfile" value="" class="file" />
+</div>
+<div class="item expand">
+<label class="head" for="wcontent2">내용 <span class="required" title="필수항목">*</span></label>
+<div class="explain">* 개인정보보호를 위해 주민번호, 주소, 전화번호 등은 내용에 남기지 마십시오.</div>
+<textarea name="wcontent2" id="wcontent2" rows="3" cols="80" title="내용 : 개인정보보호를 위해 주민번호, 주소, 전화번호 등은 내용에 남기지 마십시오."></textarea>
+</div>
+<div class="item">
+<label class="head" for="wcontent">내용 <span class="required" title="필수항목">*</span></label>
+<div class="explain">* 개인정보보호를 위해 주민번호, 주소, 전화번호 등은 내용에 남기지 마십시오.</div>
+<textarea name="wcontent" id="wcontent" rows="3" cols="80"></textarea>
+</div>
+<div class="item">
+<label class="head" for="wwriter">작성자 <span class="required" title="필수항목">*</span></label>
+<input type="text" name="wwriter" id="wwriter" value="" class="text" />
+</div>
+<div class="item">
+<label class="head" for="wemail">이메일</label>
+<input type="text" name="wemail" id="wemail" value="" class="text w50" />
+<input type="checkbox" name="checkA" id="checkA0" value="" checked="checked" class="checkbox" /><label for="checkA0">응답메일 수신</label>
+</div>
+<div class="item">
+<label class="head" for="wphone">전화번호</label>
+<span class="explain">* 055-0000-0000 형식으로 입력하세요.</span><br />
+<input type="text" name="wphone" id="wphone" value="" class="text w40" />
+</div>
+<div class="item">
+<label class="head" for="wmphone">핸드폰</label>
+<span class="explain">* 010-0000-0000 형식으로 입력하세요.</span><br />
+<input type="text" name="wmphone" id="wmphone" value="" class="text w40" />
+</div>
+<div class="item">
+<label class="head" for="whomepage">홈페이지</label>
+<input type="text" name="whomepage" id="whomepage" value="" class="text w100" />
+</div>
+<div class="item">
+<label class="head" for="wzipcode1">주소</label>
+<input type="text" name="wzipcode1" id="wzipcode1" value="" size="3" class="text" title="우편번호 앞자리 " />-<input type="text" name="wzipcode2" id="wzipcode2" value="" size="3" class="text" title="우편번호 뒷자리" />
+<a href="./zipcode.html" onclick="window.open(this.href,'','width=500,height=410,scrollbars=no,left=20,top=20'); return false;" class="button" title="새 창">우편번호</a>
+</div>
+<div class="item" style="height: 2.5em;">
+<label class="head" for="wtemp1">일곱자를넘으면<br />CSS작업필요</label>
+<input type="text" name="wtemp1" id="wtemp1" value="" class="text w100" />
+</div>
+<div class="item left">
+<label class="head" for="wtemp2">임시항목라벨</label>
+<input type="text" name="wtemp2" id="wtemp2" value="" class="text w100" />
+</div>
+<div class="item right" style="height: 2.5em;">
+<label class="head" for="wtemp3">일곱자를넘으면<br />CSS작업필요</label>
+<input type="text" name="wtemp3" id="wtemp3" value="" class="text w100" />
+</div>
+<div class="item">
+<label class="head" for="wpassword">암호 <span class="required" title="필수항목">*</span></label>
+<input type="password" name="wpassword" id="wpassword" value="" class="text" />
+</div>
+<div class="item">
+<span class="head">정보공개</span>
+<input type="radio" name="radioA" id="radioA0" value="" checked="checked" class="radio" /><label for="radioA0">공개</label>
+<input type="radio" name="radioA" id="radioA1" value="" class="radio" /><label for="radioA1">비공개</label>
+</div>
+<div class="item">
+<span class="head">답변요청</span>
+<input type="radio" name="radioB" id="radioB0" value="" checked="checked" class="radio" /><label for="radioB0">예</label>
+<input type="radio" name="radioB" id="radioB1" value="" class="radio" /><label for="radioB1">아니오</label>
+</div>
+</fieldset>
+</div>
+<!-- //fieldset -->
+
+<!-- infomenu -->
+<div class="infomenu page">
+<div class="left">
+</div>
+<div class="right">
+<!-- <input type="image" src="/img/board/btn_record.gif" width="61" height="21" alt="등록하기" class="image" />
+&nbsp;
+<a href="?"><img src="/img/board/btn_list.gif" width="40" height="21" alt="목록" /></a> -->
+<input type="submit" value="등록하기" class="button" />
+&nbsp;
+<a href="?" class="button">목록</a>
+</div>
+</div>
+<!-- //infomenu -->
+
+</form>
+<!-- //쓰기폼 -->
+
+
+</div>
+<!-- //write -->
+
+
+</div>
+<!--//board -->

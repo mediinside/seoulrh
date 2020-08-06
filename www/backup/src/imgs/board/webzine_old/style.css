@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+.board_wrap .webzine li { margin-bottom:15px; padding-bottom:15px; border-bottom:1px dotted #ccc; }
+.board_wrap .webzine .pr_img img, .board_wrap .webzine_view .pr_img img { border:1px solid #ccc; padding:3px; }
+.board_wrap .webzine dt, .board_wrap .webzine_view dt  { float:left; width:225px; }
+.board_wrap .webzine dd, .board_wrap .webzine_view dd { float:left; width:480px; margin:0; }
+.board_wrap .webzine h4, .board_wrap .webzine_view h4 { height:30px; font-size:14px; }
+.board_wrap .webzine .cont, .board_wrap .webzine_view .cont { text-align:justify; line-height:18px; }
+.board_wrap .webzine .bt { padding-top:15px; }
+.board_wrap .pr_thumnail { width:208px; }
+.board_wrap .pr_thumnail p { text-align:center; }
+.board_wrap .pr_thumnail .bt_zoom { padding-top:5px; }

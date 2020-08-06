@@ -1,0 +1,469 @@
+@charset "utf-8";
+/* sub #20110525. Revision. */
+/* form Base ───── 서식기본 */
+form,
+fieldset,
+legend{margin:0;padding:0;border:0;line-height:1.25;}
+input,
+select,
+textarea,
+button{min-height:14px;margin:0;padding:0;font-size:1em;line-height:1.25;vertical-align:middle;}/* [IE] color, font, line-height 상속안됨 */
+textarea{padding:2px 0 0 2px;border:1px solid #d9d9d9;background:#fff;overflow:auto;}/* textarea는 인라인요소 */
+select{min-height:21px;}/* [OP]높이보정. [IE6,7]적용무관 */
+* html select{margin-top:1px;margin-bottom:1px;}
+*+html select{margin-top:1px;margin-bottom:1px;}
+/* input type class */
+input.text,
+input.file{padding:2px 2px 1px 2px;border:1px solid #d9d9d9;background:#fff;}
+input.radio,
+input.checkbox{margin:0 1px 2px 0;}
+* html input.radio,
+* html input.checkbox{width:13px !important;height:13px !important;}
+*+html input.radio,
+*+html input.checkbox{width:13px !important;height:13px !important;}
+input.image{vertical-align:middle;}
+
+/* (非)서식공용 ───── */
+
+/* Button ─── 버튼 */
+
+a.button,
+input.button,
+button.button{display:inline-block;margin:0;padding:3px 7px 1px 7px;
+border:1px solid #B8B8B8;background:#fff url(/img/inc/button_bg.png) no-repeat 0 50%;color:#333 !important;
+line-height:1.25;vertical-align:middle;white-space:nowrap;text-decoration:none !important;cursor:pointer;
+/* CSS3[FF,SF,CR,OP] */ border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;}
+img.button{vertical-align:middle;cursor:pointer;}
+/* [IE]상하패딩각각-1px, 좌우패딩각각-6px */
+* html input.button{height:21px;padding:2px 1px 0 1px !important;}
+*+html input.button{height:21px;padding:2px 1px 0 1px !important;}
+* html button.button{height:21px;margin-left:4px !important;padding:2px 1px 0 1px !important;}
+*+html button.button{height:21px;margin-left:4px !important;padding:2px 1px 0 1px !important;}
+/* CSS3:root [FF,SF,CR,OP] 상하패딩각각=0, 좌우패딩각각-3px */
+:root input.button,
+:root button.button{height:21px;padding:.05em 4px 0 4px !important;line-height:1.59;overflow:hidden;}
+
+/* 외부링크버튼 */
+a.button_outside{display:inline-block;margin:0;padding:5px 19px 3px 9px;
+border:1px solid #ccc;background:url(/img/inc/button_outside_bg.png) no-repeat 100% 50%;color:#333 !important;font-size:1.09em;font-family:"굴림";
+line-height:1.24;letter-spacing:-1px;vertical-align:middle;white-space:nowrap;text-decoration:none !important;cursor:pointer;}
+/* 테이블內버튼 */
+td a.button{margin:4px 0;padding:2px 14px 0 4px;border:1px solid #0D780D;background:#0D780D url(/img/inc/button_intable_bg.png) no-repeat 100% 50%;color:#fff !important;}
+/* 다운로드 */
+a.download{width:48px;height:19px;padding:3px 2px 2px 1.1em;
+border-bottom:1px dashed #999;background:#fff url(/img/all/bu06.gif) no-repeat 0 3px;color:#333;
+line-height:1.8;vertical-align:middle;white-space:nowrap;text-decoration:none !important;cursor:pointer;}
+/* 단순링크 */
+a.link{padding:0 0 0 1.1em;color:#333;background:transparent url(/img/all/bu06.gif) no-repeat 0 0;
+vertical-align:middle;white-space:nowrap;cursor:pointer;}
+
+/* 페이지내비게이션:텍스트 */
+table.page_navi{clear:both;margin:20px auto;padding:0;border:0;border-collapse:collapse;}
+table.page_navi td{padding:0 2px;border:0;}
+table.page_navi td span,
+table.page_navi td a{display:inline-block;height:25px;padding:12px 7px 3px;border:0px solid #ddd;line-height:1.25;cursor:default; color:#565656;}
+table.page_navi td a:link,
+table.page_navi td a:visited{cursor:pointer;}
+table.page_navi td a:hover{}
+table.page_navi td.active a,
+table.page_navi td a.active{background:#fff;color:#3b3f42 !important;font-weight:bold;text-decoration:none;}
+table.page_navi td.pfirst a{padding-left:14px;border:0;background:url(/img/board/p_first.gif) no-repeat 0 50%;}
+table.page_navi td.pprev a{padding-left:12px;border:0;background:url(/img/board/p_prev.gif) no-repeat 0 50%;}
+table.page_navi td.pnext a{padding-right:12px;border:0;background:url(/img/board/p_next.gif) no-repeat 100% 50%;}
+table.page_navi td.plast a{padding-right:14px;border:0;background:url(/img/board/p_last.gif) no-repeat 100% 50%;}
+table.page_navi td.pfirst span{padding-left:14px;border:0;background:url(/img/board/p_first.gif) no-repeat 0 50%;filter:alpha(opacity=50);opacity:0.5;}
+table.page_navi td.pprev span{padding-left:12px;border:0;background:url(/img/board/p_prev.gif) no-repeat 0 50%;filter:alpha(opacity=50);opacity:0.5;}
+table.page_navi td.pnext span{padding-right:12px;border:0;background:url(/img/board/p_next.gif) no-repeat 100% 50%;filter:alpha(opacity=50);opacity:0.5;}
+table.page_navi td.plast span{padding-right:14px;border:0;background:url(/img/board/p_last.gif) no-repeat 100% 50%;filter:alpha(opacity=50);opacity:0.5;}
+
+/* 이전<>다음 이미지 */
+table.page_navi tr.img td{padding:0 0 0 1px;border:0;border-style:none hidden;/* background:url(/img/board/page_sep.gif) no-repeat 0 50%; */}
+table.page_navi tr.img td.pfirst,
+table.page_navi tr.img td.pprev,
+table.page_navi tr.img td.pnext,
+table.page_navi tr.img td.plast{padding:0 1px;background:transparent;}
+table.page_navi tr.img td.pfirst a,
+table.page_navi tr.img td.pprev a,
+table.page_navi tr.img td.pnext a,
+table.page_navi tr.img td.plast a{height:auto;padding:0;background:transparent;}
+table.page_navi tr.img td.pfirst a:hover,
+table.page_navi tr.img td.pprev a:hover,
+table.page_navi tr.img td.pnext a:hover,
+table.page_navi tr.img td.plast a:hover{background:transparent;}
+table.page_navi tr.img td img{vertical-align:middle;margin:0 !important;margin:0 0 3px 0;}
+table.page_navi tr.img td.first{padding:0;background:transparent;}
+table.page_navi tr.img td.last{}
+table.page_navi tr.img td.pfirst img{}
+table.page_navi tr.img td.pprev img{}
+table.page_navi tr.img td.pnext img{}
+table.page_navi tr.img td.plast img{}
+
+/* 달력:셀전체클릭 */
+.calendar{width:400px/* 입력 */;margin:1em auto;}
+.calendar caption{display:none;}
+.calendar .month{padding:6px 0;text-align:center;}
+.calendar .month *{display:inline;margin:0;padding:0;background:0;letter-spacing:0;}
+.calendar .month img{width:15px;height:13px;margin:0 6px 3px;vertical-align:middle;}
+.calendar table{width:100%;height:340px/* 입력 */;margin:0;border:0;border-collapse:collapse;border-top:2px solid #777;line-height:1.25;}
+.calendar table tr{text-align:left;}
+.calendar table th,
+.calendar table td{width:14.29%;padding:0;border:1px solid #ddd;vertical-align:top;}
+.calendar table th,
+.calendar table tr.day td{height:15px;padding:3px 6px 1px 6px;background:#f4f4f4;font-weight:bold;text-align:center;}
+.calendar table td a,
+.calendar table td span{display:block;height:48px/* 입력 */;margin:0;padding:3px 6px 1px 6px;background:#fff;}
+/* height = ((테이블전체높이340-가로라인전체두께9-요일높이와패딩19)/6)-셀세로패딩4 = 48 */
+.calendar table td a{text-decoration:underline !important;}
+.calendar table td a:hover{background:#ffc;}
+.calendar table .sun,
+.calendar table .sun a,
+.calendar table .sun span{color:#f05 !important;}
+.calendar table .sat,
+.calendar table .sat a,
+.calendar table .sat span{color:#07c !important;}
+.calendar table .today{background:#efd;}
+.calendar table td * a{display:inline;width:auto;height:auto;margin:0;padding:0;background:transparent;}
+
+/* 달력:기간선택용 */
+.calendar2{position:relative;width:183px;padding:4px;border:1px solid #bbb;background:#fcfcfc;text-align:left;}
+.calendar2 table{width:auto;margin:2px 0 0 0;border:0;border-collapse:collapse;}
+.calendar2 table tr{text-align:center;}
+.calendar2 table td{width:25px;padding:2px 0 0px;border:1px solid #ddd;color:#666;}
+.calendar2 table th{padding:2px 0 0px;border:1px solid #ddd;color:#666;background:#eee;font-weight:bold;}
+.calendar2 table .sun,
+.calendar2 table .sun a{color:#f40 !important;}
+.calendar2 table .sat,
+.calendar2 table .sat a{color:#07d !important;}
+.calendar2 table .today{font-weight:bold;}
+.calendar2 table td a{}
+.calendar2 table td a:hover{}
+.calendar2 .yearmonth{}
+.calendar2 .close{position:absolute;right:4px;top:4px;}
+/* 기간시작종료 */
+#from_date{display:none;position:absolute;left:90px;top:32px;}
+#to_date{display:none;position:absolute;left:218px;top:32px;}
+
+/* Board ───── 게시판 [Markup] <div class="board">..</div> */
+
+/* Board Base ─── */
+.board{clear:both;width:100%;margin:0 auto;}
+.board a{text-decoration:none;}
+.board a:link,
+.board a:visited{color:#333;}
+.board a:hover, a:active, a:focus{color:#000;text-decoration:underline;}
+.board img{vertical-align:middle;}
+
+/* 게시판 정보메뉴 담기 */
+.board .infomenu{z-index:10;clear:both;position:relative;width:100%;margin:0;padding:0;border-top:1px solid #ccc;}
+.board .infomenu:after{content:".";display:block;clear:both;height:0;visibility:hidden;}
+
+.board .infomenu2{z-index:10;clear:both;position:relative;width:100%;margin:0;padding:0;border-top:1px solid #737373;}
+
+.board .left{float:left;padding:6px 4px;text-align:left;}
+.board .right{float:right;padding:6px 4px;text-align:right;}
+.board .center{text-align:center;padding:6px 0;margin:0 auto;}
+
+.board .totalpage{padding-top:15px;}
+.board .totalpage em{color:#565656;font-weight:bold;}
+
+/* 검색 */
+.board .search fieldset legend{display:none;}
+
+/* 페이지내비게이션 담기 */
+.board .page{clear:both;}
+.board .page table.page_navi{}
+
+/* Board Base ─── */
+
+/* 목록 table */
+.board table.basic{clear:both;width:100%;margin:3px 0;border:0;border-collapse:collapse;border-bottom:1px solid #bbb;}
+.board table.basic *{border:0;}
+.board table.basic thead.tb tr,
+.board table.basic tbody.tb tr{line-height:1.25;text-align:center;}
+.board table.basic tbody.tb td,
+.board table.basic tbody.tb th{padding:10px 15px; border-right:0px solid #e4e4e4; border-bottom:1px solid #e4e4e4; font-weight:normal; white-space:nowrap;}
+.board table.basic tbody.tb td a,
+.board table.basic tbody.tb th a {color:#575757;}
+.board table.basic thead.tb th{padding:9px 15px 10px; background:#fafafa; border-top:2px solid #737373; border-bottom:1px solid #e4e4e4;color:#333;font-weight:bold;letter-spacing:-1px;white-space:nowrap;}/*border-style:none hidden; background:url(/img/board/th_bg.gif) no-repeat 0 50%;*/
+/*.board table.basic thead.tb th.first{padding-left:5px;padding-right:0;border-left:0 solid #ccc;background:url(/img/board/thead_bg.gif) no-repeat 0 50%;}*/
+.board table.basic thead.tb th.first div{padding-left:15px;padding-right:15px;}
+.board table.basic tbody.tb td.first{padding-left:20px;}
+/*.board table.basic thead.tb th.last{padding-left:0;padding-right:5px;border-right:0 solid #ccc;background:url(/img/board/thead_bg.gif) no-repeat 100% 50%;}*/
+/*.board table.basic thead.tb th.last div{padding-left:15px;padding-right:15px;background:url(/img/board/th_bg.gif) no-repeat 0 50%;}*/
+.board table.basic tbody.tb td.last{padding-right:20px; border-right:none;}
+.board table.basic tbody.tb td.subject{text-align:left;white-space:normal;}/* 제목 */
+.board table.basic thead.tb th.subject{text-align:left;white-space:normal;}/* 제목 - 내용에서제목추가 */
+.board table.basic tbody td.substance{padding:1.4em 5px;}/* 본문 안에는 class="tb" 없이 코드 붙여넣은 스타일을 그대로 따라간다. */
+.board table.basic tbody td.attach{text-align:left;padding:7px 5px;border-top:1px dashed #ccc;white-space:normal;}/* 첨부 */
+.board table.basic tbody td.attach a{margin-left:4px;}
+.board table.basic tbody.tb td.picture {border-right:none;}
+/*.board table.basic .row2,
+.board table.basic .row4,
+.board table.basic .row6,
+.board table.basic .row8,
+.board table.basic .row10{background:#fafafa;}*/
+
+/* div형 제목바 */
+.board div.title{display:block;clear:both;width:98%;padding:0 0 0 2%; background:#f5f5f5; border-top:2px solid #888; border-bottom:1px solid #c7c7c7; line-height:1.25;overflow:hidden;font-family:"굴림"}
+.board div.title h3{position:relative;height:15px;margin:0;padding:11px 2% 10px 1%;border:0; color:#565656;font-size:1em !important;letter-spacing:0;text-align:left; background:none;}
+.board div.title h3 span{display:inline;float:left;margin:0 2% 0 0;padding:0 2% 0 1%;background:url(/img/board/th3bg.gif) no-repeat 100% 1px;color:#333;font-weight:normal;}
+.board div.titleno{clear:both;width:98%;padding:0 0 0 2%; font-size:0;text-indent:-9999px;}
+.board div.titleno *{margin:0;padding:0 2% 0 0;}
+
+/* 목록 갤러리 */
+.board .gallery{clear:both;margin:0;padding:0;text-align:center;}
+.board .gallery table{width:100%;margin:0 auto;border:0;border-collapse:collapse;border-bottom:1px dashed #e4e4e4;}
+.board .gallery table *{border:0;}
+.board .gallery table td{padding:25px 0 15px; border:0;border-bottom:1px dashed #e4e4e4;vertical-align:top;}
+.board .gallery .pic{display:block;position:relative;width:165px;height:110px;margin:0 auto 5px;overflow:hidden;}
+.board .gallery .pic img{width:165px;height:auto !important;height:110px;vertical-align:top;}
+.board .gallery .pic .mask{position:absolute;left:0;top:0;width:165px;height:110px;background:url(/img/board/pic_bg_.gif) no-repeat 0 50%;}
+.board .gallery span.subject{display:block; padding:5px 0 3px; color:#457;line-height:1.25;letter-spacing:-1px;text-align:center; font-weight:bold;}
+.board .gallery span.date {color:#565656; font-size:11px; line-height:1.25; text-align:center;}
+.board .gallery span.hit {color:#565656; font-size:11px; line-height:1.25; text-align:center;}
+.board .gallery a{display:block;cursor:pointer;}
+/* 목록 갤러리1,2 */
+.board .gallery table td.picture{padding:15px 15px 10px 10px;}
+.board .gallery table td.subject{padding:23px 10px 10px 5px;text-align:left;}
+.board .gallery table td.subject div.date{clear:both;display:block; padding-top:10px; color:#565656; font-size:11px; line-height:1.25; }
+.board .gallery table td.subject strong{color:#457;letter-spacing:-1px;}
+.board .gallery table td.subject p{margin:0;padding:3px 0 0 0;line-height:1.42;}
+/* 목록 갤러리 혼합1 */
+.board .gallery table.basic td{vertical-align:middle;}
+.board .gallery table.basic td.subject{padding-left:0;line-height:1.34;}
+.board .gallery table.basic td.subject a{}
+.board .gallery table.basic td.subject strong{display:block;padding:4px 0;}
+.board .gallery table.basic td.subject .text{display:block;padding:0 0 3px 0;}
+.board .gallery table.basic .pic{display:block;position:relative;width:97px;height:75px;margin:4px 0 6px;overflow:hidden;}
+.board .gallery table.basic .pic img{width:89px;height:67px;padding:3px;background:#f7f7f7;border:1px solid #ddd;vertical-align:top;}
+.board .gallery table.basic .pic .mask{position:absolute;left:0;top:0;width:97px;height:75px;background:transparent;}
+
+/* 목록 갤러리_e-book : 20131002 추가 */
+.board .glly_ebook01{clear:both;margin:0;padding:0;text-align:center;}
+.board .glly_ebook01 table{width:100%;margin:0 auto;border:0;border-collapse:collapse;border-top:2px solid #737373;border-bottom:1px solid #e4e4e4;}
+.board .glly_ebook01 table *{border:0;}
+.board .glly_ebook01 table td{padding:30px 0 35px; border:0;border-bottom:1px solid #e4e4e4;vertical-align:top;}
+.board .glly_ebook01 .pic{display:block;position:relative;width:110px; height:auto;margin:0 auto 5px;overflow:hidden;}
+.board .glly_ebook01 .pic img{width:110px;height:auto !important;height:140px;vertical-align:top;}
+.board .glly_ebook01 .pic .mask{position:absolute;left:0;top:0;width:165px;height:110px;background:url(/img/board/pic_bg_.gif) no-repeat 0 50%;}
+.board .glly_ebook01 span.subject{display:block;padding:5px 0 10px;line-height:1.25;letter-spacing:-1px;text-align:center; font-weight:bold;}
+.board .glly_ebook01 span.date {color:#565656; font-size:11px; line-height:1.25; text-align:center;}
+.board .glly_ebook01 span.hit {color:#565656; font-size:11px; line-height:1.25; text-align:center;}
+.board .glly_ebook01 span.btn { width:87x; height:20px; margin:10px 0; padding:0;}
+.board .glly_ebook01 a{display:block;cursor:pointer;text-decoration:none;}
+
+.board .glly_ebook02{clear:both;margin:0;padding:0;text-align:left;}
+.board .glly_ebook02 table{width:100%;margin:0 auto;border:0;border-collapse:collapse;border-top:2px solid #737373;border-bottom:1px solid #e4e4e4;}
+.board .glly_ebook02 table *{border:0;}
+.board .glly_ebook02 table td{padding:18px 45px 15px; border:0;border-bottom:1px solid #e4e4e4;vertical-align:top;}
+.board .glly_ebook02 span.subject{display:inline;float:left;padding:0;line-height:1.25;letter-spacing:-1px;text-align:left; font-weight:bold;}
+.board .glly_ebook02 span.btn { display:inline;float:right;width:87x; height:20px; margin:0; padding:0;text-align:right;}
+.board .glly_ebook02 a{display:block;cursor:pointer;text-decoration:none;}
+
+/* 글작성용 */
+.board table.basic thead.write th.first{padding-left:13px;text-align:left;}
+.board table.basic tbody.write td{padding:0 0 10px 0;text-align:left;}
+
+/* 내용 div 유동 - [IE] 배치오차. 전체 width:380px;미만시 IE보정 필요 */
+.board div.view{clear:both;width:100%;margin:0 auto /* .67em */;border-top:2px solid #737373;border-bottom:0px solid #e4e4e4;}
+.board div.view .info dl{width:100%;margin:0;padding:0;overflow:hidden;}
+.board div.view .info dl dt{display:inline;float:left;width:12.8%/* IE보정 */;margin:0;padding:10px 1% 6px;background:#fafafa;border-bottom:1px solid #e4e4e4;font-weight:bold; color:#565656;line-height:1.25;text-align:center;height:17px;}
+.board div.view .info dl dt.email, .board div.view .info dl dt.web {border-bottom:1px;}
+.board div.view .info dl dd{display:inline;float:left;width:80%/* 폭수정 */;margin:0;padding:10px 1% 6px 1.5%;border-bottom:1px solid #e4e4e4;background:#fff /* url(/img/board/view_dd_bg.gif) no-repeat */;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis /* CSS3[IE,SF,CR] */;-o-text-overflow:ellipsis /* [OP] */;height:17px;}
+.board div.view .info dl dd img{vertical-align:middle;margin:-4px 0 1px;;}
+.board div.view .info dl.attach{position:relative;top:-1px;border-top:1px solid #e4e4e4;border-bottom:0px solid #e4e4e4;background:#fff;}
+.board div.view .info dl.attach dt,
+.board div.view .info dl.attach dd{border:0;}
+.board div.view .info dl.attach dd ul{list-style:none;margin:0;padding:0;}
+.board div.view .info dl.attach dd ul li{margin:0 4px 4px 0;padding:0;white-space:nowrap;}
+.board div.view .info dl.attach dd img{vertical-align:middle;margin:-4px 0 1px;}
+.board div.view .substance{min-height:136px;height:auto !important;height:136px;padding:1.8em 0 2em;word-wrap:break-word;}
+.board div.view .info dl.col4 dt, .board div.view .info dl.attach dt{color:#565656;}
+.board div.view .info dl.col4 dd{width:32.2%/* 폭수정 */;}
+.board div.view .info dl.col2 dt, .board div.view .info dl.attach dt{color:#565656;padding:15px 10px 13px; text-align:left;background:#fff;}
+.board div.view .info dl.col2 dd{width:74.4%/* 폭수정 */;padding:15px 0 13px 10px;background:#fff;}
+.board div.view object{vertical-align:top;}
+
+/* 이전글다음글 유동 - [IE] 배치오차 */
+.board dl.go{clear:both;width:100%;margin:1em auto 40px;padding:0;overflow:hidden;border-top:1px solid #ddd;}
+.board dl.go dt{display:inline;float:left;width:10%/* IE보정 */;margin:0; padding:10px 5px 10px 3.5%; font-weight:bold;line-height:1.25;text-align:left;border-bottom:1px solid #ddd;}
+.board dl.go dt.prev{}
+.board dl.go dt.next{}
+.board dl.go dd{display:inline;float:left;width:82%/* 폭수정 */;margin:0;padding:10px 1% 10px 5px;line-height:1.25;border-bottom:1px solid #ddd;}
+.board dl.go dd.next{}
+
+/* 내용 이미지,플래시 */
+.board div.view .substance img.picture{display:block;margin:0 auto 1.8em;}
+.board div.view .substance div.flash{display:block;width:320px;height:auto;margin:1.8em auto 1.8em;padding:0;border:4px solid #e4e4e4;}
+/* 내용 동영상 - float해제 */
+div.moviebox{width:582px;margin:1.8em auto 1.8em;padding:0;border:1px solid #d4d4d4;overflow:hidden;}
+div.moviebox div.movie{float:left;display:inline;width:320px;height:310px;border:4px solid #e4e4e4;}
+div.moviebox div.caption{float:left;display:inline;width:230px;height:290px;padding:10px;border:4px solid #e4e4e4;border-left:0;overflow:auto;}
+
+/* 사진갤리리설명추가 */
+div.photoView{width:400px;margin:0 auto;}
+div.photoView img.picture{display:block;margin:1.8em auto 1.8em;padding:6px;border:4px solid #eee;}
+div.photoDesc{margin:0 auto;padding:10px;border:2px solid #ccc;border-width:1px 0;}
+div.photoDesc table{margin-left:10px;}
+div.photoDesc table th{padding-right:10px;font-weight:normal;text-align:left;}
+
+/* 작성 div 유동 - [Sf3] 배치오차 */
+.board div.write div.fieldset{position:relative;margin:4px 0 0em 0;padding:0 0 4px 0;overflow:hidden;border-bottom:1px solid #e4e4e4;background:#fff;line-height:1.25;}
+.board div.write fieldset{position:relative;width:100%;height:100%;margin:0;padding:0;overflow:hidden;}
+.board div.write legend{display:none;}
+.board div.write div.item{clear:both;position:relative;width:76%/* item폭입력 */;height:auto;top:-1px;margin:0;padding:4px 2% 4px 22%/* 폭계산=(100%-item폭76-우패딩2) */;border-top:1px solid #eee;background:url(/img/board/view_dt_bg.gif) no-repeat 1em -3px;}
+.board div.write div.item .head{display:block;position:absolute;left:0;top:0;width:14%/* head폭=(item좌패딩22-item우패딩2-좌우패딩6) */;height:100%;margin:0;padding:6px 2% 2px 4%;background:url(/img/board/view_dd_bg.gif) no-repeat 100% 0;text-align:left;white-space:nowrap;}
+/* 2단배열 [Sf3]오차발생 */
+.board div.write form .fieldset div.left,
+.board div.write form .fieldset div.right{clear:none;float:left;display:inline;width:25.9%/* 2단item폭=(50%-item우패딩2-item좌패딩22) */;}
+.board div.write form .fieldset div.left .head,
+.board div.write form .fieldset div.right .head{width:28%/* 2단head폭=(head폭14%*2) */;padding-right:4%;padding-left:8%;}
+/* 내용글영역확장 */
+.board div.write div.expand{width:96%/* item폭입력 */;margin:0;padding:4px 2% 4px 2%;background:#fff;}
+.board div.write div.expand .head{display:none !important;}
+/* [IE6]보정 position:absolute;일지라도 상위 폭을 상계.. div.item 폭만큼 나누기 */
+* html .board div.write div.item .head{width:18.42%;padding:6px 2.63% 2px 5.26%;}/* IE6값=(head폭14%/(item폭0.76)) */
+* html .board div.write form .fieldset div.left .head, 
+* html .board div.write form .fieldset div.right .head{width:53.84%/*폭수정*/;padding-right:7.69%;padding-left:15.28%;}/* IE6값=(2단head폭28%/(2단item폭0.26*2)) */
+
+/* 작성 공통 */
+.board span.required{color:#f30;}
+.board .explain{margin:0;padding:3px 0;color:#666;font-size:1em;letter-spacing:0;}
+.board .write input.w100{margin-right:-2%;}
+.board .write input.file{width:100%;}
+.board .write textarea{width:100%;height:150px;margin:0;}
+
+/* 작성 table */
+.board table.write{clear:both;width:100%;margin:0;border:0;border-collapse:collapse;border-bottom:1px solid #e4e4e4;line-height:1.25;}
+.board table.write tr{text-align:left;}
+.board table.write tr.first td{padding-top:6px;}
+.board table.write tr.first th{padding-top:8px;background-position:1em 0;}
+.board table.write tr.last td{padding-bottom:3px;}
+.board table.write tr.last th{padding-bottom:3px;}
+.board table.write td{padding:3px 10px 3px 10px;border:0;border-style:none hidden;border-bottom:1px solid #eee;background:url(/img/board/view_dd_bg.gif) no-repeat;vertical-align:top;}
+.board table.write td p{margin:0;padding:0;}
+.board table.write td.text{padding:5px 10px 3px 10px;}
+.board table.write th{border:0;background:transparent;font-weight:normal;vertical-align:top;}
+.board table.write th.item{/* width:90px;colgrouop, col 요소에 스타일 지정시 td, th 스타일이 우선이므로 주의 */
+padding:5px 10px 3px 22px;border-bottom:1px solid #eee;background:url(/img/board/view_dt_bg.gif) no-repeat 1em -3px;color:#457;text-align:left;}
+* html .board table.write td.text{padding-top:3px;}
+*+html .board table.write td.text{padding-top:3px;}
+
+/* 작성 table2 */
+.board table.write2{clear:both;width:100%;margin:0;border:0;border-collapse:collapse;border-bottom:1px solid #e4e4e4;line-height:1.25;}
+.board table.write2 tr{text-align:left;}
+.board table.write2 tr.first td{padding-top:20px !important;}
+.board table.write2 tr.first th{padding-top:20px;background-position:1em 0;}
+.board table.write2 tr.last td{padding-bottom:20px;}
+.board table.write2 tr.last th{padding-bottom:20px;}
+.board table.write2 td{padding:12px 10px 10px;border:0;border-style:none hidden;border-bottom:0px solid #e4e4e4;/* background:url(/img/board/view_dd_bg.gif) no-repeat; */vertical-align:top;}
+.board table.write2 td p{margin:0;padding:0;}
+.board table.write2 td.text{padding:12px 10px 10px 10px;}
+.board table.write2 th{border:0;background:transparent;font-weight:normal;vertical-align:top;}
+.board table.write2 th.item{/* width:90px;colgrouop, col 요소에 스타일 지정시 td, th 스타일이 우선이므로 주의 */
+padding:12px 10px 10px 10px;border-bottom:0px solid #e4e4e4;/* background:url(/img/board/view_dt_bg.gif) no-repeat 1em -3px; */color:#525252;text-align:center;font-weight:bold;}
+* html .board table.write2 td.text{padding-top:3px;}
+*+html .board table.write2 td.text{padding-top:3px;}
+
+/* 작성 table3 */
+.board table.write3{clear:both;width:100%;margin:0;border:0;border-collapse:collapse;border-bottom:1px solid #737373;line-height:1.25;}
+.board table.write3 tr{text-align:left;}
+.board table.write3 tr.first td{padding-top:8px;}
+.board table.write3 tr.first th{padding-top:8px;background-position:1em 0;}
+.board table.write3 tr.last td{padding-bottom:6px;}
+.board table.write3 tr.last th{padding-bottom:6px;}
+.board table.write3 td{padding:8px 10px 6px;border:0;border-style:none hidden;border-bottom:1px solid #e4e4e4;/* background:url(/img/board/view_dd_bg.gif) no-repeat */;vertical-align:top;}
+.board table.write3 td p{margin:0;padding:0;}
+.board table.write3 td.text{padding:8px 10px 6px 10px;}
+.board table.write3 th{border:0;background:transparent;font-weight:normal;vertical-align:top;}
+.board table.write3 th.item{/* width:90px;colgrouop, col 요소에 스타일 지정시 td, th 스타일이 우선이므로 주의 */
+padding:10px 10px 8px 20px;border-bottom:1px solid #e4e4e4; background:#fafafa url(/img/board/ico_est.gif) no-repeat 1em 10px;color:#525252;text-align:left;font-weight:bold;}
+* html .board table.write3 td.text{padding-top:3px;}
+*+html .board table.write3 td.text{padding-top:3px;}
+
+/* 작성 table4 */
+.board table.write4{clear:both;width:100%;margin:0;border:0;border-collapse:collapse;border-bottom:1px solid #737373;line-height:1.25;}
+.board table.write4 tr{text-align:left;}
+.board table.write4 tr.first td{padding-top:20px !important;}
+.board table.write4 tr.first th{padding-top:30px;background-position:1em 0;}
+.board table.write4 tr.last td{padding-bottom:40px;}
+.board table.write4 tr.last th{padding-bottom:40px;}
+.board table.write4 td{padding:12px 10px 10px;border:0;border-style:none hidden;border-bottom:0px solid #737373;/* background:url(/img/board/view_dd_bg.gif) no-repeat; */vertical-align:top;}
+.board table.write4 td p{margin:0;padding:0;}
+.board table.write4 td.text{padding:12px 10px 10px 10px;}
+.board table.write4 th{border:0;background:transparent;font-weight:normal;vertical-align:top;}
+.board table.write4 th.item{/* width:90px;colgrouop, col 요소에 스타일 지정시 td, th 스타일이 우선이므로 주의 */
+padding:15px 30px 10px 10px;border-bottom:0px solid #e4e4e4;background:url(/img/board/view_dt_bg2.gif) no-repeat 65% 8px;color:#525252;text-align:right;font-weight:bold;}
+* html .board table.write4 td.text{padding-top:3px;}
+*+html .board table.write4 td.text{padding-top:3px;}
+
+
+/* 댓글-작성 */
+.board .comment_write{clear:both;width:auto;margin:1em 0 6px 0px;padding:6px 8px;border:0;border-top:1px solid #bbb;border-bottom:1px solid #ddd;background:#fcfcfc;}
+.board .comment_write fieldset{margin:0;padding:0;border:0;}
+.board .comment_write legend{display:none;}
+.board .comment_write input.text{width:60px;}
+.board .comment_write p{margin:5px 0 0 0;padding:0;}
+.board .comment_write textarea{width:90%;height:2em;}
+/* 댓글-목록 */
+.board table.comment{clear:both;width:100%;margin:3px 0 0 0;border:0;border-collapse:collapse;border-bottom:1px solid #ddd;}
+.board table.comment th,
+.board table.comment td{padding:4px 6px 2px;border:0;border-bottom:1px solid #ddd;text-align:center;white-space:nowrap;}
+.board table.comment .grade{width:8%;padding:0px 6px;}
+.board table.comment .writing{width:66%;font-weight:normal;text-align:left;white-space:normal;}
+.board table.comment .writer{width:6%;}
+.board table.comment .date{width:8%;}
+.board table.comment .del{width:2%;padding:0px 6px;}
+/* 댓글-암호 */
+.board table.comment .pwInput{display:none;padding:4px 6px;background:#f7f7f7;color:#06c;white-space:nowrap;}
+.board table.comment .pwInput td{padding:4px 6px;}
+.board table.comment .pwInput input.text{width:100px;}
+
+/* 로그인 */
+.board .login{width:401px;margin:0 auto;padding:0 0 20px 0;background:url(/img/board/login_bg.gif) no-repeat 0 100%;}
+.board .login .wrap{width:353px;padding:10px 24px 0;background:url(/img/board/login_bg.gif) no-repeat;}
+.board .login h3{padding:0;background:transparent;color:#007130;font-size:1.17em;}
+.board .login .explain{margin:0;padding:1em 0;}
+.board .login ul{list-style:none;margin:0;padding:0;text-align:left;}
+.board .login ul li{position:relative;margin:0;padding:0 0 0 1.3em;background:url(/img/board/login_libg.gif) no-repeat 1px .2em;}
+.board .login form{}/* form 에는 CSS 적용하지마세요. */
+.board .login div.fieldset{position:relative;width:353px;margin:0 auto;padding:0 0 20px 0;background:url(/img/board/login_fieldset_bg.gif) no-repeat 0 100%;}
+.board .login fieldset{margin:0;padding:20px 50px 0 50px;border:0;background:url(/img/board/login_fieldset_bg.gif) no-repeat;}
+.board .login legend{display:none;}
+.board .login p{height:26px;margin:0;padding:0;}
+.board .login p label{padding:0 0 0 7px;background:url(/img/board/login_label_bg.gif) no-repeat;}
+.board .login p.login-id label{margin:0 1em 0 0;}
+.board .login p.login-pw label{}
+.board .login input.text{width:126px;}
+.board .login p.real_name input.text{width:102px !important;}
+.board .login p.button{position:absolute;left:247px;top:20px;width:51px;height:45px;margin:0;padding:0;}
+.board .login p.login_menu{height:24px;clear:both;margin:1em auto 0;padding:4px 0 0 0;text-align:center;}
+.board .login input.image{margin:0;padding:0;vertical-align:baseline;}
+/* 실명, 아이디 찾기 */
+.board .login p.real_name label{margin:0 4em 0 0;}
+.board .login p.real_name input.text{width:102px !important;}
+.board .login p.resident_num{}
+.board .login p.resident_num input.text{width:45px !important;}
+/* 비밀번호 찾기 */
+.board .login select{width:250px;}
+.board .login p.question,
+.board .login p.questionD,
+.board .login p.answer{margin:0 2em 0 0;}
+.board .login p.question label{display:none;}
+.board #find_pw p.button{position:absolute;left:251px;top:100px;width:51px;height:45px;margin:0;padding:0;}
+
+/* [새 창]서식 */
+.openform{width:90%;margin:0 auto;padding:20px 0;text-align:center;}
+.openform .zipcode{position:relative;width:90%;margin:0 auto;padding:20px 4%;border:5px solid #bbb;background:#fff;}
+.openform fieldset{margin:0;padding:0;border:0;}
+.openform legend{display:none;}
+.openform select{width:100%;height:auto;margin:0 auto;}
+
+/* 비밀번호 확인 */
+.board .pwconfirm{position:relative;width:616px;height:235px;margin:1em auto;background:url(/img/board/pwconfirm_bg.jpg) no-repeat;}
+.board .pwconfirm h3,
+.board .pwconfirm p.explain{display:none;}
+.board .pwconfirm .fieldset{position:absolute;left:272px;top:132px;margin:0;padding:0;background:transparent;}
+.board .pwconfirm .fieldset p{margin:0 0 1em 0;padding:0;}
+
+/* /Board(게시판) End ─────  */

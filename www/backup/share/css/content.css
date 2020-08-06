@@ -1,0 +1,67 @@
+@charset "utf-8";
+/* sub #20130910. Revision. */
+/* #body_content ─── 본문콘텐츠 */
+
+/* body.d1n1 ─── */
+
+/* 진료예약_2차 탭메뉴 */
+.cont_col2_01 { position:relative;margin:15px 0; width:737px; overflow:visible;}
+.cont_col2_01 .col201_l{ float:left; width:197px; margin:0; }
+.cont_col2_01 .col201_r{ float:right; width:540px; margin:0;padding:0}
+.cont_col2_01 .col201_r h2{position:absolute;right:0;top:0px;display:block; background:transparent;}
+.cont_col2_01 .col201_r .col201_menu {position:absolute;right:0;top:48px;display:block;line-height:1.2;}
+
+/* 2차 메뉴 링크 박스 */
+.h2_box01{width:703px;padding:16px 17px 0; border:0;border-top:1px solid #b2d5ea; border-bottom:1px solid #b2d5ea; background:#f8f8f8;}
+
+.cont_col2_03 { width:702px;position:relative;margin:8px 22px 1px 10px; vertical-align:middle;}
+.cont_col2_03 .col203_l{ float:left;width:590px; margin:0;}
+.cont_col2_03 .col203_l * ul{ float:left;width:590px; margin-top:20px;}
+.cont_col2_03 .col203_r{ float:right; margin:0 0 4px; vertical-align:middle; }
+.cont_col2_03 p{ margin-left:20px; * margin-top:20px;}
+
+/* 제증명발급_장애인등록 절차_이미지와 겹치는 텍스트 */
+.z20_mgt_60{margin-top:-60px !important; z-index:20 !important;}
+
+
+
+/* body.d1n2 ─── */ 
+
+/* body.d1n3 ─── */
+
+/* body.d1n4 ─── */
+
+/*  질환별클리닉_특수검사 */
+.cont_col2_04 { width:734px;position:relative;margin-top:10px;}
+.cont_col2_04 .col204_l{ float:left;width:213px; margin:0;vertical-align:top;}
+.cont_col2_04 .col204_r{ float:right;width:521px; margin:0 0 4px;vertical-align:top;}
+
+
+
+/* body.d1n5 ─── */
+
+
+
+
+/* body.d1n6 ─── */
+
+/* 세미나신청 게시판_view_신청하기 */
+.cont_col2_02 { position:relative;margin:15px 0; width:734px; overflow:visible;}
+.cont_col2_02 .col202_l{ float:left; width:226px; margin:0; }
+.cont_col2_02 .col202_r{ float:right; width:491px; margin:0;padding:0}
+.cont_col2_02 .col202_r h2{position:absolute;right:0;top:0px;display:block; background:transparent;}
+.cont_col2_02 .col202_r .col202_menu {position:absolute;right:0;top:48px;display:block;line-height:1.2;}
+
+
+
+
+
+/* 사이트맵 */
+.sitemap {position:relative; float: left; width: 170px; padding: 0; margin: 0 12px 20px 0; }
+.sitemap h3 { margin: 3px 0 0 0; padding: 0; background: transparent; }
+.sitemap ul { list-style: none; width: 170px; margin: 0; padding: 0; }
+.sitemap ul li { width: 100%;}
+.sitemap ul li a { display: block; color:#333; padding: 6px 0 3px 14px; background: url(/img/sub/sitemap_bg.gif) no-repeat 0 100%; }
+.sitemap ul ul { width: 160px; margin: 0; padding: 10px 0 5px 0; background: #f9f9f9; }
+.sitemap ul ul li { width: 100%; }
+.sitemap ul ul li a { background: url(/img/sub/sitemap_libu.gif) no-repeat 18px 6px; padding: 0 0 0 24px; letter-spacing:-1px; }

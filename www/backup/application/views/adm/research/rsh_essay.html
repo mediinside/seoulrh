@@ -1,0 +1,70 @@
+<h2><?=$_TITLE_?></h2>
+
+<ul id="form_cont">
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 세미나 선택 동기</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box3">
+			<colgroup>
+				<col width="10%" />
+				<col width="65%" />
+				<col width="18%" />
+				<col width="7%" />
+			</colgroup>
+        	<tr>
+            	<th>번호</th>
+            	<th>내 용</th>
+            	<th>등록일</th>
+            	<th>관리</th>
+            </tr>
+            	
+            <? foreach($list['motive'] AS $key => $val) : ?>	
+            <tr>
+            	<td style="text-align:center;"><?=$list['no'][$key]?></td>
+				<td><?=htmlspecialchars($val)?></td>
+				<td style="text-align:center;"><?=$list['regdate'][$key]?></td>
+				<td style="text-align:center;"><?=$list['delete'][$key]?></td>
+            </tr>
+			<? endforeach; ?>
+				
+			<? if(!count($list['motive'])) : ?>
+			<tr>
+            	<td colspan="4" style="height:35px;text-align:center;">작성된 답변이 없습니다.</td>
+            </tr>
+			<? endif; ?>
+			
+        </table>
+	</li>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 세미나 진행에 보완사항이나 추후 다루었으면 하는 주제</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box3">
+			<colgroup>
+				<col width="10%" />
+				<col width="65%" />
+				<col width="18%" />
+				<col width="7%" />
+			</colgroup>
+        	<tr>
+            	<th>번호</th>
+            	<th>내 용</th>
+            	<th>등록일</th>
+            	<th>관리</th>
+            </tr>
+            	
+            <? foreach($list['supplement'] AS $key => $val) : ?>
+            <tr>
+            	<td style="text-align:center;"><?=$list['no'][$key]?></td>
+				<td><?=htmlspecialchars($val)?></td>
+				<td style="text-align:center;"><?=$list['regdate'][$key]?></td>
+				<td style="text-align:center;"><?=$list['delete'][$key]?></td>
+            </tr>
+			<? endforeach; ?>
+			
+			<? if(!count($list['supplement'])) : ?>
+			<tr>
+            	<td colspan="4" style="height:35px;text-align:center;">작성된 답변이 없습니다.</td>
+            </tr>
+			<? endif; ?>
+			
+        </table>
+	</li>
+</ul>

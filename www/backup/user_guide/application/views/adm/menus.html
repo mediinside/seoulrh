@@ -1,0 +1,128 @@
+<div id="dtreeCont">
+	<link rel="StyleSheet" href="<?=$path?>/js/dtree/dtree.css" type="text/css" />
+	<script type="text/javascript" src="<?$path?>/js/dtree/dtree.js"></script>
+
+	<div class="djree dtreeSub" style="overflow:hidden;">
+		<div class="topTable">
+			<span><a href="javascript: mcd.openAll();" style="font-size:11px">전체열기</a> | <a href="javascript: mcd.closeAll();" style="font-size:11px">전체닫기</a></span>
+		</div>
+		<script type="text/javascript">
+			mcd = new dTree('mcd');
+
+			//Node(id, pid, name, url, title, target, icon, iconOpen, open)
+			mcd.add('0', '-1', '사이트관리메뉴', '?', '', '');
+			<? foreach ($_MENUS_ as $_menu): ?>
+				<? if ($member['mb_level'] >= $_menu['am_level']): ?>
+				mcd.add('<?=$_menu['am_id']?>','<?=$_menu['am_pid']>0?$_menu['am_pid']:0?>','<?=$_menu['am_name']?>','?id=<?=$_menu['am_id']?>', '', '<?=$_menu['am_target']?>', '<?=$_menu['am_icon']?>');
+				<? endif; ?>
+			<? endforeach; ?>
+
+			document.write(mcd);
+
+			//mcd.openAll();
+		</script>
+	</div>
+</div>
+
+<form id="form1" name="form1" method="POST" action="<?=$path?>/menus/update">
+<input type="hidden" name="w" value="<?=$menu['am_id']?'u':''?>">
+<input type='hidden' name='token' value='<?=$token?>'/>
+<input type="hidden" name="am_id" value="<?=$menu['am_id']?>">
+
+<div id="inputCont">
+	<table class="c_tb01" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="c_th01">
+			관리자 페이지 메뉴 설정
+		</td>
+		<td class="c_td01"></td>
+	</tr>
+	</table>
+
+	<table class="f_tb01" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="f_th01">상위 메뉴</td>
+		<td class="f_td01" colspan>
+			<select name="am_pid">
+				<option value="">-</option>
+				<? foreach($_MENUS_ as $_menu) : ?>
+				<? if($menu['am_id'] != $_menu['am_id']) : ?>
+				<option value="<?=$_menu['am_id']?>" <?=$menu['am_pid']==$_menu['am_id']?'selected="selected"':''?>><?=$_menu['am_name']?></option>
+				<? endif; ?>
+				<? endforeach; ?>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td class="f_th01">메뉴명 </td>
+		<td class="f_td01"><input type="text" class="ed" id="am_name" name="am_name" itemname="메뉴명" size="25" value="<?=$menu['am_name']?>" /></td>
+	</tr>
+	<tr>
+		<td class="f_th01">URL </td>
+		<td class="f_td01"><input type="text" class="ed" name="am_link" itemname="URL" size="25" value="<?=$menu['am_link']?>" /></td>
+	</tr>
+	<tr>
+		<td class="f_th01">아이콘 </td>
+		<td class="f_td01"><input type="text" class="ed" name="am_icon" itemname="아이콘" size="25" value="<?=$menu['am_icon']?>" /></td>
+	</tr>
+	<tr>
+		<td class="f_th01">타겟 </td>
+		<td class="f_td01"><input type="text" class="ed" name="am_target" itemname="타겟" size="7" value="<?=$menu['am_target']?>" /></td>
+	</tr>
+	<tr>
+		<td class="f_th01">관리자 레벨 </td>
+		<td class="f_td01"><input type="text" class="ed" name="am_level" itemname="접근레벨" size="7" value="<?=$menu['am_level']?>" /></td>
+	</tr>
+	<tr>
+		<td class="f_th01">순서 </td>
+		<td class="f_td01"><input type="text" class="ed" name="am_sort" itemname="순서" size="7" value="<?=$menu['am_sort']?>" /></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<table class="b_tb01">
+			<tr>
+				<td>
+					<? if($menu['am_id']) { ?>
+					<input type="button" value="하위등록" class="btn" onclick="document.location='?pid=<?=$menu['am_id']?>';">
+					<? } ?>
+				</td>
+				<td class="b_td01">
+					<? if($menu['am_id']) { ?>
+					<input type="submit" value="저장" class="btn">
+					<input type="button" value="삭제" class="btn" onclick="post_s('<?=ADM_F?>/menus/delete', {id:'<?=$menu['am_id']?>', token:'<?=$token?>'}, true);">
+					<? } ?>
+					<? if(!$menu['am_id']) { ?>
+					<input type="submit" value="등록" class="btn">
+					<? } ?>
+				</td>
+			</tr>
+			</table>
+		</td>
+	</tr>
+	</table>
+	</form>
+</div>
+
+<script type='text/javascript' src='<?=JS_DIR?>/jvalidate.js'></script>
+<script type='text/javascript' src='<?=JS_DIR?>/jvalid_ext.js'></script>
+<script LANGUAGE="javascript">
+$(document).ready(function() {
+	$('#form1').validate({
+		rules: {
+			am_name: 'required'
+		},
+		messages: {
+			am_name: '메뉴명이 입력되지 않았습니다.'
+		},
+		errorPlacement: function(error, element) {
+			error.appendTo(element.parent()).wrap('<p></p>');
+		}
+	});
+});
+
+document.forms['form1']['am_name'].focus();
+
+if(window.addEventListener) window.addEventListener("load", init, false);
+if(window.attachEvent) window.attachEvent("onload", init);
+</script>
+	

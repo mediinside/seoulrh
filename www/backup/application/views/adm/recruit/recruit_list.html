@@ -1,0 +1,98 @@
+<h2>모집 공고 리스트</h2>
+
+<table>
+	<tr>
+	
+	<? /* foreach($categories AS $key => $name) : ?>
+		<td><button type="button" class="btn_simp <?=$cate==$key?'active':''?>" onclick="self_search(<?=$key?>);" style="padding: 3px 24px 3px 23px; margin: 0 1px 20px 1px;"><?=$name?></button></td>
+	<? endforeach; */ ?>
+	
+	</tr>
+</table>
+
+<form name='fsearch' method='post' action='<?=$path?>/recruit/lists<?=$qstr?>' onsubmit="return doSearch(this, 'recruit/lists/cate/<?=$cate?>');">
+
+<div id='list_head'>
+	<ul class='lr'>
+		<li class="mT5"><a href='<?=$path?>/recruit/lists/cate/<?=$cate?>'>처음</a> (총 <?=$total_cnt?>개)</li>
+		<li class='right'>
+	        <select name='sfl'>
+	            <option value='recr_subject'>이름</option>
+	        </select>
+	        <input type='text' name='stx' class='ed' value='<?=$stx?>'/>
+	        <input type='image' src='<?=$IMG_PATH?>/button/btn_search.gif' align='top'/>
+        </li>
+    </ul>
+</div>
+
+</form>
+
+<form name='frecruitlist' method='post' action=''>
+<input type='hidden' name='token' value='<?=$token?>'/>
+
+<div id="list_cont">
+	<table width="100%" cellpadding="0" cellspacing="0" class="con_box2">
+		<colgroup>
+			<col class="check"/>
+			<col width="60"/>
+			<col/>
+			<col width="130"/>
+			<col class="hidden"/>
+			<col class="date"/>
+			<col class="control"/>
+		</colgroup>
+		
+		<!-- 타이틀 -->
+		<tr>
+            <th><input type="checkbox" onclick="allcheck(this);" value="1" /></th>
+			<th>No</th>
+            <th>제목</th>
+            <th>모집기간</th>
+            <th><a href='<?=$sort_link['recr_soldout']?>'>마감</a></th>
+            <th><a href='<?=$sort_link['recr_regdate']?>'>등록일</a></th>
+			<th class="nobg"><?=$s_add?></th>
+		</tr>
+		
+		<!-- 리스트 -->
+		<? foreach($list as $key => $val) : ?>
+		<tr class='row list<?=$val['lst']?>'>
+			<td><input type='checkbox' name='chk[]' value='<?=$val['recr_id']?>' /></td>
+			<td><?=$val['no']?></td>
+			<td class="left"><?=$val['recr_subject']?></td>
+			<td><?=$val['recr_sdatetime']?><br/><?=$val['recr_edatetime']?></td>
+			<td><input type="checkbox" name="recr_soldout[<?=$val['recr_id']?>]" <?=$val['soldout_chk']?> value="1"/></td>
+			<td><?=$val['recr_regdate']?></td>
+			<td><?=$val['s_mod']?> <?=$val['s_del']?> <?=$val['s_view']?></td>
+		</tr>
+		<? endforeach; ?>
+		
+		<? if (!$list): ?>
+		<tr>
+			<td colspan="8" height="50"><p class='none'>자료가 없습니다.</p></td>
+		</tr>
+		<? endif; ?>
+		
+	</table>
+	
+	<ul class='lr bottom'>
+		<li>
+			<input type='button' class='btn' value='선택수정' onclick="javascript:slt_check(this.form, '<?=$path?>/recruit/update');"/>
+			<input type='button' class='btn' value='선택삭제' onclick="javascript:slt_check(this.form, '<?=$path?>/recruit/delete');"/>
+		</li>
+		<li class='right'><?=$paging?></li>
+	</ul>
+</div>
+
+</form>
+
+<script type='text/javascript'>
+//<![CDATA[
+<? if ($stx): ?>
+document.fsearch.sfl.value = '<?=$sfl?>';
+<? endif; ?>
+
+function self_search(cate) {
+	location.href = rt_path +'/'+ rt_admin +'/recruit/lists/cate/'+ cate;
+}
+//]]>
+</script>

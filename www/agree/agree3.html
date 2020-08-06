@@ -1,0 +1,39 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once "../inc/head.php";
+?>
+<style>
+	#header_sub .location .inner .section>li.depth {display: none !important;}
+	@media screen and (max-width:768px){
+		#header_sub {height: 121px;}
+		#header_sub .location {height: 0 !important;}
+	}
+</style>
+</head>
+<body>
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+		<!-- main section 01 start -->
+		<section class="contents">
+			<div class="sub-visual-wrap">
+				<img src="/resource/images/notice-bnnr1.png" alt="">
+			</div>
+			<!-- //end .sub-visual-wrap -->
+		</section>
+		<div class="contents sub-contents">
+			<div class="wd-1200">
+				<h1 class="sub-tit">이메일무단수집거부</h1>
+				<div class="agreeTxtWrap" style="height:auto;margin-bottom: 300px;">
+					<pre>
+						본 웹사이트에 게시된 이메일 주소가 전자우편 수집 프로그램이나 그 밖의 기술적 장치를 이용하여 무단으로 수집되는 것을 거부하며, 이를 위반 시 정보통신망법에 의해 형사처벌됨을 유념하시기 바랍니다.
+					</pre>
+				</div>
+			</div>
+		</div>
+		<?php include_once "../inc/bottomBnnr.php"; ?>
+		<?php include_once "../inc/sitemap.php"; ?>
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+#zip_wrap { width:600px; margin:0 auto; padding:20px 0; }
+#zip_wrap img, #zip_wrap input { vertical-align:middle; }
+#zip_wrap p { margin-left:60px; padding:10px 0 5px 0; }
+#zip_wrap p.search { margin:0 20px; padding:15px 0; border-bottom:4px dotted #eeeeee; }
+#zip_title { width:600px; padding:0 0 10px 0; border-bottom:2px solid #ebebeb; }
+#zip_header { padding:20px 20px 10px 20px; }
+#zip_list li { margin-left:60px; }

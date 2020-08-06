@@ -1,0 +1,117 @@
+<?php
+//error_reporting(E_ALL);
+//ini_set("display_errors", 1);
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once $GP -> INC_WWW . '/count_inc.php';
+include_once "../inc/head.php";
+
+include_once($GP->CLS."class.list.php");
+include_once($GP -> CLS."/class.seoulrh.php");
+include_once($GP->CLS."class.button.php");
+
+$C_ListClass 	= new ListClass;
+$C_seoulrh 		= new seoulrh;
+$C_Button 		= new Button;
+
+$args = array();
+//	$args['show_row'] = 9;
+
+
+$args['s_type'] = "C";
+$args['s_show'] = "Y";
+$data = "";
+$data = $C_seoulrh->seoulrh_List(array_merge($_GET,$_POST,$args));
+$data_list 		= $data['data'];
+$data_list_cnt 	= count($data_list);
+
+$dep1 = "7";
+$dep2 = "7-1";
+$dep3 = "7-1-1";
+?>
+<style>
+	@media screen and (max-width:1023px){
+		img.mt60 {margin-top: 100px;}
+	}
+</style>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/center-bnnr1.png" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="wd-1200">
+					<div class="page-location">
+						<div id="btn-box" class="center half">
+							<a href="/center/page01-1.html" class="btn">설립근거</a>
+							<a href="/center/page01-2.html" class="btn">사업추진체계</a>
+							<a href="/center/page01-3.html" class="btn">사업소개</a>
+							<a href="/center/page01-4.html" class="btn bg-green">조직구성</a>
+						</div>
+					</div>
+					<img class="mt60" src="/resource/images/center01.jpg" alt="" style="max-width:100%">
+					<h3 class="sub-tit mt30">
+						조직운영안내
+					</h3>
+					<ul class="clinic-list">
+						<li>
+							<label for=""></label>
+							<div class="text">
+								<div class="board-list border-t" style="padding:0;overflow-x: auto;">
+									<table class="bordered fz10">
+										<thead>
+											<tr class="bg-gray">
+												<th>부서명</th>
+												<th width="20%">이름</th>
+												<th width="18%">직종</th>
+												<th width="24%">담당업무</th>
+												<th>부서전화번호</th>
+											</tr>
+										</thead>
+										<tbody>
+                                        <?php
+                                            $dummy = 1;
+                                            for ($i = 0 ; $i < $data_list_cnt ; $i++) {
+                                                $s_idx 		= $data_list[$i]['s_idx'];
+                                                $s_content1		= nl2Br($data_list[$i]['s_content1']);
+                                                $s_content2		= nl2Br($data_list[$i]['s_content2']);
+                                                $s_content3		= nl2Br($data_list[$i]['s_content3']);
+                                                $s_content4		= nl2Br($data_list[$i]['s_content4']);
+                                                $s_content5		= nl2Br($data_list[$i]['s_content5']);
+                                        ?>
+											<tr>
+												<td class="text-center"><?=$s_content1?></td>
+                                                <td class="text-center"><?=$s_content2?></td>
+                                                <td class="text-center"><?=$s_content3?></td>
+                                                <td class="text-center"><?=$s_content4?></td>
+                                                <td class="text-center"><?=$s_content5?></td>
+											</tr>
+                                        <? } ?>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomInfo.php"; ?>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+</body>
+
+</html>

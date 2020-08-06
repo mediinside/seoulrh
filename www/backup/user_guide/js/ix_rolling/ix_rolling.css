@@ -1,0 +1,142 @@
+div.ix-rolling {
+	font: 9pt tahoma;
+	height: 200px;
+	overflow: hidden;
+	border: 1px #ddd solid;
+	width: 100%;
+	position: relative;
+	background-color: #fff;
+	color: #333;
+	background: #fff url("images/loading.gif") center center no-repeat;
+}
+div.ix-rolling .sync {
+	position: absolute;
+	right: -2px;
+	bottom: -2px;
+	cursor: pointer;
+	z-index: 10;
+	display: block;
+	width: 100%;
+	text-align: right;
+	overflow: visible;
+}
+div.ix-rolling div.ix-rolling-menu {
+	position: absolute;
+	left: 0;
+	bottom: 4px;
+	padding: 2px 8px;
+	border: 1px #000 solid;
+	background-color: #ddd;
+	display: none
+}
+div.ix-rolling div.ix-header {
+	display: block;
+	position: relative;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	line-height: 18px;
+	background: url("../img/snstitle3.png") left center no-repeat;
+	border-bottom: 1px #ddd solid;
+	/* height: 55px; */
+}
+div.ix-rolling div.ix-header img.s-profile-img {
+	margin-right: 4px
+}
+div.ix-rolling ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	position: relative;
+	display: block;
+}
+div.ix-rolling ul li {
+	list-style: none;
+	border-bottom: 1px #efefef solid;
+	padding: 4px;
+	line-height: 140%;
+	padding-right: 5px;
+	display: block;
+}
+div.ix-rolling ul li a {
+	text-decoration: none;
+	color: #33CBFF
+}
+div.ix-rolling.gnu4 ul li a {
+	color: #333
+}
+div.ix-rolling ul li p {
+	margin: 0;
+	padding: 0;
+	display: block;
+	line-height: 1.4em;
+	text-align: left;
+	clear: left;
+	overflow: visible;
+}
+div.ix-rolling ul li p img.profile-img {
+
+	border: 2px #ddd solid;
+	width: 48px;
+	height: 48px;
+	margin: 0px 8px 0 0;
+}
+div.ix-rolling.no-profile-img ul li p {
+	margin-left: 2px;
+}
+div.ix-rolling ul li .clear {
+	clear: left;
+	line-height: 1px;
+	height: 1px;
+	zoom: 1;
+	display: none
+}
+div.ix-rolling ul li.first {
+	/*background: url("images/new_bg.gif") right bottom no-repeat;*/
+}
+div.ix-rolling ul li.first span.timer {
+	background: url("images/time.gif") left center no-repeat;
+}
+div.ix-rolling ul li span.timer {
+	background: url("images/time_gray.gif") left center no-repeat;
+	text-indent: 16px;
+	margin-left: 4px;
+	display: inline-block;
+	white-space: nowrap;
+}
+div.ix-rolling li {
+	background-color: #fff
+}
+div.ix-rolling ul li:hover {
+	background-color: #efefef
+}
+div.ix-rolling-message {
+	position: absolute;
+	padding: 4px;
+	border-bottom: 1px #ddd solid;
+	background-color: #efefef;
+	display: block;
+	width: 100%;
+	padding: 4px;
+	z-index: 1
+}
+div.ix-rolling ul li img.absmiddle {
+	vertical-align: middle;
+	margin-bottom: .25em;
+	margin-right: 4px
+}
+div.ix-rolling ul li p .sns-icon {
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-bottom: .25em;
+	margin-right: 4px
+}
+div.ix-rolling.facebook ul li p .sns-icon {
+	background: url("images/facebook_s.png") left top no-repeat;
+}
+div.ix-rolling.twitter ul li p .sns-icon {
+	background: url("images/twitter_s.png") left top no-repeat;
+}
+

@@ -1,0 +1,94 @@
+<div class="mB10">
+	분류선택 <?=$cate_sel?>
+	<input type="button" class="btn" onclick="add_cate();" value="분류 추가하기"/>
+	<input type="button" class="btn" onclick="mod_cate();" value="분류 수정하기"/>
+	<input type="button" class="btn" onclick="del_cate();" value="해당 분류 삭제"/>
+</div>
+
+<form name='flist' method='post' action=''>
+<input type='hidden' name='token' value='<?=$token?>'/>
+
+<div id='list_cont'>
+	<table width='100%' cellpadding='0' cellspacing='0' class="con_box2">
+		<colgroup>
+			<col class='check'/>
+			<col width='80'/>
+			<col/>
+			<col width='120'/>
+			<col width='150'/>
+			<col class='control'/>
+		</colgroup>
+		<tr>
+            <th><input type="checkbox" onclick="allcheck(this);"/></th>
+            <th>번호</th>
+			<th>수가명</th>
+            <th>수가</th>
+            <th>비고</th>
+            <th class="nobg">관리</th>
+        </tr>
+        
+        <? foreach ($list as $row): ?>
+		<tr class='row list<?=$row['lst']?>'>
+			<td><input type='checkbox' name='chk[]' value='<?=$row['cta_id']?>'/></td>
+			<td><?=$row['no']?></td>
+			<td class="left"><?=$row['cta_name']?></td>
+			<td><?=$row['cta_price']?></td>
+			<td><?=$row['cta_memo']?></td>
+			<td><?=$row['s_mod']?> <?=$row['s_del']?></td>
+		</tr>
+		<? endforeach; ?>
+		
+		<? if (!$list): ?>
+		<tr>
+			<td colspan="8" height="50"><p class="none">자료가 없습니다.</p></td>
+		</tr>
+		<? endif; ?>
+		
+	</table>
+	
+	<ul class="lr bottom">
+		<li>
+			<input type="button" class="btn" value="선택삭제" onclick="javascript:slt_check(this.form, '<?=$path?>/ctable/delete');"/>
+		</li>
+		<li class="right"><input type="button" class="btn" onclick="add();" value="추가하기"/></li>
+	</ul>
+</div>
+
+</form>
+
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('select[name="cate"]').change(function() {
+		location.href = "/adm/ctable/lists?cid="+ $('select[name="cate"]').val();
+	});
+});
+
+function add(id) {
+	id = id != undefined ? id : '';
+	layerWin('/adm/ctable/form/'+ $('select[name="cate"]').val() +'?id='+ id, 'ctable', 350, 165, 'no', false);
+}
+
+function add_cate() {
+	layerWin('/adm/ctable/form_cate', 'ctable', 350, 150, 'no', false);
+}
+
+function mod_cate() {
+	layerWin('/adm/ctable/form_cate/'+ $('select[name="cate"]').val(), 'ctable', 350, 150, 'no', false);
+}
+
+function del_cate() {
+	if(confirm('분류를 삭제하시면 해당 분류에 속해있는 수가액이 삭제됩니다.\n\n삭제하시겠습니까?')) {
+		$.post('/adm/ctable/delete_cate', { id: $('select[name="cate"]').val() }, function(res){
+			if(res == '000') {
+				alert('삭제 되었습니다.');
+				location.href = '/adm/ctable/lists';
+			}
+			else {
+				alert('시스템 오류!\n\n잠시 후 다시 시도해주세요.');
+			}
+		});
+	}
+}
+//]]>
+</script>

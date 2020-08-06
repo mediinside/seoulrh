@@ -1,0 +1,30 @@
+<div id='login_wrap'>
+	<div id='login'>
+		<ul id='login_header'>
+			<li class='infor'>
+				<p><img src='<?=$img_path?>/icon_logon.gif' width='31' height='11' alt='로그인'/> <span><?=$mb_nick?></span>님</p>
+            	<p><a href='<?=RT_PATH?>/member/point'><img src='<?=$img_path?>/icon_point.gif' width='31' height='11' alt='포인트'/></a> <?=$mb_point?>점</p>
+			</li>
+			<li><a href='<?=RT_PATH?>/member/login/out'><img src='<?=$img_path?>/btn_logout.gif' width='52' height='38' align='top' alt='로그아웃'/></a></li>
+		</ul>
+		<ul id='login_footer'>
+			<li class='first'><a href='<?=RT_PATH?>/member/confirm/qry/member.modify'>회원정보변경</a></li>
+			<li><a href='javascript:;' title='읽지 않은 쪽지 <?=$mb_memo_cnt?>개' onclick='javascript:win_memo();'><img src='<?=$img_path?>/btn_memo.gif' width='34' height='18' align='top' alt='쪽지'/> (<?=$mb_memo_cnt?>)</a></li>
+			
+			<? if(SU_ADMIN): ?>
+			<li class='first'><a href='<?=RT_PATH?>/<?=ADM_F?>' target='_blank'>관리자접속</a></li>
+			<? endif; ?>
+			
+		</ul>
+	</div>
+</div>
+
+<? if ($mb_memo_call): ?>
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	alert('새로운 쪽지가 도착하였습니다.');
+});
+//]]>
+</script>
+<? endif; ?>

@@ -1,0 +1,125 @@
+<?php
+//error_reporting(E_ALL);
+//ini_set("display_errors", 1);
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once $GP -> INC_WWW . '/count_inc.php';
+include_once "../inc/head.php";
+
+include_once($GP->CLS."class.list.php");
+include_once($GP -> CLS."/class.cooperative.php");
+include_once($GP->CLS."class.button.php");
+
+$C_ListClass 	= new ListClass;
+$C_cooperative 		= new cooperative;
+$C_Button 		= new Button;
+
+$args = array();
+//	$args['show_row'] = 9;
+
+//$args['h_idx'] = $h_idx;
+$args['cate1'] = "A";
+$data = "";
+$data = $C_cooperative->cooperative_List(array_merge($_GET,$_POST,$args));
+$data_list 		= $data['data'];
+$data_list_cnt 	= count($data_list);
+
+$dep1 = "1";
+$dep2 = "1-1";
+$dep3 = "1-1-1";
+
+
+//echo $data_list_cnt;
+?>
+<style>
+	@media screen and (max-width:1023px){
+		#collaboCorp2 li > a .logo {
+			height: 100%;
+			padding:25px;
+			/* transform: scale(1.3); */
+		}
+	}
+</style>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<!-- <img src="/resource/images/info-bnnr1.jpg" alt=""> -->
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="wd-1200">
+					<img src="/resource/images/hosp-intro.jpg" alt="" style="max-width:100.7%;">
+					<img class="mt60" src="/resource/images/border.png" alt="" style="max-width:100%;min-height:2px;">
+					<h3 class="mt60 mb-60 ft-sz40 ft-we400" style="line-height:1.2;">
+						<span class="color-green">서울재활병원은</span> 1998년 4월 21일,<br>
+						사회복지법인 엔젤스헤이븐(舊 은평천사원)<br class="mb-hide">
+						산하 기관으로 개원하였습니다.
+					</h3>
+					<div class="text-box">
+						<p class="ft-sz18">
+							뇌졸중, 척수손상, 뇌성마비, 발달장애, 근골격계 질환, 통증 등으로 고통받는 환자들의 재활을 위해 재활의학 전문의, 물리치료사, 작업치료사, 임상심리사, 언어치료사,
+							재활전문 간호사, 의료사회복지사 등 다양한 분야의 전문가들이 함께 통합 서비스를 제공하고 있는 재활전문병원입니다.
+						</p>
+						<p class="ft-sz18">
+							본원은 국내 유일의 생활유형별/생애주기별 평생 재활관리 시스템을 적용하여 관리하고 있으며, 국내 최초로 소아 낮병동을 개설하고 청소년재활전담팀을 운영하고
+							있습니다. 이를 바탕으로 전문적인 의료서비스와 더불어 심리, 사회, 경제, 가족 문제를 포함한 전인적 케어를 제공하여 가정과 사회로의 성공적인 복귀를 이끌고 삶의 질을
+							높이기 위해 노력하고 있습니다. 더불어 서울시와 보건복지부로부터 전문병원 유일의 서울시지역장애인보건의료센터와 제1기 재활의료기관(회복기병원)으로 지정되어
+							지역사회와 연계해 환자 중심의 재활의료기반을 구축하고 있습니다.
+						</p>
+						<p class="ft-sz18">
+							서울재활병원은 의료사회복지팀과 가족지원센터가 치료전문가들과 함께 가옥구조 개선사업, 중도장애아동 학교복귀사업, 뇌졸중 멘토링, 장애청소년캠프 등
+							사회복귀기반의 재활치료와 보호자 멘토링, 형제자매 프로그램, 가족역량강화교육, 가족심리 상담 및 치료 등의 다양한 프로그램으로 빠른 사회복귀를 목표로 재활의료
+							서비스를 제공합니다. 또 국내 국·공립병원, 민간 재활병원, 보건소 등 각 기관에 재활시스템을 공유하고 해외 재활의료 소외국가에 재활시스템 교육과 재활의료진을
+							파견하여 시스템 정착을 지원하고 있습니다.
+						</p>
+						<p class="ft-sz18">
+							서울재활병원은 신체의 기능적 재활을 넘어 환자의 가족을 포함한 전인적인 재활을 목표하고 있으며, 국내 재활의 새로운 패러다임을 제시하고 재활의 본질을 실현하는
+							재활전문병원입니다.
+						</p>
+					</div>
+					<ul id="collaboCorp2">
+                    <?php
+                        $dummy = 1;
+                        for ($i = 0 ; $i < $data_list_cnt ; $i++) {
+                            $cp_name 		= $data_list[$i]['cp_name'];
+                            $cp_img 			= $data_list[$i]['cp_img'];
+                            $cp_link 			= $data_list[$i]['cp_link'];
+
+                            $img_src = "";
+                            if($cp_img != '') {
+                                $img_src = "<img src='" . $GP -> UP_cooperative_URL . $cp_img . "' alt='' />";
+                            }else{
+                                $img_src = "<img src='/images/no_image.jpg' alt='' />";
+                            }
+
+                    ?>
+                        <li>
+							<a href="<?=$cp_link?>" target="_blank">
+								<span class="logo">
+                                <?=$img_src?>
+								</span>
+							</a>
+						</li>
+                    <? } ?>
+
+					</ul>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+</body>
+
+</html>

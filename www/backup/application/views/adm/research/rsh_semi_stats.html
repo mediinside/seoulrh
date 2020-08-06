@@ -1,0 +1,249 @@
+<h2><?=$_TITLE_?></h2>
+
+<ul id="form_cont">
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 기본정보</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box3">
+			<colgroup>
+				<col width="33.3333%" />
+				<col width="33.3333%" />
+				<col width="33.3333%" />
+			</colgroup>
+        	<tr>
+            	<th>성별</th>
+            	<th>남</th>
+            	<th>여</th>
+            </tr>
+            <tr>
+            	<td>인원</td>
+            	
+            	<? foreach($row['sex'] AS $key => $val) : ?>
+            	<td><?=$val?></td>
+            	<? endforeach; ?>
+            	
+            </tr>
+            <tr>
+            	<td>비율</td>
+            	
+            	<? foreach($row['ratio']['sex'] AS $key => $val) : ?>
+            	<td><?=$val?> %</td>
+            	<? endforeach; ?>
+            	
+            </tr>
+        </table>
+        <br/>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box3">
+			<colgroup>
+				<col width="20%" />
+				<col width="20%" />
+				<col width="20%" />
+				<col width="20%" />
+				<col width="20%" />
+			</colgroup>
+        	<tr>
+            	<th>치료사</th>
+            	<th>물리</th>
+            	<th>작업</th>
+            	<th>언어</th>
+            	<th>심리</th>
+            </tr>
+            <tr>
+            	<td>인원</td>
+            	
+            	<? foreach($row['type'] AS $key => $val) : ?>
+            	<td><?=$val?></td>
+            	<? endforeach; ?>
+            	
+            </tr>
+            <tr>
+            	<td>비율</td>
+            	
+            	<? foreach($row['ratio']['type'] AS $key => $val) : ?>
+            	<td><?=$val?> %</td>
+            	<? endforeach; ?>
+            	
+            </tr>
+        </table>
+        <br/>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box3">
+			<colgroup>
+				<col width="20%" />
+				<col width="20%" />
+				<col width="20%" />
+				<col width="20%" />
+				<col width="20%" />
+			</colgroup>
+        	<tr>
+            	<th>학생</th>
+            	<th>1학년</th>
+            	<th>2학년</th>
+            	<th>3학년</th>
+            	<th>4학년</th>
+            </tr>
+            <tr>
+            	<td>인원</td>
+            	
+            	<? foreach($row['grade'] AS $key => $val) : ?>
+            	<td><?=$val?></td>
+            	<? endforeach; ?>
+            	
+            </tr>
+            <tr>
+            	<td>비율</td>
+            
+            	<? foreach($row['ratio']['grade'] AS $key => $val) : ?>
+            	<td><?=$val?> %</td>
+            	<? endforeach; ?>
+            	
+            </tr>
+        </table>
+	</li>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 구분</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box3">
+			<colgroup>
+				<col width="*" />
+				<col width="7.1428%" />
+				<col width="7.1428%" />
+				<col width="7.1428%" />
+				<col width="7.1428%" />
+				<col width="7.1428%" />
+				<col width="7.1428%" />
+				<col width="7.1428%" />
+			</colgroup>
+        	<tr>
+            	<th></th>
+            	<th>5점</th>
+            	<th>4점</th>
+            	<th>3점</th>
+            	<th>2점</th>
+            	<th>1점</th>
+            	<th>총점</th>
+            	<th>평균</th>
+            </tr>
+            <tr>
+            	<td>세미나의 프로그램의 운영이 계획대로 이루어졌습니까?</td>
+            	
+            	<? foreach($row['plan'] AS $key => $val) : ?>
+            	<td><?=$val?></td>
+            	<? endforeach; ?>
+            	
+            	<td><?=number_format($row['sum']['plan'])?></td>
+            	<td><?=$row['average']['plan']?></td>
+            </tr>
+            <tr>
+            	<td>세미나 시간은 적절했습니까?</td>
+            	
+            	<? foreach($row['time'] AS $key => $val) : ?>
+            	<td><?=$val?></td>
+            	<? endforeach; ?>
+            	
+            	<td><?=number_format($row['sum']['time'])?></td>
+            	<td><?=$row['average']['time']?></td>
+            </tr>
+            <tr>
+            	<td>세미나 환경은 적절하였습니까?</td>
+            	
+            	<? foreach($row['circum'] AS $key => $val) : ?>
+            	<td><?=$val?></td>
+            	<? endforeach; ?>
+            	
+            	<td><?=number_format($row['sum']['circum'])?></td>
+            	<td><?=$row['average']['circum']?></td>
+            </tr>
+            <tr>
+            	<td>세미나 자료집은 적절했습니까?</td>
+            	
+            	<? foreach($row['data'] AS $key => $val) : ?>
+            	<td><?=$val?></td>
+            	<? endforeach; ?>
+            	
+            	<td><?=number_format($row['sum']['data'])?></td>
+            	<td><?=$row['average']['data']?></td>
+            </tr>
+        </table>
+	</li>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 강의 만족도</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box3">
+			<colgroup>
+				<col width="*" />
+				<col width="10%" />
+				<col width="10%" />
+				<col width="10%" />
+				<col width="10%" />
+				<col width="10%" />
+			</colgroup>
+        	<tr>
+            	<th></th>
+            	<th>5점</th>
+            	<th>4점</th>
+            	<th>3점</th>
+            	<th>2점</th>
+            	<th>1점</th>
+            </tr>
+            
+			<? foreach($row['satisfaction'] AS $key => $val) : ?>
+            <tr>
+            	<td><?=$key?>강</td>
+            	<td><?=$val[5]?></td>
+            	<td><?=$val[4]?></td>
+            	<td><?=$val[3]?></td>
+            	<td><?=$val[2]?></td>
+            	<td><?=$val[1]?></td>
+            </tr>
+            <? endforeach; ?>
+            
+			<? if(!count($row['satisfaction'])) : ?>
+			<tr>
+            	<td colspan="6" style="height:35px;text-align:center;">개설된 세미나 강의가 없습니다.</td>
+            </tr>
+			<? endif; ?>
+			
+        </table>
+	</li>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 추천 의향</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box3">
+			<colgroup>
+				<col width="*" />
+				<col width="12.5%" />
+				<col width="12.5%" />
+				<col width="12.5%" />
+				<col width="12.5%" />
+			</colgroup>
+        	<tr>
+            	<th></th>
+            	
+            	<? foreach($row['recommend'] AS $key => $val) : ?>
+            	<th><?=$key?></th>
+            	<? endforeach; ?>
+            	
+            </tr>
+            <tr>
+            	<td>다른 분께 추천할 의향이 있으신가요?</td>
+            	
+            	<? foreach($row['recommend'] AS $key => $val) : ?>
+            	<td><?=$val?></td>
+            	<? endforeach; ?>
+            	
+            </tr>
+        </table>
+	</li>
+</ul>
+
+<p class='right bottom'>
+	<input type='button' id='print' class='btn' value='  인  쇄  '/>&nbsp;
+	<input type='button' id='reset' class='btn' value='데이터 삭제하기'/>
+</p>
+
+<script>
+$('#print').click(function() {
+	$('#content').printThis();
+});
+$('#reset').click(function() {
+	if(confirm('모든 데이터를 삭제 하시겠습니까?')) {
+		location.href = '/adm/research/reset/semi';
+	}
+});
+</script>

@@ -1,0 +1,171 @@
+<?php
+//error_reporting(E_ALL);
+//ini_set("display_errors", 1);
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once $GP -> INC_WWW . '/count_inc.php';
+include_once "../inc/head.php";
+
+include_once($GP->CLS."class.list.php");
+include_once($GP -> CLS."/class.history.php");
+include_once($GP->CLS."class.button.php");
+
+$C_ListClass 	= new ListClass;
+$C_history 		= new history;
+$C_Button 		= new Button;
+
+$args = array();
+//	$args['show_row'] = 9;
+
+//$args['h_idx'] = $h_idx;
+$args['orderby'] = " h_day DESC";
+$args['h_type'] = $_GET["h_type"] ;
+$data = "";
+$data = $C_history->history_List_year(array_merge($_GET,$_POST,$args));
+$data_list 		= $data['data'];
+$data_list_cnt 	= count($data_list);
+
+if($_GET["h_type"] =="3" ){$class3  ="on";}
+elseif($_GET["h_type"] =="2" ){$class2  ="on";}
+elseif($_GET["h_type"] =="1" ){$class1  ="on";}
+elseif($_GET["h_type"] =="4" ){$class4  ="on";}
+
+$dep1 = "1";
+$dep2 = "1-1";
+$dep3 = "1-1-4";
+
+//echo $data_list_cnt;
+?>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/info-bnnr4.jpg" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="wd-1200">
+					<h3 class="sub-tit3">
+						서울재활병원 도전과 열정의 20년
+						<small>Brief history of SRH</small>
+					</h3>
+					<ul class="tab">
+						<li class="<?=$class4?>">
+							<a href="/info/page04.html?h_type=4">2020’S</a>
+						</li>
+						<li class="<?=$class3?>">
+							<a href="/info/page04.html?h_type=3">2010’S</a>
+						</li>
+						<li class="<?=$class2?>">
+							<a href="/info/page04.html?h_type=2">2000’S</a>
+						</li>
+						<li class="<?=$class1?>">
+							<a href="/info/page04.html?h_type=1">1990’S</a>
+						</li>
+					</ul>
+					<div id="tab-1" class="tab-box">
+                    <?php
+                        $dummy = 1;
+                        for ($i = 0 ; $i < $data_list_cnt ; $i++) {
+                            $h_idx 		= $data_list[$i]['h_idx'];
+                            $h_year 		= $data_list[$i]['h_year'];
+                            if($i == 0 ){
+                                $class = "on";
+                            }
+                            else{
+                                $class = "";
+                            }
+                    ?>
+						<div class="tab-cont">
+                        <p class="<?=$class?>">
+								<a href="#none"><?=$h_year?></a>
+							</p>
+							<div class="list">
+								<table summary="2018년 연혁을 안내하는 표입니다.">
+									<caption class="dpn">2018년 연혁</caption>
+									<colgroup>
+										<col style="width: 20%;">
+										<col>
+									</colgroup>
+									<tbody>
+                                    <?php
+
+                                        $args['h_year'] = $h_year ;
+                                        $args['h_type'] = $_GET["h_type"] ;
+                                        //print_r($args);
+                                        $data_day = "";
+                                        $data_day = $C_history->history_List_day(array_merge($_GET,$_POST,$args));
+                                        $data_list_day 		= $data_day['data'];
+                                        $data_list_cnt_day 	= count($data_list_day);
+                                        $dummy = 1;
+                                        for ($j = 0 ; $j < $data_list_cnt_day ; $j++) {
+                                            $h_idx 		= $data_list_day[$j]['h_idx'];
+                                            $h_year 		= $data_list_day[$j]['h_year'];
+                                            $h_day		= $data_list_day[$j]['h_day'];
+                                            $h_content		= nl2Br($data_list_day[$j]['h_content']);
+                                    ?>
+
+										<tr>
+											<th scope="row"><?=$h_day?></th>
+											<td><?=$h_content?></td>
+                                        </tr>
+                                    <? } ?>
+									</tbody>
+								</table>
+							</div>
+                        </div>
+                    <? } ?>
+
+					</div>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+	<script>
+		//<![CDATA[
+			$(document).ready(function () {
+
+				$(".tab-cont > .list").hide();
+				$('.tab-cont > p').click(function () {
+					var obj = $(this).next();
+
+					if (obj.css('display') == 'none') {
+
+						obj.slideDown();
+						$(this).addClass("on").parent().siblings().children('p').removeClass('on').next().hide();
+					}
+					else {
+						obj.slideUp();
+						$(this).removeClass("on");
+					}
+				}).css('cursor', 'pointer');
+
+				$('.tab-cont').eq(0).find('p').trigger('click');
+
+
+				$("#tab-1").show();
+				$(".tab3 li").on("click", function () {
+					// $(this).addClass("on").siblings().removeClass("on");
+					// var $tab_idx = $(this).index() + 1;
+					// $('#tab-' + $tab_idx).show().siblings().not('.tab3, .donation-bg').hide();
+
+				});
+			});
+		//]]>
+
+	</script>
+</body>
+
+</html>

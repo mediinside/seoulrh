@@ -1,0 +1,80 @@
+<form id='fwrite' name='fwrite' method='post' action='<?=$path?>/apply/form'>
+<input type='hidden' name='w'    value='<?=$w?>' />
+<input type='hidden' name='token' value='<?=$token?>' />
+<input type='hidden' name='ap_id' value='<?=$row['ap_id']?>' />
+
+<div id='form_title'>
+	&deg; <b><?=$_TITLE_?></b>
+</div>
+
+<?=validation_errors('<script>alert("','");</script>');?>
+<ul id="form_cont">
+	<? foreach($apply_info as $group => $column): ?>
+	<li class="form_li">
+		<div>
+			<h4><?=$group?></h4>
+			<dl>
+				<? foreach($column as $colName => $info): ?>
+	            <dt <?=$info['input'] == 'hidden'?'style="display:none;"':''?>><?=$info['label']?></dt>
+				<dd <?=$info['input'] == 'hidden'?'style="display:none;"':''?>>
+				
+				<?=arrayToInput($colName, $info, $row, false, 'apply')?>
+				
+				</dd>
+	            <? endforeach; ?>
+	            
+				<? if($row['ap_regdate']): ?>
+				<dt>등록일</dt>
+				<dd>
+					<?=$row['ap_regdate']?>
+				</dd>
+				<? endif; ?>
+				<? if($row['ap_mdydate']): ?>
+				<dt>최종수정일</dt>
+				<dd>
+					<?=$row['ap_mdydate']?>
+				</dd>
+				<? endif; ?>
+			</dl>
+		</div>
+	</li>
+	<? endforeach; ?>
+</ul>
+
+<p class='center bottom editor' style="margin-top:30px;">
+	<input type='submit' id='btn_submit' class='btn' value='  확  인  ' />&nbsp;
+	<input type='button' class='btn' value='  목  록  ' onclick="document.location.href='<?=$path?>/apply/lists';"value="1" />
+</p>
+</form>
+
+<div id='loading'></div>
+
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function() {
+	$('#fwrite').validate({
+		rules: {
+			ap_mb_id: 'required',
+			ap_status: 'required',
+		},
+		messages: {
+			ap_mb_id: '신청자 아이디를 입력하세요.',
+			ap_status: '신청 상태를 선택하세요.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+		    f.submit();
+		}
+	});
+});
+//]]>
+</script>

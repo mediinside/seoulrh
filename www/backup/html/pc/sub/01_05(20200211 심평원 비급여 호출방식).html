@@ -1,0 +1,11 @@
+<?php
+	$CI =& get_instance();
+	$CI->load->model('M_ctable');
+	
+	$cates = $CI->M_ctable->list_result_cate();
+	$list = $CI->M_ctable->get_tables();
+?>
+<? include DOC_ROOT.'/include/01_inc.php'; ?>
+
+<meta http-equiv='refresh' content='0;url=http://www.hira.or.kr/re/diag/getNpayNotiCsuiSvcFom.do?yadmSbstKey=SKUNmUk9Aek9I54v'>
+

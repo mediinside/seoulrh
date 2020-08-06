@@ -1,0 +1,201 @@
+<h2><?=$_TITLE_?></h2>
+
+<ul id="form_cont">
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 구분</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box3">
+			<colgroup>
+				<col width="*" />
+				<col width="7.1428%" />
+				<col width="7.1428%" />
+				<col width="7.1428%" />
+				<col width="7.1428%" />
+				<col width="7.1428%" />
+				<col width="7.1428%" />
+				<col width="7.1428%" />
+			</colgroup>
+        	<tr>
+            	<th></th>
+            	<th>7점</th>
+            	<th>6점</th>
+            	<th>5점</th>
+            	<th>4점</th>
+            	<th>3점</th>
+            	<th>2점</th>
+            	<th>1점</th>
+            	<th>총점</th>
+            	<th>평균</th>
+            </tr>
+            <tr>
+            	<td>병원의 전반적인 환경과 시설은 어떠신가요?</td>
+            	
+            	<? foreach($row['circum'] AS $key => $val) : ?>
+            	<td><?=$val?></td>
+            	<? endforeach; ?>
+            	
+            	<td><?=number_format($row['sum']['circum'])?></td>
+            	<td><?=$row['average']['circum']?></td>
+            </tr>
+            <tr>
+            	<td>병원의 이용절차는 어떠신가요?</td>
+            	
+            	<? foreach($row['process'] AS $key => $val) : ?>
+            	<td><?=$val?></td>
+            	<? endforeach; ?>
+            	
+            	<td><?=number_format($row['sum']['process'])?></td>
+            	<td><?=$row['average']['process']?></td>
+            </tr>
+            <tr>
+            	<td>병원 직원들의 친절도는 어떠신가요?</td>
+            	
+            	<? foreach($row['kind'] AS $key => $val) : ?>
+            	<td><?=$val?></td>
+            	<? endforeach; ?>
+            	
+            	<td><?=number_format($row['sum']['kind'])?></td>
+            	<td><?=$row['average']['kind']?></td>
+            </tr>
+            <tr>
+            	<td>병원 치료 및 의료서비스는 어떠신가요?</td>
+            	
+            	<? foreach($row['service'] AS $key => $val) : ?>
+            	<td><?=$val?></td>
+            	<? endforeach; ?>
+            	
+            	<td><?=number_format($row['sum']['service'])?></td>
+            	<td><?=$row['average']['service']?></td>
+            </tr>
+        </table>
+        <br/>
+        <table width='100%' cellpadding='0' cellspacing='0' class="con_box3">
+			<colgroup>
+				<col width="*" />
+				<col width="8%" />
+				<col width="8%" />
+				<col width="8%" />
+				<col width="8%" />
+				<col width="13%" />
+				<col width="13%" />
+				<col width="8%" />
+				<col width="8%" />
+				<col width="8%" />
+			</colgroup>
+        	<tr>
+            	<th rowspan="2"></th>
+            	<th colspan="4">타병원 소개</th>
+            	<th rowspan="2">주변인의 추천</th>
+            	<th rowspan="2">거리상 가까움</th>
+            	<th colspan="2">대중매체</th>
+            	<th rowspan="2">기타</th>
+            </tr>  
+        	<tr>
+            	<td style="text-align:center">의료진</td>
+            	<td style="text-align:center">직원</td>
+            	<td style="text-align:center">간병인</td>
+            	<td style="text-align:center">동료<br/>환우</td>
+            	<td style="text-align:center">인터넷</td>
+            	<td style="text-align:center">신문</td>
+            </tr>           
+            <tr>
+            	<td>병원 방문 경로는 어디신가요?</td>
+            	
+            	<? foreach($row['service'] AS $key => $val) : ?>
+            	<td><?=$val?></td>
+            	<? endforeach; ?>
+            	
+            	<td>0</td>
+            	<td>0</td>
+            </tr>            
+        </table>
+	</li>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 추천 의향</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box3">
+			<colgroup>
+				<col width="*" />
+				<col width="25%" />
+				<col width="25%" />
+			</colgroup>
+        	<tr>
+            	<th></th>
+            	
+            	<? foreach($row['recommend'] AS $key => $val) : ?>
+            	<th><?=$key?></th>
+            	<? endforeach; ?>
+            	
+            </tr>
+            <tr>
+            	<td>다른 분께 추천할 의향이 있으신가요?</td>
+            	
+            	<? foreach($row['recommend'] AS $key => $val) : ?>
+            	<td><?=$val?></td>
+            	<? endforeach; ?>
+            	
+            </tr>
+        </table>
+	</li>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 이용 만족도</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box3">
+			<colgroup>
+				<col width="*" />
+				<col width="7.1428%" />
+				<col width="7.1428%" />
+				<col width="7.1428%" />
+				<col width="7.1428%" />
+				<col width="7.1428%" />
+				<col width="7.1428%" />
+				<col width="7.1428%" />
+			</colgroup>
+        	<tr>
+            	<th></th>
+            	<th>7점</th>
+            	<th>6점</th>
+            	<th>5점</th>
+            	<th>4점</th>
+            	<th>3점</th>
+            	<th>2점</th>
+            	<th>1점</th>
+            	<th>총점</th>
+            	<th>평균</th>
+            </tr>
+            <tr>
+            	<td>홈페이지 이용만족도는 어떠신가요?</td>
+            	
+            	<? foreach($row['homepage'] AS $key => $val) : ?>
+            	<td><?=$val?></td>
+            	<? endforeach; ?>
+            	
+            	<td><?=number_format($row['sum']['homepage'])?></td>
+            	<td><?=$row['average']['homepage']?></td>   	
+            </tr>
+            <tr>
+            	<td>병원신문 내용만족도는 어떠신가요?</td>
+            	
+            	<? foreach($row['newspaper'] AS $key => $val) : ?>
+            	<td><?=$val?></td>
+            	<? endforeach; ?>
+            	
+            	<td><?=number_format($row['sum']['newspaper'])?></td>
+            	<td><?=$row['average']['newspaper']?></td>
+            </tr>
+        </table>
+	</li>
+</ul>
+
+<p class='right bottom'>
+	<input type='button' id='print' class='btn' value='  인  쇄  '/>&nbsp;
+	<input type='button' id='reset' class='btn' value='데이터 삭제하기'/>
+</p>
+
+<script>
+$('#print').click(function() {
+	$('#content').printThis();
+});
+$('#reset').click(function() {
+	if(confirm('모든 데이터를 삭제 하시겠습니까?')) {
+		location.href = '/adm/research/reset/sati';
+	}
+});
+</script>

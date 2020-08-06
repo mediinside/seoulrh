@@ -1,0 +1,45 @@
+<?php
+	$CI =& get_instance();
+	$CI->load->model('M_ctable');
+	
+	$cates = $CI->M_ctable->list_result_cate();
+	$list = $CI->M_ctable->get_tables();
+?>
+
+<? include DOC_ROOT.'/include/01_inc.php'; ?>
+
+<br />
+
+<!-- <p><img src="/img/sub/ready01.jpg" width="734" height="500" alt="2014년 오픈 중비중입니다." /></p> -->
+
+
+<span class="fl">2015년 1월 1일 기준</span> <span class="fr">(단위:원)</span>
+ 
+<table class="t3 w100" summary="비급여항목 분류별 수가명, 수가를 안내하는 표입니다.">
+<caption class="dpn">비급여항목</caption>
+<col style="width: 20%;" /><col /><col style="width: 28%;" /><col style="width: 15%;" />
+<thead>
+	<tr>
+		<th scope="col">분류</th>
+		<th scope="col">수가명</th>
+		<th scope="col">수가</th>
+		<th scope="col">비고</th>
+	</tr>
+</thead>
+<tbody>
+
+	<? foreach($cates AS $cid => $cate) : ?>
+	<? foreach($list[$cid] AS $key => $row) : ?>
+	<tr>
+		<? if($key == 0) { ?><th rowspan="<?=count($list[$cid])?>" scope="row"><?=$cate?></th><? } ?>
+		<td><?=$row['cta_name']?></td>
+		<td class="tar pdr_p50"><?=$row['cta_price']?></td>
+		<td><?=$row['cta_memo']?></td>		
+	</tr>
+	<? endforeach; ?>
+	<? endforeach; ?>
+	
+</tbody>
+</table>
+
+<br />

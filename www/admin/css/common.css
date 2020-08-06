@@ -1,0 +1,212 @@
+@charset "UTF-8";
+
+@font-face {
+		font-family: 'NanumGothic Light';
+		src: url('/fonts/NanumGothicLight.eot');
+		src: local(※),
+			url('/fonts/NanumGothicLight.eot?#iefix') format('embedded-opentype'),
+			url('/fonts/NanumGothicLight.woff') format('woff'),
+			url('/fonts/NanumGothicLight.ttf') format('truetype'),
+			url('/fonts/NanumGothicLight.svg#NanumGothicLight') format('svg');
+}
+.NGL {
+	font-family:'NanumGothic Light';
+}
+
+/** Float 해제 **/
+.clearFix {
+	float: none;
+	clear: both;
+}
+
+/** 영역 확인용 **/
+.brd-red {
+	margin:-1px;
+	border:1px solid red;
+}
+/*** 롤오버 이미지 ***/
+a img.off {
+	display:block;
+}
+a img.on {
+	display:none;
+}
+a:hover img.off {
+	display:none;
+}
+a:hover img.on {
+	display:block;
+}
+
+li a.off {
+	display:block;
+}
+li a.on {
+	display:none;
+}
+li:hover a.off {
+	display:none;
+}
+li:hover a.on {
+	display:block;
+}
+
+/** p태그 문자열 자르기 **/
+p {
+	word-wrap:break-word;
+}
+
+/** hr 직선 라인 **/
+hr.solid {
+	border-top:1px solid #eee;
+	border-left:none;
+	border-right:none;
+	border-bottom:none;
+	margin:15px 0;
+}
+
+/** hr 점선 라인 **/
+hr.dotted {
+	border-top:2px dotted #bfd1e3;
+	border-left:none;
+	border-right:none;
+	border-bottom:none;
+}
+
+/** select 기본 형태 설정 **/
+select {
+	font-size:0.8571428571428571em;
+	padding:2px;
+	margin: 0;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+	background: #f8f8f8;
+	color:#888;
+	border:none;
+	outline:none;
+	display: inline-block;
+	cursor:pointer;
+}
+
+
+/** 버튼 기본 설정 **/
+.btn {
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1.428571429;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+	-webkit-user-select: none;
+		 -moz-user-select: none;
+			-ms-user-select: none;
+			 -o-user-select: none;
+					user-select: none;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+.btn:focus {
+	outline: thin dotted;
+	outline: 5px auto -webkit-focus-ring-color;
+	outline-offset: -2px;
+}
+.btn:hover,
+.btn:focus {
+	color: #333;
+	text-decoration: none;
+}
+.btn:active,
+.btn.active {
+	background-image: none;
+	outline: 0;
+	-webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+					box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+
+.leftFl {
+	float: left;
+}
+.rightFl {
+	float: right;
+}
+
+.srOnly {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+/** Padding 설정 **/
+.pd-0 {padding:0 !important;}
+.pd-10 {padding:10px !important;}
+.pd-20 {padding:20px !important;}
+.pd-30 {padding:30px !important;}
+.pd-40 {padding:40px !important;}
+.pd-50 {padding:50px !important;}
+.pd-t0 {padding-top:0 !important;}
+.pd-t10 {padding-top:10px !important;}
+.pd-t20 {padding-top:20px !important;}
+.pd-t30 {padding-top:30px !important;}
+.pd-t40 {padding-top:40px !important;}
+.pd-t50 {padding-top:50px !important;}
+.pd-b0 {padding-bottom:0 !important;}
+.pd-b10 {padding-bottom:10px !important;}
+.pd-b20 {padding-bottom:20px !important;}
+.pd-b30 {padding-bottom:30px !important;}
+.pd-b40 {padding-bottom:40px !important;}
+.pd-b50 {padding-bottom:50px !important;}
+.pd-l0 {padding-left:0 !important;}
+.pd-l10 {padding-left:10px !important;}
+.pd-l20 {padding-left:20px !important;}
+.pd-l30 {padding-left:30px !important;}
+.pd-l40 {padding-left:40px !important;}
+.pd-l50 {padding-left:50px !important;}
+.pd-r0 {padding-right:0 !important;}
+.pd-r10 {padding-right:10px !important;}
+.pd-r20 {padding-right:20px !important;}
+.pd-r30 {padding-right:30px !important;}
+.pd-r40 {padding-right:40px !important;}
+.pd-r50 {padding-right:50px !important;}
+
+/** margin 설정 **/
+.mg-0 {margin:0 !important;}
+.mg-10 {margin:10px !important;}
+.mg-20 {margin:20px !important;}
+.mg-30 {margin:30px !important;}
+.mg-40 {margin:40px !important;}
+.mg-50 {margin:50px !important;}
+.mg-t0 {margin-top:0 !important;}
+.mg-t10 {margin-top:10px !important;}
+.mg-t20 {margin-top:20px !important;}
+.mg-t30 {margin-top:30px !important;}
+.mg-t40 {margin-top:40px !important;}
+.mg-t50 {margin-top:50px !important;}
+.mg-b0 {margin-bottom:0 !important;}
+.mg-b10 {margin-bottom:10px !important;}
+.mg-b20 {margin-bottom:20px !important;}
+.mg-b30 {margin-bottom:30px !important;}
+.mg-b40 {margin-bottom:40px !important;}
+.mg-b50 {margin-bottom:50px !important;}
+.mg-l0 {margin-left:0 !important;}
+.mg-l10 {margin-left:10px !important;}
+.mg-l20 {margin-left:20px !important;}
+.mg-l30 {margin-left:30px !important;}
+.mg-l40 {margin-left:40px !important;}
+.mg-l50 {margin-left:50px !important;}
+.mg-r0 {margin-right:0 !important;}
+.mg-r10 {margin-right:10px !important;}
+.mg-r20 {margin-right:20px !important;}
+.mg-r30 {margin-right:30px !important;}
+.mg-r40 {margin-right:40px !important;}
+.mg-r50 {margin-right:50px !important;}

@@ -1,0 +1,119 @@
+<link rel='stylesheet' href='<?=BO_IMG_PATH?>/style.css' type='text/css'/>
+
+<? if(!isset($_MENUS_)) include DOC_ROOT.'/include/'. $m1 .'_inc.php'; ?>
+
+<?=$board['bo_top_html']?>
+<h3><?=$board['bo_title_img']?></h3>
+
+<div id="board">
+	<!-- <div class="fL"><p class="board_txt">총 <b class="total"><?=$total_count?></b> 건</p></div> -->
+	<div class="fR">
+		<?=$board_select?>
+		
+		<? if ($category): ?>
+        <span><?=$category['select']?></span>
+        <?=$category['scate']?>
+        <script type='text/javascript'>
+        //<![CDATA[
+        var ca_url = 'board/<?=BO_TABLE?>/lists/sca/';
+        currentCate('ca_code', new Array('<?=$category['code']?>'));
+        //]]>
+        </script>
+   		<? endif; ?>
+	</div>
+	
+	<form name='fboardlist' method='post' action=''>
+	<?=INPUT_ADMIN?>
+	<input type='hidden' name='bid' value='<?=BO_TABLE?>'/>
+	<input type='hidden' name='sw' value=''/>
+	<input type='hidden' name='qstr' value='<?=$qstr?>'/>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="board_box">
+    	<tr class="head">
+            <? if($button['chkbox']){ ?><th width="51"></th><? } ?>
+            <th width="170"></th>
+            <th></th>
+        </tr>
+        
+        <!-- 공지사항 -->
+		<? foreach($list_nt as $k => $o): ?>
+        <tr class="notice">
+             <? if($button['chkbox']){ ?><td class="center"><input type="checkbox" name="wr_id[]" value="<?=$o['wr_id']?>" /></td><? } ?>
+        	<td colspan="2">
+        		<span class="b"><a href='<?=$o['href']?>'>[공지] <?=$o['subject']?></a></span><br/>
+        		<div class="scont">No.<?=($total_count + (count($list_nt)) - $k)?> | <?=preg_replace('/\-/','.',$o['datetime'])?></div>
+            </td>
+        </tr>
+        <? endforeach; ?>
+        
+        <!-- 일반글 목록 -->
+		<? foreach($list as $o): ?>
+		<tr>
+            <? if($button['chkbox']){ ?><td class="center"><input type="checkbox" name="wr_id[]" value="<?=$o['wr_id']?>" /></td><? } ?>
+            <td class="ta_l"><a href='<?=$o['href']?>'><img src="<?=thumbnail($o['bid'], $o['wr_id'], $o['uf_count_image'], '160x120x1', $o['wr_content'])?>" /></a></td>
+            <td class="tit">
+            	<b class="w_tit">
+	            	<?=$o['ico_reply']?>
+					<a href='<?=$o['href']?>'><?=$o['subject']?></a>
+					<? if ($o['comment_cnt']): ?><span class='comt'><?=$o['comment_cnt']?></span><? endif; ?>
+					<?=$o['ico_secret'].' '.$o['ico_movie'].' '.$o['ico_file'].' '.$o['ico_new'].' '.$o['ico_hot']?>
+            	</b>
+                <div class="cont"><?=cut_str(strip_tags($o['wr_content'],'<br><p>'), 450)?></div>
+                <div class="scont">No.<?=$o['num']?> | <?=preg_replace('/\-/','.',$o['datetime'])?></div>
+			</td>
+        </tr>
+        <? endforeach; ?>
+        
+        <? if (!$list) : ?>
+	    <tr>
+			<td colspan="3" style="height:100px !important; text-align:center;">게시물이 없습니다.</td>
+		</tr>
+		<? endif; ?>
+		
+    </table>
+        
+    <div class="board_btn">
+    	<p class="l_btn">
+        	<?=$button['chkbox']?>
+        </p>
+        <p class="r_btn">
+        	<?=$button['list']?> <?=$button['write']?></a>
+        </p>
+    </div>
+	</form>
+	
+    <div class="paging"><?=$paging?></div>
+    
+    <form name='fsearch' method='post' action='<?=RT_PATH?>/board/<?=BO_TABLE?>/lists' onsubmit='return doSearch(this);'>
+	<input type='hidden' name='bid' value='<?=BO_TABLE?>'/>
+	<input type='hidden' name='sca' value='<?=$sca?>'/>
+	<input type='hidden' name='qstr' value='<?=$qstr?>'/>
+	<div class="search">
+		<fieldset>
+			<legend class="dpn">상세검색</legend>
+	    	<select name='sfl' title="검색옵션">
+			    <option value='wr_subject'>제목</option>
+			    <option value='wr_content'>내용</option>
+			    <? if($board['bo_use_tag']){ ?><option value='wr_tag'>태그</option><? } ?>
+			    <option value='wr_subject.wr_content'>제목+내용</option>
+			    <option value='mb_id-1'>회원아이디</option>
+			    <option value='mb_id'>회원아이디(C)</option>
+			    <option value='wr_name-1'>글쓴이</option>
+			    <option value='wr_name'>글쓴이(C)</option>
+			</select>
+			<input type="text" name="stx" value="<?=$search['stx']?>" class="text" title="검색어" style="background:#f7f7f7" />
+			<input type="image" src="<?=BO_IMG_PATH?>/btn_search.gif" alt="검색" class="image" />
+		</fieldset>
+	</div>
+    </form>
+    
+</div>
+
+<?=$board['bo_bottom_html']?>
+
+<? if ($search['stx']): ?>
+<script type='text/javascript'>
+//<![CDATA[
+document.fsearch.sfl.value = '<?=$search['sfl']?>';
+//]]>
+</script>
+<? endif; ?>

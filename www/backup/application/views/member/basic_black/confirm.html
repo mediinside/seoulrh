@@ -1,0 +1,39 @@
+<link rel='stylesheet' href='<?=$IMG_PATH?>/style.css' type='text/css'/>
+
+<form id='flogin' name='flogin' method='post' action='<?=$action?>'>
+<input type='hidden' name='mb_id' value='<?=$mb_id?>'/>
+<input type='hidden' name='token' value='<?=$token?>'/>
+
+<div id="confirm_box">
+	<ul>
+    	<li><img src="<?=$IMG_PATH?>/txt_id.gif" alt="id" border="0" /> <input type="text" name="mb_id" id="mb_id" class="ed imeDis" readonly="readonly" value="<?=$mb_id?>"></li>
+        <li>
+        	<img src="<?=$IMG_PATH?>/txt_pw.gif" alt="password" border="0" /> <input type="password" id="mb_password" name="mb_password" onkeypress="check_capslock(event, this);" class="ed">
+        	<div id="show_capslock"></div>
+        </li>
+    </ul>
+    <input type="image" src="<?=$IMG_PATH?>/btn_login.gif" class="login_btn" alt="login" />
+</div>
+</form>
+
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#flogin').validate({
+		rules: {
+			mb_id: { required:true, minlength:3, alphanumunder:true },
+			mb_password: 'required'
+		},
+		messages: {
+			mb_id: { required:'아이디를 입력하십시오.', minlength:'최소 3자 이상 입력하십시오.' },
+			mb_password: '비밀번호를 입력하십시오.'
+		},
+		errorPlacement: function(error, element) {
+			error.insertAfter(element.parent()).css('margin', '-5px 0 5px 0');
+		}
+	});
+	
+	$('#mb_password').focus();
+});
+//]]>
+</script>

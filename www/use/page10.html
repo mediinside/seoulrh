@@ -1,0 +1,666 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once "../inc/head.php";
+
+$dep1 = "2";
+$dep2 = "2-2";
+$dep3 = "2-2-5";
+?>
+<style>
+	.btn-group:not(.m-menu-info) {display: flex;justify-content: space-between;align-items: center;margin:0;}
+	.btn-group:not(.m-menu-info):after {display: none;}
+	.btn-group:not(.m-menu-info) .btn-sm {width: 268px;}
+	.btn-group:not(.m-menu-info) .btn-sm img {margin-right: 10px;}
+	@media screen and (max-width:1023px){
+		.btn-group:not(.m-menu-info) {flex-flow: column;}
+		.btn-group:not(.m-menu-info) .btn-sm {width: 100%;}
+		.btn-group:not(.m-menu-info) .btn-sm img {width: 20px !important;}
+	}
+</style>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/use-bnnr10.png" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="wd-1200">
+					<h3 class="sub-tit">진단서발급 안내</h3>
+					<ul class="clinic-list">
+						<li>
+							<label for="">진단서발급안내</label>
+							<div class="text">
+								<ul class="step-list">
+									<li>
+										<img src="/resource/images/step-02.png" alt="">
+										<p>
+											STEP 1
+										</p>
+										<p>진료접수</p>
+									</li>
+									<li class="arrow">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-06.png" alt="">
+										<p>
+											STEP 2
+										</p>
+										<p>주치의면담</p>
+									</li>
+									<li class="arrow mb-hide">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-09.png" alt="">
+										<p>
+											STEP 3
+										</p>
+										<p>
+											진단서발급<br>
+											신청
+										</p>
+									</li>
+									<li class="arrow">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-11.png" alt="">
+										<p>
+											STEP 4
+										</p>
+										<p>
+											발급<br>
+											(구비서류확인)
+										</p>
+									</li>
+									<li>
+										<img src="/resource/images/step-04.png" alt="">
+										<p>
+											STEP 5
+										</p>
+										<p>수납</p>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<label for="">장애진단서 발급</label>
+							<div class="text">
+								<ul class="step-list">
+									<li>
+										<img src="/resource/images/step-02.png" alt="">
+										<p>
+											STEP 1
+										</p>
+										<p>
+											진료 및<br>
+											필요한 평가 시행
+										</p>
+									</li>
+									<li class="arrow">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-11.png" alt="">
+										<p>
+											STEP 2
+										</p>
+										<p>
+											의료기관의<br>
+											장애진단서 발급
+										</p>
+									</li>
+									<li class="arrow mb-hide">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-09.png" alt="">
+										<p>
+											STEP 3
+										</p>
+										<p>
+											읍면주민센터<br>
+											관련서류제출
+										</p>
+									</li>
+									<li class="arrow">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-08.png" alt="">
+										<p>
+											STEP 4
+										</p>
+										<p>
+											국민연금공단<br>
+											장애심사 및 결과통보
+										</p>
+									</li>
+									<li>
+										<img src="/resource/images/step-01.png" alt="">
+										<p>
+											STEP 5
+										</p>
+										<p>
+											장애인등록증<br>
+											발급
+										</p>
+									</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+
+					<h3 class="sub-tit">
+						의무기록사본발급 안내
+					</h3>
+					<ul class="clinic-list">
+						<li>
+							<label for="">사본발급신청 절차</label>
+							<div class="text">
+								<ul class="step-list">
+									<li>
+										<img src="/resource/images/step-02.png" alt="">
+										<p>
+											STEP 1
+										</p>
+										<p>
+											진료접수
+										</p>
+									</li>
+									<li class="arrow">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-06.png" alt="">
+										<p>
+											STEP 2
+										</p>
+										<p>
+											주치의 면담
+										</p>
+									</li>
+									<li class="arrow mb-hide">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-09.png" alt="">
+										<p>
+											STEP 3
+										</p>
+										<p>
+											의무기록사본발급<br>
+											방사선필름사본발급, 신청서 작성
+										</p>
+									</li>
+									<li class="arrow">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-01.png" alt="">
+										<p>
+											STEP 4
+										</p>
+										<p>
+											발급
+										</p>
+									</li>
+									<li>
+										<img src="/resource/images/step-04.png" alt="">
+										<p>
+											STEP 5
+										</p>
+										<p>
+											수납
+										</p>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<label for="">발급안내</label>
+							<div class="text">
+								<div class="board-list border-t" style="padding:0;">
+									<table class="bordered">
+										<colgroup>
+											<col style="width:20%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th class="bg-gray text-center">발급<br class="mb-show">시간</th>
+												<td class="subject">평일 09:00~17:00</td>
+											</tr>
+											<tr>
+												<th class="bg-gray text-center">발급<br class="mb-show">장소</th>
+												<td class="subject">본관 1층 원무팀</td>
+											</tr>
+											<tr>
+												<th class="bg-gray text-center">발급<br class="mb-show">수수료</th>
+												<td class="subject">
+													[진료기록 사본] <br class="mb-show">1~5매까지(1매당) 1,000원 / 6매 이상(1매당) 100원<br>
+													<br class="mb-show">
+													[진료기록 영상] <br class="mb-show">방사선필름사본 CD 10,000원
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</li>
+						<li>
+							<label for="">환자 본인일 경우</label>
+							<div class="text">
+								<div class="board-list" style="padding:0 0 30px;">
+									<table class="bordered fz10">
+										<colgroup>
+											<col style="width:20%;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th class="text-center bg-gray">신청인</th>
+												<td class="text-center">구비서류</td>
+											</tr>
+											<tr>
+												<th class="text-center bg-gray">환자본인</th>
+												<td class="text-center">본인신분증</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</li>
+						<li>
+							<label for="">환자의 동의를 <br class="mb-hide">받을 수 있는 경우</label>
+							<div class="text">
+								<div class="board-list" style="padding:0 0 30px;">
+									<table class="bordered fz10">
+										<colgroup>
+											<col style="width:20%;">
+											<col>
+											<col>
+										</colgroup>
+										<thead>
+											<tr class="bg-gray">
+												<th>신청인</th>
+												<th>구비서류</th>
+												<th>비고</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="text-center">
+													친족<br>
+													(환자의 배우자
+													직계존속, 비속,
+													배우자의 직계존속)
+												</td>
+												<td>
+													- 환자 신분증 사본<br>
+													- 신청인 신분증(여권, 운전면허증,주민등록증 등)<br>
+													- 가족관계증명서, 주민등록표 등 친족관계 서류<br>
+													(가족관계 서류는 환자 또는 신청인 기준으로 발급, 건강보험증 확인 불가능)<br>
+													- 환자가 자필 서명한 동의서
+												</td>
+												<td rowspan="2">
+													<b class="color-black">[환자 나이]</b><br>
+													<span class="color-black">만 14세 미만의 미성년자 :</span><br>
+													동의서 및 위임장은 환자를 대신
+													한 법정대리인이 작성 하며 가족
+													관계증명서 등 법정대리인임을
+													확인할 수 있는 서류 제출<br><br>
+													<span class="color-black">만 17세 미만 주민등록미발급자 :</span><br>
+													신분증(여권, 학생증) 또는 가족관계증명
+												</td>
+											</tr>
+											<tr>
+												<td class="text-center">
+													환자 대리인<br>
+													(형제,자매,보험회사 등)
+												</td>
+												<td>
+													- 환자 신분증 사본<br>
+													- 신청인 신분증(여권, 운전면허증, 주민등록증 등)<br>
+													- 환자가 자필 서명한 동의서<br>
+													- 환자가 자필 서명한 위임장
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<ul class="normal-list">
+									<li>① 만17세 미만(주민등록증 미발급) 환자 본인 신청 시 신분증 (여권, 학생증) 또는 가족관계증명서 및 주민등록초본 등으로 반드시 본인 확인 후 발급.</li>
+									<li>
+										② 재위임(복대리) 가능. 반드시 환자가 재위임에 동의한 경우에만 가능함.<br>
+										<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>- 동의방법 : 사본발급 환자 자필 동의서 또는 위임장에 복대리인 선임을 허용한다는 문구를 직접 기재하고 해당 문구 옆에 자필서명 한 경우에만 가능함.<br>
+										<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>- 만 14세미만 환아의 친족이 복대리인 선임 시 그 동의는 환자의 법정 대리인이 해야 함.
+									</li>
+									<li>③ 교도소 및 구치소 입소자의 입소증명서(발급 당일만 사용 가능), 군인의 병적증명서는 신분증을 대신하는 서류임. 따라서 환자가 직접 자필로 작성하는 동의서와 위임장은 반드시 제출해야 함.</li>
+									<li>④ 환자 자필 동의서와 위임장은 원본만 제출 가능함.</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<label for="">환자의 동의를 <br class="mb-hide">받을 수 없는 경우</label>
+							<div class="text">
+								<div class="board-list" style="padding:0 0 30px;">
+									<table class="bordered fz10">
+										<colgroup>
+											<col style="width:20%;">
+											<col>
+											<col>
+										</colgroup>
+										<thead>
+											<tr class="bg-gray">
+												<th>신청인</th>
+												<th>구비서류</th>
+												<th>비고</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>
+													1. 환자 사망<br>
+													2. 의식불명 또는 중증질환
+													부상<br>
+													3. 행방불명<br>
+													4. 의사무능력자
+												</td>
+												<td>
+													<b class="color-black">[ 공통 ]</b><br>
+													- 신청인 신분증<br>
+													- 가족관계증명서, 주민등록표 등본 등 친족관계를 확인할 수 있는 서류<br>
+													<br>
+													<b class="color-black">[ 분류 ]</b><br>
+													- <span class="color-black">환자사망:</span><br>
+													사망사실 확인서류(가족관계증명서, 사망진단서, 제적등본 등)<br>
+													- <span class="color-black">환자 의식불명 또는 중증 질환, 부상:</span><br>
+													의식불명, 중증 질환, 부상 등으로 자필서명을 할 수 없음을 확인할 수 있는 진단서<br>
+													- <span class="color-black">환자 행방불명 :</span><br>
+													행방불명 사실을 확인할 수 있는 서류(주민등록표 등본, 법원의 실종선고 결정문
+													사본 등)<br>
+													- <span class="color-black">환자 의사무능력자 :</span><br>
+													법원의 금치산 선고 결정문 사본 또는 의사무능력자임을 증명하는 정신과 전문
+													의의 진단서
+												</td>
+												<td>
+													<b class="color-black">[ 예외 사항 ]</b><br>
+													환자의 형제 · 자매가 요청하는
+													경우에는 환자의 배우자 및 직계
+													존속 · 비속, 배우자의 직계 존속
+													이 모두 없음을 증명하는 자료를
+													함께 제출(친족이 없음을 증명하
+													는 서류 및 확인서)
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<p class="color-green mb15">※ 환자의 친족이 다른 대리인에게 위임할 수 있음. 이때 위임하는 친족이 환자와의 친족관계를 증명하는 서류와 신분증을 반드시 제출하여야 함.</p>
+							</div>
+						</li>
+						<li>
+							<label for="">동의서 및 위임장 다운로드</label>
+							<div class="text">
+								<div class="btn-group mt5">
+									<a href="/file/동의서.hwp" class="btn-sm bg-green mb15">
+										<img src="/resource/images/down.png" alt="" style="width: 13px;">
+										동의서 양식 다운로드
+									</a>
+									<a href="/file/위임장양식.hwp" class="btn-sm bg-green mb15">
+										<img src="/resource/images/down.png" alt="" style="width: 13px;">
+										위임장 양식 다운로드
+									</a>
+									<a href="/file/확인서양식.hwp" class="btn-sm bg-green mb15">
+										<img src="/resource/images/down.png" alt="" style="width: 13px;">
+										확인서 양식 다운로드
+									</a>
+								</div>
+								<p class="color-green mt15">※ 서류 제출 시 환자 자필 서명은 필수입니다.</p>
+							</div>
+						</li>
+					</ul>
+
+					<h3 class="sub-tit mt60">
+						장애인등록 절차
+					</h3>
+					<ul class="clinic-list">
+						<li>
+							<label for=""></label>
+							<div class="text">
+								<ul class="step-list">
+									<li>
+										<img src="/resource/images/step-02.png" alt="">
+										<p>STEP 1</p>
+										<p>진료접수</p>
+									</li>
+									<li class="arrow">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-06.png" alt="">
+										<p>STEP 2</p>
+										<p>주치의면담</p>
+									</li>
+									<li class="arrow mb-hide">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-09.png" alt="">
+										<p>STEP 3</p>
+										<p>
+											의무기록사본발급<br>
+											방사선필름사본발급 신청서 작성
+										</p>
+									</li>
+									<li class="arrow">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-01.png" alt="">
+										<p>STEP 4</p>
+										<p>발급</p>
+									</li>
+									<li>
+										<img src="/resource/images/step-04.png" alt="">
+										<p>STEP 5</p>
+										<p>수납</p>
+									</li>
+								</ul>
+								<p class="color-green">※ 발달장애는 정신과에서만 발급 가능합니다.</p>
+							</div>
+						</li>
+					</ul>
+
+					<h3 class="sub-tit mt60">
+						보장구 처방전 발급 및 검수확인서 안내
+					</h3>
+					<ul class="clinic-list">
+						<li style="border-top:0;">
+							<p class="btn bg-green" style="cursor: default;background-color: #6ec700;"><span class="ml30 mr30">1.건강보험</span></p>
+						</li>
+						<li style="border-top:0;padding-top: 0;">
+							<label for="">보장구 처방전 발급</label>
+							<div class="text">
+								<ul class="step-list">
+									<li>
+										<img src="/resource/images/step-11.png" alt="">
+										<p>STEP 1</p>
+										<p>외래 진료접수</p>
+									</li>
+									<li class="arrow">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-02.png" alt="">
+										<p>STEP 2</p>
+										<p>
+											담당의사의 해당<br>
+											보장구처방전 발급
+										</p>
+									</li>
+									<li class="arrow mb-hide">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-12.png" alt="">
+										<p>STEP 3</p>
+										<p>
+											보장구 구입<br>
+											(환자 및 보호자)
+										</p>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<label for="">보장구 검수확인서 발급</label>
+							<div class="text">
+								<ul class="step-list">
+									<li>
+										<img src="/resource/images/step-02.png" alt="">
+										<p>STEP 1</p>
+										<p>
+											보장구 처방전 및<br>
+											영수증 지참
+										</p>
+									</li>
+									<li class="arrow">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-11.png" alt="">
+										<p>STEP 2</p>
+										<p>
+											외래 진료 접수
+										</p>
+									</li>
+									<li class="arrow mb-hide">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-09.png" alt="">
+										<p>STEP 3</p>
+										<p>
+											담당의사의 보장구<br>
+											검수 확인서 발급
+										</p>
+									</li>
+								</ul>
+
+								<ul class="green-middot" style="padding-top: 0;">
+									<li>서류 제출 하는 곳 : 관할 국민건강보험공단</li>
+									<li>준비 서류 : 보장구처방전, 보장구검수확인서, 보장구 구입 영수증(세금계산서), 복지카드, 도장, 통장 사본</li>
+								</ul>
+								<p class="color-green">※　전동휠체어, 전동스쿠터, 자세보조용구는 사전승인 후 구입절차를 진행합니다.</p>
+							</div>
+						</li>
+						<li>
+							<p class="btn bg-green" style="cursor: default;background-color: #6ec700;"><span class="ml30 mr30">2.의료급여</span></p>
+						</li>
+						<li style="border-top:0;padding-top: 0;">
+							<label for="">
+								보장구 처방전 및<br>
+								검수확인서 발급
+							</label>
+							<div class="text">
+								<ul class="step-list">
+									<li>
+										<img src="/resource/images/step-11.png" alt="">
+										<p>STEP 1</p>
+										<p>외래 진료접수</p>
+									</li>
+									<li class="arrow">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-02.png" alt="">
+										<p>STEP 2</p>
+										<p>
+											담당의사의 해당<br>
+											보장구처방전 발급
+										</p>
+									</li>
+									<li class="arrow mb-hide">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-13.png" alt="">
+										<p>STEP 3</p>
+										<p>
+											관할 시, 군, 구<br>
+											제출
+										</p>
+									</li>
+									<li class="arrow">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-14.png" alt="">
+										<p>STEP 4</p>
+										<p>
+											보장구 구입<br>
+											승인 통보
+										</p>
+									</li>
+									<li>
+										<img src="/resource/images/step-12.png" alt="">
+										<p>STEP 5</p>
+										<p>
+											보장구 구입<br>
+											(환자 및 보호자)
+										</p>
+									</li>
+									<li class="arrow">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-02.png" alt="">
+										<p>STEP 6</p>
+										<p>
+											보장구영수증<br>
+											지참
+										</p>
+									</li>
+									<li class="arrow mb-hide">
+										<img src="/resource/images/step-arrow.png" alt="">
+									</li>
+									<li>
+										<img src="/resource/images/step-11.png" alt="">
+										<p>STEP 7</p>
+										<p>
+											보장구 검수확인서<br>
+											발급
+										</p>
+									</li>
+								</ul>
+								<ul class="green-middot" style="padding-top: 0;">
+									<li>서류 제출 하는 곳 : 관할 시, 군, 구 사회복지과</li>
+									<li>준비 서류 : 보장구처방전, 보장구 검수확인서, 보장구 구입 영수증(세금계산서), 복지카드, 도장, 통장 사본</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+</body>
+
+</html>

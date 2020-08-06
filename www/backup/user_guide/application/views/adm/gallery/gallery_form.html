@@ -1,0 +1,158 @@
+<form id='fwrite' name='fwrite' method='post' onsubmit="return f_submit();" action='<?=$path?>/gallery/form'>
+<input type='hidden' name='w'    value='<?=$w?>'/>
+<input type='hidden' name='token' value='<?=$token?>'/>
+<input type='hidden' name='ga_id' value='<?=$row['ga_id']?>'/>
+
+<div id='form_title'>
+	&deg; <b><?=$_TITLE_?></b>
+</div>
+
+<ul id="form_cont">
+	<li class="form_li">
+		<div>
+			<h4>정보 입력</h4>
+			<dl>
+				<dt>제목</dt>
+				<dd>
+					<input type='text' id='ga_subject' name='ga_subject' class='ed' size='62' maxlength='20' value='<?=$row['ga_subject']?>'/>
+					<input type='checkbox' id='ga_hidden' name='ga_hidden' value='1' <?=$row['ga_hidden_chk']?>/> 숨김
+				</dd>
+				<!-- swf 업로더로 대체
+				<dt>업로드
+				  <input type="button" style="cursor:pointer;height:18px;" onclick="add_file();" value=" + " /><input type="button" style="cursor:pointer;height:18px;" onclick="del_file();" value=" - " />
+				</dt>
+				<dd><table id="variableFiles" cellpadding="0" cellspacing="2"></table></dd>
+				-->
+				<dt>이미지 업로드</dt>
+				<dd>
+					<div style="margin-left:130px;">
+			            <div id='swfuProgress'></div>
+			            <div id='buttonWrap'>
+			            	<span id='swfuButton'></span>
+			            </div>
+			            <div>
+			            	<input id='btnCancel' type='button' value='업로드 취소' onclick='swfu.cancelQueue();' disabled='disabled'/>
+			            </div>
+			            <div id='divStatus' style='clear:both;'>0개 업로드 완료</div>
+		            </div>
+				</dd>
+				<? if(isset($row['files'])) :?>
+				<dt>파일 리스트</dt>
+				<dd>
+					<table cellpadding="0" cellspacing="0"><tr><td>
+					<? foreach ($row['files'] as $o): ?>
+					[<?=$o['uf_width']?>*<?=$o['uf_height']?>] <?=$o['uf_source']?> <input type="checkbox" name="delFile[]" value="<?=$o['uf_no']?>"> 삭제<br />
+					<? endforeach ?>
+					</td></tr></table>
+				</dd>
+				<? endif ?>
+				<dd style="color:red;padding-left:130px;">* 이미지 파일은 jpg, gif, png 파일만 업로드하실 수 있습니다.</dd>
+				
+				<? if(isset($row['ga_regdate'])): ?>
+				<dt>등록일</dt>
+				<dd>
+					<?=$row['ga_regdate']?>
+				</dd>
+				<? endif; ?>
+				<? if(isset($row['ga_mdydate'])): ?>
+				<dt>최종수정일</dt>
+				<dd>
+					<?=$row['ga_mdydate']?>
+				</dd>
+				<? endif; ?>
+				
+			</dl>
+		</div>
+	</li>
+</ul>
+<p class='center bottom' style="margin-top:30px;">
+	<input type='submit' id='btn_submit' class='btn' value='  확  인  '/>&nbsp;
+	<input type='button' class='btn' value='  목  록  ' onclick="document.location.href='<?=$path?>/gallery/lists';"/>
+</p>
+
+</form>
+
+<div id='loading'></div>
+
+<script type='text/javascript'>
+//<![CDATA[
+
+<!-- File Uploader -->
+var f = document.fwrite;
+var _mockdata = new Array();
+var phpsessid = '<?=$this->session->userdata('session_id')?>';
+var upload_ext = '*.jpg;*.jpeg;*.gif;*.png';
+var upload_size = 0;
+importScript(['swfu/settings']);
+
+function f_submit() {
+	var newName = '';
+	var oldName = '';
+	 
+    for (var i=0; i<_mockdata.length; i++) {
+        if(_mockdata[i].imageurl != undefined) {
+			fileUrl = 'imageurl';
+			oldNameInput = 'images[]';
+			newNameInput = 'inames[]';
+		}
+        else {
+			fileUrl = 'attachurl';
+			oldNameInput = 'files[]';
+			newNameInput = 'fnames[]';
+		}
+		newName = eval('_mockdata[i].'+fileUrl).match(/([0-9]{10}_)?[a-z0-9]{32}\.[a-z]{3}/i)[0];
+		oldName = _mockdata[i].filename;
+		
+		if (newName == null)
+			newName = _mockdata[i].attachurl.match(/[0-9]+$/);
+			
+		obj1 = document.createElement('input');
+		obj1.setAttribute('type', 'hidden');
+		obj1.setAttribute('name', oldNameInput);
+		obj1.setAttribute('value', newName);
+		
+		obj2 = document.createElement('input');
+		obj2.setAttribute('type', 'hidden');
+		obj2.setAttribute('name', newNameInput);
+		obj2.setAttribute('value', oldName);
+		
+		f.appendChild(obj1);
+		f.appendChild(obj2);
+    }
+    return true;
+}
+<!-- File Uploader -->
+
+
+var beforeUnload = false;
+window.onbeforeunload = function() {
+	if (beforeUnload) return '이 페이지를 벗어나시면 작성 중인 글이 지워집니다.';
+}
+
+$(document).ready(function() {
+	$('#fwrite').validate({
+		rules: {
+			ga_subject: 'required'
+		},
+		messages: {
+			ga_subject: '제목을 입력하세요.',
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+		    f.submit();
+		}
+	});
+});
+//]]>
+</script>
+
+<?=validation_errors('<script>alert("','");</script>');?>

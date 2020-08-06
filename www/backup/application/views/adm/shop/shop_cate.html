@@ -1,0 +1,170 @@
+<div id="dtreeCont">
+	<div class="djree dtreeSub" style="overflow:hidden;">
+		<div class="topTable">
+			<span><a href="javascript: pcd.openAll();" style="font-size:11px">전체열기</a> | <a href="javascript: pcd.closeAll();" style="font-size:11px">전체닫기</a></span>
+		</div>
+		<script type="text/javascript">
+		pcd = new dTree('pcd');
+		/*	변경시 사용
+		pcd.icon = {
+			root				: '/js/dtree/img/base.png',
+			folder				: '/js/dtree/img/folder.gif',
+			folderOpen			: '/js/dtree/img/folderopen.gif',
+			node				: '/js/dtree/img/page.gif',
+			empty				: '/js/dtree/img/empty.gif',
+			line				: '/js/dtree/img/line.gif',
+			join				: '/js/dtree/img/join.gif',
+			joinBottom			: '/js/dtree/img/joinbottom.gif',
+			plus				: '/js/dtree/img/plus.gif',
+			plusBottom			: '/js/dtree/img/plusbottom.gif',
+			minus				: '/js/dtree/img/minus.gif',
+			minusBottom			: '/js/dtree/img/minusbottom.gif',
+			nlPlus				: '/js/dtree/img/nolines_plus.gif',
+			nlMinus				: '/js/dtree/img/nolines_minus.gif'
+		};
+		*/
+		pcd.add('0', '-1', '상품 카테고리', '?');
+		pcd.add('cart', '0', '장바구니', '?id=cart', '', '', '<?=JS_DIR?>/dtree/img/trash.gif');
+		pcd.add('bought', '0', '주문조회', '?id=bought', '', '', '<?=JS_DIR?>/dtree/img/globe.gif');
+		<? foreach ($list as $rows): ?>
+		pcd.add('<?=$rows['ca_id']?>','<?=$rows['ca_pid']>0?$rows['ca_pid']:0?>','<?=$rows['ca_name']?>','?id=<?=$rows['ca_id']?>');
+		<? endforeach; ?>
+		document.write(pcd);
+		//d.openAll();
+		</script>
+	</div>
+</div>
+
+<form id="form1" name="form1" method="POST" action="<?=$path?>/shop/update_cate">
+<input type="hidden" name="w" value="<?=$row['ca_id']?'u':''?>">
+<input type='hidden' name='token' value='<?=$token?>'/>
+<input type="hidden" name="ca_id" value="<?=$row['ca_id']?>">
+
+<div id="inputCont">
+	<table class="c_tb01" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="c_th01">
+			상품 카테고리 설정
+		</td>
+		<td class="c_td01"></td>
+	</tr>
+	</table>
+
+	<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+	
+	<? if(!$row['ca_id'] || is_numeric($row['ca_id'])) : ?>
+	<tr>
+		<th>상위 카테고리</td>
+		<td>
+			<select name="ca_pid">
+				<option value="">-</option>
+				<? foreach($list as $rows) : ?>
+				<? if($row['ca_id'] != $rows['ca_id']) : ?>
+				<option value="<?=$rows['ca_id']?>" <?=$row['ca_pid']==$rows['ca_id']?'selected="selected"':''?>><?=$rows['ca_name']?></option>
+				<? endif; ?>
+				<? endforeach; ?>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<th>카테고리 ID</td>
+		<td><?=$row['ca_id']?></td>
+	</tr>
+	<tr>
+		<th>카테고리명</td>
+		<td>
+			<input type="text" class="ed" id="ca_name" name="ca_name" itemname="카테고리명" size="25" value="<?=$row['ca_name']?>" />
+			<input type="checkbox" id="ca_hidden" name="ca_hidden" value="1"  <?=$row['hidden_chk']?>/> 숨김
+		</td>
+	</tr>
+	<tr>
+		<th>순서</td>
+		<td><input type="text" class="ed" name="ca_sort" itemname="순서" size="7" value="<?=$row['ca_sort']?>" /></td>
+	</tr>
+	<? endif; ?>
+	
+	<tr>
+		<th>레이아웃</td>
+		<td><?=$layout_select?></td>
+	</tr>
+	<tr>
+		<th>스킨</td>
+		<td><?=$skin_select?></td>
+	</tr>
+	<tr>
+		<th>파라메터</td>
+		<td>
+			<ul id="param_list"><li> &nbsp;변수명 &nbsp; &nbsp; &nbsp; &nbsp; 값</li></ul>
+			<div class="pd10 center"><input type="button" class="btn_simp" onclick="add_param('','');" value=" + 추가 "/></div>
+		</td>
+	</tr>
+	
+	<tr>
+		<td colspan="2">
+		
+			<? if($row['ca_id']) { ?>
+			<div class="fL"><input type="button" value="하위등록" class="btn" onclick="document.location='?pid=<?=$row['ca_id']?>';"></div>
+			<? } ?>
+			
+			<div class="fR">
+			
+			<? if($row['ca_id']) { ?>
+				<input type="submit" id='btn_submit' value="저장" class="btn">
+				<input type="button" value="삭제" class="btn" onclick="post_s('<?=ADM_F?>/shop/delete_cate', {id:'<?=$row['ca_id']?>', token:'<?=$token?>'}, true);">
+			<? } ?>
+			<? if(!$row['ca_id']) { ?>
+				<input type="submit" value="등록" class="btn">
+			<? } ?>
+			
+			</div>
+		</td>
+	</tr>
+	</table>	
+</div>
+</form>
+
+<div id='loading'></div>
+
+<script LANGUAGE="javascript">
+//<![CDATA[
+function add_param(name, value) {
+	var _html =	'<li><input type="text" class="ed imeDis" size="9" name="ca_parameter[name][]" value="'+ name +'"/> '+
+		'<input type="text" class="ed imeDis" size="13" name="ca_parameter[value][]" value="'+ value +'"/> '+
+		'<input type="button" class="btn_simp" onclick="remove_child($(this));" value=" - 제거 "/>'+
+		'</li>';
+	
+	$('#param_list').append(_html);
+}
+
+$(document).ready(function() {
+	$('#form1').validate({
+		rules: {
+			ca_name: 'required'
+		},
+		messages: {
+			ca_name: '메뉴명이 입력되지 않았습니다.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+		    f.submit();
+		}
+	});
+});
+
+<? if($row['ca_parameter']): ?>
+<? foreach(param_decode($row['ca_parameter']) AS $name => $value): ?>
+add_param('<?=$name?>', '<?=$value?>');
+<? endforeach; ?>
+<? endif; ?>
+//]]>
+</script>
+	

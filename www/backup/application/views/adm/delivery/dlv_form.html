@@ -1,0 +1,172 @@
+<form id="fshop" name="fshop" method="post" action="<?=$path?>/delivery/form/<?=$order['od_no']?>"/>
+<input type="hidden" name="token" value="<?=$token?>"/>
+<input type="hidden" name="dlv_id" value="<?=$order['dlv_id']?>"/>
+<input type="hidden" name="od_no" value="<?=$order['od_no']?>"/>
+
+<table class="dlv_view" width="100%" cellpadding="0" cellspacing="0">
+	<colgroup>
+		<col width="120" />
+		<col width="210" />
+		<col width="120" />
+		<col width="*" />
+		<col />
+	</colgroup>
+	<tr>
+		<td class="title" colspan="4">결제정보</td>
+	</tr>
+	<tr>
+		<th>주문번호</th>
+		<td><?=$order['od_no']?></td>
+		<th>결제 일시</th>
+		<td><?=$order['od_regdate']?></td>
+	</tr>
+	<tr>
+		<th>현재 상태</th>
+		<td><?=shop_status('od_status', $order['od_status'])?></td>
+		<th>회원 아이디</th>
+		<td><?=$order['od_mb_id']?></td>
+	</tr>
+	<tr>
+		<th>주문 금액</th>
+		<td><?=number_format($order['od_amount'])?> 원 (배송비 <?=number_format($order['dlv_price'])?>원 포함)</td>
+		<th>결제 방법</th>
+		<td><?=$order['method']?></td>
+	</tr>
+	<tr>
+		<th>결제 금액</th>
+		<td><?=number_format($order['pay_amount'])?> 원</td>
+		<th>결제 수단</th>
+		<td><?=$order['pay_type']?></td>
+	</tr>
+</table>
+
+<table class="dlv_view" width="100%" cellpadding="0" cellspacing="0">
+	<colgroup>
+		<col width="120" />
+		<col width="*" />
+	</colgroup>
+	<tr>
+		<td class="title" colspan="2">주문자 정보</td>
+	</tr>
+	<tr>
+		<th>주문자명</th>
+		<td><input type="text" name="od_name" class="ed" size="20" value="<?=$order['od_name']?>"/></td>
+	</tr>
+	<tr>
+		<th>주문자 이메일</th>
+		<td><input type="text" name="od_email" class="ed" size="50" value="<?=$order['od_email']?>"/></td>
+	</tr>
+	<tr>
+		<th>주문자 전화번호</th>
+		<td>
+			<input type="text" name="od_phone1" class="ed" size="4" value="<?=$order['od_phone1']?>"/> -
+			<input type="text" name="od_phone2" class="ed" size="4" value="<?=$order['od_phone2']?>"/> -
+			<input type="text" name="od_phone3" class="ed" size="4" value="<?=$order['od_phone3']?>"/>
+		</td>
+	</tr>
+	<tr>
+		<th>주문자 휴대전화</th>
+		<td>
+			<input type="text" name="od_mobile1" class="ed" size="4" value="<?=$order['od_mobile1']?>"/> -
+			<input type="text" name="od_mobile2" class="ed" size="4" value="<?=$order['od_mobile2']?>"/> -
+			<input type="text" name="od_mobile3" class="ed" size="4" value="<?=$order['od_mobile3']?>"/>
+		</td>
+	</tr>
+	<tr>
+		<th>주문자 우편번호</th>
+		<td>
+			<input type="text" name="od_zipcode1" class="ed" size="4" value="<?=$order['od_zipcode1']?>"/> -
+			<input type="text" name="od_zipcode2" class="ed" size="4" value="<?=$order['od_zipcode2']?>"/>
+		</td>
+	</tr>
+	<tr>
+		<th>주문자 주소</th>
+		<td>
+			<input type="text" name="od_address1" class="ed" size="45" value="<?=$order['od_address1']?>"/>
+			<input type="text" name="od_address2" class="ed" size="30" value="<?=$order['od_address2']?>"/>
+		</td>
+	</tr>
+</table>
+
+<table class="dlv_view" width="100%" cellpadding="0" cellspacing="0">
+	<colgroup>
+		<col width="120" />
+		<col width="*" />
+	</colgroup>
+	<tr>
+		<td class="title" colspan="2">배송지 정보</td>
+	</tr>
+	<tr>
+		<th>수화인명</th>
+		<td><input type="text" name="dlv_name" class="ed" size="20" value="<?=$order['dlv_name']?>"/></td>
+	</tr>
+	<tr>
+		<th>수화인 이메일</th>
+		<td><input type="text" name="dlv_email" class="ed" size="50" value="<?=$order['dlv_email']?>"/></td>
+	</tr>
+	<tr>
+		<th>수화인 전화번호</th>
+		<td>
+			<input type="text" name="dlv_phone1" class="ed" size="4" value="<?=$order['dlv_phone1']?>"/> -
+			<input type="text" name="dlv_phone2" class="ed" size="4" value="<?=$order['dlv_phone2']?>"/> -
+			<input type="text" name="dlv_phone3" class="ed" size="4" value="<?=$order['dlv_phone3']?>"/>
+		</td>
+	</tr>
+	<tr>
+		<th>수화인 휴대전화</th>
+		<td>
+			<input type="text" name="dlv_mobile1" class="ed" size="4" value="<?=$order['dlv_mobile1']?>"/> -
+			<input type="text" name="dlv_mobile2" class="ed" size="4" value="<?=$order['dlv_mobile2']?>"/> -
+			<input type="text" name="dlv_mobile3" class="ed" size="4" value="<?=$order['dlv_mobile3']?>"/>
+		</td>
+	</tr>
+	<tr>
+		<th>수화인 우편번호</th>
+		<td>
+			<input type="text" name="dlv_zipcode1" class="ed" size="4" value="<?=$order['dlv_zipcode1']?>"/> -
+			<input type="text" name="dlv_zipcode2" class="ed" size="4" value="<?=$order['dlv_zipcode2']?>"/>
+		</td>
+	</tr>
+	<tr>
+		<th>수화인 주소</th>
+		<td>
+			<input type="text" name="dlv_address1" class="ed" size="45" value="<?=$order['dlv_address1']?>"/>
+			<input type="text" name="dlv_address2" class="ed" size="30" value="<?=$order['dlv_address2']?>"/>
+		</td>
+	</tr>
+	<tr>
+		<th>배송 메모</th>
+		<td><input type="text" name="dlv_memo" class="ed" size="78" value="<?=$order['dlv_memo']?>"/></td>
+	</tr>
+</table>
+
+<table class="dlv_view" width="100%" cellpadding="0" cellspacing="0">
+	<colgroup>
+		<col width="120" />
+		<col width="210" />
+		<col width="120" />
+		<col width="*" />
+	</colgroup>
+	<tr>
+		<td class="title" colspan="4">배송 정보</td>
+	</tr>
+	<tr>
+		<th>배송사</th>
+		<td><?=sel_deliverer('dlv_deliverer', (!$order['dlv_no']&&!$order['dlv_deliverer']?$shop_conf['dlv_deliverer']:$order['dlv_deliverer']))?></td>
+	</tr>
+	<tr>
+		<th>운송장 번호</th>
+		<td><input type="text" name="dlv_no" class="ed imeDis" onkeypress="return only_number();" value="<?=$order['dlv_no']?>"/></td>
+		<th>후불 배송비</th>
+		<td><input type="text" name="dlv_payPrice" class="ed right imeDis" size="5" onkeypress="return only_number();" value="<?=$order['dlv_payPrice']?>"/> 원</td>
+	</tr>
+</table>
+
+<div class="mT10 center">
+	<input type='submit' id='btn_submit' class='btn' value='  저  장  ' />
+	<input type='button' class='btn' onclick="parent.location.reload();" value='  닫  기  ' />
+</div>
+
+</form>
+
+<?=validation_errors('<script>alert("','");</script>');?>

@@ -1,0 +1,7 @@
+.navi_w ul { display: inline; }
+.navi_w li { display: inline; zoom:1; float:left; padding:0px 0px; }
+.navi_w li ul li { white-space:nowrap; padding-top:14px; }
+
+/* 애니메이션 사용시 */
+/* .navi_h li { *display:inline; zoom:1; padding:3px 10px; } */
+/* .navi_h li ul li { white-space:nowrap; padding:3px 10px; } */

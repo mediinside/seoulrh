@@ -1,0 +1,17 @@
+<div id='prof_wrap'>
+	<div id='prof_title'><b>&gt;&gt; 자기소개</b></div>
+	<ul id='prof_cont'>
+		<li class='first'>&deg; 별명　:　<?=$name?></li>
+		<? if ($mb_homepage): ?>
+		<li>&deg; 홈페이지　:　<a href="<?=$mb_homepage?>" target="_blank"><?=$mb_homepage?></a></li>
+		<? endif; ?>
+		<li>&deg; 포인트　:　<?=$mb_point?> 점</li>
+		<li>&deg; 회원가입일　:　<?=$mb_join_date?></li>
+		<li>&deg; 최종접속일　:　<?=$mb_last_login?></li>
+		<li>&deg; 자기소개</li>
+		<li class='intro'><?=$mb_profile?></li>
+	</ul>
+	<p class='close'><a href="javascript:window.close();"><img src="<?=$img_path?>/btn_close.gif" alt='창닫기'/></a></p>
+</div>
+
+<script type='text/javascript' src='<?=JS_DIR?>/sideview.js'></script>

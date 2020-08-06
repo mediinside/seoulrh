@@ -1,0 +1,98 @@
+<h2>회원메일 리스트</h2>
+
+<form name='fsearch' method='post' action='<?=$path?>/mail/lists' onsubmit="return doSearch(this, 'mail/lists');">
+<div id='list_head'>
+	<ul class='lr'>
+		<li class="mT5"><a href='<?=$path?>/mail/lists'>처음</a> (총 <?=$total_cnt?>개)</li>
+		<li class='right'>
+	        <select name='sfl'>
+	            <option value='ma_subject'>제목</option>
+	            <option value='ma_skin'>스킨</option>
+	        </select>
+	        <input type='text' name='stx' class='ed' value='<?=$stx?>'/>
+	        <input type='image' src='<?=$IMG_PATH?>/button/btn_search.gif' align='top'/>
+        </li>
+    </ul>
+</div>
+</form>
+
+<form name='fcontentlist' method='post' action=''>
+<input type='hidden' name='token' value='<?=$token?>'/>
+
+<div id='list_cont'>
+	<table width="100%" cellpadding="0" cellspacing="0" class="con_box2">
+		<colgroup>
+			<col class="check"/>
+			<col width="40"/>
+			<col/>
+			<col width="120"/>
+			<col width="date"/>
+			<col width="date"/>
+			<col width="60"/>
+			<col width="60"/>
+			<col class="control"/>
+		</colgroup>
+		<tr>
+            <th><input type="checkbox" onclick="allcheck(this);"/></th>
+            <th>no</th>
+			<th><a href='<?=$sort_ma_name?>'>제 목</a></th>
+			<th>스 킨</th>
+            <th>수정일</th>
+			<th>등록일</th>
+			<th>테스트</th>
+			<th>보내기</th>
+            <th class="nobg"><?=$s_add?></th>
+        </tr>
+        
+        <? foreach ($list as $row): ?>
+		<tr class='row list<?=$row['lst']?>'>
+			<td><input type='checkbox' name='chk[]' value='<?=$row['ma_id']?>'/></td>
+			<td><?=$row['num']?></td>
+			<td><input type='text' name='ma_subject[<?=$row['ma_id']?>]' class='ed' maxlength='100' size='30' value='<?=$row['ma_subject']?>'/></td>
+			<td><select name="ma_skin[<?=$row['ma_id']?>]">
+				<option value="">선택</option>
+				<? foreach($skin_list AS $skin): ?>
+				<option value="<?=$skin['ms_id']?>" <?=$skin['ms_id']==$row['ma_skin']?'selected="selected"':'';?>><?=$skin['ms_name']?></option>
+				<? endforeach; ?>
+				</select>
+			</td>
+			<td><?=$row['ma_mdydate_conv']?></td>
+			<td><?=$row['ma_regdate_conv']?></td>
+			<td><a href='#none' onclick='mail_test(<?=$row['ma_id']?>);'>테스트</a></td>
+			<td><a href='<?=$path?>/mail/select_form/<?=$row['ma_id']?>'>보내기</a></td>
+			<td><?=$row['s_mod']?> <?=$row['s_del']?> <?=$row['s_pre']?></td>
+		</tr>
+		<? endforeach; ?>
+		
+		<? if (!$list): ?>
+		<tr>
+			<td colspan="9" height="50"><p class='none'>자료가 없습니다.</p></td>
+		</tr>
+		<? endif; ?>
+		
+	</table>
+	
+	<ul class='lr bottom'>
+		<li>
+			<input type='button' class='btn' value='선택수정' onclick="javascript:slt_check(this.form, '<?=$path?>/mail/update');"/>
+			<input type='button' class='btn' value='선택삭제' onclick="javascript:slt_check(this.form, '<?=$path?>/mail/delete');"/>
+		</li>
+		<li class='right'><?=$paging?></li>
+	</ul>
+</div>
+
+</form>
+
+<script type='text/javascript'>
+//<![CDATA[
+<? if ($stx): ?>
+document.fsearch.sfl.value = '<?=$sfl?>';
+<? endif; ?>
+
+function mail_test(id) {
+	if(confirm('등록된 메일 주소(<?=$_MEMBER_['mb_email']?>)로\n\n테스트 메일을 발송 하시겠습니까?')) {
+		location.href = '<?=$path?>/mail/test/'+id;
+	}
+}
+//]]>
+</script>

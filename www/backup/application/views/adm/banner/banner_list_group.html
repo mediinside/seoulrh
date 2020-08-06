@@ -1,0 +1,89 @@
+<h2>배너 그룹</h2>
+
+<form name='fsearch' method='post' action='<?=$path?>/banner/lists' onsubmit="return doSearch(this, 'banner/group_lists');">
+
+<div id='list_head'>
+	<ul class='lr'>
+		<li class="mT5"><a href='<?=$path?>/banner/lists'>처음</a> (총 <?=$total_cnt?>개)</li>
+		<li class='right'>
+	        <select name='sfl'>
+	            <option value='bg_type'>출력형식</option>
+	        </select>
+	        <select name='stx'>
+	        	<option value=''>전체</option>
+	        <? foreach($type as $val => $name): ?>
+				<option value='<?=$name?>' <?=$val==$stx?'selected="selected"':''?>><?=$name?></option>
+			<? endforeach; ?>
+			</select>
+	        <input type='image' src='<?=$IMG_PATH?>/button/btn_search.gif' align='top'/>
+        </li>
+    </ul>
+</div>
+
+</form>
+
+<form name='fbannerlist' method='post' action=''>
+<input type='hidden' name='token' value='<?=$token?>'/>
+
+<div id='list_cont'>
+	<table width="100%" cellpadding="0" cellspacing="0" class="con_box2">
+		<colgroup>
+			<col class='check'/>
+			<col width="50"/>
+			<col/>
+			<col width="80"/>
+			<col width="80"/>
+			<col width="150"/>
+			<col class="date"/>
+			<col class="control"/>
+		</colgroup>
+		<tr>
+            <th><input type="checkbox" onclick="allcheck(this);"/></th>
+            <th><a href='<?=$sort_bg_name?>'>ID</th>
+            <th><a href='<?=$sort_bg_name?>'>그룹명</th>
+            <th><a href='<?=$sort_bg_width?>'>가로크기</th>
+			<th><a href='<?=$sort_bg_height?>'>세로크기</th>
+            <th><a href='<?=$sort_bg_type?>'>출력 형식</th>
+			<th><a href='<?=$sort_bg_regdate?>'>등록일</th>
+            <th class="nobg"><?=$s_add?></th>
+        </tr>
+         
+        <? foreach ($list as $row): ?>
+		<tr>
+			<td><input type='checkbox' name='chk[]' value='<?=$row['bg_id']?>'/></td>
+			<td><?=$row['bg_id']?></td>
+			<td class='center'><input type="text" class="ed" name="bg_name[<?=$row['bg_id']?>]" size="25" maxlength="25" value="<?=$row['bg_name']?>"/></td>
+			<td class='right'><?=$row['bg_width']?> <?=$row['bg_width_type']?> &nbsp; &nbsp;</td>
+			<td class='right'><?=$row['bg_height']?> <?=$row['bg_height_type']?> &nbsp; &nbsp;</td>
+			<td><?=$type[$row['bg_type']]?></td>
+			<td><?=$row['bg_regdate_conv']?></td>
+			<td><?=$row['s_mod']?> <?=$row['s_del']?></td>
+		</tr>
+		<? endforeach; ?>
+		
+		<? if (!$list): ?>
+		<tr>
+			<td colspan="8" height="50"><p class='none'>자료가 없습니다.</p></td>
+		</tr>
+		<? endif; ?>
+		
+	</table>
+	
+	<ul class='lr bottom'>
+		<li>
+			<input type='button' class='btn' value='선택수정' onclick="javascript:slt_check(this.form, '<?=$path?>/banner/update_group')"/>
+			<input type='button' class='btn' value='선택삭제' onclick="javascript:slt_check(this.form, '<?=$path?>/banner/delete_group')"/>
+		</li>
+		<li class='right'><?=$paging?></li>
+	</ul>
+</div>
+
+</form>
+
+<script type='text/javascript'>
+//<![CDATA[
+<? if ($stx): ?>
+document.fsearch.sfl.value = '<?=$sfl?>';
+<? endif; ?>
+//]]>
+</script>

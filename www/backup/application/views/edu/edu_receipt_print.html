@@ -1,0 +1,80 @@
+<link rel='stylesheet' href='/css/popup.css' type='text/css'/>
+<link rel='stylesheet' href='/css/all.css' type='text/css'/>
+<link rel='stylesheet' href='/css/sub.css' type='text/css'/>
+
+<!-- 영수증 팝업 -->
+<div id="pop_recei01">
+<link rel='stylesheet' href='/css/popup.css' type='text/css'/>
+ 
+  <!-- close -->
+  <div class="top">
+    <div class="close"> <a href="javascript:;" onclick="parent.CtrlWinDlg.closeWinDlg();"><img src="/img/sub/pop01_close01.gif" width="15" height="15" border="0" alt="닫기, close" /></a> </div>
+  </div>
+  <!-- //close --> 
+
+  <!-- 내용 -->
+  <div class="cnt">
+    
+    <!-- 내용 01 -->
+    <div class="cnt_01">
+    
+      <p class="t_txt">No. <?=$regCode?></p>
+      <p class="sbj">영 수 증</p>
+      <p class="name">성 명 : <?=$row['reg_name']?><br />
+      금 액 : <?=number_format($row['reg_pay_price'])?>원<br />
+      내 역 : <?=$row['pd_name']?></p>
+      
+      <p class="txt01">위 금액을 정히 영수합니다.</p>
+      <p class="day"><?=$now_date?></p>
+      
+      <span class="stamp"><img src="/img/sub/receipt_stamp01.gif" width="66" height="33" alt="취급자" class="vam" /> <span class="f_txt">취급자인 없으면 무효임</span></span>
+      
+      <div class="logo"><img src="/img/sub/receipt_logo01.gif" width="156" height="53" alt="서울재활병원"  /></div>
+      
+    </div>
+    <!-- 내용 01 -->
+    
+    <!-- 내용 02 -->
+    <div class="cnt_02">
+    
+      <p class="t_txt">No. <?=$regCode?></p>
+      <p class="sbj">영 수 증</p>
+      <p class="name">성 명 : <?=$row['reg_name']?><br />
+      금 액 : <?=number_format($row['reg_pay_price'])?>원<br />
+      내 역 : <?=$row['pd_name']?></p>
+      
+      <p class="txt01">위 금액을 정히 영수합니다.</p>
+      <p class="day"><?=$now_date?></p>
+      
+      <span class="stamp"><img src="/img/sub/receipt_stamp01.gif" width="66" height="33" alt="취급자" class="vam" /> <span class="f_txt">취급자인 없으면 무효임</span></span>
+      
+      <div class="logo"><img src="/img/sub/receipt_logo01.gif" width="156" height="53" alt="서울재활병원"  /></div>
+      
+    </div>
+    <!-- 내용 02 -->
+    
+    
+  </div>
+  <!-- //내용 -->
+   
+  
+  <!-- foot -->
+  <div class="bt01">
+  	<img id="btn_print" src="/img/board/btn_print01.gif" width="77" height="26" alt="인쇄하기" />&nbsp; &nbsp;
+	<a href="javascript:;" onclick="parent.CtrlWinDlg.closeWinDlg();"><img src="/img/board/btn_cancel.gif" width="77" height="26" alt="취소" /></a>
+  </div>
+  <!-- //foot --> 
+  
+</div>
+<!-- //영수증 팝업 --> 
+
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#btn_print').click(function() {
+		$('#pop_recei01').printArea();
+	}).css('cursor', 'pointer');
+});
+
+//]]>
+</script>

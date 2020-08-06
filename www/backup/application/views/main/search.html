@@ -1,0 +1,33 @@
+<div id="search_wrap">
+	<div class="search_box">
+		<div class="search_form">
+			<form name='search' method='post' action='<?=RT_PATH?>/search' onsubmit='return mSearch(this);'>
+				<ul>
+					<li><?=$board_select?></li>
+					<li><input type='search' id='stx' name='stx' class='ed' maxlength='20' style='width:320px;' value='<?=$text_stx?>'/></li>
+					<li id='submit'><input type='image' src='<?=$IMG_PATH?>/btn_search.gif' value='검색'/></li>
+				</ul>
+			</form>
+		</div>
+
+	</div>
+	<br class="clear" /><br />
+
+	<div class="search_title">
+		<h3><img src="<?=$IMG_PATH?>/tit_search.gif" alt="" /></h3>
+		<span>총 <strong><?=$total_count?></strong>건의 검색결과가 있습니다.</span>
+	</div>
+
+	<ul id='search_list'>
+		<? foreach ($list as $o): ?>
+		<li>
+			<p><a href='<?=$o['href']?>' class='subject'>
+			<? if ($o['wr_is_comment']): ?>[덧글]<? endif; ?><?=$o['wr_subject']?></a>
+			<a href='<?=$o['href']?>' target='_blank'>[새창]</a> <?=$o['wr_name']?> <span class="datetime"><?=$o['wr_datetime']?></span>
+			</p>
+			<p><?=$o['wr_content']?></p>
+		</li>
+		<? endforeach; ?>
+	</ul>
+
+</div>

@@ -1,0 +1,22 @@
+<html>
+<head>
+<title>ebook</title>
+</head>
+
+<!-- 플래시변수값 전달 -->
+<SCRIPT LANGUAGE=javascript>
+	var EBOOK_ROOT = "";
+
+	EBOOK_ROOT = window.location.pathname;
+	var i1 = EBOOK_ROOT.lastIndexOf("/");
+	var i2 = EBOOK_ROOT.lastIndexOf("\\");
+	var index1 = i1 > i2 ? i1 : i2;
+	var index2 = EBOOK_ROOT.lastIndexOf(".");
+		
+	EBOOK_ROOT = EBOOK_ROOT.substr(index1+1,index2-index1-1);
+	
+	document.location = EBOOK_ROOT+"/EBook.htm";
+	
+</SCRIPT>
+<!-- 플래시변수값 전달 방법 끝 -->
+</html>

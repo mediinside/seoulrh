@@ -1,0 +1,50 @@
+<div class="mg10">
+	<table width="100%" cellspacing="0" cellpadding="0" border="0" class="cart_list">
+		<colgroup>
+			<col width="100" />
+			<col />
+			<col width="100" />
+			<col width="70" />
+			<col width="100" />
+		</colgroup>
+		<tr>
+			<th>&nbsp;</th>
+			<th>상품명</th>
+			<th>상품가격</th>
+			<th>수량</th>
+			<th class="nobg">합계</th>
+		</tr>
+		<? foreach($list as $o) : ?>
+		<tr class="row">
+			<td>
+				<img src="/useful/thumbnail/60x80/shop/<?=$o['pd_id']?>?no=<?=$o['imgNo']?>" class="cart_img" />
+			</td>
+			<td>
+				<p><strong><?=$o['pd_name']?></strong></p>
+				<?=$o['option']?>
+			</td>
+			<td class="price">
+				<?=number_format($o['pd_price'])?> 원
+			</td>
+			<td class="quantity">
+				<?=$o['cart_quantity']?> 개
+			</td>
+			<td class="price">
+				<?=number_format($o['amount'])?> 원
+			</td>
+			<? endforeach; ?>
+		</tr>
+		<tr class="tatal_bg1">
+			<td colspan="3" class="total_item">배송비 :</td>
+			<td colspan="2" class="dlv_price"><?=number_format($dlv_price)?> 원</td>
+		</tr>
+		<tr class="tatal_bg1">
+			<td colspan="3" class="total_item">구매액 :</td>
+			<td colspan="2" class="dlv_price"><?=number_format($amount)?>원</td>
+		</tr>
+		<tr class="tatal_bg2">
+			<td colspan="3" class="total_item">총 결제금액 :</td>
+			<td colspan="2" class="total_price"><?=number_format($dlv_price+$amount)?> 원</td>
+		</tr>
+	</table>
+</div>

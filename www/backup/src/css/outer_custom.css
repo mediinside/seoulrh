@@ -1,0 +1,31 @@
+@CHARSET "UTF-8";
+
+/* layout */
+
+/*
+전체 Width:						1000px
+Left/Right Width:				180px
+Left/Right와 Content 사이 공백:	50px
+서브 Container Width:			770px
+*/
+
+#topwrap { }
+#topbar { width:1000px; }
+
+#headWrap { }
+#header { width:1000px; }
+
+#footWrap { }
+#footer { width:1000px; height:188px; }
+
+#leftWrap { width:180px; margin-right:50px; }
+#left { }
+#rightWrap { width:200px; }
+#right { }
+
+#contWrap { }
+#mainContainer #content { width:1000px; margin:0 auto; }
+#subContainer { width:1000px; }
+#subContainer #content { width:770px; float:left; }
+
+#content { }

@@ -1,0 +1,116 @@
+<style>
+html, body {background: none;}
+.con_box1 th {width: 75px;}
+</style>
+
+
+<div style="width: 590px;">
+	<h2><?=$_TITLE_?></h2>
+	<form name="frmData" method="post" action="/adm/uninsured/act" onsubmit="return submitForm(this);">
+		<input type="hidden" name="mode" value="<?=$mode?>" />
+		<input type="hidden" name="ui_id" value="<?=$ui_id?>" />
+		<input type="hidden" name="cate_cd" value="<?=$cate_cd?>" />
+		<table width="550" cellpadding="0" cellspacing="0" class="con_box1" style="width: 550px;">
+			<tr>
+				<th colspan="2">분류</th>
+				<td>
+					<? if ($mode == 'add') : ?>
+					<select name="uic_cd">
+						<? foreach ($mapCate as $code => $text) : ?>
+						<option value="<?=$code?>"<?=($row['uic_cd']==$code?' selected':'')?>><?=$text?></option>
+						<? endforeach; ?>
+					</select>
+					<? else : ?>
+					<?=$mapCate[$row['uic_cd']]?>
+					<? endif ?>
+				</td>
+			</tr>
+			<tr>
+				<th rowspan="2">항목</th>
+				<th>명칭</th>
+				<td>
+					<input type="text" name="ui_title" value="<?=$row['ui_title']?>" class="ed" />
+				</td>
+			</tr>
+			<tr>
+				<th>코드</th>
+				<td>
+					<input type="text" name="ui_code" value="<?=$row['ui_code']?>" class="ed" />
+				</td>
+			</tr>
+			<tr>
+				<th rowspan="6">가격정보<br/>(단위:원)</th>
+				<th>구분</th>
+				<td>
+					<input type="text" name="ui_price_unit" value="<?=$row['ui_price_unit']?>" class="ed" />
+				</td>
+			</tr>
+			<tr>
+				<th>비용</th>
+				<td>
+					<input type="text" name="ui_price_cost" value="<?=$row['ui_price_cost']?>" class="ed" />
+				</td>
+			</tr>
+			<tr>
+				<th>최저비용</th>
+				<td>
+					<input type="text" name="ui_price_min" value="<?=$row['ui_price_min']?>" class="ed" />
+				</td>
+			</tr>
+			<tr>
+				<th>최고비용</th>
+				<td>
+					<input type="text" name="ui_price_max" value="<?=$row['ui_price_max']?>" class="ed" />
+				</td>
+			</tr>
+			<tr>
+				<th>치료재료대</th>
+				<td>
+					<input type="checkbox" name="ui_inclusion_material" value="O"<?if ($cate_cd != 'A') echo ' disabled';?><?if ($row['ui_inclusion_material']) echo ' checked';?> /> 포함
+				</td>
+			</tr>
+			<tr>
+				<th>약제비</th>
+				<td>
+					<input type="checkbox" name="ui_inclusion_medicine" value="O"<?if ($cate_cd != 'A') echo ' disabled';?><?if ($row['ui_inclusion_medicine']) echo ' checked';?> /> 포함
+				</td>
+			</tr>
+			<tr>
+				<th colspan="2">특이사항</th>
+				<td>
+					<input type="text" name="ui_comment" value="<?=$row['ui_comment']?>" class="ed" />
+				</td>
+			</tr>
+			<tr>
+				<th colspan="2">노출</th>
+				<td>
+					<label><input type="radio" name="ui_use" value="1"<?if ($row['ui_use']) echo ' checked';?> /> 노출</label>
+					<span style="margin: 0px 10px;"></span>
+					<label><input type="radio" name="ui_use" value="0"<?if (!$row['ui_use']) echo ' checked';?> /> 숨김</label>
+				</td>
+			</tr>
+		</table><br/>
+
+		<p class='center'>
+			<input type="submit" class="btn" style="cursor: pointer;" value="  확  인  " />
+			<input type="button" class="btn" style="cursor: pointer;" value="  취  소  " onclick="parent.CtrlWinDlg.closeWinDlg();" />
+		</p>
+	</form>
+</div>
+<script type="text/javascript">
+<!--
+	function submitForm(f) {
+		if (f.ui_title.value.trim() == '') {
+			alert('명칭을 입력하십시오.');
+			f.ui_title.focus();
+			f.ui_title.select();
+			return false;
+		} else if (f.ui_price_unit.value.trim() == '') {
+			alert('구분을 입력하십시오.');
+			f.ui_price_unit.focus();
+			f.ui_price_unit.select();
+			return false;
+		}
+	}
+//-->
+</script>

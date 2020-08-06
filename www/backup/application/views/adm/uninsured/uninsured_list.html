@@ -1,0 +1,106 @@
+<h2>
+	<div style="float: left;">비급여 진료비</div>
+	<div style="text-align: right;">
+		<button type="button" style="cursor: pointer;" onclick="document.location.href='/adm/uninsured/cate';">비급여 진료비 분류</button>
+	</div>
+</h2>
+
+<div style="margin-bottom: 10px;">
+	<form name="frmCate" method="get" action="/adm/uninsured/lists">
+		<select name="cate_cd" onchange="changeCate();">
+			<? foreach ($mapCate as $code => $text) : ?>
+			<option value="<?=$code?>"<?=($cate_cd==$code?' selected':'')?>><?=$text?></option>
+			<? endforeach; ?>
+		</select>
+	</form>
+	<form name="frmData" method="post" action="/adm/uninsured/act">
+		<input type="hidden" name="mode" value="" />
+		<input type="hidden" name="ui_id" value="" />
+		<input type="hidden" name="cate_cd" value="<?=$cate_cd?>"/>
+	</form>
+</div>
+
+<div id="list_cont">
+	<table width="100%" cellpadding="0" cellspacing="0" class="con_box2">
+		<colgroup>
+			<col width="100" />
+			<col />
+			<col width="80" />
+			<col width="80" />
+			<col width="80" />
+			<col width="80" />
+			<col width="80" />
+			<col width="80" />
+			<col width="50" class="control"/>
+		</colgroup>
+		<tr>
+			<th>분류</th>
+			<th>명칭</th>
+			<th>코드</th>
+			<th>구분</th>
+			<th>비용</th>
+			<th>최저</th>
+			<th>최고</th>
+			<th>순서</th>
+			<th class="nobg"><img src="/src/imgs/adm/icon_insert.gif" width="22" height="21" align="middle" title="추가" alt="추가" style="cursor: pointer;" onclick="addItem('<?=$cate_cd?>')"/></th>
+		</tr>
+		<? foreach ($list as $row): ?>
+		<tr>
+			<td><?=$row['uic_title']?></td>
+			<td<?if (!$row['ui_use']) echo ' style="text-decoration : line-through; "';?>><?=$row['ui_title']?></td>
+			<td><?=$row['ui_code']?></td>
+			<td><?=$row['ui_price_unit']?></td>
+			<td><?=($row['ui_price_cost']?number_format($row['ui_price_cost']):'')?></td>
+			<td><?=($row['ui_price_min']?number_format($row['ui_price_min']):'')?></td>
+			<td><?=($row['ui_price_max']?number_format($row['ui_price_max']):'')?></td>
+			<td>
+				<button type="button" style="cursor: pointer;" onclick="upItem(<?=$row['ui_id']?>);">▲</button>
+				<button type="button" style="cursor: pointer;" onclick="dnItem(<?=$row['ui_id']?>);">▼</button>
+			</td>
+			<td>
+					<img src="/src/imgs/adm/icon_modify.gif" width="22" height="21" align="middle" title="수정" alt="수정" style="cursor: pointer;" onclick="modItem('<?=$cate_cd?>', <?=$row['ui_id']?>);"/>
+					<img src="/src/imgs/adm/icon_delete.gif" width="22" height="21" align="middle" title="삭제" alt="삭제" style="cursor: pointer;" onclick="delItem(<?=$row['ui_id']?>);"/>
+			</td>
+		</tr>
+		<? endforeach; ?>
+		<? if (!$list): ?>
+		<tr>
+			<td colspan="9" height="50"><p class="none">자료가 없습니다.</p></td>
+		</tr>
+		<? endif; ?>
+	</table>
+</div>
+
+<script type="text/javascript">
+<!--
+	function changeCate() {
+		var f = document.frmCate;
+		f.submit();
+	}
+	function addItem(cate_cd) {
+		layerWin('/adm/uninsured/form/'+ cate_cd, 'uninsured', 600, 600, 'no', false);
+	}
+	function modItem(cate_cd, item_id) {
+		layerWin('/adm/uninsured/form/'+ cate_cd +'?ui_id='+ item_id, 'uninsured', 600, 600, 'no', false);
+	}
+	function delItem(item_id) {
+		if (!window.confirm('삭제하시겠습니까?')) return;
+		var f = document.frmData;
+		f.mode.value = 'del';
+		f.ui_id.value = item_id;
+		f.submit();
+	}
+	function upItem(item_id) {
+		var f = document.frmData;
+		f.mode.value = 'mup';
+		f.ui_id.value = item_id;
+		f.submit();
+	}
+	function dnItem(item_id) {
+		var f = document.frmData;
+		f.mode.value = 'mdn';
+		f.ui_id.value = item_id;
+		f.submit();
+	}
+//-->
+</script>

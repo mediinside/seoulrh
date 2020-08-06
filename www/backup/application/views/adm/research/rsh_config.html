@@ -1,0 +1,52 @@
+<form id='frshconfig' name='frshconfig' method='post'>
+<input type='hidden' name='token' value='<?=$token?>'/>
+
+<h2><?=$_TITLE_?></h2>
+
+<ul id='form_cont'>
+	<li>
+		<h3 class="mB10"><img src="<?=$IMG_PATH?>/icon_dot.gif" /> 강의 수 입력</h3>
+		<table width='100%' cellpadding='0' cellspacing='0' class="con_box1">
+			<tr>
+				<th>강의 개수 설정</th>
+				<td><input type='text' name='count' class='ed right' maxlength='3' size='4' onkeypress="return only_number();" value="<?=$row['rshc_count']?>" /> 강</td>
+			</tr>
+		</table>
+	</li>
+</ul>
+
+<p class='center bottom'>
+	<input type='submit' id='btn_submit' class='btn' value='  확  인  '/>
+</p>
+
+</form>
+
+<div id='loading'></div>
+
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#frshconfig').validate({
+		rules: {
+			count: { required:true, min:1, max:999 }
+		},
+		messages: {
+			count: { required:'강의 개수를 입력하십시오.', min:'최소 1강 이상 입력하십시오.', max:'최대 999강 이하로 입력하십시오.' }
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+		    f.submit();
+		}
+	});
+});
+//]]>
+</script>

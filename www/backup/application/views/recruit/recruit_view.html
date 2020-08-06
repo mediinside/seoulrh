@@ -1,0 +1,38 @@
+<link rel="stylesheet" type="text/css" href="/css/board.css" />
+
+<? include DOC_ROOT.'/include/08_inc.php'; ?>
+<br />
+
+<h3 class="mgt_m50"><img src="/img/sub/08_02_h3_txt01.gif" alt="채용안내" /></h3>
+
+<div class="board"> 
+  <div class="view">
+    <h2 class="dpn">게시물 내용</h2>
+    <div class="info">
+      <dl class="col4">
+        <dt>채용현황</dt>
+        <dd style="width:40%;"><img src="/img/board/recruit_<?=$row['status']?>.gif" width="52" height="19" alt="<?=$row['status_str']?>" /></dd>
+        <dt>모집기간</dt>
+        <dd style="width:25%;"><?=$row['sdate']?> ~ <?=$row['edate']?></dd>
+      </dl>
+      <dl>
+        <dt>제목</dt>
+        <dd style="width:82.5%;"><?=$row['subject']?></dd>
+      </dl>
+    </div>
+    
+    <div class="substance"> 
+      <?=$row['content']?>
+      
+      <div class="tac"><a href="<?=$reg_href?>"><img src="/img/board/btn_recruit.gif" width="134" height="43" alt="신청하기" /></a></div>
+      
+    </div>
+  </div>
+  
+  <div class="infomenu page">
+    <div class="left"> </div>
+    <div class="right"><a href="<?=$list_href?>"><img src="/img/board/btn_list.gif" alt="목록" /></a></div>
+  </div>
+  
+</div>
+<br />

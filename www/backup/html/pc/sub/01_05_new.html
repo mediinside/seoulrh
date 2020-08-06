@@ -1,0 +1,88 @@
+<?php
+	$CI =& get_instance();
+	$CI->load->model('M_uninsured');
+	
+	//$mapCate = $CI->M_uninsured->getBaseCategory();
+	$list = $CI->M_uninsured->getDataList();
+?>
+
+<? include DOC_ROOT.'/include/01_inc.php'; ?>
+
+<br />
+
+<!-- <p><img src="/img/sub/ready01.jpg" width="734" height="500" alt="2014년 오픈 중비중입니다." /></p> -->
+
+
+<div>
+	<span class="fl">2015년 9월 1일 기준</span> <span class="fr">(단위:원)</span>
+</div>
+<div style="clear: both;"></div>
+
+
+<ol start="1">
+<? foreach ($list as $cate_cd => $infoBaseCate) : ?>
+	<li type="I" style=" list-style-type : upper-roman;"><?=$infoBaseCate['cate_nm']?></li>
+	<table class="t3 w100" style="margin-top: 10px; margin-bottom: 10px;">
+		<colgroup>
+			<col />
+			<col />
+			<col />
+			<col />
+			<col />
+			<col />
+			<? if ($cate_cd == 'A') : ?>
+			<col />
+			<col />
+			<? endif ?>
+			<col />
+		</colgroup>
+		<thead>
+			<tr>
+				<th rowspan="2">분류</th>
+				<th colspan="2">항목</th>
+				<th colspan="<?=($cate_cd=='A'?6:4)?>">가격정보(단위:원)</th>
+				<th rowspan="2">특이<br/>사항</th>
+			</tr>
+			<tr>
+				<th>명칭</th>
+				<th>코드</th>
+				<th>구분</th>
+				<th>구분</th>
+				<th>최저<br/>비용</th>
+				<th>최고<br/>비용</th>
+				<? if ($cate_cd == 'A') : ?>
+				<th>치료재료대<br/>포함여부</th>
+				<th>약제비<br/>포함여부</th>
+				<? endif ?>
+			</tr>
+		</thead>
+		<tbody>
+			<?
+				foreach ($infoBaseCate['data'] as $cate_sub => $infoSubCate) {
+					$no = 0;
+					foreach ($infoSubCate['data'] as $row) {
+			?>
+					<tr>
+						<?if ($no == 0) : ?><td rowspan="<?=$infoSubCate['cnt']?>"><?=$infoSubCate['uic_title']?></td><? endif ?>
+						<td style="text-align: left;"><?=$row['ui_title']?></td>
+						<td><?=$row['ui_code']?></td>
+						<td><?=$row['ui_price_unit']?></td>
+						<td style="text-align: right;"><?=($row['ui_price_cost'] ? number_format($row['ui_price_cost']) : '')?></td>
+						<td style="text-align: right;"><?=($row['ui_price_min'] ? number_format($row['ui_price_min']) : '')?></td>
+						<td style="text-align: right;"><?=($row['ui_price_max'] ? number_format($row['ui_price_max']) : '')?></td>
+						<? if ($cate_cd == 'A') : ?>
+						<td><?=$row['ui_inclusion_material']?></td>
+						<td><?=$row['ui_inclusion_medicine']?></td>
+						<? endif ?>
+						<td><?=$row['ui_comment']?></td>
+					</tr>
+			<?
+						$no++;
+					}
+				}
+			?>
+		</tbody>
+	</table>
+<? endforeach ?>
+</ol>
+<br />

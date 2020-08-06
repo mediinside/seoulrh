@@ -1,0 +1,101 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once "../inc/head.php";
+$dep1 = "7";
+$dep2 = "7-1";
+$dep3 = "7-1-1";
+?>
+<style>
+	.btn-group:not(.m-menu-info) {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 30px 0 0;
+	}
+
+	.btn-group:not(.m-menu-info):after {
+		display: none;
+	}
+
+	.btn-group:not(.m-menu-info) .btn-sm {
+		width: 268px;
+		margin: 0 20px;
+	}
+
+	.btn-group:not(.m-menu-info) .btn-sm img {
+		margin-right: 10px;
+	}
+
+	@media screen and (max-width:1023px) {
+		.btn-group:not(.m-menu-info) {
+			flex-flow: column;
+		}
+
+		.btn-group:not(.m-menu-info) .btn-sm {
+			width: 100%;
+			margin: 0 0 15px;
+		}
+
+		.btn-group:not(.m-menu-info) .btn-sm img {
+			width: 20px !important;
+		}
+
+		img.mt60 {margin-top: 100px;}
+	}
+</style>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/center-bnnr1.png" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="wd-1200">
+					<div class="page-location">
+						<div id="btn-box" class="center half">
+							<a href="/center/page01-1.html" class="btn">설립근거</a>
+							<a href="/center/page01-2.html" class="btn">사업추진체계</a>
+							<a href="/center/page01-3.html" class="btn bg-green">사업소개</a>
+							<a href="/center/page01-4.html" class="btn">조직구성</a>
+						</div>
+					</div>
+					<img class="mt60" src="/resource/images/center01.jpg" alt="" style="max-width:100%;">
+					<h3 class="sub-tit mt60 mb30">
+						사업소개
+					</h3>
+					<img class="mb-hide" src="/resource/images/business-intro.png" usemap="#maptag1" alt="" style="max-width:100%;">
+					<map name="maptag1">
+						<area shape="rect" coords="0,348,456,400" href="/center/page02-1.html" title="자세히보기">
+						<area shape="rect" coords="744,350,1200,400" href="/center/page02-2.html" title="자세히보기">
+						<area shape="rect" coords="0,810,456,860" href="/center/page02-3.html" title="자세히보기">
+						<area shape="rect" coords="744,810,1200,860" href="/center/page02-4.html" title="자세히보기">
+					</map>
+					<img class="mb-show" src="/resource/images/business-intro-m.png" usemap="#maptag2" alt="" style="max-width:100%;">
+					<map name="maptag2">
+						<area shape="rect" coords="0,513,660,582" href="/center/page02-1.html" title="자세히보기">
+						<area shape="rect" coords="0,1007,660,1077" href="/center/page02-2.html" title="자세히보기">
+						<area shape="rect" coords="0,1547,660,1615" href="/center/page02-3.html" title="자세히보기">
+						<area shape="rect" coords="0,2087,660,2155" href="/center/page02-4.html" title="자세히보기">
+					</map>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomInfo.php"; ?>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+</body>
+
+</html>

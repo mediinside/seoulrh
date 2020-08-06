@@ -1,0 +1,23 @@
+<div data-role="header" data-theme="a">
+	<h1>다른 분께 추천할 의향이 있으신가요?</h1>
+</div>
+
+<div id="sub_content">
+	<form name="fresearch" method="post" action="/rsh_seminar/complete" data-transition="pop">
+	<?=$hidden_form?>
+		<div class="ui-field-contain">
+			<fieldset data-role="controlgroup">
+				<input type="radio" name="recommend" id="radio-choice-1" value="예" checked="checked">
+				<label for="radio-choice-1">예</label>
+				<input type="radio" name="recommend" id="radio-choice-2" value="아니오">
+				<label for="radio-choice-2">아니오</label>
+				<input type="radio" name="recommend" id="radio-choice-3" value="잘모르겠다">
+				<label for="radio-choice-3">잘모르겠다</label>
+				<input type="radio" name="recommend" id="radio-choice-4" value="기타">
+				<label for="radio-choice-4">기타</label>
+			</fieldset>
+		</div>
+		
+		<div class="btn_wrap"><input type="image" src="/img/mobile/common/btn_next.png" class="w100p" /></div>
+	</form>
+</div>

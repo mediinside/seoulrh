@@ -1,0 +1,24 @@
+/* Error    */ .red { border:solid 1px #B50000; background-color:#FFEBEB; }
+/* Current  */ .green { border:solid 1px #DDF0DD; background-color:#EBFFEB; }
+/* Complete */ .blue { border:solid 1px #CEE2F2; background-color:#F0F5FF; }  
+
+.progressWrapper { overflow:hidden; padding:10px; }
+.progressContainer { margin:5px; padding:4px; border:solid 1px #E8E8E8; background-color:#F7F7F7; overflow:hidden; }
+.progressName { font-size:8pt; font-weight:700; color:#555; width:323px; height:14px; text-align:left; white-space:nowrap; overflow:hidden; }
+.progressBarInProgress, .progressBarComplete, .progressBarError { font-size:0; width:0%; height:2px; background-color:blue; margin-top:2px; }
+.progressBarComplete { width:100%; background-color:green; visibility:hidden; }
+.progressBarError { width:100%; background-color:red; visibility:hidden; }
+.progressBarStatus { margin-top:2px; width:337px; font-size:7pt; font-family:Arial; text-align:left; white-space:nowrap; }
+
+a.progressCancel { font-size:0; padding:0; display:block; height:14px; width:14px; background-image:url(/img/js/btn_cancel.gif); background-repeat:no-repeat; background-position:-14px 0px; float:right; }
+a.progressCancel:hover { background-position:0px 0px; }
+
+/* SWFUpload Object Styles */
+.swfupload { vertical-align:top; }
+
+#buttonWrap { float:left; margin:5px 5px 0 5px; height:19px; padding:4px; line-height:13px; border:solid 1px #7FAAFF; background-color:#C5D9FF; }
+#swfuButton { background-color:#C5D9FF; }
+#btnCancel { float:left; width:145px; height:29px; margin:5px 5px 0 5px; border:1px #ccc solid; }
+#swfuProgress { float:left; width:375px; min-height:55px; line-height:14px; margin:5px 0 0; padding:3px 3px; border:1px solid #d9e4ff; }
+#divStatus { color:#999; padding:5px 0 0 5px; line-height:14px; }
+#SWFUpload_0 { width:135px; }

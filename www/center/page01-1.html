@@ -1,0 +1,118 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once "../inc/head.php";
+$dep1 = "7";
+$dep2 = "7-1";
+$dep3 = "7-1-1";
+?>
+<style>
+	.btn-group:not(.m-menu-info) {display: flex;justify-content: center;align-items: center;margin:30px 0 0;}
+	.btn-group:not(.m-menu-info):after {display: none;}
+	.btn-group:not(.m-menu-info) .btn-sm {width: 268px;margin:0 20px;}
+	.btn-group:not(.m-menu-info) .btn-sm img {margin-right: 10px;}
+	@media screen and (max-width:1023px){
+		.btn-group:not(.m-menu-info) {flex-flow: column;}
+		.btn-group:not(.m-menu-info) .btn-sm {width: 100%;margin:0 0 15px;}
+		.btn-group:not(.m-menu-info) .btn-sm img {width: 20px !important;}
+		img.mt60 {margin-top: 100px;}
+	}
+</style>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/center-bnnr1.png" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="wd-1200">
+					<div class="page-location">
+						<div id="btn-box" class="center half">
+							<a href="/center/page01-1.html" class="btn bg-green">설립근거</a>
+							<a href="/center/page01-2.html" class="btn">사업추진체계</a>
+							<a href="/center/page01-3.html" class="btn">사업소개</a>
+							<a href="/center/page01-4.html" class="btn">조직구성</a>
+						</div>
+					</div>
+					<img class="mt60" src="/resource/images/center01.jpg" alt="" style="max-width:100%;">
+					<h3 class="sub-tit mt60 mb30">
+						설립근거
+					</h3>
+					<ul class="clinic-list">
+						<li style="border:none;">
+							<label for="">사업 목적</label>
+							<div class="text">
+								지역사회 보건의료복지서비스의 의사결정 주체들 간의 연계·조정으로 장애인 자신이 속한 지역사회에서 자원을 활용하여 건강한 삶을 스스로 영위하고 주체적인 삶을 살아갈 수 있도록 지원
+								<img class="mb-hide mt30" src="/resource/images/green-box.png" alt="" style="max-width: 100.7%;">
+								<img class="mb-show mt30" src="/resource/images/green-box-m.png" alt="" style="max-width: 100%;">
+							</div>
+						</li>
+						<li>
+							<label for="">법적 근거</label>
+							<ul class="green-middot big">
+								<li>「장애인 건강권 및 의료접근성 보장에 관한 법률」 제20조(지역장애인보건의료센터)</li>
+								<li>같은 법 시행규칙 제15조(지역장애인보건의료센터의 지정 기준 절차 및 운영)</li>
+							</ul>
+						</li>
+						<li>
+							<label for="">센터지정</label>
+							<div class="text">
+								<div class="board-list border-t" style="padding:0;">
+									<table class="text-center">
+										<tbody>
+											<tr class="bg-gray">
+												<th>지정주체</th>
+												<td>보건복지부, 서울특별시</td>
+											</tr>
+											<tr>
+												<th>지정일</th>
+												<td>2019년 04월 23일</td>
+											</tr>
+											<tr>
+												<th>운영시작일</th>
+												<td>2019년 07월 01일</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</li>
+						<li>
+							<label for="">CI 다운로드</label>
+							<div class="text">
+								<img class="mb-hide" src="/resource/images/ci.png" alt="" style="max-width:100%;">
+								<img class="mb-show" src="/resource/images/ci-m.png" alt="" style="max-width:100%;">
+								<div class="btn-group mt5">
+									<a href="/file/ai.zip" class="btn-sm bg-green mb15">
+										<img src="/resource/images/down.png" alt="" style="width: 13px;">
+										AI 다운로드
+									</a>
+									<a href="/file/png.zip" class="btn-sm bg-green mb15">
+										<img src="/resource/images/down.png" alt="" style="width: 13px;">
+										PNG 다운로드
+									</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomInfo.php"; ?>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+</body>
+
+</html>

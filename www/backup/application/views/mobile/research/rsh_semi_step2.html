@@ -1,0 +1,48 @@
+<div data-role="header" data-theme="a">
+	<h1>구분을 입력하세요.</h1>
+</div>
+
+<div id="sub_content">
+	<form name="fresearch" method="post" action="/rsh_seminar/step3" data-transition="slide" onsubmit="return chk_form();">
+	<?=$hidden_form?>
+		<div class="ui-field-contain">
+			<label for="select-choice-1" class="select b dgray">치료사</label>
+			<select name="type" data-native-menu="false">
+				<option value="">선택하세요</option>
+				<option value="물리">물리</option>
+				<option value="작업">작업</option>
+				<option value="언어">언어</option>
+				<option value="심리">심리</option>
+			</select>
+		</div>
+		<div class="ui-field-contain">
+			<label for="select-choice-1" class="select b dgray">학생(학과명)</label>
+			<select name="grade" data-native-menu="false">
+				<option value="">선택하세요</option>
+				<option value="1학년">1학년</option>
+				<option value="2학년">2학년</option>
+				<option value="3학년">3학년</option>
+				<option value="4학년">4학년</option>
+			</select>
+		</div>
+		
+		<div class="btn_wrap"><input type="image" src="/img/mobile/common/btn_next.png" class="w100p" /></div>
+	</form>
+</div>
+
+<script type='text/javascript'>
+//<![CDATA[
+function chk_form() {
+	if(!$('select[name="type"]').val()) {
+		alert('치료사를 입력하세요');
+		$('select[name="type"]').focus();
+		return false;
+	}
+	if(!$('select[name="grade"]').val()) {
+		alert('학생(학과명)을 입력하세요');
+		$('select[name="grade"]').focus();
+		return false;
+	}
+}
+//]]>
+</script>

@@ -1,0 +1,443 @@
+<?php
+//error_reporting(E_ALL);
+//ini_set("display_errors", 1);
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once $GP -> INC_WWW . '/count_inc.php';
+include_once "../inc/head.php";
+
+include_once($GP->CLS."class.list.php");
+include_once($GP -> CLS."/class.seoulrh.php");
+include_once($GP->CLS."class.button.php");
+
+$C_ListClass 	= new ListClass;
+$C_seoulrh 		= new seoulrh;
+$C_Button 		= new Button;
+
+$args['s_year']  ="1";
+$rst = $C_seoulrh ->seoulrh_url_Info($args);
+
+
+$args['s_year']  ="2";
+$rst2 = $C_seoulrh ->seoulrh_url_Info($args);
+$args['s_year']  ="3";
+$rst3 = $C_seoulrh ->seoulrh_url_Info($args);
+$args['s_year']  ="4";
+$rst4 = $C_seoulrh ->seoulrh_url_Info($args);
+
+$dep1 = "3";
+$dep2 = "3-2";
+$dep3 = "3-2-5";
+$dr_menu = "I";
+
+?>
+
+<style>
+	.small-if {
+		height: 100px !important;
+        pointer-events: none;
+	}   
+</style>
+</head>
+
+
+
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/service-bnnr9.jpg" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="wd-1200">
+					<h3 class="sub-tit">
+						재활의료기관(회복기병원)제도란?
+					</h3>
+					<div class="text-box">
+						<p>
+							‘재활의료기관(회복기병원)’은 급성기 치료 후 재활치료가 필요한 환자에게 집중적인 재활치료를 제공하여 질환으로 인한 장애를 최소화하고 기능을 회복하여 조기에 사회복귀를 할 수 있도록
+							하는 보건복지부의 새로운 제도입니다. 발병 후 3개월 이내 입원한 뇌/척수 손상환자는 입원일로부터 6개월까지 입원이 가능하여 재활의 골든타임인 회복기 동안 충분한 재활치료를 받을 수
+							있습니다.
+						</p>
+					</div>
+					<ul class="round-list border mb60">
+						<li>
+							<img src="/resource/images/heal-img-01.png" alt="">
+							<p>
+								발병 후 재활치료 골든타임 내에<br class="mb-hide">
+								충분한 입원 기간을 보장
+							</p>
+						</li>
+						<li>
+							<img src="/resource/images/heal-img-02.png" alt="">
+							<p>
+								꼼꼼하고 주기적인 평가를 통한<br class="mb-hide">
+								환자맞춤형 재활서비스 제공
+							</p>
+						</li>
+						<li>
+							<img src="/resource/images/heal-img-03.png" alt="">
+							<p>
+								전문 인력, 시설, 장비를 갖추고,<br class="mb-hide">
+								통합재활서비스 실시
+							</p>
+						</li>
+						<li>
+							<img src="/resource/images/heal-img-04.png" alt="">
+							<p>
+								원활한 사회복귀 및 지속적인<br class="mb-hide">
+								재활을 위해 지역사회 재활자원 연계
+							</p>
+						</li>
+					</ul>
+					<!-- //end .round-list  -->
+					<div class="wd-1000 text-center">
+						<img class="mt60 mb-hide" src="/resource/images/chart-img.png" alt="" style="max-width:100%">
+						<img class="mt60 mb-show" src="/resource/images/chart-img_m.png" alt="" style="max-width:100.7%">
+					</div>
+					<ul class="clinic-list mt60 mb60">
+						<li>
+							<label for="">
+								서울재활병원을<br class="mb-hide">
+								선택하는 이유
+							</label>
+							<div class="text">
+								<ul class="round-list mt30 mb60">
+									<li>
+										<img src="/resource/images/heal-img-05.png" alt="">
+										<p>
+											보건복지부 지정 재활전문병원<br class="mb-hide">
+											3연속 인증(2011/2015/2018)
+										</p>
+									</li>
+									<li>
+										<img src="/resource/images/heal-img-06.png" alt="">
+										<p>
+											20년 이상의 오랜 임상경험과<br class="mb-hide">
+											재활치료의 노하우
+										</p>
+									</li>
+									<li>
+										<img src="/resource/images/heal-img-07.png" alt="">
+										<p>
+											입원 &gt; 낮병동 &gt; 외래 &gt; 지역사회로<br class="mb-hide">
+											이어지는 완전한 사회복귀시스템 운영
+										</p>
+									</li>
+									<li>
+										<img src="/resource/images/heal-img-08.png" alt="">
+										<p>
+											장애인의 건강한 삶을 지원하는<br class="mb-hide">
+											서울시북부지역장애인보건의료센터 운영
+										</p>
+									</li>
+									<li>
+										<img src="/resource/images/heal-img-09.png" alt="">
+										<p>
+											회복기 대상 환자를 위한 1:1 맞춤형<br class="mb-hide">
+											집중 재활치료 프로그램 제공
+										</p>
+									</li>
+									<li>
+										<img src="/resource/images/heal-img-10.png" alt="">
+										<p>
+											환자와 가족의 행복과 힐링을 위한<br class="mb-hide">
+											가족지원사업 서비스 제공
+										</p>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<label for="">
+								재활의료기관(회복기병원)<br class="mb-hide">
+								입원 대상
+							</label>
+							<div class="text">
+								<div class="board-list border-t" style="padding:0;">
+									<table class="bordered">
+										<tbody>
+											<tr class="bg-gray">
+												<th class="text-center">대상질환</th>
+												<th class="text-center">입원시기</th>
+												<th class="text-center">입원기간</th>
+											</tr>
+											<tr>
+												<td class="text-center">
+													뇌졸중 등 뇌손상,
+													척수손상
+												</td>
+												<td class="text-center">
+													발병 또는 수술 후
+													90일 이내
+												</td>
+												<td class="text-center">
+													입원일로부터
+													180일 이내
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</li>
+						<li>
+							<label for="">
+								서울재활병원의<br class="mb-hide">
+								회복기재활 프로그램 안내
+							</label>
+							<div class="text">
+								<div class="board-list border-t" style="padding:0;">
+									<table class="bordered fz14">
+										<tbody>
+											<tr class="bg-gray">
+												<th></th>
+												<th class="text-center">1개월</th>
+												<th class="text-center">3개월</th>
+												<th class="text-center">4~5개월</th>
+												<th class="text-center">6개월</th>
+											</tr>
+											<tr>
+												<th class="text-center">
+													통합치료계획<br class="mb-hide">
+													수립
+												</th>
+												<td class="text-center">
+													초기평가 및<br>
+													치료계획 수립
+												</td>
+												<td class="text-center">
+													중간평가 및<br>
+													치료계획 점검
+												</td>
+												<td class="text-center">
+													퇴원<br>
+													계획 수립
+												</td>
+												<td class="text-center">
+													퇴원 준비 및<br>
+													가족 상담
+												</td>
+											</tr>
+											<tr>
+												<th class="text-center">
+													회복기<br>
+													재활치료
+												</th>
+												<td colspan="4">
+													재활의학과 전문의의 환자 상태에 맞는 재활치료 프로그램 처방<br>
+													(물리치료/작업치료/인지치료/연하치료/심리치료/언어치료/통증치료/재활간호)
+												</td>
+											</tr>
+											<tr>
+												<th class="text-center">
+													맞춤형<br>
+													재활치료
+												</th>
+												<td colspan="4">
+													<ul class="normal-list">
+														<li>- 지역사회보행 집중재활프로그램</li>
+														<li>- 상지 집중재활프로그램</li>
+														<li>- 체력강화 집중재활프로그램</li>
+														<li>- 생활관리 집중재활프로그램</li>
+														<li>- 인지 집중재활프로그램</li>
+														<li>- 삼킴기능 집중재활프로그램</li>
+														<li>- 환자 맞춤형 재활서비스(인지/연하/심리/언어/통증치료 등)</li>
+													</ul>
+												</td>
+											</tr>
+											<tr>
+												<th class="text-center">
+													가족지원<br>
+													프로그램
+												</th>
+												<td colspan="4">
+													<ul class="normal-list">
+														<li>- 환자와 가족의 심리검사/상담/정서지원/힐링 프로그램</li>
+														<li>- 근골계 질환 예방 프로그램, 생활관리 및 적응 프로그램</li>
+													</ul>
+												</td>
+											</tr>
+											<tr>
+												<th class="text-center">
+													사회복귀<br>
+													지원사업
+												</th>
+												<td colspan="4">
+													<ul class="normal-list">
+														<li>- 사회경제적 환경 평가 및 사회복귀 계획 수립</li>
+														<li>- 환자별 맞춤형 복지 정보 제공</li>
+														<li>- 환자와 보호자 교육 및 상담</li>
+														<li>- 가옥구조 평가/상담/개선지원</li>
+													</ul>
+												</td>
+											</tr>
+											<tr>
+												<th class="text-center">
+													원데이<br>
+													퇴원교육
+												</th>
+												<td colspan="4">
+													<ul class="normal-list">
+														<li>- 퇴원준비 가족교육</li>
+														<li>- 지역사회자원 연계</li>
+														<li>- 가족돌봄계획 수립</li>
+													</ul>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<!-- //end .clinic-list -->
+
+					<h3 class="sub-tit">
+						서울재활병원만의 특별한 회복기 재활프로그램 소개
+					</h3>
+					<ul class="clinic-list">
+						<li>
+							<label for="">
+								지역사회보행훈련<br class="mb-hide">
+								집중재활프로그램
+							</label>
+							<img src="/resource/images/service09-1.jpg" alt="">
+							<div class="text">
+								퇴원 후 실제 생활하는 다양한 보행 환경(아스팔트, 보도블록, 계단, 횡단보도 등)에 적응할
+								수 있도록 치료사와 함께 기능적인 보행훈련을 합니다.
+							</div>
+						</li>
+						<li>
+							<label for="">
+								생활관리<br class="mb-hide">
+								집중재활프로그램
+							</label>
+							<img src="/resource/images/service09-2.jpg" alt="">
+							<div class="text">
+								안전하고 독립적인 생활을 위하여 가정과 사회와 최대한 유사한 환경에서 집중적인 작업
+								수행치료를 진행합니다.
+							</div>
+						</li>
+						<li>
+							<label for="">
+								원데이(1day)<br class="mb-hide">
+								퇴원교육
+							</label>
+							<!-- <img src="http://placehold.it/340x130" alt=""> -->
+							<img src="/resource/images/service09-3.jpg" alt="">
+							<div class="text">
+								퇴원 한 달 전 환자, 가족, 의료진이 함께 모여 퇴원을 준비합니다. 가족교육, 지역사회자원
+								연계, 가옥구조 개선, 가족돌봄계획 등을 통하여 일상으로의 빠른 복귀를 돕습니다.
+							</div>
+						</li>
+						<li>
+							<label for="">
+								안심하고 퇴원 할 수 있는<br class="mb-hide">
+								전환기 재활치료 프로그램
+							</label>
+							<img src="/resource/images/service09-4.jpg" alt="">
+							<div class="text">
+								퇴원 후에도 낮병동 및 외래 치료와 장애인 건강주치의 제도를 통해서 지속적으로 건강관리
+								를 받을 수 있습니다.
+							</div>
+						</li>
+					</ul>
+					<!-- //end .clinic-list -->
+
+					<div class="heal-media">
+						<div class="iframe-box">
+							<iframe src="<?=$rst['s_content2']?>" frameborder="0"></iframe>
+							<div class="media-btn">
+								<div class="view">
+									<!--img src="/resource/images/green-view.png" alt="">
+									<span>1,023</span-->
+								</div>
+								<div class="sns">
+									<span>영상 공유하기</span>
+									<ul>
+										<li>
+											<a href="#none">
+												<img src="/resource/images/heal-kakao.png" alt="카카오톡 공유">
+											</a>
+										</li>
+										<li>
+											<a href="#none">
+												<img src="/resource/images/heal-face.png" alt="페이스북 공유" onclick="facebook_you_share()">
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+                        
+						<div class="same-media">
+							<p class="tit">관련영상</p>
+							<ul class="media-list">
+								<li>
+                                    <a href = "<?=$rst2['s_content2']?>" target="_blank">                                                                 
+                                    <iframe class="small-if" src="<?=$rst2['s_content2']?>" frameborder="0" style="width:175px;" onclick="window.open('<?=$rst2['s_content2']?>', '_blank', 'width=600 height=600')" ></iframe>										
+                                        <p>
+                                            <?=$rst2['s_content1']?>
+											<small><?=$rst2['s_content3']?></small>
+                                        </p>                                    
+									</a>
+								</li>
+								<li>
+                                   <a href = "<?=$rst3['s_content2']?>" target="_blank">
+                                    <iframe class="small-if" src="<?=$rst3['s_content2']?>" frameborder="0" style="width:175px;"></iframe>
+										<p>
+                                        <?=$rst3['s_content1']?>
+											<small><?=$rst3['s_content3']?></small>
+										</p>
+									</a>
+                                </li>
+                                <li>
+                                  <a href = "<?=$rst4['s_content2']?>" target="_blank">
+                                    <iframe class="small-if" src="<?=$rst4['s_content2']?>" frameborder="0" style="width:175px;"></iframe>
+										<p>
+                                        <?=$rst4['s_content1']?>
+											<small><?=$rst4['s_content3']?></small>
+										</p>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!-- //end .heal-media -->
+
+					<div class="page-location">
+						<p>관련페이지 바로가기</p>
+						<div id="btn-box">
+							<a href="/service/page07-1.html" class="btn bg-green">물리치료</a>
+							<a href="/service/page07-2.html" class="btn bg-green">작업치료</a>
+							<a href="/service/page07-3.html" class="btn bg-green">언어치료</a>
+							<a href="/service/page07-4.html" class="btn bg-green">심리치료</a>
+							<a href="/service/page10-1.html" class="btn bg-green">통증치료</a>
+						</div>
+					</div>
+				</div>
+				<!-- //end .wd-1200  -->
+			</section>
+			<?php include_once "../inc/doc_list.php"; ?>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+</body>
+    <script>
+    function facebook_you_share(){
+        window.open( 'http://www.facebook.com/sharer.php?u=' + encodeURIComponent('<?=$rst['s_content2']?>') );
+		}
+    </script>
+</html>

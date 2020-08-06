@@ -1,0 +1,68 @@
+<form id='flogin' name='flogin' method='post' action='<?=RT_PATH?>/member/login/in'>
+<input type='hidden' name='url' value='<?=$url?>'/>
+
+<div id='member_wrap' class="login_bg">
+	<ul id='login_header'>
+		<li class='infor'>
+			<p>
+				<label for='mb_id'><img src='<?=IMG_DIR?>/member/i_id.gif' alt='아이디' /></label>
+				<input type='text' id='mb_id' name='mb_id' class='ed' maxlength='20' size='18' value='<?=$reId?>' style="width:150px; ime-mode:disabled;"/>
+			</p>
+        	<p>
+				<label for='mb_password'><img src='<?=IMG_DIR?>/member/i_pw.gif' alt='비밀번호' /></label>
+				<input type='password' id='mb_password' name='mb_password' class='ed' maxlength='20' size='18' style="width:150px;" onkeypress='javascript:check_capslock(event, this);'/>
+			</p>
+			<span>
+				<input type='checkbox' name='reId' value='1' <?=$chk_reId?>/>
+				<label><img src='<?=IMG_DIR?>/member/t_idsave.gif' alt='' /></label>
+			</span>
+		</li>
+		<li class="bt_login"><input type='image' src='<?=IMG_DIR?>/member/btn_login.jpg' align='bottom'/></li>
+	</ul>
+	
+	<ul id='login_footer'>
+		<li><a href='<?=RT_PATH?>/member/join'><img src='<?=IMG_DIR?>/member/btn_join.gif' alt='회원가입' /></a></li>
+		<li><a href='<?=RT_PATH?>/member/forget_idpwd'><img src='<?=IMG_DIR?>/member/btn_findpw.gif' alt='아이디/패스워드찾기' /></a></li>
+	</ul>
+	
+</div>
+</form>
+
+<!-- 쇼핑몰 비회원 인증 -->
+<?=$guest_login?>
+
+<div id='loading'></div>
+
+<script type='text/javascript' src='<?=JS_DIR?>/capslock.js'></script>
+<script type="text/javascript" src='<?=JS_DIR?>/jvalidate.js'></script>
+<script type="text/javascript" src='<?=JS_DIR?>/jvalid_ext.js'></script>
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#flogin').validate({
+		rules: {
+			mb_id: { required:true, minlength:4, alphanumunder:true },
+			mb_password: 'required'
+		},
+		messages: {
+			mb_id: { required:'아이디를 입력하십시오.', minlength:'최소 4자 이상 입력하십시오.' },
+			mb_password: '비밀번호를 입력하십시오.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+			$('#loading').show();
+		    f.submit();
+		}
+	});
+
+	<?=$alt_script?>
+});
+//]]>
+</script>

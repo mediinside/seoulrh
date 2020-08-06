@@ -1,0 +1,118 @@
+<form id='fwrite' name='fwrite' method='post' enctype='multipart/form-data' action='<?=$path?>/schedule/form'>
+<input type='hidden' name='w'    value='<?=$w?>'/>
+<input type='hidden' name='sc_id' value='<?=$row['sc_id']?>'/>
+
+<ul id="form_cont">
+	<li>
+		<table width='100%' cellpadding='0' cellspacing='12' class="con_box1">
+        	<tr>
+                <td width="40%" rowspan="7">
+                	<img src="/useful/thumbnail/165x165/ki_schedule/?file=<?=$row['sc_image']?>&ratio=true"/><br/>
+					<input type='file' id='sc_image' name='sc_image' class='ed' size='10'/>
+					<? if($row['sc_image']) { ?><input type="checkbox" name="delfile" value="1"/> 파일 삭제<? } ?>
+					<p class='msgTip'>(최대: W - <?=$max_size['w']?>px, H - <?=$max_size['h']?>px)<br/><span class="red">* 정사각형 비율 최적화</span></p>
+				</td>
+            </tr>
+            <tr>
+            	<th class="left">이름</th>
+                <td colspan="3">
+                	<input type='text' id='sc_url' name='name' class='ed' value='<?=$row['sc_name']?>'/>
+				</td>
+            </tr>
+            <tr>
+            	<th class="left">직위</th>
+                <td colspan="3">
+                	<input type='text' id='sc_url' name='grade' class='ed' value='<?=$row['sc_grade']?>'/>
+				</td>
+            </tr>
+            <tr>
+            	<th colspan="2" class="left">전문분야
+            		<table width="100%" cellpadding='0' cellspacing='3' class="con_box1 mT10" style="font-weight:normal; border:1px #ddd solid; padding:5px; background:#f8f8f8;">
+            			<tr>
+            				<td width="32%">뇌성마비</td>
+            				<td width="18%"><input type="checkbox" name="fields[]" value="뇌성마비" <?=checked(TRUE, isset($row['fields']['뇌성마비']))?>/></td>
+            				<td width="30%">재생의학</td>
+            				<td width="20%"><input type="checkbox" name="fields[]" value="재생의학" <?=checked(TRUE, isset($row['fields']['재생의학']))?>/></td>
+            			</tr>
+            			<tr>
+            				<td width="32%">근경직</td>
+            				<td width="18%"><input type="checkbox" name="fields[]" value="근경직" <?=checked(TRUE, isset($row['fields']['근경직']))?>/></td>
+            				<td width="30%">스포츠재활</td>
+            				<td width="20%"><input type="checkbox" name="fields[]" value="스포츠재활" <?=checked(TRUE, isset($row['fields']['스포츠재활']))?>/></td>
+            			</tr>
+            			<tr>
+            				<td>뇌졸중/뇌손상</td>
+            				<td><input type="checkbox" name="fields[]" value="뇌졸중/뇌손상" <?=checked(TRUE, isset($row['fields']['뇌졸중/뇌손상']))?>/></td>
+            				<td>자폐장애</td>
+            				<td><input type="checkbox" name="fields[]" value="자폐장애" <?=checked(TRUE, isset($row['fields']['자폐장애']))?>/></td>
+            			</tr>
+            			<tr>
+            				<td>발달지연</td>
+            				<td><input type="checkbox" name="fields[]" value="발달지연" <?=checked(TRUE, isset($row['fields']['발달지연']))?>/></td>
+            				<td>척수손상</td>
+            				<td><input type="checkbox" name="fields[]" value="척수손상" <?=checked(TRUE, isset($row['fields']['척수손상']))?>/></td>
+            			</tr>
+            			<tr>
+            				<td>보조기</td>
+            				<td><input type="checkbox" name="fields[]" value="보조기" <?=checked(TRUE, isset($row['fields']['보조기']))?>/></td>
+            				<td>통증</td>
+            				<td><input type="checkbox" name="fields[]" value="통증" <?=checked(TRUE, isset($row['fields']['통증']))?>/></td>
+            			</tr>
+            			<tr>
+            				<td>소아섬식장애</td>
+            				<td><input type="checkbox" name="fields[]" value="소아섬식장애" <?=checked(TRUE, isset($row['fields']['소아섬식장애']))?>/></td>
+            				<td colspan="2">기타: <input type="text" name="fields[]" size="13" value="<?=$row['fields']['etc']?>"/></td>
+            			</tr>
+            		</table>
+            	</th>
+            </tr>
+            
+            <? if($w) : ?>
+            <tr>
+            	<th>등록일</th>
+                <td colspan="3"><?=$row['sc_regdate']?></td>
+            </tr>
+            <tr>
+            	<th>최종수정일</th>
+                <td colspan="3"><?=$row['sc_mdydate']?></td>
+            </tr>
+            <? endif; ?>
+            
+        </table>
+	</li>
+</ul>
+
+<p class='center bottom'>
+	<input type='submit' id='btn_submit' class='btn' value='  확  인  '/>
+</p>
+</form>
+
+<div id='loading'></div>
+
+<script type='text/javascript'>
+//<![CDATA[
+$(document).ready(function() {
+	$('#fwrite').validate({
+		rules: {
+			sc_name: 'required'
+		},
+		messages: {
+			sc_name: '이름을 입력하세요.'
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+            $('#btn_submit').remove();
+			$('#loading').show();
+		    f.submit();
+		}
+	});		
+});
+//]]>
+</script>

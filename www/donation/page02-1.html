@@ -1,0 +1,326 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/www/_init.php';
+include_once "../inc/head.php";
+include_once($GP->CLS."class.list.php");
+include_once($GP -> CLS."/class.donation.php");
+$C_ListClass 	= new ListClass;
+$C_donation 		= new donation;
+
+
+$args = array();
+//	$args['show_row'] = 9;
+
+//$args['do_idx'] = $do_idx;
+$args['orderby'] = " do_regdate DESC";
+$args['q_group'] = "do_year";
+$args['do_show'] = "Y";
+$data = "";
+$data = $C_donation->donation2_List(array_merge($_GET,$_POST,$args));
+$data_list 		= $data['data'];
+$data_list_cnt 	= count($data_list);
+
+$dep1 = "5";
+$dep2 = "5-1";
+$dep3 = "5-1-2";
+?>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+<script src="/resource/js/counter/jquery.counterup.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+
+<body id="main" onLoad="init()">
+	<div id="wrap">
+		<?php include_once "../inc/header_sub.php"; ?>
+
+		<div id="container" tabindex="0">
+			<!-- main section 01 start -->
+			<section class="contents">
+				<div class="sub-visual-wrap">
+					<img src="/resource/images/donation-bnnr1.jpg" alt="">
+				</div>
+				<!-- //end .sub-visual-wrap -->
+			</section>
+			<!-- main section 01 end -->
+			<!-- main section 02 start -->
+			<section class="contents sub-contents">
+				<div class="wd-1200">
+					<div class="donation-bg">
+						<img src="/resource/images/donation-bg-01.png" alt="">
+						<h3>
+							서울재활병원<br>
+							나눔이야기 -
+							<small class="mb-hide">
+								서울재활병원은 후원금을 투명하게 운영하며, 모법인 엔젤스헤이븐은 외부 회계법인 감사,<br class="mb-hide">
+								세무서, 구청, 보건복지부 등 다양한 정부 기관 감사도 진행합니다.
+							</small>
+						</h3>
+					</div>
+					<ul id="tab-nav" class="tab3">
+						<li class="on">
+							<a href="/donation/page02-1.html#tab-nav">후원금 수입· 지출</a>
+						</li>
+						<li>
+							<a href="/donation/page02-2.html#tab-nav">기부자</a>
+						</li>
+						<!--li>
+							<a href="/donation/page02-3.html#tab-nav">직원 헌금</a>
+						</li-->
+					</ul>
+					<div id="tab-1" class="tab3-cont">
+                        <?php
+                            for ($i = 0 ; $i < $data_list_cnt ; $i++) {
+                                $do_idx 		= $data_list[$i]['do_idx'];
+                                $do_year 		= $data_list[$i]['do_year'];
+
+                                $args = "";
+                                $args['do_year'] = $do_year ;
+                                $args['do_select'] = "A" ;
+                                $args['do_show'] = "Y";
+                                $data_day = "";
+                                $data_day = $C_donation->donation2_List(array_merge($_GET,$_POST,$args));
+                                $data_list_day 		= $data_day['data'];
+                                $data_list_cnt_day 	= count($data_list_day);
+
+                                $do_day_sum_top = "";
+                                for ($j = 0 ; $j < $data_list_cnt_day ; $j++) {
+                                    $do_pay 		= $data_list_day[$j]['do_pay'];
+                                    $do_day_sum_top = $do_day_sum_top +  $do_pay;
+                                }
+                        ?>
+						<div class="tab-box">
+							<div class="tab-cont">
+								<p>
+									<a href="#none"><?=$do_year?></a>
+								</p>
+								<div class="list2" style="height:0;">
+									<div class="side-box" style="margin-bottom: 10%;">
+										<div class="chart">
+											<div id="donutchart1_<?=$do_year?>" class="donutchart"></div>
+											<div class="all-pay">
+												<img src="/resource/images/hand-heart.png" alt="">
+												<span class="counter"><?=number_format($do_day_sum_top)?></span>
+											</div>
+										</div>
+										<div class="board-list dp-block" style="padding:0;">
+											<table>
+												<colgroup>
+													<col>
+													<col style="width:40%">
+												</colgroup>
+												<thead>
+													<tr class="bg-gray">
+														<th>구분</th>
+														<th class="text-left">금액(원)</th>
+													</tr>
+												</thead>
+												<tbody>
+                                                <?php
+                                                    $drawChart = "";
+                                                    $do_day_sum = "";
+                                                    for ($j = 0 ; $j < $data_list_cnt_day ; $j++) {
+                                                        $do_idx 		= $data_list_day[$j]['do_idx'];
+                                                        $do_year 		= $data_list_day[$j]['do_year'];
+                                                        $do_pay 		= $data_list_day[$j]['do_pay'];
+                                                        $do_day		= $data_list_day[$j]['do_day'];
+                                                        $do_gubun		= $data_list_day[$j]['do_gubun'];
+                                                        $do_content		= nl2Br($data_list_day[$j]['do_content']);
+                                                        $do_day_sum = $do_day_sum +  $do_pay;
+
+                                                        $drawChart .= "['${do_gubun}', ${do_pay}],";
+
+                                                ?>
+													<tr>
+														<td><?=$do_gubun?></td>
+														<td><?=number_format($do_pay)?></td>
+													</tr>
+                                                <? } ?>
+												</tbody>
+												<tfoot>
+													<tr class="bg-gray">
+														<th class="text-center">계</th>
+														<th class="text-left"><?=number_format($do_day_sum)?></th>
+													</tr>
+												</tfoot>
+											</table>
+										</div>
+									</div>
+                                    <?php
+                                            $args = "";
+                                            $args['do_year'] = $do_year ;
+                                            $args['do_select'] = "B" ;
+                                            $args['do_show'] = "Y";
+                                            $data_day = "";
+                                            $data_day = $C_donation->donation2_List(array_merge($_GET,$_POST,$args));
+                                            $data_list_day 		= $data_day['data'];
+                                            $data_list_cnt_day 	= count($data_list_day);
+
+                                            $do_day_sum_top2 = "";
+                                            for ($j = 0 ; $j < $data_list_cnt_day ; $j++) {
+                                                $do_pay 		= $data_list_day[$j]['do_pay'];
+                                                $do_day_sum_top2 = $do_day_sum_top2 +  $do_pay;
+                                            }
+                                    ?>
+									<div class="side-box" style="margin-bottom: 10%;">
+										<div class="chart">
+											<div id="donutchart2_<? echo($do_year);?>" class="donutchart"></div>
+											<div class="all-pay">
+												<img src="/resource/images/hand-heart.png" alt="">
+												<span class="counter"><?=number_format($do_day_sum_top2)?></span>
+											</div>
+										</div>
+										<div class="board-list dp-block" style="padding:0;">
+											<table>
+												<colgroup>
+													<col>
+													<col style="width:40%">
+												</colgroup>
+												<thead>
+													<tr class="bg-gray">
+														<th>구분</th>
+														<th class="text-left">금액(원)</th>
+													</tr>
+												</thead>
+												<tbody>
+                                                <?php
+                                                    $drawChart2 = "";
+                                                    $do_day_sum2 = "";
+                                                    for ($j = 0 ; $j < $data_list_cnt_day ; $j++) {
+                                                        $do_idx 		= $data_list_day[$j]['do_idx'];
+                                                        $do_year 		= $data_list_day[$j]['do_year'];
+                                                        $do_pay 		= $data_list_day[$j]['do_pay'];
+                                                        $do_day		= $data_list_day[$j]['do_day'];
+                                                        $do_gubun		= $data_list_day[$j]['do_gubun'];
+                                                        $do_content		= nl2Br($data_list_day[$j]['do_content']);
+                                                        $do_day_sum2 = $do_day_sum2 +  $do_pay;
+
+                                                        $drawChart2 .= "['${do_gubun}', ${do_pay}],";
+
+                                                ?>
+													<tr>
+														<td><?=$do_gubun?></td>
+														<td><?=number_format($do_pay)?></td>
+													</tr>
+                                                <? } ?>
+												</tbody>
+												<tfoot>
+													<tr class="bg-gray">
+														<th class="text-center">계</th>
+														<th class="text-left"><?=number_format($do_day_sum2)?></th>
+													</tr>
+												</tfoot>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+	<script>
+		google.charts.load("current", { packages: ["corechart"] });
+		google.charts.setOnLoadCallback(drawChart1_<? echo($do_year);?>);
+		google.charts.setOnLoadCallback(drawChart2_<? echo($do_year);?>);
+
+		function drawChart1_<? echo($do_year);?>() {
+			var data = google.visualization.arrayToDataTable([
+				['Task', 'donation'],
+                <? echo($drawChart);?>
+
+			]);
+
+			var options = {
+				title: '수입',
+				titleTextStyle: {
+					color: '#72c312',
+					fontName: 'Noto Sans KR',
+					fontSize: 22
+				},
+				pieHole: 0.65,
+				legend: 'none',
+				width: '100%',
+				height:'100%',
+				colors:['#16b944', '#92d21c', '#bfde14', '#fee00c', '#ffc40e', '#ff9c0b', '#c6c6c6', '#fd7a12'],
+			};
+
+			var chart = new google.visualization.PieChart(document.getElementById('donutchart1_<?=$do_year?>'));
+			chart.draw(data, options);
+		}
+		function drawChart2_<? echo($do_year);?>() {
+			var data = google.visualization.arrayToDataTable([
+				['Task', 'donation'],
+				<? echo($drawChart2);?>
+			]);
+
+			var options = {
+				title: '지출',
+				titleTextStyle:{
+					color: '#72c312',
+					fontName: 'Noto Sans KR',
+					fontSize: 22
+				},
+				pieHole: 0.65,
+				legend: 'none',
+				width: '100%',
+				height: '100%',
+				colors: ['#16b944', '#92d21c', '#bfde14', '#fee00c', '#ffc40e', '#ff9c0b', '#c6c6c6', '#fd7a12'],
+			};
+
+			var chart2 = new google.visualization.PieChart(document.getElementById('donutchart2_<? echo($do_year);?>'));
+			chart2.draw(data, options);
+		}
+
+		$(window).on("resize load",function(){
+			drawChart1_<? echo($do_year);?>();
+			drawChart2_<? echo($do_year);?>();
+		});
+	</script>
+                    <? } ?>
+					</div>
+				</div>
+			</section>
+			<?php include_once "../inc/bottomBnnr.php"; ?>
+			<?php include_once "../inc/sitemap.php"; ?>
+		</div>
+
+		<?php include_once "../inc/footer.php"; ?>
+	</div>
+
+	<script>
+		//<![CDATA[
+		$(document).ready(function () {
+			$('.counter').counterUp({
+				delay: 10,
+				time: 2000
+			});
+
+			//첫번째 탭
+			$('.tab-cont > .list2').data('toggle','on');
+			$('.tab-cont > p').click(function () {
+				var obj = $(this).next('.list2');
+
+				if (obj.data('toggle') == 'on') {
+					obj.css('height','auto');
+					// $(this).addClass("on");
+					$(this).addClass("on").parents(".tab-box").siblings().find('.tab-cont p').removeClass('on').next().css('height', 0).data('toggle', 'on');
+					obj.data('toggle', 'off');
+				}
+				else if(obj.data('toggle') == 'off'){
+					obj.css('height', 0);
+					$(this).removeClass("on");
+					obj.data('toggle','on');
+				}
+			}).css('cursor', 'pointer');
+
+			$('.tab-cont').eq(0).find('p').trigger('click');
+
+			$(".tab3 li").on("click", function () {
+				// $(this).addClass("on").siblings().removeClass("on");
+				// var $tab_idx = $(this).index() + 1;
+				// $('#tab-' + $tab_idx).show().siblings().not('.tab3, .donation-bg').hide();
+
+			});
+		});
+		//]]>
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<form name='fzip' method='post' action=''>
+<input type='hidden' name='frm_name'  value='<?=$form?>'/>
+<input type='hidden' name='frm_zip1'  value='<?=$fzip1?>'/>
+<input type='hidden' name='frm_zip2'  value='<?=$fzip2?>'/>
+<input type='hidden' name='frm_addr1' value='<?=$faddr1?>'/>
+<input type='hidden' name='frm_addr2' value='<?=$faddr2?>'/>
+<table width="450" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><img src="/images/myroom/post_01.jpg" width="450" height="52"></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="center"><table width="400" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td height="30" align="left"><img src="/images/myroom/post_02.jpg" width="289" height="17"></td>
+      </tr>
+      <tr>
+        <td align="left">예) 수유, 두리, 무지(2글자 이상)</td>
+      </tr>
+      <tr>
+        <td height="40"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="10" align="center"><img src="/images/main_arrow.jpg" width="6" height="6"></td>
+            <td width="80" align="left">동(읍/면/리)</td>
+            <td width="140"><input type="text" name="addr1" id="addr1" class="box_white" style="width:130px" value="<?=$addr1?>"></td>
+            <td align="left"><input type="image" src="/images/myroom/btn_search_post.jpg" width="43" height="20"></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+         <td height="1" background="/images/dot02.jpg"></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+      <? if ($search_count > 0): ?>
+      <tr>
+        <td align="left">(총 <?=$search_count?>건 가나다순)<br>
+          <br>
+          <? foreach($list as $o): ?>
+          <a href='javascript:;' onclick="javascript:find_zip('<?=$o->zip1?>', '<?=$o->zip2?>', '<?=$o->addr?>');"><?=$o->zip1?>-<?=$o->zip2?> <?=$o->addr?> <?=$o->bunji?></a><br>
+          <? endforeach; ?>
+          </td>
+      </tr>
+      <? endif; ?>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</form>
+
+<script type='text/javascript'>
+//<![CDATA[
+function find_zip(zip1, zip2, addr1) {
+    var of = opener.document.<?=$form?>;
+
+    of.<?=$fzip1?>.value  = zip1;
+    of.<?=$fzip2?>.value  = zip2;
+
+    of.<?=$faddr1?>.value = addr1;
+
+    of.<?=$faddr2?>.focus();
+    window.close();
+    return false;
+}
+//]]>
+</script>

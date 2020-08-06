@@ -1,0 +1,120 @@
+<? if ($list): ?>
+<ul id='comment_list'>
+	<? foreach ($list as $o): ?>
+	<li>
+		<a name='c_<?=$o->comment_id?>'></a>
+        <div class='clist'>
+    		<div class='cl_infor' style='padding-left:<?=$o->wr_coreply_len?>px;'>
+    			
+    			<? if($o->wr_coreply_len) : ?>
+    			<span class='cl_reply'><img src="<?=BO_IMG_PATH?>/ico_reply.gif"/></span>
+    			<? endif; ?>
+    			
+    			<span class='cl_name'><?=$o->name?></span>
+    			<span class='cl_ip'><?=$o->ip?></span>
+    			<span class='cl_control'><span class="cl_buttons"><?=$o->is_reply?> <?=$o->is_edit?> <?=$o->is_del?></span> <?=$o->datetime?>&nbsp;</span>
+    		</div>
+    		<div class='cl_content' style='margin-left:5px; padding-left:<?=$o->wr_coreply_len?>px;'>
+    			<?=$o->content?>
+    		</div>
+    		
+    		<span id='edit_<?=$o->comment_id?>' class='hide'></span>
+    		<span id='reply_<?=$o->comment_id?>' class='hide'></span>
+    		
+    		<span>
+    			<input type='hidden' id='secret_comment_<?=$o->comment_id?>' value='<?=$o->secret?>'/>
+    			<textarea id='save_comment_<?=$o->comment_id?>' class='hide' rows='0' cols='0'><?=$o->content_s?></textarea>
+    		</span>
+		</div>
+	</li>
+	<? endforeach; ?>
+</ul>
+<? endif; ?>
+
+<!-- 코멘트 입력 -->
+<? if ($is_comment_write): ?>
+<div id="comment_box" class="hide">
+	<p id="comment_reply"><!--<img src="<?=BO_IMG_PATH?>/ico_reply.gif" alt="댓글답변"/>--></p>
+	<div class="cform">
+		<form name="fviewcomment" method="post"	action="<?=RT_PATH?>/_board/record_comment/update" onsubmit="return fviewcomment_submit(this);">
+		<?=INPUT_ADMIN?>
+		<input type="hidden" name="w"			value="c"/>
+		<input type="hidden" name="bid"			value="<?=BO_TABLE?>"/>
+		<input type="hidden" name="wr_id"		value="<?=$wr_id?>"/>
+		<input type="hidden" name="qstr"		value="<?=$qstr?>"/>
+		<input type="hidden" name="comment_id"	value=""/>
+		
+		<div class="cw_infor">
+			<span class="cw_control">
+				<a href="javascript:;" onclick="txresize('wr_content', '1', '100');"><img src="<?=BO_IMG_PATH?>/btn_up.gif" alt="줄이기"/></a>
+				<a href="javascript:;" onclick="txresize('wr_content', '2', '41');"><img src="<?=BO_IMG_PATH?>/btn_init.gif" alt="원래대로"/></a>
+				<a href="javascript:;" onclick="txresize('wr_content', '3', '100');"><img src="<?=BO_IMG_PATH?>/btn_down.gif" alt="늘리기"/></a>
+				<input type="checkbox" id="wr_secret" name="wr_secret" value="secret"/>
+				<label for="wr_secret">비밀글</label>
+				
+				<? if (!IS_MEMBER): ?> /
+				<label for="wr_name">이름</label>
+				<input type="text" id="wr_name" name="wr_name" class="ed" maxlength="10" size="10"/>
+				<label for="wr_password">비밀번호</label>
+				<input type="password" id="wr_password" name="wr_password" class="ed" maxlength="20" size="10"/>&nbsp;
+				<label for="wr_key"><font color="red">&deg; 그림의 글자를 먼저 입력하세요.</font></label>
+				<input type="text" id="wr_key" name="wr_key" size="6" class="ed" title="우측의 글자를 입력하세요."/>
+				<? endif; ?>
+			</span>
+			<span class="cw_etc"><a href="javascript:comment_box("", "c");" id="cw_place"><img src="<?=BO_IMG_PATH?>/co_btn_delete.gif" title="원위치" alt="원위치"/></a></span>
+		</div>
+		
+		<span class="cw_cont"><textarea id="wr_content" name="wr_content" class="tx" rows="0" cols="0"></textarea></span>
+		<? if (!IS_MEMBER): ?>
+		<span class="cw_wrkey"><img src="" id="kcaptcha" width="81" height="54" alt="자동등록방지"/></span>
+		<? endif; ?> 
+		<span class="cw_write"><input type="image" id="btn_submit" src="<?=BO_IMG_PATH?>/co_btn_write.gif" alt="댓글입력"/></span>
+		
+		</form>
+	</div>
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var co_guest = '<?=!IS_MEMBER?>';
+function fviewcomment_submit(f)	{
+	var	pattern	= /(^\s*)|(\s*$)/g;	// \s 공백 문자
+	
+	// 양쪽공백 없애기
+	if (f.wr_content.value.replace(pattern, '') == '') {
+		alert('댓글을 입력하세요.');
+		f.wr_content.focus();
+		return false;
+	}
+
+	<? if (!IS_MEMBER): ?>
+	if (f.wr_name.value.replace(pattern, '') == '') {
+		alert('이름을 입력하세요.');
+		f.wr_name.focus();
+		return false;
+	}
+
+	if (f.wr_password.value.replace(pattern, '').length < 3) {
+		alert('비밀번호를 3자 이상 입력하세요.');
+		f.wr_password.focus();
+		return false;
+	}
+
+	if (hex_md5(f.wr_key.value)	!= md5_norobot_key) {
+		alert('자동등록방지용 글자가 제대로 입력되지 않았습니다.');
+		f.wr_key.select();
+		return false;
+	}
+	<? endif; ?>
+
+	return true;
+}
+//]]>
+</script>
+
+<? if (!IS_MEMBER): ?>
+<script type='text/javascript' src='<?=JS_DIR?>/md5.js'></script>
+<script type="text/javascript" src="<?=JS_DIR?>/kcaptcha.js"></script>
+<? endif; ?>
+<script type="text/javascript" src="<?=JS_DIR?>/board_comment.js"></script>
+<? endif; ?>

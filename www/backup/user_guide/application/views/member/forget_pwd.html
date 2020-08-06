@@ -1,0 +1,141 @@
+<form id='fpwd_forget' name='fpwd_forget'>
+<input type='hidden' name='mb_id' value='<?=$mb_id?>'/>
+
+<table width="100%"  height="100%"border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="center" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="400" height="47" class="lh0"><img src="/images/myroom/title02.jpg" width="400" height="30"></td>
+            <td align="right"><span class="pixel11"><br>
+              HOME &gt; 마이룸 &gt;<strong> 아이디/패스워드 찾기</strong></span></td>
+          </tr>
+        </table>
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" style="text-align:left;">
+            <tr>
+              <td height="1" background="/images/dot02.jpg"></td>
+            </tr>
+            <tr>
+              <td height="40">&nbsp;</td>
+            </tr>
+            <tr>
+              <td height="25" valign="top"><img src="/images/myroom/search_title03.jpg" width="143" height="16"></td>
+            </tr>
+            <tr>
+             <td height="1" background="/images/dot03.jpg"></td>
+            </tr>
+            <tr>
+              <td height="32" align="center"><table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%" style="text-align:left;">
+                <tr>
+                  <td width="15" align="center" bgcolor="#fafafa"><img src="/images/arrow05.jpg" width="11" height="15"></td>
+                  <td width="120" bgcolor="#fafafa" class="pixel11_table">회원 아이디</td>
+                  <td width="1" align="center" bgcolor="#e2e2e2"></td>
+                  <td class="left10"><?=$mb_id?></td>
+                </tr>
+              </table></td>
+            </tr>
+            <tr>
+              <td height="1" background="/images/dot02.jpg"></td>
+            </tr>
+            <tr>
+              <td height="32" align="center"><table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%" style="text-align:left;">
+                <tr>
+                  <td width="15" align="center" bgcolor="#fafafa"><img src="/images/arrow05.jpg" width="11" height="15"></td>
+                  <td width="120" bgcolor="#fafafa" class="pixel11_table">비밀번호 찾기 질문</td>
+                  <td width="1" align="center" bgcolor="#e2e2e2"></td>
+                  <td class="left10"><?=$mb_password_q?></td>
+                </tr>
+              </table></td>
+            </tr>
+             <tr>
+              <td height="1" background="/images/dot02.jpg"></td>
+            </tr>
+            <tr>
+              <td height="32" align="center"><table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%" style="text-align:left;">
+                <tr>
+                  <td width="15" align="center" bgcolor="#fafafa"><img src="/images/arrow05.jpg" width="11" height="15"></td>
+                  <td width="120" bgcolor="#fafafa" class="pixel11_table">비밀번호 찾기 답변</td>
+                  <td width="1" align="center" bgcolor="#e2e2e2"></td>
+                  <td class="left10"><input type='text' id='mb_password_a' name='mb_password_a' class="box" style="width:350px"></td>
+                </tr>
+              </table></td>
+            </tr>
+            <tr>
+              <td height="1" background="/images/dot02.jpg"></td>
+            </tr>
+            <tr>
+              <td height="32" align="center"><table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%" style="text-align:left;">
+                <tr>
+                  <td width="15" align="center">&nbsp;</td>
+                  <td width="120" class="pixel11_table lh0"><span class="left10"><img src='' id='kcaptcha' width='100' height='50' alt='자동등록방지'/></span></td>
+                  <td width="1" align="center" bgcolor="#e2e2e2"></td>
+                  <td width="160" height="60" class="left10"><input type='text' name='wr_key' class="box" style="width:150px"></td>
+                  <td class="pixel11"> 왼쪽의 글자를 입력하세요.</td>
+                </tr>
+              </table></td>
+            </tr>
+            <tr>
+              <td height="1" background="/images/dot03.jpg"></td>
+            </tr>
+            <tr>
+              <td height="50" align="right"><input type="image" src="/images/btn_ok.jpg"/> <a href="#none" onclick="history.go(-1);"><img src="/images/btn_cancel.jpg"/></a></td>
+            </tr>
+          </table></td>
+        <td width="30" valign="top">&nbsp;</td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+
+</form>
+
+<script type="text/javascript" src="<?=JS_DIR?>/md5.js"></script>
+<script type="text/javascript" src="<?=JS_DIR?>/kcaptcha.js"></script>
+<script type="text/javascript" src="<?=JS_DIR?>/jvalidate.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function() {
+	$('#fpwd_forget').validate({
+		rules: {
+			mb_password_a: "required",
+			wr_key: { required:true, wrKey:true }
+		},
+		messages: {
+			mb_password_a: "비밀번호 분실시 답변을 입력하십시오.",
+			wr_key: "자동등록방지용 코드가 맞지 않습니다."
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		showErrors: function(errorMap, errorList) {
+			if (errorList && errorList[0]) {
+				alert(errorList[0].message);
+			}
+		},
+		submitHandler: function(f) {
+			var formData = $("#fpwd_forget").serialize();
+			$.ajax({
+				type: "POST",
+				url: "<?=RT_PATH?>/member/forget_idpwd/ajax_find_password",
+				cache: false,
+				data: formData,
+				success: function(jsonData, status) {
+					var data = $.parseJSON(jsonData);
+					switch(data.result) {
+						case "000" :
+							alert(data.msg);
+							location.href = '<?=RT_PATH?>/member/login';
+							break;
+						default :
+							alert(data.msg);
+							return false;
+							break;		
+					}
+				}
+			});
+		}
+	});
+});
+//]]>
+</script>
